@@ -1,6 +1,6 @@
 package clases.enumeradores;
 
-public enum Estados {
+public enum Estado {
     Nuevo,
     Como_nuevo,
     Bueno,

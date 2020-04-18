@@ -1,6 +1,6 @@
 package clases.enumeradores;
 
-public enum Categorias {
+public enum Categoria {
     Moda_y_accesorios,
     Tv_audio_y_foto,
     Moviles_y_telefonia,
