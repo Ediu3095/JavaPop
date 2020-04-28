@@ -1,5 +1,9 @@
 package clases;
 
+/**
+ *
+ * @author Eduardo Ruiz Sabajanes y Luis Miguel Sobrino Zamora
+ */
 import clases.enumeradores.*;
 import java.awt.Image;
 import java.time.LocalDateTime;
@@ -15,5 +19,5 @@ public class Producto {
     protected LocalDateTime fechaPublicacion;
     protected int codigoPostalVendedor;
     protected boolean urgente;
-    
+
 }

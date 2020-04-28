@@ -1,5 +1,9 @@
 package clases;
 
+/**
+ *
+ * @author Eduardo Ruiz Sabajanes y Luis Miguel Sobrino Zamora
+ */
 public class Admin extends Usuario {
 
     public Admin() {
