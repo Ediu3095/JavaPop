@@ -1,11 +1,30 @@
 package main;
 
+import java.util.*;
+import clases.*;
+
 /**
  *
  * @author Eduardo Ruiz Sabajanes y Luis Miguel Sobrino Zamora
  */
 public class Main {
-    //Instanciar productos
-    //login --> Instanciar usuario logueado (Obtener datos de productos de y de usuario de base de datos)
+
+    public static void main(String[] args) {
+
+        // Comienzo del programa: Recuperamos la informacion guardada en los ficheros
+        ArrayList<Usuario> usuarios = clases.GuardarLeerObjetos.leerUsuarios();
+        ArrayList<Producto> productos = clases.GuardarLeerObjetos.leerProductos();
+
+        // Logica del programa
+        System.out.println("Leo correctamente");
+        
+        System.out.println(usuarios.get(0));
+        
+        // Final del programa: Guardamos la informacion de vuelta en los ficheros
+        GuardarLeerObjetos.guardarUsuarios(usuarios);
+        GuardarLeerObjetos.guardarProductos(productos);
+        
+        System.out.println("Escribo correctamente");
+    }
 
 }

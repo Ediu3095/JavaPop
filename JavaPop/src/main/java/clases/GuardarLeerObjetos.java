@@ -1,5 +1,7 @@
 package clases;
 
+import java.io.EOFException;
+import java.io.File;
 import java.io.FileOutputStream;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -7,48 +9,131 @@ import java.io.IOException;
 import java.io.ObjectOutputStream;
 import java.io.ObjectInputStream;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import main.Main;
 
 /**
  *
  * @author Eduardo Ruiz Sabajanes y Luis Miguel Sobrino Zamora
  */
 public class GuardarLeerObjetos {
-    
-    public void GuardarCliente(Cliente c) throws IOException{
-        FileOutputStream fosClientStorage = new FileOutputStream("clientes.dat");
-        ObjectOutputStream oosClientStorage = new ObjectOutputStream(fosClientStorage);
-        oosClientStorage.writeObject(c);
-        fosClientStorage.close();
-        oosClientStorage.close();
-    }
-    
-    public ArrayList<Cliente> LeerClientes() throws FileNotFoundException, IOException{
-        ArrayList<Cliente> Clientes = new ArrayList();
-        FileInputStream fisClientStorage = new FileInputStream("clientes.dat");
-        ObjectInputStream oisClientStorage = new ObjectInputStream(fisClientStorage);
-        try{
-            while (true){
-                Clientes.add((Cliente) oisClientStorage.readObject());
+
+    private static void crearUsuariosDat() {
+        try {
+            File usuariosDat = new File("usuarios.dat");
+            if (!usuariosDat.exists()) {
+                usuariosDat.createNewFile();
             }
-        }catch(Exception e){
-            System.out.println(e);
+        } catch (IOException ex) {
+                System.out.println(ex);
         }
-        fisClientStorage.close();
-        oisClientStorage.close();
-        return Clientes;
     }
-    
-    public void GuardarProducto(Producto p) throws IOException{
-        FileOutputStream fosProductStorage = new FileOutputStream("clientes.dat");
-        ObjectOutputStream oosProductStorage = new ObjectOutputStream(fosProductStorage);
-        oosProductStorage.writeObject(p);
-        fosProductStorage.close();
-        oosProductStorage.close();
+
+    private static void crearProductosDat() {
+        try {
+            File productosDat = new File("productos.dat");
+            if (!productosDat.exists()) {
+                productosDat.createNewFile();
+            }
+        } catch (IOException ex) {
+                System.out.println(ex);
+        }
     }
-    
-    public ArrayList<Producto> LeerProductos() throws ClassNotFoundException, IOException{
-        FileInputStream fisProductStorage;
-        ObjectInputStream oisProductStorage;
-        oisProductStorage.readObject();
+
+    public static void guardarUsuarios(ArrayList<Usuario> userList) {
+        try {
+            FileOutputStream fos = new FileOutputStream("usuarios.dat");
+            ObjectOutputStream oos = new ObjectOutputStream(fos);
+            for (int i = 0; i < userList.size(); i++) {
+                oos.writeObject(userList.get(i));
+            }
+            fos.close();
+            oos.close();
+        } catch (IOException ex) {
+                System.out.println(ex);
+        }
+    }
+
+    public static void guardarProductos(ArrayList<Producto> productList) {
+        try {
+            FileOutputStream fos = new FileOutputStream("productos.dat");
+            ObjectOutputStream oos = new ObjectOutputStream(fos);
+            for (int i = 0; i < productList.size(); i++) {
+                oos.writeObject(productList.get(i));
+            }
+            fos.close();
+            oos.close();
+        } catch (IOException ex) {
+                System.out.println(ex);
+        }
+    }
+
+    public static ArrayList<Usuario> leerUsuarios() {
+        ArrayList<Usuario> clientes = new ArrayList();
+        boolean run = true;
+        while (run) {
+            try {
+                FileInputStream fis = new FileInputStream("usuarios.dat");
+                ObjectInputStream ois = null;
+                try {
+                    ois = new ObjectInputStream(fis);
+                    while (true) {
+                        clientes.add((Usuario) ois.readObject());
+                    }
+                } catch (EOFException ex) {
+                    System.out.println("Lectura de usuarios finalizada");
+                }
+                fis.close();
+                try {
+                    ois.close();
+                } catch (NullPointerException ex) {
+                    System.out.println("Aun no hay usuarios!!");
+                System.out.println(ex);
+                }
+                run = false;
+            } catch (FileNotFoundException ex) {
+                crearUsuariosDat();
+                ArrayList<Usuario> admList = new ArrayList();
+                admList.add(new Admin());
+                guardarUsuarios(admList);
+                System.out.println(ex + ": Se creo el fichero usuarios.dat");
+            } catch (Exception ex) {
+                System.out.println(ex);
+            }
+        }
+        return clientes;
+    }
+
+    public static ArrayList<Producto> leerProductos() {
+        ArrayList<Producto> productList = new ArrayList();
+        boolean run = true;
+        while (run) {
+            try {
+                FileInputStream fis = new FileInputStream("productos.dat");
+                ObjectInputStream ois = null;
+                try {
+                    ois = new ObjectInputStream(fis);
+                    while (true) {
+                        productList.add((Producto) ois.readObject());
+                    }
+                } catch (EOFException ex) {
+                    System.out.println("Lectura de productos finalizada");
+                }
+                fis.close();
+                try {
+                    ois.close();
+                } catch (NullPointerException ex) {
+                    System.out.println(ex + ": Aun no hay productos");
+                }
+                run = false;
+            } catch (FileNotFoundException ex) {
+                crearUsuariosDat();
+                System.out.println(ex + ": Se creo el fichero productos.dat");
+            } catch (Exception ex) {
+                System.out.println(ex);
+            }
+        }
+        return productList;
     }
 }

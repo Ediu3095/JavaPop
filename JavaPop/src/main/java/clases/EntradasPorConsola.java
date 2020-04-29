@@ -67,14 +67,14 @@ public class EntradasPorConsola {
 
     /**
      * Esta funcion pide un String al usuario y comprueba que pueda ser una
-     * contraseña asegurandose de que no tiene ningun caracter invalido.
+     * clave asegurandose de que no tiene ningun caracter invalido.
      *
      * El String que se retorna será el correo en caso de que este sea valido o
      * "" en el caso de que no lo sea.
      *
      * @return String
      */
-    public String getContraseña() {
+    public String getClave() {
         String contraseña;
         char[] validChars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890".toCharArray();
         boolean valid = false;

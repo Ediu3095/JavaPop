@@ -5,8 +5,7 @@ import java.util.ArrayList;
 public class Cliente extends Usuario {
 // Datos
 
-    private static ArrayList<Productos> productos = new ArrayList<Productos>();
-    private static int numero = 0;
+    private static ArrayList<Productos> productos;
     protected String dni;
     protected String nombre;
     protected String ccpp;
@@ -66,11 +65,10 @@ public class Cliente extends Usuario {
         return productos;
     }
 
-    public static String introducirProducto(Productos p) {
+    public static String introducirProducto(Producto p) {
         if (productos.contains(p)) {//si esta dentro
             return "El producto ya está a la venta";
         } else {
-            numero++;
             productos.add(p);
             return "Producto añadido";
         }
@@ -80,7 +78,6 @@ public class Cliente extends Usuario {
         if (!Cliente.getProductos().contains(p)) {//no esta dentro
             return "El prodcuto no se encuentra en venta";
         } else {
-            numero--;
             Productos.remove(p);
             return "El producto " + p.getProductos() + " ha sido retirado: ";
         }
