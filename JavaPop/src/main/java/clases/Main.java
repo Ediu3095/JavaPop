@@ -8,6 +8,25 @@ import java.util.*;
  * @author Luis Miguel Sobrino Zamora
  */
 public class Main {
+    
+    public static ArrayList register(ArrayList<Usuario> usuarios, EntradasPorConsola read){
+        
+        boolean continuar;
+        
+        System.out.println("Introduzca nombre y apellidos (qwerty para volver atras): ");
+        String nombre = read.getString;
+        System.out.println("Introduzca el correo con el que desea registrarse (qwerty para volver atras): ");
+        String correo = read.getCorreo(">>");
+        System.out.println("Introduzca la contraseña con la que desea registrarse (solo letras y numeros): ");
+        String clave = read.getClave(">>");
+        System.out.println("Introduzca su DNI (qwerty para volver atras): ");
+        String dni = read.getString(">>");
+        System.out.println("Introduzca su codigo postal: ");
+        String ccpp = read.getString(">>");
+        System.out.println("Introduzca los datos de su tarjeta de credito: ");
+        String tarjetacredito = read.getString(">>");
+        
+    }
 
     public static void main(String[] args) {
 
