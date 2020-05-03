@@ -17,11 +17,12 @@ public class Cliente extends Usuario {
     protected String ttcc;
     protected boolean profesional;
 
-    public Cliente() {
-        this.dni = "";
-        this.nombre = "";
-        this.ccpp = "";
-        this.ttcc = "";
+    public Cliente(String correo, String clave, String dni, String nombre, String ccpp, String ttcc) {
+        super(correo, clave);
+        this.dni = dni;
+        this.nombre = nombre;
+        this.ccpp = ccpp;
+        this.ttcc = ttcc;
         this.productos = new ArrayList<>();
         this.profesional = false;
     }
