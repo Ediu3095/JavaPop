@@ -1,7 +1,6 @@
-package main;
+package clases;
 
 import java.util.*;
-import clases.*;
 
 /**
  *

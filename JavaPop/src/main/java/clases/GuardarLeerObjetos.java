@@ -9,9 +9,6 @@ import java.io.IOException;
 import java.io.ObjectOutputStream;
 import java.io.ObjectInputStream;
 import java.util.ArrayList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import main.Main;
 
 /**
  *
@@ -21,7 +18,7 @@ public class GuardarLeerObjetos {
 
     private static void crearUsuariosDat() {
         try {
-            File usuariosDat = new File("usuarios.dat");
+            File usuariosDat = new File("./resources/datFiles/usuarios.dat");
             if (!usuariosDat.exists()) {
                 usuariosDat.createNewFile();
             }
@@ -32,7 +29,7 @@ public class GuardarLeerObjetos {
 
     private static void crearProductosDat() {
         try {
-            File productosDat = new File("productos.dat");
+            File productosDat = new File("./resources/datFiles/productos.dat");
             if (!productosDat.exists()) {
                 productosDat.createNewFile();
             }
@@ -57,7 +54,7 @@ public class GuardarLeerObjetos {
 
     public static void guardarProductos(ArrayList<Producto> productList) {
         try {
-            FileOutputStream fos = new FileOutputStream("productos.dat");
+            FileOutputStream fos = new FileOutputStream("./resources/datFiles/productos.dat");
             ObjectOutputStream oos = new ObjectOutputStream(fos);
             for (int i = 0; i < productList.size(); i++) {
                 oos.writeObject(productList.get(i));
@@ -74,7 +71,7 @@ public class GuardarLeerObjetos {
         boolean run = true;
         while (run) {
             try {
-                FileInputStream fis = new FileInputStream("usuarios.dat");
+                FileInputStream fis = new FileInputStream("./resources/datFiles/usuarios.dat");
                 ObjectInputStream ois = null;
                 try {
                     ois = new ObjectInputStream(fis);
@@ -110,7 +107,7 @@ public class GuardarLeerObjetos {
         boolean run = true;
         while (run) {
             try {
-                FileInputStream fis = new FileInputStream("productos.dat");
+                FileInputStream fis = new FileInputStream("./resources/datFiles/productos.dat");
                 ObjectInputStream ois = null;
                 try {
                     ois = new ObjectInputStream(fis);
