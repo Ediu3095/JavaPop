@@ -1,11 +1,13 @@
-package Clases;
+package clases;
+
+import java.io.Serializable;
 
 /**
  *
  * @author Eduardo Ruiz Sabajanes
  * @author Luis Miguel Sobrino Zamora
  */
-public class Profesional extends Cliente {
+public class Profesional extends Cliente implements Serializable {
 
     protected String Descripcion;
     protected String Horario;
@@ -13,8 +15,8 @@ public class Profesional extends Cliente {
     protected String Web;
 
     public Profesional() {
-
-        profesional = true;
+        super("","","","","","");
+        this.profesional = true;
 
     }
 

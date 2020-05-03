@@ -1,5 +1,6 @@
-package Clases;
+package clases;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
@@ -7,18 +8,30 @@ import java.util.ArrayList;
  * @author Eduardo Ruiz Sabajanes
  * @author Luis Miguel Sobrino Zamora
  */
-public class Cliente extends Usuario {
+public class Cliente extends Usuario implements Serializable {
 // Datos
 
-    private static ArrayList<Productos> productos;
+    protected ArrayList<Producto> productos;
     protected String dni;
     protected String nombre;
     protected String ccpp;
     protected String ttcc;
     protected boolean profesional;
 
+    public Cliente() {
+        this.correo = "";
+        this.clave = "";
+        this.dni = "";
+        this.nombre = "";
+        this.ccpp = "";
+        this.ttcc = "";
+        this.productos = new ArrayList<>();
+        this.profesional = false;
+    }
+    
     public Cliente(String correo, String clave, String dni, String nombre, String ccpp, String ttcc) {
-        super(correo, clave);
+        this.correo = correo;
+        this.clave = clave;
         this.dni = dni;
         this.nombre = nombre;
         this.ccpp = ccpp;
@@ -67,25 +80,25 @@ public class Cliente extends Usuario {
         this.profesional = Profesional;
     }
 
-    public static ArrayList<Productos> getProductos() {
-        return productos;
+    public ArrayList<Producto> getProductos() {
+        return this.productos;
     }
 
-    public static String introducirProducto(Producto p) {
-        if (productos.contains(p)) {//si esta dentro
+    public String introducirProducto(Producto p) {
+        if (this.productos.contains(p)) {//si esta dentro
             return "El producto ya está a la venta";
         } else {
-            productos.add(p);
+            this.productos.add(p);
             return "Producto añadido";
         }
     }
 
-    public static String sacarProducto(Producto p) {
-        if (!Cliente.getProductos().contains(p)) {//no esta dentro
+    public String sacarProducto(Producto p) {
+        if (!this.productos.contains(p)) { // no esta dentro
             return "El prodcuto no se encuentra en venta";
         } else {
-            Productos.remove(p);
-            return "El producto " + p.getProductos() + " ha sido retirado: ";
+            this.productos.remove(p);
+            return "El producto " + p + " ha sido retirado: ";
         }
     }
 

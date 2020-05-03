@@ -22,6 +22,9 @@ public class GuardarLeerObjetos {
             File usuariosDat = new File("./resources/datFiles/usuarios.dat");
             if (!usuariosDat.exists()) {
                 usuariosDat.createNewFile();
+                ArrayList<Usuario> admList = new ArrayList();
+                admList.add(new Admin());
+                guardarUsuarios(admList);
             }
         } catch (IOException ex) {
                 System.out.println(ex);
@@ -49,7 +52,7 @@ public class GuardarLeerObjetos {
             fos.close();
             oos.close();
         } catch (IOException ex) {
-                System.out.println(ex);
+                System.out.println("Hola");
         }
     }
 
@@ -87,9 +90,6 @@ public class GuardarLeerObjetos {
                     ois.close();
                 } catch (NullPointerException ex) {
                     System.out.println("Aun no hay usuarios!!");
-                    ArrayList<Usuario> admList = new ArrayList();
-                    admList.add(new Admin());
-                    guardarUsuarios(admList);
                     System.out.println(ex);
                 }
                 run = false;
@@ -129,7 +129,7 @@ public class GuardarLeerObjetos {
                 }
                 run = false;
             } catch (FileNotFoundException ex) {
-                crearUsuariosDat();
+                crearProductosDat();
                 System.out.println(ex + ": Se creo el fichero productos.dat");
             } catch (Exception ex) {
                 System.out.println(ex);

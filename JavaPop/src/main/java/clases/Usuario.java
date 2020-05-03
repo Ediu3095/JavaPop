@@ -16,12 +16,6 @@ public abstract class Usuario implements Serializable {
     protected String correo;
     protected String clave;
     
-    protected Usuario(String correo, String clave){
-        this.correo = correo;
-        this.clave = clave;
-    }
-    
-    
     public String getCorreo(){
         return this.correo;
     }

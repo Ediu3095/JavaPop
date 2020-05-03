@@ -8,82 +8,120 @@ import java.util.*;
  * @author Luis Miguel Sobrino Zamora
  */
 public class Main {
-    
-    public static ArrayList register(ArrayList<Usuario> usuarios, EntradasPorConsola read){
-        
+
+    public static ArrayList register(ArrayList<Usuario> usuarios, EntradasPorConsola read) {
+
         ArrayList arr = new ArrayList();
+        arr.add(false);
+        arr.add(new Cliente());
         boolean run_ = true;
         while (run_) {
+
             //Solicita al usuario un correo
-            System.out.println("Introduzca el correo con el que desea registrarse (qwerty para volver atras): ");
-            String correo = read.getCorreo(">>");
-           
-            //Comprobamos la salida
-            if (correo.equals("qwerty")){        
-                arr.add(true);
-                run_ = false;               
-            } else {
-                arr.add(false);
+            System.out.println("Introduzca el correo con el que desea registrarse (qwerty para volver atras):");
+            String correo = read.getString(">>");
+
+            // Comprobamos el codigo de salida
+            if (correo.equals("qwerty")) {
+                arr.set(0, true);
+                run_ = false;
+
+                // Comprobamos que el correo sea valido
+            } else if (read.checkCorreo(correo)) {
+                arr.set(0, false);
+                run_ = false;
+
+                //Comprobamos que no haya otro usuario con el mismo correo y solicitamos sus datos en caso de que sea válido
                 for (int i = 0; i < usuarios.size(); i++) {
-                    //Comprobamos que no haya otro usuario con el mismo correo y solicitamos sus datos en caso de que sea válido
-                    if (!usuarios.get(i).correo.equals(correo)) {
-                        System.out.println("Introduzca nombre y apellidos (qwerty para volver atras): ");
-                        String nombre = read.getString(">>");
-                        System.out.println("Introduzca la contraseña con la que desea registrarse (solo letras y numeros): ");
-                        String clave = read.getClave(">>");
-                        System.out.println("Introduzca su DNI (qwerty para volver atras): ");
-                        String dni = read.getString(">>");
-                        System.out.println("Introduzca su codigo postal: ");
-                        String ccpp = read.getString(">>");
-                        System.out.println("Introduzca los datos de su tarjeta de credito: ");
-                        String ttcc = read.getString(">>");
-                        Cliente c1 = new Cliente (correo, clave , nombre, dni, ccpp, ttcc);
-                        arr.add(c1);
-                        run_ = false;
-                        break;                        
+                    if (usuarios.get(i).correo.equals(correo)) {
+                        run_ = true;
+                        break;
                     }
-                }               
-            }
-            if (run_) {
-                    System.out.println("Usuario existente, introduzca un correo no registardo");
                 }
-        }       
+
+                // Si el correo no es valido...
+            } else {
+                System.out.println("¡¡El correo no es valido!!");
+            }
+
+            // Si el correo ya pertenece a un usuario...
+            if (run_) {
+                System.out.println("Usuario existente, introduzca un correo no registardo");
+
+                // Si el correo está disponible...
+            } else {
+                run_ = true;
+                while (run_) {
+
+                    // Pide una contraseña y comprueba si es valida...
+                    System.out.println("Introduzca la clave con la que desea registrarse (solo letras y numeros):");
+                    String clave = read.getString(">>");
+
+                    // Si la contraseña es valida pide el resto de datos y crea el usuario
+                    if (read.checkClave(clave)) {
+                        System.out.println("Introduzca nombre y apellidos:");
+                        String nombre = read.getString(">>");
+                        System.out.println("Introduzca su DNI:");
+                        String dni = read.getString(">>");
+                        System.out.println("Introduzca su codigo postal:");
+                        String ccpp = read.getString(">>");
+                        System.out.println("Introduzca los datos de su tarjeta de credito:");
+                        String ttcc = read.getString(">>");
+                        Cliente c1 = new Cliente(correo, clave, nombre, dni, ccpp, ttcc);
+                        usuarios.add(c1);
+                        arr.set(1, c1);
+                        run_ = false;
+
+                    }// Si la contraseña no es valida pide una nueva.
+                    else {
+                        System.out.println("La clave introducida no es valida");
+                    }
+                }
+            }
+        }
         return arr;
     }
 
     private static ArrayList login(ArrayList<Usuario> usuarios, EntradasPorConsola read) {
         ArrayList arr = new ArrayList();
+        arr.add(false);
+        arr.add(new Cliente());
         boolean run_ = true;
 
         while (run_) {
             // Pide al usuario un correo
             System.out.println("Introduzca su correo (qwerty para volver atras):");
-            String correo = read.getCorreo(">>");
+            String correo = read.getString(">>");
 
             // Comprobamos que no se introduce el codigo de salida
             if (correo.equals("qwerty")) {
-                arr.add(true);
+                arr.set(0, true);
                 run_ = false;
-            } else {
-                arr.add(false);
+            } else if (read.checkCorreo(correo)) {
+                arr.set(0, false);
 
                 // Pide una contraseña
                 System.out.println("Introduzca su clave:");
-                String clave = read.getClave(">>");
-
-                // Se comprueba que exista algún usuario con ese correo y contraseña
-                for (int i = 0; i < usuarios.size(); i++) {
-                    if (usuarios.get(i).correo.equals(correo)) {
-                        if (usuarios.get(i).clave.equals(clave)) {
-                            arr.add(usuarios.get(i));
-                            run_ = false;
-                            break;
+                String clave = read.getString(">>");
+                
+                // Si la contrasseña es valida
+                if (read.checkClave(clave)){
+                    // Se comprueba que exista algún usuario con ese correo y contraseña
+                    for (int i = 0; i < usuarios.size(); i++) {
+                        if (usuarios.get(i).correo.equals(correo)) {
+                            if (usuarios.get(i).clave.equals(clave)) {
+                                arr.set(1, usuarios.get(i));
+                                run_ = false;
+                                break;
+                            }
                         }
                     }
                 }
                 if (run_) {
-                    System.out.println("¡¡Usuario o contraseña incorrecto!!");
+                    System.out.println("¡¡Usuario o clave incorrectos!!");
                 }
+            } else {
+                System.out.println("¡¡El correo no es valido!!");
             }
         }
         return arr;
@@ -129,40 +167,49 @@ public class Main {
                     case 3:
                         // Salimos del bucle principal
                         finalizar = true;
+                        for (int i = 0; i<usuarios.size(); i++){
+                            System.out.println(usuarios.get(i).correo);
+                        }
                         break;
                 }
 
             } // Estado 1: Realizar el "inicio de sesion"
             else if (estado == 1) {
-                
+
                 System.out.println("Estado 1:");
                 returns = login(usuarios, read);
                 if ((boolean) returns.get(0)) {
-                    estado = 0;    
+                    estado = 0;
                 } else {
                     user = (Usuario) returns.get(1);
-                    if (user instanceof Admin){
+                    if (user instanceof Admin) {
                         estado = 3;
                     } else {
                         estado = 4;
                     }
                 }
-            
+
             } // Estado 2: Realizar el "registro de usuario"
             else if (estado == 2) {
-            
+
                 System.out.println("estado 2");
-                estado = 0;
-            
+                returns = register(usuarios, read);
+                if ((boolean) returns.get(0)) {
+                    estado = 0;
+                } else {
+                    user = (Usuario) returns.get(1);
+                    estado = 4;
+                }
+
             } // Estado 3: Menu principal del administrador
             else if (estado == 3) {
-            
+
                 System.out.println("estado 3");
                 estado = 0;
-            
+
             } // Estado 4: Menu principal del cliente
             else if (estado == 4) {
-            
+
                 System.out.println("estado 4");
                 estado = 0;
             }

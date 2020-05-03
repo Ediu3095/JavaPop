@@ -29,41 +29,31 @@ public class EntradasPorConsola {
      *
      * @return String
      */
-    public String getCorreo(String str_) {
-        String correo;
+    public boolean checkCorreo(String str_) {
         char[] correoChars;
         int atCounter = 0;
         int atPosition = 0;
-        try {
-            System.out.println(str_);
-            correo = this.read.readLine();
-            correoChars = correo.toCharArray();
-            for (int i = 0; i < correoChars.length; i++) {
-                if (correoChars[i] == '@') {
+        correoChars = str_.toCharArray();
+        for (int i = 0; i < correoChars.length; i++) {
+            if (correoChars[i] == '@') {
+                atCounter++;
+                atPosition = i;
+            }
+        }
+        if (atCounter != 1) {
+            return false;
+        } else {
+            for (int i = ++atPosition; i < correoChars.length; i++) {
+                if (correoChars[i] == '.') {
                     atCounter++;
-                    atPosition = i;
+                    break;
                 }
             }
-            if (atCounter != 1) {
-                throw new RuntimeException("Correo no valido");
+            if (atCounter == 1) {
+                return false;
             } else {
-                for (int i = ++atPosition; i < correoChars.length; i++) {
-                    if (correoChars[i] == '.') {
-                        atCounter++;
-                        break;
-                    }
-                }
-                if (atCounter == 1) {
-                    throw new RuntimeException("Correo no valido");
-                } else {
-                    return correo;
-                }
+                return true;
             }
-        } catch (IOException e) {
-            return "";
-        } catch (RuntimeException e) {
-            System.out.println(e);
-            return "";
         }
     }
 
@@ -76,30 +66,23 @@ public class EntradasPorConsola {
      *
      * @return String
      */
-    public String getClave(String str_) {
-        String contraseña;
+    public boolean checkClave(String str_) {
         char[] validChars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890".toCharArray();
         boolean valid = false;
-        try {
-            System.out.println(str_);
-            contraseña = this.read.readLine();
-            for (int i = 0; i < contraseña.length(); i++) {
-                for (int j = 0; j < validChars.length; j++) {
-                    if (contraseña.charAt(i) == validChars[j]) {
-                        valid = true;
-                    }
+        for (int i = 0; i < str_.length(); i++) {
+            for (int j = 0; j < validChars.length; j++) {
+                if (str_.charAt(i) == validChars[j]) {
+                    valid = true;
+                    break;
                 }
-                if (valid == false) {
-                    throw new RuntimeException("Caracter invalido en la contraseña");
-                }
+            }
+            if (!valid) {
+                break;
+            } else if (i != str_.length() - 1) {
                 valid = false;
             }
-            return contraseña;
-        } catch (IOException e) {
-            return "";
-        } catch (RuntimeException e) {
-            return "";
         }
+        return valid;
     }
 
     public Categoria getCategoria() {
