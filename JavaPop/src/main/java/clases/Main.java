@@ -16,15 +16,11 @@ public class Main {
         ArrayList<Producto> productos = clases.GuardarLeerObjetos.leerProductos();
 
         // Logica del programa
-        System.out.println("Leo correctamente");
-        
-        System.out.println(usuarios.get(0));
+        // Login-Register...
         
         // Final del programa: Guardamos la informacion de vuelta en los ficheros
         GuardarLeerObjetos.guardarUsuarios(usuarios);
         GuardarLeerObjetos.guardarProductos(productos);
-        
-        System.out.println("Escribo correctamente");
     }
 
 }

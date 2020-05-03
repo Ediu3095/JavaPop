@@ -87,7 +87,10 @@ public class GuardarLeerObjetos {
                     ois.close();
                 } catch (NullPointerException ex) {
                     System.out.println("Aun no hay usuarios!!");
-                System.out.println(ex);
+                    ArrayList<Usuario> admList = new ArrayList();
+                    admList.add(new Admin());
+                    guardarUsuarios(admList);
+                    System.out.println(ex);
                 }
                 run = false;
             } catch (FileNotFoundException ex) {
