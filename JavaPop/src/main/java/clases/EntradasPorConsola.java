@@ -138,4 +138,109 @@ public class EntradasPorConsola {
         }
         return categoria;
     }
+
+    public int getInt(String str) {
+        boolean run = true;
+        int num = 0;
+        while (run) {
+            try {
+                System.out.print(str);
+                num = Integer.parseInt(this.read.readLine());
+                run = false;
+            } catch (Exception e) {
+                System.out.println(e);
+            }
+        }
+        return num;
+    }
+
+    public int getInt(String str, int low, int high) {
+        boolean run = true;
+        int num = 0;
+        while (run) {
+            try {
+                System.out.print(str);
+                num = Integer.parseInt(this.read.readLine());
+                if (num < low || num > high) {
+                    throw new RuntimeException("Out of limit");
+                }
+                run = false;
+            } catch (Exception e) {
+                System.out.println(e);
+            }
+        }
+        return num;
+    }
+
+    public double getDouble(String str) {
+        boolean run = true;
+        double num = 0;
+        while (run) {
+            try {
+                System.out.print(str);
+                num = Double.parseDouble(this.read.readLine());
+                run = false;
+            } catch (Exception e) {
+                System.out.println(e);
+            }
+        }
+        return num;
+    }
+
+    public double getDouble(String str, double low, double high) {
+        boolean run = true;
+        double num = 0;
+        while (run) {
+            try {
+                System.out.print(str);
+                num = Double.parseDouble(this.read.readLine());
+                if (num < low || num > high) {
+                    throw new RuntimeException("Out of limit");
+                }
+                run = false;
+            } catch (Exception e) {
+                System.out.println(e);
+            }
+        }
+        return num;
+    }
+
+    public String getString(String str_) {
+        boolean run = true;
+        String str = "";
+        while (run) {
+            try {
+                System.out.print(str_);
+                str = this.read.readLine();
+                run = false;
+            } catch (Exception e) {
+                System.out.println(e);
+            }
+        }
+        return str;
+    }
+
+    public String getString(String str_, String[] options) {
+        boolean run = true;
+        String str = "";
+        while (run) {
+            try {
+                System.out.print(str_);
+                str = this.read.readLine();
+                for (int i = 0; i < options.length; i++) {
+                    if (str.equals(options[i])) {
+                        run = false;
+                        break;
+                    }
+                }
+                if (run) {
+                    throw new RuntimeException("");
+                }
+            } catch (Exception e) {
+                System.out.println(e);
+            }
+        }
+        return str;
+    }
+
 }
