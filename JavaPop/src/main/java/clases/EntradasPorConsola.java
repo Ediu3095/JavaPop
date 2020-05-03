@@ -29,12 +29,13 @@ public class EntradasPorConsola {
      *
      * @return String
      */
-    public String getCorreo() {
+    public String getCorreo(String str_) {
         String correo;
         char[] correoChars;
         int atCounter = 0;
         int atPosition = 0;
         try {
+            System.out.println(str_);
             correo = this.read.readLine();
             correoChars = correo.toCharArray();
             for (int i = 0; i < correoChars.length; i++) {
@@ -75,11 +76,12 @@ public class EntradasPorConsola {
      *
      * @return String
      */
-    public String getClave() {
+    public String getClave(String str_) {
         String contraseña;
         char[] validChars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890".toCharArray();
         boolean valid = false;
         try {
+            System.out.println(str_);
             contraseña = this.read.readLine();
             for (int i = 0; i < contraseña.length(); i++) {
                 for (int j = 0; j < validChars.length; j++) {
