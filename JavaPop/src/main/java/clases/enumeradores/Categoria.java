@@ -1,5 +1,10 @@
 package clases.enumeradores;
 
+/**
+ *
+ * @author Eduardo Ruiz Sabajanes
+ * @author Luis Miguel Sobrino Zamora
+ */
 public enum Categoria {
     Moda_y_accesorios,
     Tv_audio_y_foto,

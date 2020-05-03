@@ -7,7 +7,8 @@ import clases.enumeradores.*;
 
 /**
  *
- * @author Eduardo Ruiz Sabajanes y Luis Miguel Sobrino Zamora
+ * @author Eduardo Ruiz Sabajanes
+ * @author Luis Miguel Sobrino Zamora
  */
 public class EntradasPorConsola {
 

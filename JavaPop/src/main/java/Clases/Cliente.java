@@ -2,6 +2,11 @@ package Clases;
 
 import java.util.ArrayList;
 
+/**
+ *
+ * @author Eduardo Ruiz Sabajanes
+ * @author Luis Miguel Sobrino Zamora
+ */
 public class Cliente extends Usuario {
 // Datos
 
