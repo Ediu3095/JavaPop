@@ -20,12 +20,11 @@ public class Profesional extends Cliente implements Serializable {
 
     }
 
-
-    public void Cobro(){
+    public void cobro(){
         
     }
     
-    public void EditarDatos(){
+    public void editarDatos(){
         
     }
     

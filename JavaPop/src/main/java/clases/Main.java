@@ -9,6 +9,10 @@ import java.util.*;
  */
 public class Main {
 
+    /**
+    *
+    * @author Luis Miguel Sobrino Zamora
+    */
     public static ArrayList register(ArrayList<Usuario> usuarios, EntradasPorConsola read) {
 
         ArrayList arr = new ArrayList();
@@ -81,6 +85,16 @@ public class Main {
         return arr;
     }
 
+    /**
+    * Le pide al usuario un correo y una contraseña y comprueba que se correspondan
+    * con algun usuario de una lista de usuarios que se pasa como parametro.
+    * Para pedir los datos se utiliza un objeto de la clase entradas por consola que
+    * tambien pasamos como parametro.
+    * 
+    * @param usuarios es la lista de usuarios.
+    * 
+    * @author Eduardo Ruiz Sabajanes
+    */
     private static ArrayList login(ArrayList<Usuario> usuarios, EntradasPorConsola read) {
         ArrayList arr = new ArrayList();
         arr.add(false);
