@@ -85,16 +85,27 @@ public class Main {
         return arr;
     }
 
-    /**
-    * Le pide al usuario un correo y una contraseña y comprueba que se correspondan
-    * con algun usuario de una lista de usuarios que se pasa como parametro.
-    * Para pedir los datos se utiliza un objeto de la clase entradas por consola que
-    * tambien pasamos como parametro.
-    * 
-    * @param usuarios es la lista de usuarios.
-    * 
-    * @author Eduardo Ruiz Sabajanes
-    */
+    /**Esta función pide a traves de la consola un usuario y una contraseña y
+     * comprueba si existe algún usuario que tenga esas credenciales en una lista
+     * de usuarios.
+     * 
+     * La función pedirá un correo hasta que se introduzca hasta que se introduzca
+     * un correo válido y después se pedirá una contraseña hasta que se introduzca
+     * una contraseña valida. Además se repetirá este proceso hasta que se introduzca
+     * la clave de salida "qwerty" como correo o hasta que se den unos credenciales
+     * pertenecientes a algún usuario de la lista con la que se compara.
+     *
+     * @parameter usuarios: Es la lista de usuarios en la que se hace la comprobacion.
+     * @parameter read: Es un objeto que se utiliza para pedir los imputs y comprobar
+     * si son correos o contraseñas validos.
+     * 
+     * @returns: La funcion devuelve un ArrayList con un booleano que indica si
+     * se ha introducido el código de salida o no, y el usuario que se haya obtenido
+     * como coincidente con los credenciales introducidos.
+     * 
+     * @author Eduardo Ruiz Sabajanes
+     * @author Luis Miguel Sobrino Zamora
+     */
     private static ArrayList login(ArrayList<Usuario> usuarios, EntradasPorConsola read) {
         ArrayList arr = new ArrayList();
         arr.add(false);
