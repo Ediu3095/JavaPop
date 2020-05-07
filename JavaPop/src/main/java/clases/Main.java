@@ -10,25 +10,29 @@ import java.util.*;
 public class Main {
 
     /**
-    *Esta función solicita un nombre de usuario, una contraseña y demás
-    * datos del usuario (nombre y appelidos,DNI,tarjeta de credito y codigo postal
-    * Comprueba que no exista un usuario ya creado con el nombre de usuario introducido
-    * 
-    * Se solicitara un correo al usuario hasta que se compruebe que el correo es válido
-    * y se esperará a que introduzca una contraseña que cumpla los requisitos.
-    * Este proceso se repetirá hasta que se complete el registro o el usuario salga de la funcion.
-    * 
-    * @parameter usuarios: Es la lista de usuarios en la que se hace la comprobacion.
-    * @parameter read: Es un objeto que se utiliza para pedir los imputs y comprobar
-    * si son correos o contraseñas validos.
-    * 
-    * @returns: La funcion devuelve un ArrayList formado en cuya primera posicion se encuentra
-    * un booleano que nos dice si hay o no un registro y , en segunda posicion nos devuelve
-    * un objeto Cliente creado con los datos previamente introducidos.
-    * 
-    * @author Eduardo Ruiz Sabajanes
-    * @author Luis Miguel Sobrino Zamora
-    */
+     * Esta función solicita un nombre de usuario, una contraseña y demás datos
+     * del usuario (nombre y appelidos,DNI,tarjeta de credito y codigo postal
+     * Comprueba que no exista un usuario ya creado con el nombre de usuario
+     * introducido
+     *
+     * Se solicitara un correo al usuario hasta que se compruebe que el correo
+     * es válido y se esperará a que introduzca una contraseña que cumpla los
+     * requisitos. Este proceso se repetirá hasta que se complete el registro o
+     * el usuario salga de la funcion.
+     *
+     * @param usuarios: Es la lista de usuarios en la que se hace la
+     * comprobacion.
+     * @param read: Es un objeto que se utiliza para pedir los imputs y
+     * comprobar si son correos o contraseñas validos.
+     *
+     * @returns: La funcion devuelve un ArrayList formado en cuya primera
+     * posicion se encuentra un booleano que nos dice si hay o no un registro y
+     * , en segunda posicion nos devuelve un objeto Cliente creado con los datos
+     * previamente introducidos.
+     *
+     * @author Eduardo Ruiz Sabajanes
+     * @author Luis Miguel Sobrino Zamora
+     */
     public static ArrayList register(ArrayList<Usuario> usuarios, EntradasPorConsola read) {
 
         ArrayList arr = new ArrayList();
@@ -61,9 +65,9 @@ public class Main {
                 }
 
                 // Si el correo ya pertenece a un usuario...
-                if (run_){
+                if (run_) {
                     System.out.println("Usuario existente, introduzca un correo no registardo");
-                
+
                 }// Si el correo está disponible...
                 else {
                     while (run__) {
@@ -101,24 +105,26 @@ public class Main {
         return arr;
     }
 
-    /**Esta función pide a traves de la consola un usuario y una contraseña y
-     * comprueba si existe algún usuario que tenga esas credenciales en una lista
-     * de usuarios.
-     * 
-     * La función pedirá un correo hasta que se introduzca un correo válido
-     * y después se pedirá una contraseña hasta que se introduzcauna contraseña valida.
-     * Además se repetirá este proceso hasta que se introduzca la clave de salida
-     * "qwerty" como correo o hasta que se den unos credenciales pertenecientes
-     * a algún usuario de la lista con la que se compara.
+    /**
+     * Esta función pide a traves de la consola un usuario y una contraseña y
+     * comprueba si existe algún usuario que tenga esas credenciales en una
+     * lista de usuarios.
      *
-     * @parameter usuarios: Es la lista de usuarios en la que se hace la comprobacion.
-     * @parameter read: Es un objeto que se utiliza para pedir los imputs y comprobar
-     * si son correos o contraseñas validos.
-     * 
+     * La función pedirá un correo hasta que se introduzca un correo válido y
+     * después se pedirá una contraseña hasta que se introduzcauna contraseña
+     * valida. Además se repetirá este proceso hasta que se introduzca la clave
+     * de salida "qwerty" como correo o hasta que se den unos credenciales
+     * pertenecientes a algún usuario de la lista con la que se compara.
+     *
+     * @param usuarios: Es la lista de usuarios en la que se hace la
+     * comprobacion.
+     * @param read: Es un objeto que se utiliza para pedir los imputs y
+     * comprobar si son correos o contraseñas validos.
+     *
      * @returns: La funcion devuelve un ArrayList con un booleano que indica si
-     * se ha introducido el código de salida o no, y el usuario que se haya obtenido
-     * como coincidente con los credenciales introducidos.
-     * 
+     * se ha introducido el código de salida o no, y el usuario que se haya
+     * obtenido como coincidente con los credenciales introducidos.
+     *
      * @author Eduardo Ruiz Sabajanes
      * @author Luis Miguel Sobrino Zamora
      */
@@ -143,9 +149,9 @@ public class Main {
                 // Pide una contraseña
                 System.out.println("Introduzca su clave:");
                 String clave = read.getString(">> ");
-                
+
                 // Si la contrasseña es valida
-                if (read.checkClave(clave)){
+                if (read.checkClave(clave)) {
                     // Se comprueba que exista algún usuario con ese correo y contraseña
                     for (int i = 0; i < usuarios.size(); i++) {
                         if (usuarios.get(i).correo.equals(correo)) {
@@ -174,7 +180,7 @@ public class Main {
         ArrayList<Producto> productos = clases.GuardarLeerObjetos.leerProductos();
 
         // Usuario que opera con la aplicaion
-        Usuario user;
+        Usuario user = new Cliente();
 
         // Variables de lectura y comprobacion de estado
         EntradasPorConsola read = new EntradasPorConsola();
@@ -190,9 +196,12 @@ public class Main {
             if (estado == 0) {
 
                 // Pedimos al usuario que seleccione una operacion a realizar
-                System.out.println("¿Que operacion desea realizar?\n1.- Iniciar sesion\n2.- Registrarse\n3.- Salir");
+                System.out.println("\nEstado 0:");
+                System.out.println("¿Que operación desea realizar?\n"
+                        + "1.- Iniciar sesion\n"
+                        + "2.- Registrarse\n"
+                        + "3.- Salir");
                 operacion = read.getInt(">> ", 1, 3);
-                System.out.println();
 
                 // Ejecutamos esa operacion
                 switch (operacion) {
@@ -207,7 +216,7 @@ public class Main {
                     case 3:
                         // Salimos del bucle principal
                         finalizar = true;
-                        for (int i = 0; i<usuarios.size(); i++){
+                        for (int i = 0; i < usuarios.size(); i++) {
                             System.out.println(usuarios.get(i).correo);
                         }
                         break;
@@ -216,7 +225,7 @@ public class Main {
             } // Estado 1: Realizar el "inicio de sesion"
             else if (estado == 1) {
 
-                System.out.println("Estado 1:");
+                System.out.println("\nEstado 1:");
                 returns = login(usuarios, read);
                 if ((boolean) returns.get(0)) {
                     estado = 0;
@@ -232,7 +241,7 @@ public class Main {
             } // Estado 2: Realizar el "registro de usuario"
             else if (estado == 2) {
 
-                System.out.println("Estado 2");
+                System.out.println("\nEstado 2:");
                 returns = register(usuarios, read);
                 if ((boolean) returns.get(0)) {
                     estado = 0;
@@ -244,14 +253,97 @@ public class Main {
             } // Estado 3: Menu principal del administrador
             else if (estado == 3) {
 
-                System.out.println("Estado 3");
-                estado = 0;
+                // Pedimos al usuario que seleccione una operacion a realizar
+                System.out.println("\nEstado 3:");
+                System.out.println("¿Que operación desea realizar?\n"
+                        + "1.- Consultar usuario\n"
+                        + "2.- Consultar producto\n"
+                        + "3.- Consultar ventas\n"
+                        + "4.- Cerrar sesión\n"
+                        + "5.- Salir");
+                operacion = read.getInt(">> ", 1, 5);
+
+                // Ejecutamos esa operacion
+                switch (operacion) {
+                    case 1:
+                        // 
+
+                        break;
+                    case 2:
+                        // 
+
+                        break;
+                    case 3:
+                        // 
+
+                        break;
+                    case 4:
+                        // Saltamos al estado 0
+                        estado = 0;
+                        break;
+                    case 5:
+                        // Salimos del bucle principal
+                        finalizar = true;
+                        for (int i = 0; i < usuarios.size(); i++) {
+                            System.out.println(usuarios.get(i).correo);
+                        }
+                        break;
+                }
 
             } // Estado 4: Menu principal del cliente
             else if (estado == 4) {
 
-                System.out.println("Estado 4");
-                estado = 0;
+                // Pedimos al usuario que seleccione una operacion a realizar
+                System.out.println("\nEstado 4:");
+                if (!(user instanceof Profesional)) {
+                    System.out.println("¿Que operación desea realizar?\n"
+                            + "1.- Comprar\n"
+                            + "2.- Dar de alta producto\n"
+                            + "3.- Dar de baja producto\n"
+                            + "4.- Mejorar a licencia pro"
+                            + "5.- Cerrar sesión\n"
+                            + "6.- Salir");
+                } else {
+                    System.out.println("¿Que operación desea realizar?\n"
+                            + "1.- Comprar\n"
+                            + "2.- Dar de alta producto\n"
+                            + "3.- Dar de baja producto\n"
+                            + "4.- Renunciar licencia pro"
+                            + "5.- Cerrar sesión\n"
+                            + "6.- Salir");
+                }
+                operacion = read.getInt(">> ", 1, 6);
+
+                // Ejecutamos esa operacion
+                switch (operacion) {
+                    case 1:
+                        // 
+
+                        break;
+                    case 2:
+                        // 
+
+                        break;
+                    case 3:
+                        // 
+
+                        break;
+                    case 4:
+                        // 
+
+                        break;
+                    case 5:
+                        // Saltamos al estado 0
+                        estado = 0;
+                        break;
+                    case 6:
+                        // Salimos del bucle principal
+                        finalizar = true;
+                        for (int i = 0; i < usuarios.size(); i++) {
+                            System.out.println(usuarios.get(i).correo);
+                        }
+                        break;
+                }
             }
         }
 
