@@ -17,12 +17,12 @@ import java.util.ArrayList;
  */
 public class GuardarLeerObjetos {
 
-    private static void crearUsuariosDat() {
+    private static void crearClientesDat() {
         try {
-            File usuariosDat = new File("./resources/datFiles/usuarios.dat");
-            if (!usuariosDat.exists()) {
-                usuariosDat.createNewFile();
-                System.out.println("Se creo el fichero usuarios.dat");
+            File clientesDat = new File("./resources/datFiles/clientes.dat");
+            if (!clientesDat.exists()) {
+                clientesDat.createNewFile();
+                System.out.println("Se creo el fichero clientes.dat");
             }
         } catch (IOException ex) {
                 System.out.println(ex);
@@ -41,9 +41,9 @@ public class GuardarLeerObjetos {
         }
     }
 
-    public static void guardarUsuarios(ArrayList<Usuario> userList) {
+    public static void guardarClientes(ArrayList<Cliente> userList) {
         try {
-            FileOutputStream fos = new FileOutputStream("./resources/datFiles/usuarios.dat");
+            FileOutputStream fos = new FileOutputStream("./resources/datFiles/clientes.dat");
             ObjectOutputStream oos = new ObjectOutputStream(fos);
             for (int i = 0; i < userList.size(); i++) {
                 oos.writeObject(userList.get(i));
@@ -69,41 +69,36 @@ public class GuardarLeerObjetos {
         }
     }
 
-    public static ArrayList<Usuario> leerUsuarios() {
-        ArrayList<Usuario> usuarios = new ArrayList();
+    public static ArrayList<Cliente> leerClientes() {
+        ArrayList<Cliente> clientes = new ArrayList();
         boolean run = true;
         while (run) {
             try {
-                FileInputStream fis = new FileInputStream("./resources/datFiles/usuarios.dat");
+                FileInputStream fis = new FileInputStream("./resources/datFiles/clientes.dat");
                 ObjectInputStream ois = null;
                 try {
                     ois = new ObjectInputStream(fis);
                     while (true) {
-                        usuarios.add((Usuario) ois.readObject());
+                        clientes.add((Cliente) ois.readObject());
                     }
                 } catch (EOFException ex) {
-                    System.out.println("Lectura de usuarios finalizada");
+                    System.out.println("Lectura de clientes finalizada");
                 }
                 fis.close();
                 try {
                     ois.close();
                 } catch (NullPointerException ex) {
-                    System.out.println("Aun no hay usuarios!!");
+                    System.out.println("Aun no hay clientes!!");
                     System.out.println(ex);
                 }
                 run = false;
             } catch (FileNotFoundException ex) {
-                crearUsuariosDat();
-                ArrayList<Usuario> admList = new ArrayList();
-                admList.add(new Admin());
-                guardarUsuarios(admList);
-                usuarios = leerUsuarios();
-                run = false;
+                crearClientesDat();
             } catch (Exception ex) {
                 System.out.println(ex);
             }
         }
-        return usuarios;
+        return clientes;
     }
 
     public static ArrayList<Producto> leerProductos() {

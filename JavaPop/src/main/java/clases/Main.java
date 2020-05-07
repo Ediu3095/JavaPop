@@ -33,7 +33,7 @@ public class Main {
      * @author Eduardo Ruiz Sabajanes
      * @author Luis Miguel Sobrino Zamora
      */
-    public static ArrayList register(ArrayList<Usuario> usuarios, EntradasPorConsola read) {
+    public static ArrayList register(ArrayList<Cliente> usuarios, EntradasPorConsola read) {
 
         ArrayList arr = new ArrayList();
         arr.add(false);
@@ -128,8 +128,8 @@ public class Main {
      * @author Eduardo Ruiz Sabajanes
      * @author Luis Miguel Sobrino Zamora
      */
-    private static ArrayList login(ArrayList<Usuario> usuarios, EntradasPorConsola read) {
-        ArrayList arr = new ArrayList();
+    private static ArrayList login(ArrayList<Cliente> usuarios, EntradasPorConsola read) {
+        ArrayList arr = new ArrayList(2);
         arr.add(false);
         arr.add(new Cliente());
         boolean run_ = true;
@@ -152,13 +152,17 @@ public class Main {
 
                 // Si la contrasseña es valida
                 if (read.checkClave(clave)) {
-                    // Se comprueba que exista algún usuario con ese correo y contraseña
-                    for (int i = 0; i < usuarios.size(); i++) {
-                        if (usuarios.get(i).correo.equals(correo)) {
-                            if (usuarios.get(i).clave.equals(clave)) {
-                                arr.set(1, usuarios.get(i));
-                                run_ = false;
-                                break;
+                    if (correo.equals("admin@javapop.com") && clave.equals("admin")){
+                        arr.set(1, new Admin());
+                    } else {
+                        // Se comprueba que exista algún usuario con ese correo y contraseña
+                        for (int i = 0; i < usuarios.size(); i++) {
+                            if (usuarios.get(i).correo.equals(correo)) {
+                                if (usuarios.get(i).clave.equals(clave)) {
+                                    arr.set(1, usuarios.get(i));
+                                    run_ = false;
+                                    break;
+                                }
                             }
                         }
                     }
@@ -176,7 +180,7 @@ public class Main {
     public static void main(String[] args) {
 
         // Comienzo del programa: Recuperamos la informacion guardada en los ficheros
-        ArrayList<Usuario> usuarios = clases.GuardarLeerObjetos.leerUsuarios();
+        ArrayList<Cliente> usuarios = clases.GuardarLeerObjetos.leerClientes();
         ArrayList<Producto> productos = clases.GuardarLeerObjetos.leerProductos();
 
         // Usuario que opera con la aplicaion
@@ -348,7 +352,7 @@ public class Main {
         }
 
         // Final del programa: Guardamos la informacion de vuelta en los ficheros
-        GuardarLeerObjetos.guardarUsuarios(usuarios);
+        GuardarLeerObjetos.guardarClientes(usuarios);
         GuardarLeerObjetos.guardarProductos(productos);
     }
 
