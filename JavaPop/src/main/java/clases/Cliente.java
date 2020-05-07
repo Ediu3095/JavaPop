@@ -102,4 +102,8 @@ public class Cliente extends Usuario implements Serializable {
         }
     }
 
+    @Override
+    public String toString() {
+        return "correo=" + correo + "\nclave=" + clave + "\nproductos=" + productos + "\ndni=" + dni + "\nnombre=" + nombre + "\nccpp=" + ccpp + "\nttcc=" + ttcc + "\nprofesional=" + profesional;
+    } 
 }

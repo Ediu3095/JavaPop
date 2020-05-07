@@ -27,5 +27,10 @@ public class Profesional extends Cliente implements Serializable {
     public void editarDatos(){
         
     }
-    
+
+    @Override
+    public String toString() {
+        return super.toString() + "\nDescripcion=" + Descripcion + "\nHorario=" + Horario + "\nTelefono=" + Telefono + "\nWeb=" + Web;
+        
+    }
 }
