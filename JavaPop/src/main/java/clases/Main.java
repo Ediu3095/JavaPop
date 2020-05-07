@@ -9,16 +9,16 @@ import java.util.*;
  */
 public class Main {
 
-    /**
-     * Esta función solicita un nombre de usuario, una contraseña y demás datos
+    /**<head>Esta función solicita un nombre de usuario, una contraseña y demás datos
      * del usuario (nombre y appelidos,DNI,tarjeta de credito y codigo postal
      * Comprueba que no exista un usuario ya creado con el nombre de usuario
-     * introducido
+     * introducido</head>
      *
-     * Se solicitara un correo al usuario hasta que se compruebe que el correo
+     * <body>
+     * <p>Se solicitara un correo al usuario hasta que se compruebe que el correo
      * es válido y se esperará a que introduzca una contraseña que cumpla los
      * requisitos. Este proceso se repetirá hasta que se complete el registro o
-     * el usuario salga de la funcion.
+     * el usuario salga de la funcion.</p>
      *
      * @param usuarios: Es la lista de usuarios en la que se hace la
      * comprobacion.
@@ -32,6 +32,7 @@ public class Main {
      *
      * @author Eduardo Ruiz Sabajanes
      * @author Luis Miguel Sobrino Zamora
+     * </body>
      */
     public static ArrayList register(ArrayList<Cliente> usuarios, EntradasPorConsola read) {
 
@@ -105,16 +106,16 @@ public class Main {
         return arr;
     }
 
-    /**
-     * Esta función pide a traves de la consola un usuario y una contraseña y
+    /**<head>Esta función pide a traves de la consola un usuario y una contraseña y
      * comprueba si existe algún usuario que tenga esas credenciales en una
-     * lista de usuarios.
+     * lista de usuarios.</head>
      *
-     * La función pedirá un correo hasta que se introduzca un correo válido y
+     * <body>
+     * <p>La función pedirá un correo hasta que se introduzca un correo válido y
      * después se pedirá una contraseña hasta que se introduzcauna contraseña
      * valida. Además se repetirá este proceso hasta que se introduzca la clave
      * de salida "qwerty" como correo o hasta que se den unos credenciales
-     * pertenecientes a algún usuario de la lista con la que se compara.
+     * pertenecientes a algún usuario de la lista con la que se compara.</p>
      *
      * @param usuarios: Es la lista de usuarios en la que se hace la
      * comprobacion.
@@ -127,6 +128,7 @@ public class Main {
      *
      * @author Eduardo Ruiz Sabajanes
      * @author Luis Miguel Sobrino Zamora
+     * </body>
      */
     private static ArrayList login(ArrayList<Cliente> usuarios, EntradasPorConsola read) {
         ArrayList arr = new ArrayList(2);
@@ -354,6 +356,7 @@ public class Main {
         // Final del programa: Guardamos la informacion de vuelta en los ficheros
         GuardarLeerObjetos.guardarClientes(usuarios);
         GuardarLeerObjetos.guardarProductos(productos);
+        
     }
 
 }
