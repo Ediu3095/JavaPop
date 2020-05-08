@@ -9,17 +9,49 @@ import java.io.Serializable;
  */
 public class Profesional extends Cliente implements Serializable {
 
-    protected String Descripcion;
-    protected String Horario;
-    protected String Telefono;
-    protected String Web;
+    protected String descripcion;
+    protected String horario;
+    protected String telefono;
+    protected String web;
 
     public Profesional() {
-        super("","","","","","");
+        super("","","","",0,"");
         this.profesional = true;
 
     }
 
+    public String getDescripcion(){
+        return this.descripcion;
+    }
+    
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
+    }
+    
+    public String getHorario(){
+        return this.horario;
+    }
+    
+    public void setHorario(String horario) {
+        this.horario = horario;
+    }
+    
+    public String getTelefono(){
+        return this.telefono;
+    }
+    
+    public void setTelefono(String telefono) {
+        this.telefono = telefono;
+    }
+    
+    public String getWeb(){
+        return this.web;
+    }
+    
+    public void setWeb(String web) {
+        this.web = web;
+    }    
+    
     public void cobro(){
         
     }
@@ -30,7 +62,7 @@ public class Profesional extends Cliente implements Serializable {
 
     @Override
     public String toString() {
-        return super.toString() + "\nDescripcion=" + Descripcion + "\nHorario=" + Horario + "\nTelefono=" + Telefono + "\nWeb=" + Web;
+        return super.toString() + "\nDescripcion=" + descripcion + "\nHorario=" + horario + "\nTelefono=" + telefono + "\nWeb=" + web;
         
     }
 }

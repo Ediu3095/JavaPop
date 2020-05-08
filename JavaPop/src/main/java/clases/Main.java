@@ -84,7 +84,7 @@ public class Main {
                             System.out.println("Introduzca su DNI:");
                             String dni = read.getString(">> ");
                             System.out.println("Introduzca su codigo postal:");
-                            String ccpp = read.getString(">> ");
+                            int ccpp = read.getInt(">> ");
                             System.out.println("Introduzca los datos de su tarjeta de credito:");
                             String ttcc = read.getString(">> ");
                             Cliente c1 = new Cliente(correo, clave, nombre, dni, ccpp, ttcc);
@@ -296,7 +296,7 @@ public class Main {
                             + "1.- Comprar\n"
                             + "2.- Dar de alta producto\n"
                             + "3.- Dar de baja producto\n"
-                            + "4.- Mejorar a licencia pro"
+                            + "4.- Mejorar a licencia pro\n"
                             + "5.- Cerrar sesión\n"
                             + "6.- Salir");
                 } else {
