@@ -284,73 +284,34 @@ public class Admin extends Usuario implements Serializable {
 
                 case 2: //Editar titulo
                     System.out.println("Nuevo titulo del producto:");
-                    String titulo = read.getString(">> ");                    
+                    String titulo = read.getString(">> ");                                       
+                    run__ = true;
+                    product.setTitulo(titulo);
+                    break;
+
+                case 3: //Editar descripcion
+                    System.out.println("Nueva descripción del producto:");
+                    String descripcion = read.getString(">> ");                                     
+                    run__ = true;
+                    product.setTitulo(titulo);
+                    break;
+
+                case 4: // Editar categoria
+                    product.categoria = getCategoria(">> ");
+
                     
-                    run__ = true;
-                    usuario.setCorreo(correo);
+                    break;
+                case 5: // Edtitar estado
+                    System.out.println("Nuevo estado del producto: ");
+                                       
                     break;
 
-                case 3: //Editar clave
-                    System.out.println("Nueva clave:");
-                    String clave = read.getString(">> ");
-                    while (run__) {
-
-                        //Comprobamos que la contraseña sea valida
-                        if (read.checkClave(clave)) {
-                            run__ = false;
-                        }
-                    }
-                    run__ = true;
-                    usuario.setClave(clave);
-                    break;
-
-                case 4: // Editar nombre
-                    System.out.println("Nuevo nombre: ");
-                    String nombre = read.getString(">> ");
-                    usuario.setNombre(nombre);
-                    break;
-
-                case 5: // Edtitar DNI
-                    System.out.println("Nuevo DNI: ");
-                    String dni = read.getString(">> ");
-                    usuario.setDni(dni);
-                    break;
-
-                case 6: //Editar codigo postal
+                case 6: //Editar foto
                     System.out.println("Nuevo codigo postal: ");
-                    int ccpp = read.getInt(">> ");
-                    usuario.setccpp(ccpp);
+
                     break;
 
-                case 7: // Editar tarjeta de credito
-                    System.out.println("Nueva tarjeta de credito");
-                    String ttcc = read.getString(">> ");
-                    usuario.setTTCC(ttcc);
-                    break;
-
-                case 8: // Editar descripcion
-                    System.out.println("Nueva descripción: ");
-                    String descripcion = read.getString(">> ");
-                    usuarioPro.setDescripcion(descripcion);
-                    break;
-
-                case 9: //Editar Horario
-                    System.out.println("Nuevo horario: ");
-                    String horario = read.getString(">> ");
-                    usuarioPro.setHorario(horario);
-                    break;
-
-                case 10: // Editar telefono
-                    System.out.println("Nuevo telefono: ");
-                    String telefono = read.getString(">> ");
-                    usuarioPro.setTelefono(telefono);
-                    break;
-
-                case 11: //Editar web
-                    System.out.println("Nueva web: ");
-                    String web = read.getString(">> ");
-                    usuarioPro.setWeb(web);
-                    break;
+               
             }
         }
     }
