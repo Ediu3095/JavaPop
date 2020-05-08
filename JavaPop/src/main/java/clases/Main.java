@@ -296,7 +296,7 @@ public class Main {
                             + "1.- Comprar\n"
                             + "2.- Dar de alta producto\n"
                             + "3.- Dar de baja producto\n"
-                            + "4.- Mejorar a licencia pro"
+                            + "4.- Mejorar a licencia pro\n"
                             + "5.- Cerrar sesión\n"
                             + "6.- Salir");
                 } else {
