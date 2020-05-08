@@ -176,4 +176,14 @@ public class Admin extends Usuario implements Serializable {
             }
         }
     }
+    
+    public static void ConsultarProducto(ArrayList<Producto> producto, EntradasPorConsola read) {
+        
+    }
+    
+    
+    
+    
+    
+    
 }
