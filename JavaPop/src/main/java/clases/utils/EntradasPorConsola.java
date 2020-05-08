@@ -1,4 +1,4 @@
-package clases;
+package clases.utils;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;

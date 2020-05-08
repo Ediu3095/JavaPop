@@ -1,5 +1,7 @@
-package clases;
+package clases.utils;
 
+import clases.Cliente;
+import clases.Producto;
 import java.io.EOFException;
 import java.io.File;
 import java.io.FileOutputStream;

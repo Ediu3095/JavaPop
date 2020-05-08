@@ -1,5 +1,6 @@
 package clases;
 
+import clases.utils.EntradasPorConsola;
 import java.io.Serializable;
 import java.util.*;
 

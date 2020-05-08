@@ -1,5 +1,7 @@
 package clases;
 
+import clases.utils.GuardarLeerObjetos;
+import clases.utils.EntradasPorConsola;
 import java.util.*;
 
 /**
@@ -185,8 +187,8 @@ public class Main {
     public static void main(String[] args) {
 
         // Comienzo del programa: Recuperamos la informacion guardada en los ficheros
-        ArrayList<Cliente> usuarios = clases.GuardarLeerObjetos.leerClientes();
-        ArrayList<Producto> productos = clases.GuardarLeerObjetos.leerProductos();
+        ArrayList<Cliente> usuarios = clases.utils.GuardarLeerObjetos.leerClientes();
+        ArrayList<Producto> productos = clases.utils.GuardarLeerObjetos.leerProductos();
 
         // Usuario que opera con la aplicaion
         Usuario user = new Cliente();
