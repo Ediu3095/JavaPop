@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.awt.Image;
 import clases.enumeradores.*;
+import javax.swing.Icon;
 
 /**
  *
@@ -86,33 +87,45 @@ public class Cliente extends Usuario implements Serializable {
         return this.productos;
     }
 
-    /**<head>.</head>
+    /**<head>Esta función pide a traves de la consola todos los datos necesarios
+     * para dar de alta un producto, como son el nombre, descripcion, categoria,
+     * estado, precio y si la venta del producto es urgente o no.</head>
      *
      * <body>
-     * <p>.</p>
+     * @param   user
+     *          El usuario en al que le vamos a añadir el producto.
+     * 
+     * @param   read
+     *          Es un objeto que se utiliza para pedir los inputs y
+     *          comprobar si son correos o contraseñas validos.
+     * 
+     * @return  El objeto producto que se crea con los datos introducidos para
+     *          que se pueda guardar en la lista global de productos.
      *
-     * @param user:
-     * @param read:
-     *
-     * @author Eduardo Ruiz Sabajanes
+     * @author  Eduardo Ruiz Sabajanes
      * </body>
      */
-    public static void altaProducto(Cliente user, EntradasPorConsola read){
+    public static Producto altaProducto(Cliente user, EntradasPorConsola read){
         System.out.println("Introduzca un título del producto: ");
         String titulo = read.getString(">> ");
         System.out.println("Introduzca una descripción del producto: ");
         String descripcion = read.getString(">> ");
-        System.out.println("Introduzca una categoría: ");
-        Categoria categoria = read.getCategoria();
-        System.out.println("Introduzca un estado: ");
-        Estado estado = read.getEstado();
+        Categoria categoria = read.getCategoria(">> ");
+        Estado estado = read.getEstado(">> ");
         System.out.println("Introduzca un precio: ");
         Double precio = read.getDouble(">> ",0 , Double.MAX_VALUE);
         System.out.println("Introduzca la dirección en su ordenador de una foto del producto: ");
-        Image icon = read.;
+        Icon imagen = read.getImage(">> ");
         System.out.println("¿Quiere marcar la venta de este producto como urgente?\n"
-                + "");
-        String ttcc = read.getString(">> ");
+                + "1.- Si"
+                + "2.- No");
+        Boolean urgente = true;
+        if (read.getInt(">> ", 1, 2) == 2){
+            urgente = false;
+        }
+        Producto producto = new Producto(titulo, descripcion, categoria, estado, precio, imagen, urgente);
+        user.introducirProducto(producto);
+        return producto;
     }
     
     public String introducirProducto(Producto p) {

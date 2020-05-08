@@ -6,22 +6,23 @@ package clases;
  * @author Luis Miguel Sobrino Zamora
  */
 import clases.enumeradores.*;
-import java.awt.Image;
+import java.io.Serializable;
+import javax.swing.Icon;
 import java.time.LocalDateTime;
 
-public class Producto {
+public class Producto implements Serializable{
 
     protected String titulo;
     protected String descripcion;
     protected Categoria categoria;
     protected Estado estado;
     protected double precio;
-    protected Image foto;
+    protected Icon foto;
     protected LocalDateTime fechaPublicacion;
-    protected int codigoPostalVendedor;
+    protected Cliente vendedor;
     protected boolean urgente;
 
-    public Producto(String titulo, String descripcion, Categoria categoria, Estado estado, double precio, Image foto, boolean urgente) {
+    public Producto(String titulo, String descripcion, Categoria categoria, Estado estado, double precio, Icon foto, boolean urgente) {
         this.titulo = titulo;
         this.descripcion = descripcion;
         this.categoria = categoria;

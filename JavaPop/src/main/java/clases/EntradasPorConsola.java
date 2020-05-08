@@ -2,9 +2,16 @@ package clases;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
-import java.awt.Image;
 
 import clases.enumeradores.*;
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.FileSystem;
+import java.nio.file.FileSystems;
+import java.nio.file.Files;
+import static java.nio.file.StandardCopyOption.REPLACE_EXISTING;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
 
 /**
  *
@@ -14,20 +21,26 @@ import clases.enumeradores.*;
 public class EntradasPorConsola {
 
     private final BufferedReader read;
+    private final FileSystem fileSys;
 
     public EntradasPorConsola() {
         this.read = new BufferedReader(new InputStreamReader(System.in));
+        this.fileSys = FileSystems.getDefault();
     }
-    
-    /**
-     * Esta funcion pide un String al usuario y comprueba que pueda ser un
-     * correo asegurandose de que tiene al menos un '@' y un '.' despues del
-     * '@'.
+
+    /** <head>Recibe un String y comprueba que pueda ser un correo asegurandose
+     * de que tiene al menos un <b>@</b>, y un <b>.</b> después del
+     * <b>@</b>.</head>
      *
-     * El String que se retorna será el correo en caso de que este sea valido o
-     * "" en el caso de que no lo sea.
+     * <body>
      *
-     * @return String
+     * @param str_ el string del que se va a comprobar el formato.
+     *
+     * @return verdadero si el string tiene formato de correo y false si no lo
+     * tiene.
+     *
+     * @author Eduardo Ruiz Sabajanes
+     * </body>
      */
     public boolean checkCorreo(String str_) {
         char[] correoChars;
@@ -57,14 +70,17 @@ public class EntradasPorConsola {
         }
     }
 
-    /**
-     * Esta funcion pide un String al usuario y comprueba que pueda ser una
-     * clave asegurandose de que no tiene ningun caracter invalido.
+    /** <head>Recibe un string y comprueba que solo tiene caracteres de entre una
+     * lista de caracteres permitidos para las contraseñas.</head>
      *
-     * El String que se retorna será el correo en caso de que este sea valido o
-     * "" en el caso de que no lo sea.
+     * <body>
      *
-     * @return String
+     * @param str_ el string del que se comprobaran los caracteres.
+     *
+     * @return verdadero si no tiene caracteres prohibidos y falso si los tiene.
+     *
+     * @author Eduardo Ruiz Sabajanes
+     * </body>
      */
     public boolean checkClave(String str_) {
         char[] validChars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890".toCharArray();
@@ -85,30 +101,73 @@ public class EntradasPorConsola {
         return valid;
     }
 
-    public Image getImage(String str_){
+    /** <head>Pide un string que se debe corresponder con el path de una foto. En
+     * el caso de que la foto exista, la copia en <b>./resources/imagenes</b>
+     * para poder acceder a ella más tarde aunque se borre la original.
+     * Finalmente crea un objeto Icon de la imagen copiada y lo devuelve.<head>
+     *
+     * <body>
+     *
+     * @param str_ un string que mostrar en la consola para indicar que se está
+     * pidiendo una entrada.
+     *
+     * @return un objeto de la clase <i>Icon</i>.
+     *
+     * @author Eduardo Ruiz Sabajanes
+     * </body>
+     */
+    public Icon getImage(String str_) {
         boolean run = true;
         String address;
-        Image icon;
-        while(run){
-            System.out.print(str_);
+        String newAddress = "./resources/imagenes/";
+        String[] addressArr;
+        while (run) {
+            System.out.println("Introduzca la dirección en su ordenador de una imagen del producto:\n"
+                    + "(La separación entre carpetas se indicará con /)\n"
+                    + "(Indicar el formato de la imagen con .jpg, .png ...)");
             address = this.getString(str_);
-            try{
-                icon = new Image(address);
+            addressArr = address.toString().split("/");
+            newAddress += addressArr[addressArr.length - 1];
+            try {
+                File imagen = new File(address);
+                if (!imagen.exists()) {
+                    throw new RuntimeException("La foto no existe");
+                }
+                Files.copy(this.fileSys.getPath(address), this.fileSys.getPath(newAddress), REPLACE_EXISTING);
+                run = false;
+            } catch (IOException ex) {
+                System.out.println("Ocurrio un error desconocido");
+            } catch (RuntimeException ex) {
+                System.out.println(ex.getMessage());
             }
         }
+        Icon icon = new ImageIcon(newAddress);
         return icon;
     }
-    
-    public Estado getEstado() {
+
+    /** <head>Pide un numero del 1 al 5 que se corresponda con alguno de los
+     * estados enumeradas previamente en la consola.</head>
+     *
+     * <body>
+     *
+     * @param str_ un string que mostrar en la consola para indicar que se está
+     * pidiendo una entrada.
+     *
+     * @return un estado del enum Estado.
+     *
+     * @author Eduardo Ruiz Sabajanes
+     * </body>
+     */
+    public Estado getEstado(String str_) {
         Estado estado = Estado.Bueno;
-        System.out.println("Introduzca el estado del producto:"
-                + "1.- Nuevo"
-                + "2.- Como nuevo"
-                + "3.- Bueno"
-                + "4.- Aceptable"
+        System.out.println("Introduzca el estado del producto:\n"
+                + "1.- Nuevo\n"
+                + "2.- Como nuevo\n"
+                + "3.- Bueno\n"
+                + "4.- Aceptable\n"
                 + "5.- Regular");
-        int opcion = this.getInt(">> ", 1, 5);
-        switch (opcion){
+        int opcion = this.getInt(str_, 1, 5);
+        switch (opcion) {
             case 4:
                 estado = Estado.Aceptable;
                 break;
@@ -127,18 +186,31 @@ public class EntradasPorConsola {
         }
         return estado;
     }
-    
-    public Categoria getCategoria() {
+
+    /** <head>Pide un numero del 1 al 6 que se corresponda con alguna de las
+     * categorías enumeradas previamente en la consola.</head>
+     *
+     * <body>
+     *
+     * @param str_ un string que mostrar en la consola para indicar que se está
+     * pidiendo una entrada.
+     *
+     * @return una categoría del enum Categoria.
+     *
+     * @author Eduardo Ruiz Sabajanes
+     * </body>
+     */
+    public Categoria getCategoria(String str_) {
         Categoria categoria = Categoria.Moda_y_accesorios;
-        System.out.println("Introduzca una categoría:"
-                + "1.- moda y accesorios"
-                + "2.- tv audio y foto"
-                + "3.- moviles y telefonia"
-                + "4.- informatica y electronica"
-                + "5.- consolas y videojuegos"
+        System.out.println("Introduzca la categoría del producto:\n"
+                + "1.- moda y accesorios\n"
+                + "2.- tv audio y foto\n"
+                + "3.- moviles y telefonia\n"
+                + "4.- informatica y electronica\n"
+                + "5.- consolas y videojuegos\n"
                 + "6.- deporte y ocio");
-        int opcion = this.getInt(">> ", 1, 6);
-        switch (opcion){
+        int opcion = this.getInt(str_, 1, 6);
+        switch (opcion) {
             case 1:
                 categoria = Categoria.Moda_y_accesorios;
                 break;
@@ -161,6 +233,19 @@ public class EntradasPorConsola {
         return categoria;
     }
 
+    /** <head>Pide por consola un número entero hasta que este sea
+     * introducido.</head>
+     *
+     * <body>
+     *
+     * @param str un string que mostrar en la consola para indicar que se está
+     * pidiendo una entrada.
+     *
+     * @return el número entero introducido por consola.
+     *
+     * @author Eduardo Ruiz Sabajanes
+     * </body>
+     */
     public int getInt(String str) {
         boolean run = true;
         int num = 0;
@@ -176,6 +261,21 @@ public class EntradasPorConsola {
         return num;
     }
 
+    /** <head>Pide por consola un número entero que se encuente entre dos limites
+     * (o en los limites) hasta que este sea introducido.</head>
+     *
+     * <body>
+     *
+     * @param str un string que mostrar en la consola para indicar que se está
+     * pidiendo una entrada.
+     * @param low limite inferior para el numero que se pide.
+     * @param high limite superior para el numero que se pide.
+     *
+     * @return el número entero introducido por consola.
+     *
+     * @author Eduardo Ruiz Sabajanes
+     * </body>
+     */
     public int getInt(String str, int low, int high) {
         boolean run = true;
         int num = 0;
@@ -194,6 +294,19 @@ public class EntradasPorConsola {
         return num;
     }
 
+    /** <head>Pide por consola un número decimal hasta que este sea
+     * introducido.</head>
+     *
+     * <body>
+     *
+     * @param str un string que mostrar en la consola para indicar que se está
+     * pidiendo una entrada.
+     *
+     * @return el número decimal introducido por consola.
+     *
+     * @author Eduardo Ruiz Sabajanes
+     * </body>
+     */
     public double getDouble(String str) {
         boolean run = true;
         double num = 0;
@@ -209,6 +322,21 @@ public class EntradasPorConsola {
         return num;
     }
 
+    /** <head>Pide por consola un número decimal que se encuente entre dos
+     * limites (o en los limites) hasta que este sea introducido.</head>
+     *
+     * <body>
+     *
+     * @param str un string que mostrar en la consola para indicar que se está
+     * pidiendo una entrada.
+     * @param low limite inferior para el numero que se pide.
+     * @param high limite superior para el numero que se pide.
+     *
+     * @return el número decimal introducido por consola.
+     *
+     * @author Eduardo Ruiz Sabajanes
+     * </body>
+     */
     public double getDouble(String str, double low, double high) {
         boolean run = true;
         double num = 0;
@@ -227,6 +355,18 @@ public class EntradasPorConsola {
         return num;
     }
 
+    /** <head>Pide por consola una cadena de texto.</head>
+     *
+     * <body>
+     *
+     * @param str_ un string que mostrar en la consola para indicar que se está
+     * pidiendo una entrada.
+     *
+     * @return el string de texto introducido por la consola.
+     *
+     * @author Eduardo Ruiz Sabajanes
+     * </body>
+     */
     public String getString(String str_) {
         boolean run = true;
         String str = "";
@@ -235,34 +375,10 @@ public class EntradasPorConsola {
                 System.out.print(str_);
                 str = this.read.readLine();
                 run = false;
-            } catch (Exception e) {
+            } catch (IOException e) {
                 System.out.println(e);
             }
         }
         return str;
     }
-
-    public String getString(String str_, String[] options) {
-        boolean run = true;
-        String str = "";
-        while (run) {
-            try {
-                System.out.print(str_);
-                str = this.read.readLine();
-                for (int i = 0; i < options.length; i++) {
-                    if (str.equals(options[i])) {
-                        run = false;
-                        break;
-                    }
-                }
-                if (run) {
-                    throw new RuntimeException("");
-                }
-            } catch (Exception e) {
-                System.out.println(e);
-            }
-        }
-        return str;
-    }
-
 }

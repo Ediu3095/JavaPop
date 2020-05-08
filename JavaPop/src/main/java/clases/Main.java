@@ -22,7 +22,7 @@ public class Main {
      *
      * @param usuarios: Es la lista de usuarios en la que se hace la
      * comprobacion.
-     * @param read: Es un objeto que se utiliza para pedir los imputs y
+     * @param read: Es un objeto que se utiliza para pedir los inputs y
      * comprobar si son correos o contraseñas validos.
      *
      * @returns: La funcion devuelve un ArrayList formado en cuya primera
@@ -119,7 +119,7 @@ public class Main {
      *
      * @param usuarios: Es la lista de usuarios en la que se hace la
      * comprobacion.
-     * @param read: Es un objeto que se utiliza para pedir los imputs y
+     * @param read: Es un objeto que se utiliza para pedir los inputs y
      * comprobar si son correos o contraseñas validos.
      *
      * @returns: La funcion devuelve un ArrayList con un booleano que indica si
@@ -238,9 +238,6 @@ public class Main {
                         
                     case 3:// Salimos del bucle principal
                         finalizar = true;
-                        for (int i = 0; i < usuarios.size(); i++) {
-                            System.out.println(usuarios.get(i).correo);
-                        }
                         break;
                 }
             }
@@ -281,9 +278,6 @@ public class Main {
                         
                     case 5:// Salimos del bucle principal
                         finalizar = true;
-                        for (int i = 0; i < usuarios.size(); i++) {
-                            System.out.println(usuarios.get(i).correo);
-                        }
                         break;
                 }
             }
@@ -312,37 +306,37 @@ public class Main {
 
                 // Ejecutamos esa operacion
                 switch (operacion) {
-                    case 1:
-                        // 
+                    case 1:// 
 
                         break;
-                    case 2:
-                        // 
+                        
+                    case 2:// Dar de alta producto
+                        productos.add(Cliente.altaProducto((Cliente)user, read));
+                        break;
+                        
+                    case 3:// 
 
                         break;
-                    case 3:
-                        // 
+                        
+                    case 4:// 
 
                         break;
-                    case 4:
-                        // 
-
-                        break;
-                    case 5:
-                        // Saltamos al estado 0
+                    
+                    case 5:// Saltamos al estado 0
                         estado = 0;
                         break;
-                    case 6:
-                        // Salimos del bucle principal
+                    
+                    case 6:// Salimos del bucle principal
                         finalizar = true;
-                        for (int i = 0; i < usuarios.size(); i++) {
-                            System.out.println(usuarios.get(i).correo);
-                        }
                         break;
                 }
             }
         }
 
+        for (int i = 0; i < usuarios.size(); i++) {
+            System.out.println(usuarios.get(i).correo);
+        }
+        
         // Final del programa: Guardamos la informacion de vuelta en los ficheros
         GuardarLeerObjetos.guardarClientes(usuarios);
         GuardarLeerObjetos.guardarProductos(productos);

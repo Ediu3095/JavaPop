@@ -22,7 +22,7 @@ public class GuardarLeerObjetos {
      * <body>
      * <p>Esta solamente es llamada en el caso de que el archivo no exista.</p>
      * 
-     * @author Eduardo Ruiz Sabajanes
+     * @author  Eduardo Ruiz Sabajanes
      * </body>*/
     private static void crearClientesDat() {
         try {
@@ -41,7 +41,7 @@ public class GuardarLeerObjetos {
      * <body>
      * <p>Esta solamente es llamada en el caso de que el archivo no exista.</p>
      * 
-     * @author Eduardo Ruiz Sabajanes
+     * @author  Eduardo Ruiz Sabajanes
      * </body>*/
     private static void crearProductosDat() {
         try {
@@ -64,10 +64,11 @@ public class GuardarLeerObjetos {
      * se leeran los clientes como objetos independientes y se deberan volver a
      * almacenar en alguna estructura de datos para su manejo en el programa.</p>
      * 
-     * @param userList: El ArrayList que contiene los clientes que se han de guardar
-     * para la proxima ejecución del programa.
+     * @param   userList
+     *          El ArrayList que contiene los clientes que se han de guardar
+     *          para la proxima ejecución del programa.
      * 
-     * @author Eduardo Ruiz Sabajanes
+     * @author  Eduardo Ruiz Sabajanes
      * </body>*/
     public static void guardarClientes(ArrayList<Cliente> userList) {
         try {
@@ -92,10 +93,11 @@ public class GuardarLeerObjetos {
      * se leeran los productos como objetos independientes y se deberan volver a
      * almacenar en alguna estructura de datos para su manejo en el programa.</p>
      * 
-     * @param productList: El ArrayList que contiene los productos que se han de guardar
-     * para la proxima ejecución del programa.
+     * @param   productList
+     *          El ArrayList que contiene los productos que se han de guardar
+     *          para la proxima ejecución del programa.
      * 
-     * @author Eduardo Ruiz Sabajanes
+     * @author  Eduardo Ruiz Sabajanes
      * </body>*/
     public static void guardarProductos(ArrayList<Producto> productList) {
         try {
@@ -115,9 +117,9 @@ public class GuardarLeerObjetos {
      * en una ArrayList de clientes que devolveremos.</head>
      * 
      * <body>
-     * @return Un <b>ArrayList</b> con todos los clientes almacenados en el fichero <b>clientes.dat</b>
+     * @return  Un <b>ArrayList</b> con todos los clientes almacenados en el fichero <b>clientes.dat</b>
      * 
-     * @author Eduardo Ruiz Sabajanes
+     * @author  Eduardo Ruiz Sabajanes
      * </body>*/
     public static ArrayList<Cliente> leerClientes() {
         ArrayList<Cliente> clientes = new ArrayList();
@@ -155,9 +157,9 @@ public class GuardarLeerObjetos {
      * en una ArrayList de productos que devolveremos.</head>
      * 
      * <body>
-     * @return Un <b>ArrayList</b> con todos los productos almacenados en el fichero <b>productos.dat</b>
+     * @return  Un <b>ArrayList</b> con todos los productos almacenados en el fichero <b>productos.dat</b>
      * 
-     * @author Eduardo Ruiz Sabajanes
+     * @author  Eduardo Ruiz Sabajanes
      * </body>*/
     public static ArrayList<Producto> leerProductos() {
         ArrayList<Producto> productList = new ArrayList();
