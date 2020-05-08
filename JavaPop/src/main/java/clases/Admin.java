@@ -281,37 +281,30 @@ public class Admin extends Usuario implements Serializable {
 
                 case 1: //Salir
                     return;
-
+ 
                 case 2: //Editar titulo
                     System.out.println("Nuevo titulo del producto:");
                     String titulo = read.getString(">> ");                                       
-                    run__ = true;
                     product.setTitulo(titulo);
                     break;
 
                 case 3: //Editar descripcion
                     System.out.println("Nueva descripción del producto:");
                     String descripcion = read.getString(">> ");                                     
-                    run__ = true;
-                    product.setTitulo(titulo);
+                    product.setDescripcion(descripcion);
                     break;
 
                 case 4: // Editar categoria
-                    product.categoria = getCategoria(">> ");
-
-                    
+                    product.categoria = read.getCategoria(">> ");                 
                     break;
+                    
                 case 5: // Edtitar estado
-                    System.out.println("Nuevo estado del producto: ");
-                                       
+                    product.estado = read.getEstado(">> ");                 
                     break;
 
                 case 6: //Editar foto
-                    System.out.println("Nuevo codigo postal: ");
 
-                    break;
-
-               
+                    break;         
             }
         }
     }
