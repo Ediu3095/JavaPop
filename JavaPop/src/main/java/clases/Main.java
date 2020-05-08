@@ -200,70 +200,55 @@ public class Main {
 
         // Bucle principal del programa
         while (!finalizar) {
-
             // Estado 0: Elegir entre "inicio de sesion" y "registrarse"
             if (estado == 0) {
-
                 // Pedimos al usuario que seleccione una operacion a realizar
-                System.out.println("\nEstado 0:");
+                System.out.println("Estado 0:");
                 System.out.println("¿Que operación desea realizar?\n"
                         + "1.- Iniciar sesion\n"
                         + "2.- Registrarse\n"
                         + "3.- Salir");
                 operacion = read.getInt(">> ", 1, 3);
+                System.out.println();
 
                 // Ejecutamos esa operacion
                 switch (operacion) {
-                    case 1:
-                        // Saltamos al estado 1
-                        estado = 1;
+                    
+                    case 1: // Realizar el "inicio de sesion"
+                        returns = login(usuarios, read);
+                        if ((boolean) returns.get(0)) {
+                            estado = 0;
+                        } else {
+                            user = (Usuario) returns.get(1);
+                            if (user instanceof Admin) {
+                                estado = 1;
+                            } else if (user instanceof Cliente){
+                                estado = 2;
+                            }
+                        }
                         break;
-                    case 2:
-                        // Saltamos al estado 2
-                        estado = 2;
+                        
+                    case 2:// Realizar el "registro de usuario"
+                        returns = register(usuarios, read);
+                        if (!(boolean) returns.get(0)) {
+                            user = (Usuario) returns.get(1);
+                            estado = 2;
+                        }
                         break;
-                    case 3:
-                        // Salimos del bucle principal
+                        
+                    case 3:// Salimos del bucle principal
                         finalizar = true;
                         for (int i = 0; i < usuarios.size(); i++) {
                             System.out.println(usuarios.get(i).correo);
                         }
                         break;
                 }
-
-            } // Estado 1: Realizar el "inicio de sesion"
+            }
+            // Estado 1: Menu principal del administrador
             else if (estado == 1) {
 
-                System.out.println("\nEstado 1:");
-                returns = login(usuarios, read);
-                if ((boolean) returns.get(0)) {
-                    estado = 0;
-                } else {
-                    user = (Usuario) returns.get(1);
-                    if (user instanceof Admin) {
-                        estado = 3;
-                    } else {
-                        estado = 4;
-                    }
-                }
-
-            } // Estado 2: Realizar el "registro de usuario"
-            else if (estado == 2) {
-
-                System.out.println("\nEstado 2:");
-                returns = register(usuarios, read);
-                if ((boolean) returns.get(0)) {
-                    estado = 0;
-                } else {
-                    user = (Usuario) returns.get(1);
-                    estado = 4;
-                }
-
-            } // Estado 3: Menu principal del administrador
-            else if (estado == 3) {
-
                 // Pedimos al usuario que seleccione una operacion a realizar
-                System.out.println("\nEstado 3:");
+                System.out.println("Estado 1:");
                 System.out.println("¿Que operación desea realizar?\n"
                         + "1.- Consultar usuario\n"
                         + "2.- Consultar producto\n"
@@ -271,39 +256,41 @@ public class Main {
                         + "4.- Cerrar sesión\n"
                         + "5.- Salir");
                 operacion = read.getInt(">> ", 1, 5);
+                System.out.println();
 
                 // Ejecutamos esa operacion
                 switch (operacion) {
-                    case 1:
-                        // 
+                    
+                    case 1:// Consultar usuario
+                        Admin.ConsultarUsuario(usuarios, read);
+                        break;
+                        
+                    case 2:// 
+                        
 
                         break;
-                    case 2:
-                        // 
+                        
+                    case 3:// 
+                        
 
                         break;
-                    case 3:
-                        // 
-
-                        break;
-                    case 4:
-                        // Saltamos al estado 0
+                        
+                    case 4:// Saltamos al estado 0
                         estado = 0;
                         break;
-                    case 5:
-                        // Salimos del bucle principal
+                        
+                    case 5:// Salimos del bucle principal
                         finalizar = true;
                         for (int i = 0; i < usuarios.size(); i++) {
                             System.out.println(usuarios.get(i).correo);
                         }
                         break;
                 }
-
-            } // Estado 4: Menu principal del cliente
-            else if (estado == 4) {
-
+            }
+            // Estado 2: Menu principal del cliente
+            else if (estado == 2) {
                 // Pedimos al usuario que seleccione una operacion a realizar
-                System.out.println("\nEstado 4:");
+                System.out.println("Estado 2:");
                 if (!(user instanceof Profesional)) {
                     System.out.println("¿Que operación desea realizar?\n"
                             + "1.- Comprar\n"
@@ -317,7 +304,7 @@ public class Main {
                             + "1.- Comprar\n"
                             + "2.- Dar de alta producto\n"
                             + "3.- Dar de baja producto\n"
-                            + "4.- Renunciar licencia pro"
+                            + "4.- Renunciar licencia pro\n"
                             + "5.- Cerrar sesión\n"
                             + "6.- Salir");
                 }
