@@ -124,7 +124,7 @@ public class Cliente extends Usuario implements Serializable {
         if (read.getInt(">> ", 1, 2) == 2){
             urgente = false;
         }
-        Producto producto = new Producto(titulo, descripcion, categoria, estado, precio, imagen, urgente);
+        Producto producto = new Producto(titulo, descripcion, categoria, estado, precio, imagen, user, urgente);
         user.introducirProducto(producto);
         return producto;
     }
