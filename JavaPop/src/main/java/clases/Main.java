@@ -157,6 +157,7 @@ public class Main {
                 if (read.checkClave(clave)) {
                     if (correo.equals("admin@javapop.com") && clave.equals("admin")){
                         arr.set(1, new Admin());
+                        run_ = false;
                     } else {
                         // Se comprueba que exista algún usuario con ese correo y contraseña
                         for (int i = 0; i < usuarios.size(); i++) {
