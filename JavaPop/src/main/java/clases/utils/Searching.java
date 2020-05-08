@@ -8,9 +8,8 @@ import java.util.ArrayList;
  * @author Eduardo Ruiz Sabajanes
  */
 public class Searching {
-    
-    
-    public static void ordenarProductos(ArrayList<Producto> arr){
+
+    public static ArrayList<Producto> ordenarProductos(ArrayList<Producto> arr){
         
     }
 }

@@ -22,14 +22,15 @@ public class Producto implements Serializable{
     protected Cliente vendedor;
     protected boolean urgente;
 
-    public Producto(String titulo, String descripcion, Categoria categoria, Estado estado, double precio, Icon foto, boolean urgente) {
+    public Producto(String titulo, String descripcion, Categoria categoria, Estado estado, double precio, Icon foto, Cliente vendedor, boolean urgente) {
         this.titulo = titulo;
         this.descripcion = descripcion;
         this.categoria = categoria;
         this.estado = estado;
         this.precio = precio;
         this.foto = foto;
-        
+        this.fechaPublicacion = LocalDateTime.now();
+        this.vendedor = vendedor;
         this.urgente = urgente;
     }
     
