@@ -30,7 +30,11 @@ public class Profesional extends Cliente implements Serializable {
 
     @Override
     public String toString() {
-        return super.toString() + "\nDescripcion=" + Descripcion + "\nHorario=" + Horario + "\nTelefono=" + Telefono + "\nWeb=" + Web;
+        return super.toString() + "\n"
+                + "Descripcion=" + Descripcion + "\n"
+                + "Horario=" + Horario + "\n"
+                + "Telefono=" + Telefono + "\n"
+                + "Web=" + Web;
         
     }
 }
