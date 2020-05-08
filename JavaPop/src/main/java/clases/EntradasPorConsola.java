@@ -1,8 +1,9 @@
 package clases;
 
 import java.io.BufferedReader;
-import java.io.IOException;
 import java.io.InputStreamReader;
+import java.awt.Image;
+
 import clases.enumeradores.*;
 
 /**
@@ -84,30 +85,44 @@ public class EntradasPorConsola {
         return valid;
     }
 
+    public Image getImage(String str_){
+        boolean run = true;
+        String address;
+        Image icon;
+        while(run){
+            System.out.print(str_);
+            address = this.getString(str_);
+            try{
+                icon = new Image(address);
+            }
+        }
+        return icon;
+    }
+    
     public Estado getEstado() {
-        Estado estado = Estado.Aceptable;
-        System.out.println("Introduzca una categoría:"
-                + "1.- moda y accesorios"
-                + "2.- tv audio y foto"
-                + "3.- moviles y telefonia"
-                + "4.- informatica y electronica"
-                + "5.- consolas y videojuegos");
-        int opcion = this.getInt(">> ", 1, 6);
+        Estado estado = Estado.Bueno;
+        System.out.println("Introduzca el estado del producto:"
+                + "1.- Nuevo"
+                + "2.- Como nuevo"
+                + "3.- Bueno"
+                + "4.- Aceptable"
+                + "5.- Regular");
+        int opcion = this.getInt(">> ", 1, 5);
         switch (opcion){
-            case 1:
-                estado = ;
-                break;
-            case 2:
-                estado = ;
+            case 4:
+                estado = Estado.Aceptable;
                 break;
             case 3:
-                estado = ;
+                estado = Estado.Bueno;
                 break;
-            case 4:
-                estado = ;
+            case 2:
+                estado = Estado.Como_nuevo;
+                break;
+            case 1:
+                estado = Estado.Nuevo;
                 break;
             case 5:
-                estado = ;
+                estado = Estado.Regular;
                 break;
         }
         return estado;

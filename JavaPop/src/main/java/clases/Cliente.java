@@ -2,6 +2,8 @@ package clases;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.awt.Image;
+import clases.enumeradores.*;
 
 /**
  *
@@ -97,17 +99,17 @@ public class Cliente extends Usuario implements Serializable {
      */
     public static void altaProducto(Cliente user, EntradasPorConsola read){
         System.out.println("Introduzca un título del producto: ");
-        String nombre = read.getString(">> ");
+        String titulo = read.getString(">> ");
         System.out.println("Introduzca una descripción del producto: ");
-        String dni = read.getString(">> ");
+        String descripcion = read.getString(">> ");
         System.out.println("Introduzca una categoría: ");
-        String ccpp = read.getString(">> ");
+        Categoria categoria = read.getCategoria();
         System.out.println("Introduzca un estado: ");
-        String ttcc = read.getString(">> ");
+        Estado estado = read.getEstado();
         System.out.println("Introduzca un precio: ");
-        String ttcc = read.getString(">> ");
+        Double precio = read.getDouble(">> ",0 , Double.MAX_VALUE);
         System.out.println("Introduzca la dirección en su ordenador de una foto del producto: ");
-        String ttcc = read.getString(">> ");
+        Image icon = read.;
         System.out.println("¿Quiere marcar la venta de este producto como urgente?\n"
                 + "");
         String ttcc = read.getString(">> ");
