@@ -17,8 +17,7 @@ public class EntradasPorConsola {
     public EntradasPorConsola() {
         this.read = new BufferedReader(new InputStreamReader(System.in));
     }
-
-    // Funciones de entrada de datos por consola
+    
     /**
      * Esta funcion pide un String al usuario y comprueba que pueda ser un
      * correo asegurandose de que tiene al menos un '@' y un '.' despues del
@@ -85,41 +84,64 @@ public class EntradasPorConsola {
         return valid;
     }
 
+    public Estado getEstado() {
+        Estado estado = Estado.Aceptable;
+        System.out.println("Introduzca una categoría:"
+                + "1.- moda y accesorios"
+                + "2.- tv audio y foto"
+                + "3.- moviles y telefonia"
+                + "4.- informatica y electronica"
+                + "5.- consolas y videojuegos");
+        int opcion = this.getInt(">> ", 1, 6);
+        switch (opcion){
+            case 1:
+                estado = ;
+                break;
+            case 2:
+                estado = ;
+                break;
+            case 3:
+                estado = ;
+                break;
+            case 4:
+                estado = ;
+                break;
+            case 5:
+                estado = ;
+                break;
+        }
+        return estado;
+    }
+    
     public Categoria getCategoria() {
-        String cat;
         Categoria categoria = Categoria.Moda_y_accesorios;
-        boolean run = true;
-        while (run) {
-            try {
-                cat = this.read.readLine().toLowerCase();
-                switch (cat) {
-                    case "moda y accesorios":
-                        categoria = Categoria.Moda_y_accesorios;
-                        break;
-                    case "tv audio y foto":
-                        categoria = Categoria.Tv_audio_y_foto;
-                        break;
-                    case "moviles y telefonia":
-                        categoria = Categoria.Moviles_y_telefonia;
-                        break;
-                    case "informatica y electronica":
-                        categoria = Categoria.Informatica_y_electronica;
-                        break;
-                    case "consolas y videojuegos":
-                        categoria = Categoria.Consolas_y_videojuegos;
-                        break;
-                    case "deporte y ocio":
-                        categoria = Categoria.Deporte_y_ocio;
-                        break;
-                    default:
-                        throw new RuntimeException("Categoria inexistente");
-                }
-                run = false;
-            } catch (RuntimeException e) {
-                System.out.println(e);
-            } catch (IOException e) {
-
-            }
+        System.out.println("Introduzca una categoría:"
+                + "1.- moda y accesorios"
+                + "2.- tv audio y foto"
+                + "3.- moviles y telefonia"
+                + "4.- informatica y electronica"
+                + "5.- consolas y videojuegos"
+                + "6.- deporte y ocio");
+        int opcion = this.getInt(">> ", 1, 6);
+        switch (opcion){
+            case 1:
+                categoria = Categoria.Moda_y_accesorios;
+                break;
+            case 2:
+                categoria = Categoria.Tv_audio_y_foto;
+                break;
+            case 3:
+                categoria = Categoria.Moviles_y_telefonia;
+                break;
+            case 4:
+                categoria = Categoria.Informatica_y_electronica;
+                break;
+            case 5:
+                categoria = Categoria.Consolas_y_videojuegos;
+                break;
+            case 6:
+                categoria = Categoria.Deporte_y_ocio;
+                break;
         }
         return categoria;
     }

@@ -15,54 +15,59 @@ public class Profesional extends Cliente implements Serializable {
     protected String web;
 
     public Profesional() {
-        super("","","","",0,"");
+        super("", "", "", "", 0, "");
         this.profesional = true;
 
     }
 
-    public String getDescripcion(){
+    public String getDescripcion() {
         return this.descripcion;
     }
-    
+
     public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
     }
-    
-    public String getHorario(){
+
+    public String getHorario() {
         return this.horario;
     }
-    
+
     public void setHorario(String horario) {
         this.horario = horario;
     }
-    
-    public String getTelefono(){
+
+    public String getTelefono() {
         return this.telefono;
     }
-    
+
     public void setTelefono(String telefono) {
         this.telefono = telefono;
     }
-    
-    public String getWeb(){
+
+    public String getWeb() {
         return this.web;
     }
-    
+
     public void setWeb(String web) {
         this.web = web;
-    }    
-    
-    public void cobro(){
-        
     }
-    
-    public void editarDatos(){
-        
+
+    public void cobro() {
+
+    }
+
+    public void editarDatos() {
+
     }
 
     @Override
     public String toString() {
-        return super.toString() + "\nDescripcion=" + descripcion + "\nHorario=" + horario + "\nTelefono=" + telefono + "\nWeb=" + web;
-        
+
+        return super.toString() + "\n"
+                + "Descripcion=" + descripcion + "\n"
+                + "Horario=" + horario + "\n"
+                + "Telefono=" + telefono + "\n"
+                + "Web=" + web;
+
     }
 }

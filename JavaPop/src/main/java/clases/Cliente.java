@@ -84,6 +84,35 @@ public class Cliente extends Usuario implements Serializable {
         return this.productos;
     }
 
+    /**<head>.</head>
+     *
+     * <body>
+     * <p>.</p>
+     *
+     * @param user:
+     * @param read:
+     *
+     * @author Eduardo Ruiz Sabajanes
+     * </body>
+     */
+    public static void altaProducto(Cliente user, EntradasPorConsola read){
+        System.out.println("Introduzca un título del producto: ");
+        String nombre = read.getString(">> ");
+        System.out.println("Introduzca una descripción del producto: ");
+        String dni = read.getString(">> ");
+        System.out.println("Introduzca una categoría: ");
+        String ccpp = read.getString(">> ");
+        System.out.println("Introduzca un estado: ");
+        String ttcc = read.getString(">> ");
+        System.out.println("Introduzca un precio: ");
+        String ttcc = read.getString(">> ");
+        System.out.println("Introduzca la dirección en su ordenador de una foto del producto: ");
+        String ttcc = read.getString(">> ");
+        System.out.println("¿Quiere marcar la venta de este producto como urgente?\n"
+                + "");
+        String ttcc = read.getString(">> ");
+    }
+    
     public String introducirProducto(Producto p) {
         if (this.productos.contains(p)) {//si esta dentro
             return "El producto ya está a la venta";
@@ -104,6 +133,13 @@ public class Cliente extends Usuario implements Serializable {
 
     @Override
     public String toString() {
-        return "correo=" + correo + "\nclave=" + clave + "\nproductos=" + productos + "\ndni=" + dni + "\nnombre=" + nombre + "\nccpp=" + ccpp + "\nttcc=" + ttcc + "\nprofesional=" + profesional;
+        return "correo=" + correo + "\n"
+                + "clave=" + clave + "\n"
+                + "productos=" + productos + "\n"
+                + "dni=" + dni + "\n"
+                + "nombre=" + nombre + "\n"
+                + "ccpp=" + ccpp + "\n"
+                + "ttcc=" + ttcc + "\n"
+                + "profesional=" + profesional;
     } 
 }

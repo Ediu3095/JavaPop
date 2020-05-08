@@ -33,7 +33,7 @@ public class Admin extends Usuario implements Serializable {
                     + "2.- Pagina anterior\n"
                     + "3.- Salir");
             for (int i = 1; i <= 10; i++) {
-                posicionMax = posicionMin + i;
+                posicionMax = posicionMin + i - 1;
                 if (posicionMax < usuarios.size()) {
                     System.out.println((i + 3) + ".- " + usuarios.get(posicionMax).correo);
                 } else {
@@ -42,7 +42,7 @@ public class Admin extends Usuario implements Serializable {
                 }
             }
 
-            seleccion = read.getInt(">> ", 1, posicionMax - posicionMin + 3);
+            seleccion = read.getInt(">> ", 1, posicionMax - posicionMin + 4);
             if (seleccion == 1) {
                 posicionMin += 10;
                 if (posicionMin >= usuarios.size()) {
@@ -56,7 +56,7 @@ public class Admin extends Usuario implements Serializable {
             } else if (seleccion == 3) {
                 return;
             } else {
-                usuario = usuarios.get(posicionMin + seleccion - 3);
+                usuario = usuarios.get(posicionMin + seleccion - 4);
                 run_ = false;
             }
         }
