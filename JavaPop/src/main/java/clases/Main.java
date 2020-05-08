@@ -98,8 +98,8 @@ public class Main {
                         }
                     }
                 }
-                // Si el correo no es valido...
-            } else {
+            }// Si el correo no es valido...
+            else {
                 System.out.println("¡¡El correo no es valido!!");
             }
         }
@@ -145,14 +145,15 @@ public class Main {
             if (correo.equals("qwerty")) {
                 arr.set(0, true);
                 run_ = false;
-            } else if (read.checkCorreo(correo)) {
+            }// Comprobamos si el correo es válido
+            else if (read.checkCorreo(correo)) {
                 arr.set(0, false);
 
                 // Pide una contraseña
                 System.out.println("Introduzca su clave:");
                 String clave = read.getString(">> ");
 
-                // Si la contrasseña es valida
+                // Si la contraseña es valida
                 if (read.checkClave(clave)) {
                     if (correo.equals("admin@javapop.com") && clave.equals("admin")){
                         arr.set(1, new Admin());
@@ -169,10 +170,11 @@ public class Main {
                         }
                     }
                 }
+                // Si la contraseña y el correo no coinciden con los de ningun usuario
                 if (run_) {
                     System.out.println("¡¡Usuario o clave incorrectos!!");
                 }
-            } else {
+            }else {
                 System.out.println("¡¡El correo no es valido!!");
             }
         }
