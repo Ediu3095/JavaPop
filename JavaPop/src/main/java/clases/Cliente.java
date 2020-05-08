@@ -16,7 +16,7 @@ public class Cliente extends Usuario implements Serializable {
     protected ArrayList<Producto> productos;
     protected String dni;
     protected String nombre;
-    protected String ccpp;
+    protected int ccpp;
     protected String ttcc;
     protected boolean profesional;
 
@@ -25,13 +25,13 @@ public class Cliente extends Usuario implements Serializable {
         this.clave = "";
         this.dni = "";
         this.nombre = "";
-        this.ccpp = "";
+        this.ccpp = 0;
         this.ttcc = "";
         this.productos = new ArrayList<>();
         this.profesional = false;
     }
     
-    public Cliente(String correo, String clave, String dni, String nombre, String ccpp, String ttcc) {
+    public Cliente(String correo, String clave, String dni, String nombre, int ccpp, String ttcc) {
         this.correo = correo;
         this.clave = clave;
         this.dni = dni;
@@ -58,11 +58,11 @@ public class Cliente extends Usuario implements Serializable {
         this.nombre = nombre;
     }
 
-    public String getccpp() {
+    public int getccpp() {
         return ccpp;
     }
 
-    public void setccpp(String ccpp) {
+    public void setccpp(int ccpp) {
         this.ccpp = ccpp;
     }
 
