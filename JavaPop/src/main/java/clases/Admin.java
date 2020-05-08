@@ -153,7 +153,7 @@ public class Admin extends Usuario implements Serializable {
 
                 case 8: // Editar descripcion
                     System.out.println("Nueva descripción: ");
-                    String descripcion = read.getString(">> ");                   
+                    String descripcion = read.getString(">> ");
                     usuarioPro.setDescripcion(descripcion);
                     break;
 
@@ -162,13 +162,13 @@ public class Admin extends Usuario implements Serializable {
                     String horario = read.getString(">> ");
                     usuarioPro.setHorario(horario);
                     break;
-                    
+
                 case 10: // Editar telefono
                     System.out.println("Nuevo telefono: ");
                     String telefono = read.getString(">> ");
                     usuarioPro.setTelefono(telefono);
                     break;
-                
+
                 case 11: //Editar web
                     System.out.println("Nueva web: ");
                     String web = read.getString(">> ");
@@ -177,14 +177,76 @@ public class Admin extends Usuario implements Serializable {
             }
         }
     }
-    
+
     public static void ConsultarProducto(ArrayList<Producto> producto, EntradasPorConsola read) {
-        
+
+        boolean run_ = true;
+        int posicionMin = 0;
+        int posicionMax = 0;
+        int seleccionado ;
+        boolean run__ = true;
+        int categoria = 0;
+        ArrayList<Producto> arr = new ArrayList();
+        String categoriaElegida;
+
+        while (run_) {
+            System.out.println("Seleccionela categoría que desea comprobar:\n "
+                    + "1.- Salir\n"
+                    + "2.- Moda y accesorios\n"
+                    + "3.- Tv, audio y fotografía\n"
+                    + "4.-Moviles y telefonia\n"
+                    + "5.-Informatica y electronica\n"
+                    + "6.-Consolas y videojuegos\n"
+                    + "7.-Deporte y ocio");
+            categoria = read.getInt(">> ", 1, 11);
+            switch (categoria) {
+                case 1:// Salir 
+                    return;
+                case 2: //Moda y accesorios
+                    categoriaElegida = "Moda_y_accesorios";
+                    for (int i = 0; i < producto.size(); i++) {
+                        if (producto.get(i).categoria.equals(categoriaElegida)) {
+                            arr.add(producto.get(i));
+                        }
+                    }
+                    while (run__){
+                        System.out.println("Seleccione el producto que desea comprobar:\n "
+                    + "1.- Pagina siguiente\n"
+                    + "2.- Pagina anterior\n"
+                    + "3.- Salir");
+            for (int i = 1; i <= 10; i++) {
+                posicionMax = posicionMin + i - 1;
+                if (posicionMax < producto.size()) {
+                    System.out.println((i + 3) + ".- " + producto.get(posicionMax).titulo);
+                } else {
+                    posicionMax--;
+                    break;
+                }
+            }
+
+            seleccion = read.getInt(">> ", 1, posicionMax - posicionMin + 4);
+            if (seleccion == 1) {
+                posicionMin += 10;
+                if (posicionMin >= usuarios.size()) {
+                    posicionMin -= 10;
+                }
+            } else if (seleccion == 2) {
+                posicionMin -= 10;
+                if (posicionMin <= 0) {
+                    posicionMin += 10;
+                }
+            } else if (seleccion == 3) {
+                return;
+            } else {
+                usuario = usuarios.get(posicionMin + seleccion - 4);
+                run_ = false;
+            }
+        }
+                    }
+
+            }
+
+        }
+
     }
-    
-    
-    
-    
-    
-    
 }
