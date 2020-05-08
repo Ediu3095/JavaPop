@@ -1,5 +1,6 @@
 package clases;
 
+import clases.enumeradores.Categoria;
 import clases.utils.EntradasPorConsola;
 import java.io.Serializable;
 import java.util.*;
@@ -180,73 +181,178 @@ public class Admin extends Usuario implements Serializable {
 
     public static void ConsultarProducto(ArrayList<Producto> producto, EntradasPorConsola read) {
 
+        Producto product = new Producto();
+        int seleccionDato = 0;
         boolean run_ = true;
         int posicionMin = 0;
         int posicionMax = 0;
-        int seleccionado ;
+        int seleccion;
         boolean run__ = true;
         int categoria = 0;
         ArrayList<Producto> arr = new ArrayList();
-        String categoriaElegida;
+        Categoria categoriaElegida = null;
 
         while (run_) {
             System.out.println("Seleccionela categoría que desea comprobar:\n "
                     + "1.- Salir\n"
                     + "2.- Moda y accesorios\n"
                     + "3.- Tv, audio y fotografía\n"
-                    + "4.-Moviles y telefonia\n"
-                    + "5.-Informatica y electronica\n"
-                    + "6.-Consolas y videojuegos\n"
-                    + "7.-Deporte y ocio");
+                    + "4.- Moviles y telefonia\n"
+                    + "5.- Informatica y electronica\n"
+                    + "6.- Consolas y videojuegos\n"
+                    + "7.- Deporte y ocio");
             categoria = read.getInt(">> ", 1, 11);
             switch (categoria) {
                 case 1:// Salir 
                     return;
                 case 2: //Moda y accesorios
-                    categoriaElegida = "Moda_y_accesorios";
-                    for (int i = 0; i < producto.size(); i++) {
-                        if (producto.get(i).categoria.equals(categoriaElegida)) {
-                            arr.add(producto.get(i));
+                    categoriaElegida = Categoria.Moda_y_accesorios;
+                    break;
+                case 3: // Tv, audio y fotográfia
+                    categoriaElegida = Categoria.Tv_audio_y_foto;
+                    break;
+                case 4: // Moviles y telefonia
+                    categoriaElegida = Categoria.Moviles_y_telefonia;
+                    break;
+                case 5: // Informatica y electronica
+                    categoriaElegida = Categoria.Informatica_y_electronica;
+                    break;
+                case 6: // Consolas y videojuegos
+                    categoriaElegida = Categoria.Consolas_y_videojuegos;
+                    break;
+                case 7: // Deporte y ocio
+                    categoriaElegida = Categoria.Deporte_y_ocio;
+                    break;
+            }
+            for (int i = 0; i < producto.size(); i++) {
+                if (producto.get(i).categoria.equals(categoriaElegida)) {
+                    arr.add(producto.get(i));
+                }
+            }
+            while (run__) {
+                System.out.println("Seleccione el producto que desea comprobar:\n "
+                        + "1.- Pagina siguiente\n"
+                        + "2.- Pagina anterior\n"
+                        + "3.- Salir");
+                for (int i = 1; i <= 10; i++) {
+                    posicionMax = posicionMin + i - 1;
+                    if (posicionMax < producto.size()) {
+                        System.out.println((i + 3) + ".- " + producto.get(posicionMax).titulo);
+                    } else {
+                        posicionMax--;
+                        break;
+                    }
+                }
+
+                seleccion = read.getInt(">> ", 1, posicionMax - posicionMin + 4);
+                if (seleccion == 1) {
+                    posicionMin += 10;
+                    if (posicionMin >= producto.size()) {
+                        posicionMin -= 10;
+                    }
+                } else if (seleccion == 2) {
+                    posicionMin -= 10;
+                    if (posicionMin <= 0) {
+                        posicionMin += 10;
+                    }
+                } else if (seleccion == 3) {
+                    return;
+                } else {
+                    product = producto.get(posicionMin + seleccion - 4);
+                    run_ = false;
+                }
+            }
+
+        }
+        run_ = true;
+        while (run_) {
+            System.out.println(product);
+            System.out.println("Que operación desea realizar:\n "
+                    + "1.- Salir\n"
+                    + "2.- Editar titulo\n"
+                    + "3.- Editar descripcion\n"
+                    + "4.- Editar categoria\n"
+                    + "5.- Editar estado\n"
+                    + "6.- Editar foto");
+            
+                seleccionDato = read.getInt(">> ", 1, 7);
+
+            switch (seleccionDato) {
+
+                case 1: //Salir
+                    return;
+
+                case 2: //Editar titulo
+                    System.out.println("Nuevo titulo del producto:");
+                    String titulo = read.getString(">> ");                    
+                    
+                    run__ = true;
+                    usuario.setCorreo(correo);
+                    break;
+
+                case 3: //Editar clave
+                    System.out.println("Nueva clave:");
+                    String clave = read.getString(">> ");
+                    while (run__) {
+
+                        //Comprobamos que la contraseña sea valida
+                        if (read.checkClave(clave)) {
+                            run__ = false;
                         }
                     }
-                    while (run__){
-                        System.out.println("Seleccione el producto que desea comprobar:\n "
-                    + "1.- Pagina siguiente\n"
-                    + "2.- Pagina anterior\n"
-                    + "3.- Salir");
-            for (int i = 1; i <= 10; i++) {
-                posicionMax = posicionMin + i - 1;
-                if (posicionMax < producto.size()) {
-                    System.out.println((i + 3) + ".- " + producto.get(posicionMax).titulo);
-                } else {
-                    posicionMax--;
+                    run__ = true;
+                    usuario.setClave(clave);
                     break;
-                }
-            }
 
-            seleccion = read.getInt(">> ", 1, posicionMax - posicionMin + 4);
-            if (seleccion == 1) {
-                posicionMin += 10;
-                if (posicionMin >= usuarios.size()) {
-                    posicionMin -= 10;
-                }
-            } else if (seleccion == 2) {
-                posicionMin -= 10;
-                if (posicionMin <= 0) {
-                    posicionMin += 10;
-                }
-            } else if (seleccion == 3) {
-                return;
-            } else {
-                usuario = usuarios.get(posicionMin + seleccion - 4);
-                run_ = false;
+                case 4: // Editar nombre
+                    System.out.println("Nuevo nombre: ");
+                    String nombre = read.getString(">> ");
+                    usuario.setNombre(nombre);
+                    break;
+
+                case 5: // Edtitar DNI
+                    System.out.println("Nuevo DNI: ");
+                    String dni = read.getString(">> ");
+                    usuario.setDni(dni);
+                    break;
+
+                case 6: //Editar codigo postal
+                    System.out.println("Nuevo codigo postal: ");
+                    int ccpp = read.getInt(">> ");
+                    usuario.setccpp(ccpp);
+                    break;
+
+                case 7: // Editar tarjeta de credito
+                    System.out.println("Nueva tarjeta de credito");
+                    String ttcc = read.getString(">> ");
+                    usuario.setTTCC(ttcc);
+                    break;
+
+                case 8: // Editar descripcion
+                    System.out.println("Nueva descripción: ");
+                    String descripcion = read.getString(">> ");
+                    usuarioPro.setDescripcion(descripcion);
+                    break;
+
+                case 9: //Editar Horario
+                    System.out.println("Nuevo horario: ");
+                    String horario = read.getString(">> ");
+                    usuarioPro.setHorario(horario);
+                    break;
+
+                case 10: // Editar telefono
+                    System.out.println("Nuevo telefono: ");
+                    String telefono = read.getString(">> ");
+                    usuarioPro.setTelefono(telefono);
+                    break;
+
+                case 11: //Editar web
+                    System.out.println("Nueva web: ");
+                    String web = read.getString(">> ");
+                    usuarioPro.setWeb(web);
+                    break;
             }
         }
-                    }
-
-            }
-
-        }
-
     }
+
 }

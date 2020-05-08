@@ -5,10 +5,12 @@ package clases;
  * @author Eduardo Ruiz Sabajanes
  * @author Luis Miguel Sobrino Zamora
  */
+import java.util.ArrayList;
 import clases.enumeradores.*;
 import java.io.Serializable;
 import javax.swing.Icon;
 import java.time.LocalDateTime;
+import javax.swing.ImageIcon;
 
 public class Producto implements Serializable{
 
@@ -34,6 +36,17 @@ public class Producto implements Serializable{
         this.urgente = urgente;
     }
     
-    
+    public Producto() {
+        this.titulo = "";
+        this.descripcion = "";
+        this.categoria = Categoria.Consolas_y_videojuegos;
+        this.estado = Estado.Aceptable;
+        this.precio = 0;
+        this.foto = new ImageIcon();
+        this.fechaPublicacion = LocalDateTime.now();
+        this.vendedor = new Cliente();
+        this.urgente = false;
+    }
+
 
 }
