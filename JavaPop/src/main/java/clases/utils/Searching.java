@@ -9,7 +9,11 @@ import java.util.ArrayList;
  */
 public class Searching {
 
-    public static ArrayList<Producto> ordenarProductos(ArrayList<Producto> arr){
-        
+    public static ArrayList<Producto> ordenarProductos(ArrayList<Producto> arr, String[] keyWords){
+        String[] productoActual;
+        int[] coincidences = new int[arr.size()];
+        for(int index = 0; index<arr.size(); index++){
+            
+        }
     }
 }
