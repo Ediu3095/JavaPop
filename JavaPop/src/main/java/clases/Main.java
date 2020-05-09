@@ -264,9 +264,8 @@ public class Main {
                         Admin.ConsultarUsuario(usuarios, read);
                         break;
                         
-                    case 2:// 
-                        
-
+                    case 2:// Consultar producto
+                        Admin.ConsultarProducto(productos, read);
                         break;
                         
                     case 3:// 

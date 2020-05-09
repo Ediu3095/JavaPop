@@ -55,6 +55,20 @@ public class Producto implements Serializable{
         this.matchDeg = 0;
         this.lejania = 0;
     }
+    
+    public Producto(int match, int lej) {
+        this.titulo = "";
+        this.descripcion = "";
+        this.categoria = Categoria.Consolas_y_videojuegos;
+        this.estado = Estado.Aceptable;
+        this.precio = 0;
+        this.foto = new ImageIcon();
+        this.fechaPublicacion = LocalDateTime.now();
+        this.vendedor = new Cliente();
+        this.urgente = false;
+        this.matchDeg = match;
+        this.lejania = lej;
+    }
 
     public String getTitulo() {
         return titulo;
@@ -126,5 +140,10 @@ public class Producto implements Serializable{
 
     public void setUrgente(boolean urgente) {
         this.urgente = urgente;
+    }
+    
+    @Override
+    public String toString(){
+        return "matchDeg: " + this.matchDeg + " - lejania: " + this.lejania;
     }
 }
