@@ -143,7 +143,7 @@ public class Producto implements Serializable {
         return urgente;
     }
 
-    public void toggleUrgente(boolean urgente) {
+    public void toggleUrgente() {
         if (!this.urgente){
             this.urgente = true;
             fechaUrgente = LocalDateTime.now();
