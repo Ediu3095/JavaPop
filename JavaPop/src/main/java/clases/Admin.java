@@ -4,6 +4,7 @@ import clases.enumeradores.Categoria;
 import clases.utils.EntradasPorConsola;
 import java.io.Serializable;
 import java.util.*;
+import javax.swing.ImageIcon;
 
 /**
  *
@@ -243,7 +244,7 @@ public class Admin extends Usuario implements Serializable {
                     + "3.- Editar descripcion\n"
                     + "4.- Editar categoria\n"
                     + "5.- Editar estado\n"
-                    + "6.- Editar foto");
+                    + "6.- Eliminar foto");
             
                 seleccionDato = read.getInt(">> ", 1, 7);
 
@@ -272,9 +273,9 @@ public class Admin extends Usuario implements Serializable {
                     product.estado = read.getEstado(">> ");                 
                     break;
 
-                case 6: //Editar foto
-
-                    break;         
+                case 6: //Eliminar foto
+                    product.foto = new ImageIcon("./resources/imagenes/White.jpeg");
+                    break;  
             }
         }
     }

@@ -313,6 +313,7 @@ public class Main {
                         break;
 
                     case 2:// Mis productos
+                        estado = 3;
                         break;
 
                     case 3:// Actualizar licencia pro
