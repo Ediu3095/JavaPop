@@ -246,7 +246,7 @@ public class Admin extends Usuario implements Serializable {
                     + "5.- Editar estado\n"
                     + "6.- Eliminar foto");
             
-                seleccionDato = read.getInt(">> ", 1, 7);
+                seleccionDato = read.getInt(">> ", 1, 6);
 
             switch (seleccionDato) {
 
@@ -269,7 +269,7 @@ public class Admin extends Usuario implements Serializable {
                     product.categoria = read.getCategoria(">> ");                 
                     break;
                     
-                case 5: // Edtitar estado
+                case 5: // Editar estado
                     product.estado = read.getEstado(">> ");                 
                     break;
 
