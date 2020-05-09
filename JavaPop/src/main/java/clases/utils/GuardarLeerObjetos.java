@@ -1,6 +1,7 @@
 package clases.utils;
 
 import clases.Cliente;
+import clases.Venta;
 import clases.Producto;
 import java.io.EOFException;
 import java.io.File;
@@ -19,6 +20,27 @@ import java.util.ArrayList;
  */
 public class GuardarLeerObjetos {
 
+    
+    /**<head>La función crea el fichero <b>ventas.dat</b> en el directorio <b>./resources/datFiles</b>.</head>
+     * 
+     * <body>
+     * <p>Esta solamente es llamada en el caso de que el archivo no exista.</p>
+     * 
+     * @author  Luis Miguel Sobrino Zamora
+     * </body>*/
+    private static void crearVentasDat() {
+        try {
+            File ventasDat = new File("./resources/datFiles/ventas.dat");
+            if (!ventasDat.exists()) {
+                ventasDat.createNewFile();
+                System.out.println("Se creo el fichero ventas.dat");
+            }
+        } catch (IOException ex) {
+                System.out.println(ex);
+        }
+    }
+    
+    
     /**<head>La función crea el fichero <b>clientes.dat</b> en el directorio <b>./resources/datFiles</b>.</head>
      * 
      * <body>
@@ -37,7 +59,8 @@ public class GuardarLeerObjetos {
                 System.out.println(ex);
         }
     }
-
+    
+    
     /**<head>La función crea el fichero <b>productos.dat</b> en el directorio <b>./resources/datFiles</b>.</head>
      * 
      * <body>
@@ -56,7 +79,36 @@ public class GuardarLeerObjetos {
                 System.out.println(ex);
         }
     }
-
+    
+    /**<head>La función reescribe el fichero <b>ventas.dat</b> para que almacene los datos
+     * de una lista de ventas que pasaremos como parametro, de forma que se pueda
+     * acceder a esta información la siguiente vez que se ejecute el programa.</head>
+     * 
+     * <body>
+     * <p>Las ventas se almacenan de una en una de forma que en la lectura también
+     * se leeran las ventas como objetos independientes y se deberan volver a
+     * almacenar en alguna estructura de datos para su manejo en el programa.</p>
+     * 
+     * @param   saleList
+     *          El ArrayList que contiene las ventas que se han de guardar
+     *          para la proxima ejecución del programa.
+     * 
+     * @author  Luis Miguel Sobrino Zamora
+     * </body>*/
+    public static void guardarVentas(ArrayList<Venta> saleList) {
+        try {
+            FileOutputStream fos = new FileOutputStream("./resources/datFiles/ventas.dat");
+            ObjectOutputStream oos = new ObjectOutputStream(fos);
+            for (int i = 0; i < saleList.size(); i++) {
+                oos.writeObject(saleList.get(i));
+            }
+            fos.close();
+            oos.close();
+        } catch (IOException ex) {
+                System.out.println(ex);
+        }
+    }
+    
     /**<head>La función reescribe el fichero <b>clientes.dat</b> para que almacene los datos
      * de una lista de clientes que pasaremos como parametro, de forma que se pueda
      * acceder a esta información la siguiente vez que se ejecute el programa.</head>
@@ -114,7 +166,47 @@ public class GuardarLeerObjetos {
                 System.out.println(ex);
         }
     }
-
+    
+    /**<head>La función lee el fichero <b>ventas.dat</b> y almacena las ventas leídas
+     * en una ArrayList de ventas que devolveremos.</head>
+     * 
+     * <body>
+     * @return  Un <b>ArrayList</b> con todos las ventas almacenadas en el fichero <b>ventas.dat</b>
+     * 
+     * @author  Luis Miguel Sobrino
+     * </body>*/
+    public static ArrayList<Venta> leerVentas() {
+        ArrayList<Venta> ventas = new ArrayList();
+        boolean run = true;
+        while (run) {
+            try {
+                FileInputStream fis = new FileInputStream("./resources/datFiles/ventas.dat");
+                ObjectInputStream ois = null;
+                try {
+                    ois = new ObjectInputStream(fis);
+                    while (true) {
+                        ventas.add((Venta) ois.readObject());
+                    }
+                } catch (EOFException ex) {
+                    System.out.println("Lectura de ventas finalizada");
+                }
+                fis.close();
+                try {
+                    ois.close();
+                } catch (NullPointerException ex) {
+                    System.out.println("Aun no hay ventas!!");
+                    System.out.println(ex);
+                }
+                run = false;
+            } catch (FileNotFoundException ex) {
+                crearVentasDat();
+            } catch (Exception ex) {
+                System.out.println(ex);
+            }
+        }
+        return ventas;
+    }
+    
     /**<head>La función lee el fichero <b>clientes.dat</b> y almacena los clientes leídos
      * en una ArrayList de clientes que devolveremos.</head>
      * 

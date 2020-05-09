@@ -308,5 +308,105 @@ public class Admin extends Usuario implements Serializable {
             }
         }
     }
+    
+    public static void ConsultarVentas(ArrayList<Venta> venta, EntradasPorConsola read) {
+
+        Venta sale = new Venta();
+        int seleccionDato = 0;
+        boolean run_ = true;
+        int posicionMin = 0;
+        int posicionMax = 0;
+        int seleccion;
+        boolean run__ = true;
+        int categoria = 0;
+        ArrayList<Venta> arr = new ArrayList();
+        Categoria categoriaElegida = null;
+
+        while (run_) {
+            System.out.println("Seleccionela categoría que desea comprobar:\n "
+                    + "1.- Salir\n"
+                    + "2.- Moda y accesorios\n"
+                    + "3.- Tv, audio y fotografía\n"
+                    + "4.- Moviles y telefonia\n"
+                    + "5.- Informatica y electronica\n"
+                    + "6.- Consolas y videojuegos\n"
+                    + "7.- Deporte y ocio");
+            categoria = read.getInt(">> ", 1, 11);
+            switch (categoria) {
+                case 1:// Salir 
+                    return;
+                case 2: //Moda y accesorios
+                    categoriaElegida = Categoria.Moda_y_accesorios;
+                    break;
+                case 3: // Tv, audio y fotográfia
+                    categoriaElegida = Categoria.Tv_audio_y_foto;
+                    break;
+                case 4: // Moviles y telefonia
+                    categoriaElegida = Categoria.Moviles_y_telefonia;
+                    break;
+                case 5: // Informatica y electronica
+                    categoriaElegida = Categoria.Informatica_y_electronica;
+                    break;
+                case 6: // Consolas y videojuegos
+                    categoriaElegida = Categoria.Consolas_y_videojuegos;
+                    break;
+                case 7: // Deporte y ocio
+                    categoriaElegida = Categoria.Deporte_y_ocio;
+                    break;
+            }
+            for (int i = 0; i < venta.size(); i++) {
+                if (venta.get(i).categoria.equals(categoriaElegida)) {
+                    arr.add(venta.get(i));
+                }
+            }
+            while (run__) {
+                System.out.println("Seleccione la venta que desea comprobar:\n "
+                        + "1.- Pagina siguiente\n"
+                        + "2.- Pagina anterior\n"
+                        + "3.- Salir");
+                for (int i = 1; i <= 10; i++) {
+                    posicionMax = posicionMin + i - 1;
+                    if (posicionMax < venta.size()) {
+                        System.out.println((i + 3) + ".- " + venta.get(posicionMax).comprador + " " + venta.get(posicionMax).fechaVenta);
+                    } else {
+                        posicionMax--;
+                        break;
+                    }
+                }
+
+                seleccion = read.getInt(">> ", 1, posicionMax - posicionMin + 4);
+                if (seleccion == 1) {
+                    posicionMin += 10;
+                    if (posicionMin >= venta.size()) {
+                        posicionMin -= 10;
+                    }
+                } else if (seleccion == 2) {
+                    posicionMin -= 10;
+                    if (posicionMin <= 0) {
+                        posicionMin += 10;
+                    }
+                } else if (seleccion == 3) {
+                    return;
+                } else {
+                    sale = venta.get(posicionMin + seleccion - 4);
+                    run_ = false;
+                }
+            }
+
+        }
+        run_ = true;
+        while (run_) {
+            System.out.println(venta.toString());
+            System.out.println("1.- Salir");
+            seleccionDato = read.getInt(">> ", 1, 1);
+
+            switch (seleccionDato) {
+
+                case 1: //Salir
+                    return;
+         
+            }
+        }
+    }
 
 }
