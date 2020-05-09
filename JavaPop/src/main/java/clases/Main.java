@@ -319,7 +319,7 @@ public class Main {
                         if (user instanceof Profesional) {
                             
                         } else {
-                            ((Cliente)user).cobrar(5);
+                            ((Cliente)user).cobrar(30);
                             usuarios.remove((Cliente)user);
                             user = new Profesional((Cliente)user, read);
                         }

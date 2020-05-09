@@ -19,7 +19,17 @@ public class Cliente extends Usuario implements Serializable {
     protected String nombre;
     protected int ccpp;
     protected String ttcc;
-    protected boolean profesional;
+    
+    public Cliente(Profesional p){
+        this.correo = p.correo;
+        this.clave = p.clave;
+        this.dni = p.dni;
+        this.nombre = p.nombre;
+        this.ccpp = p.ccpp;
+        this.ttcc = p.ttcc;
+        this.productos = p.productos;
+        this.ventasNuevas = p.ventasNuevas;
+    }
     
     public Cliente(String correo, String clave, String dni, String nombre, int ccpp, String ttcc) {
         this.correo = correo;
@@ -30,7 +40,6 @@ public class Cliente extends Usuario implements Serializable {
         this.ttcc = ttcc;
         this.productos = new ArrayList();
         this.ventasNuevas = new ArrayList();
-        this.profesional = false;
     }
     
     public Cliente() {
@@ -42,7 +51,6 @@ public class Cliente extends Usuario implements Serializable {
         this.ttcc = "";
         this.productos = new ArrayList();
         this.ventasNuevas = new ArrayList();
-        this.profesional = false;
     }
 
     public String getDni() {
@@ -75,14 +83,6 @@ public class Cliente extends Usuario implements Serializable {
 
     public void setTTCC(String ttcc) {
         this.ttcc = ttcc;
-    }
-
-    public boolean isProfesional() {
-        return profesional;
-    }
-
-    public void setProfesional(boolean Profesional) {
-        this.profesional = Profesional;
     }
 
     public ArrayList<Producto> getProductos() {
@@ -174,7 +174,6 @@ public class Cliente extends Usuario implements Serializable {
                 + "dni=" + dni + "\n"
                 + "nombre=" + nombre + "\n"
                 + "ccpp=" + ccpp + "\n"
-                + "ttcc=" + ttcc + "\n"
-                + "profesional=" + profesional;
+                + "ttcc=" + ttcc;
     }
 }
