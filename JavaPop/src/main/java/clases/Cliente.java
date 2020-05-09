@@ -28,7 +28,8 @@ public class Cliente extends Usuario implements Serializable {
         this.nombre = nombre;
         this.ccpp = ccpp;
         this.ttcc = ttcc;
-        this.productos = new ArrayList<>();
+        this.productos = new ArrayList();
+        this.ventasNuevas = new ArrayList();
         this.profesional = false;
     }
     
@@ -39,7 +40,8 @@ public class Cliente extends Usuario implements Serializable {
         this.nombre = "";
         this.ccpp = 0;
         this.ttcc = "";
-        this.productos = new ArrayList<>();
+        this.productos = new ArrayList();
+        this.ventasNuevas = new ArrayList();
         this.profesional = false;
     }
 
@@ -126,10 +128,9 @@ public class Cliente extends Usuario implements Serializable {
             Estado estado = read.getEstado(">> ");
             System.out.println("Introduzca un precio: ");
             Double precio = read.getDouble(">> ",0 , Double.MAX_VALUE);
-            System.out.println("Introduzca la dirección en su ordenador de una foto del producto: ");
             Icon imagen = read.getImage(">> ");
             System.out.println("¿Quiere marcar la venta de este producto como urgente?\n"
-                    + "1.- Si"
+                    + "1.- Si\n"
                     + "2.- No");
             Boolean urgente = true;
             if (read.getInt(">> ", 1, 2) == 2){

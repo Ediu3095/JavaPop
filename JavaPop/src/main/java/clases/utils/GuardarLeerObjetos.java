@@ -33,10 +33,10 @@ public class GuardarLeerObjetos {
             File ventasDat = new File("./resources/datFiles/ventas.dat");
             if (!ventasDat.exists()) {
                 ventasDat.createNewFile();
-                System.out.println("Se creo el fichero ventas.dat");
+                //System.out.println("Se creo el fichero ventas.dat");
             }
         } catch (IOException ex) {
-                System.out.println(ex);
+                //System.out.println(ex);
         }
     }
     
@@ -53,10 +53,10 @@ public class GuardarLeerObjetos {
             File clientesDat = new File("./resources/datFiles/clientes.dat");
             if (!clientesDat.exists()) {
                 clientesDat.createNewFile();
-                System.out.println("Se creo el fichero clientes.dat");
+                //System.out.println("Se creo el fichero clientes.dat");
             }
         } catch (IOException ex) {
-                System.out.println(ex);
+                //System.out.println(ex);
         }
     }
     
@@ -73,10 +73,10 @@ public class GuardarLeerObjetos {
             File productosDat = new File("./resources/datFiles/productos.dat");
             if (!productosDat.exists()) {
                 productosDat.createNewFile();
-                System.out.println("Se creo el fichero productos.dat");
+                //System.out.println("Se creo el fichero productos.dat");
             }
         } catch (IOException ex) {
-                System.out.println(ex);
+                //System.out.println(ex);
         }
     }
     
@@ -105,7 +105,7 @@ public class GuardarLeerObjetos {
             fos.close();
             oos.close();
         } catch (IOException ex) {
-                System.out.println(ex);
+                //System.out.println(ex);
         }
     }
     
@@ -134,7 +134,7 @@ public class GuardarLeerObjetos {
             fos.close();
             oos.close();
         } catch (IOException ex) {
-                System.out.println(ex);
+                //System.out.println(ex);
         }
     }
 
@@ -163,7 +163,7 @@ public class GuardarLeerObjetos {
             fos.close();
             oos.close();
         } catch (IOException ex) {
-                System.out.println(ex);
+                //System.out.println(ex);
         }
     }
     
@@ -188,20 +188,20 @@ public class GuardarLeerObjetos {
                         ventas.add((Venta) ois.readObject());
                     }
                 } catch (EOFException ex) {
-                    System.out.println("Lectura de ventas finalizada");
+                    //System.out.println("Lectura de ventas finalizada");
                 }
                 fis.close();
                 try {
                     ois.close();
                 } catch (NullPointerException ex) {
-                    System.out.println("Aun no hay ventas!!");
-                    System.out.println(ex);
+                    //System.out.println("Aun no hay ventas!!");
+                    //System.out.println(ex);
                 }
                 run = false;
             } catch (FileNotFoundException ex) {
                 crearVentasDat();
             } catch (Exception ex) {
-                System.out.println(ex);
+                //System.out.println(ex);
             }
         }
         return ventas;
@@ -228,20 +228,20 @@ public class GuardarLeerObjetos {
                         clientes.add((Cliente) ois.readObject());
                     }
                 } catch (EOFException ex) {
-                    System.out.println("Lectura de clientes finalizada");
+                    //System.out.println("Lectura de clientes finalizada");
                 }
                 fis.close();
                 try {
                     ois.close();
                 } catch (NullPointerException ex) {
-                    System.out.println("Aun no hay clientes!!");
-                    System.out.println(ex);
+                    //System.out.println("Aun no hay clientes!!");
+                    //System.out.println(ex);
                 }
                 run = false;
             } catch (FileNotFoundException ex) {
                 crearClientesDat();
             } catch (Exception ex) {
-                System.out.println(ex);
+                //System.out.println(ex);
             }
         }
         return clientes;
@@ -268,7 +268,7 @@ public class GuardarLeerObjetos {
                         productList.add((Producto) ois.readObject());
                     }
                 } catch (EOFException ex) {
-                    System.out.println("Lectura de productos finalizada");
+                    //System.out.println("Lectura de productos finalizada");
                 }
                 fis.close();
                 try {
@@ -280,7 +280,7 @@ public class GuardarLeerObjetos {
             } catch (FileNotFoundException ex) {
                 crearProductosDat();
             } catch (Exception ex) {
-                System.out.println(ex);
+                //System.out.println(ex);
             }
         }
         return productList;

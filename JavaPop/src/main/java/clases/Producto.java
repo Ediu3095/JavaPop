@@ -42,6 +42,9 @@ public class Producto implements Serializable {
         this.urgente = urgente;
         this.matchDeg = 0;
         this.lejania = 0;
+        if(urgente){
+            this.fechaUrgente = LocalDateTime.now();
+        }
     }
 
     public Producto() {
@@ -144,12 +147,20 @@ public class Producto implements Serializable {
         if (!this.urgente){
             this.urgente = true;
             fechaUrgente = LocalDateTime.now();
+            this.vendedor.cobrar(5);
         }
     }
 
     @Override
     public String toString() {
-        return "matchDeg: " + this.matchDeg + " - lejania: " + this.lejania;
+        return "titulo=" + titulo + 
+                "\ndescripcion=" + descripcion + 
+                "\ncategoria=" + categoria + 
+                "\nestado=" + estado + 
+                "\nprecio=" + precio + 
+                "\nfoto=" + foto + 
+                "\nfechaPublicacion=" + fechaPublicacion + 
+                "\nvendedor=" + vendedor;
     }
 
     @Override

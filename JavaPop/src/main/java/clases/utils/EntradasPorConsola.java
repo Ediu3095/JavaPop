@@ -70,8 +70,8 @@ public class EntradasPorConsola {
         }
     }
 
-    /** <head>Recibe un string y comprueba que solo tiene caracteres de entre una
-     * lista de caracteres permitidos para las contraseñas.</head>
+    /** <head>Recibe un string y comprueba que solo tiene caracteres de entre
+     * una lista de caracteres permitidos para las contraseñas.</head>
      *
      * <body>
      *
@@ -101,10 +101,10 @@ public class EntradasPorConsola {
         return valid;
     }
 
-    /** <head>Pide un string que se debe corresponder con el path de una foto. En
-     * el caso de que la foto exista, la copia en <b>./resources/imagenes</b>
-     * para poder acceder a ella más tarde aunque se borre la original.
-     * Finalmente crea un objeto Icon de la imagen copiada y lo devuelve.<head>
+    /** <head>Pide un string que se debe corresponder con el path de una foto,
+     * en el caso de que la foto exista, la copia en <b>./resources/imagenes</b>
+     * para poder acceder a ella más tarde aunque se borre la original y
+     * finalmente crea un objeto Icon de la imagen copiada y lo devuelve.</head>
      *
      * <body>
      *
@@ -118,25 +118,25 @@ public class EntradasPorConsola {
      */
     public Icon getImage(String str_) {
         boolean run = true;
+        File imgFolder = new File("./resources/imagenes/");
         String address;
         String newAddress = "./resources/imagenes/";
-        String[] addressArr;
         while (run) {
             System.out.println("Introduzca la dirección en su ordenador de una imagen del producto:\n"
                     + "(La separación entre carpetas se indicará con /)\n"
                     + "(Indicar el formato de la imagen con .jpg, .png ...)");
             address = this.getString(str_);
-            addressArr = address.toString().split("/");
-            newAddress += addressArr[addressArr.length - 1];
+            newAddress += imgFolder.listFiles().length + "_";
             try {
                 File imagen = new File(address);
                 if (!imagen.exists()) {
                     throw new RuntimeException("La foto no existe");
                 }
+                newAddress += imagen.getName();
                 Files.copy(this.fileSys.getPath(address), this.fileSys.getPath(newAddress), REPLACE_EXISTING);
                 run = false;
             } catch (IOException ex) {
-                System.out.println("Ocurrio un error desconocido");
+                System.out.println(ex + ": Ocurrió un error desconocido");
             } catch (RuntimeException ex) {
                 System.out.println(ex.getMessage());
             }
@@ -261,8 +261,8 @@ public class EntradasPorConsola {
         return num;
     }
 
-    /** <head>Pide por consola un número entero que se encuente entre dos limites
-     * (o en los limites) hasta que este sea introducido.</head>
+    /** <head>Pide por consola un número entero que se encuente entre dos
+     * limites (o en los limites) hasta que este sea introducido.</head>
      *
      * <body>
      *
@@ -376,6 +376,39 @@ public class EntradasPorConsola {
                 str = this.read.readLine();
                 run = false;
             } catch (IOException e) {
+                System.out.println(e);
+            }
+        }
+        return str;
+    }
+    
+    /** <head>Pide por consola una cadena de texto de una longitud determinada.</head>
+     *
+     * <body>
+     *
+     * @param   str_
+     *          un string que mostrar en la consola para indicar que se está
+     *          pidiendo una entrada.
+     * @param   length_
+     *          longitud que debe tener la entrada.
+     *
+     * @return el string de texto introducido por la consola.
+     *
+     * @author Eduardo Ruiz Sabajanes
+     * </body>
+     */
+    public String getString(String str_, int length_) {
+        boolean run = true;
+        String str = "";
+        while (run) {
+            try {
+                System.out.print(str_);
+                str = this.read.readLine();
+                if (str.length() != length_){
+                    throw new RuntimeException("La longitud de la entrada debe ser de " + length_ + " caracteres");
+                }
+                run = false;
+            } catch (IOException | RuntimeException e) {
                 System.out.println(e);
             }
         }

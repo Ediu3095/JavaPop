@@ -3,6 +3,7 @@ package clases;
 import clases.utils.GuardarLeerObjetos;
 import clases.utils.EntradasPorConsola;
 import clases.utils.Searching;
+import java.time.LocalDateTime;
 import java.util.*;
 
 /**
@@ -12,13 +13,14 @@ import java.util.*;
  */
 public class Main {
 
-    /**<head>Esta función solicita un nombre de usuario, una contraseña y demás datos
-     * del usuario (nombre y appelidos,DNI,tarjeta de credito y codigo postal
-     * Comprueba que no exista un usuario ya creado con el nombre de usuario
-     * introducido</head>
+    /** <head>Esta función solicita un nombre de usuario, una contraseña y demás
+     * datos del usuario (nombre y appelidos,DNI,tarjeta de credito y codigo
+     * postal Comprueba que no exista un usuario ya creado con el nombre de
+     * usuario introducido</head>
      *
      * <body>
-     * <p>Se solicitara un correo al usuario hasta que se compruebe que el correo
+     * <p>
+     * Se solicitara un correo al usuario hasta que se compruebe que el correo
      * es válido y se esperará a que introduzca una contraseña que cumpla los
      * requisitos. Este proceso se repetirá hasta que se complete el registro o
      * el usuario salga de la funcion.</p>
@@ -109,12 +111,13 @@ public class Main {
         return arr;
     }
 
-    /**<head>Esta función pide a traves de la consola un usuario y una contraseña y
-     * comprueba si existe algún usuario que tenga esas credenciales en una
-     * lista de usuarios.</head>
+    /** <head>Esta función pide a traves de la consola un usuario y una
+     * contraseña y comprueba si existe algún usuario que tenga esas
+     * credenciales en una lista de usuarios.</head>
      *
      * <body>
-     * <p>La función pedirá un correo hasta que se introduzca un correo válido y
+     * <p>
+     * La función pedirá un correo hasta que se introduzca un correo válido y
      * después se pedirá una contraseña hasta que se introduzcauna contraseña
      * valida. Además se repetirá este proceso hasta que se introduzca la clave
      * de salida "qwerty" como correo o hasta que se den unos credenciales
@@ -158,7 +161,7 @@ public class Main {
 
                 // Si la contraseña es valida
                 if (read.checkClave(clave)) {
-                    if (correo.equals("admin@javapop.com") && clave.equals("admin")){
+                    if (correo.equals("admin@javapop.com") && clave.equals("admin")) {
                         arr.set(1, new Admin());
                         run_ = false;
                     } else {
@@ -178,7 +181,7 @@ public class Main {
                 if (run_) {
                     System.out.println("¡¡Usuario o clave incorrectos!!");
                 }
-            }else {
+            } else {
                 System.out.println("¡¡El correo no es valido!!");
             }
         }
@@ -191,7 +194,7 @@ public class Main {
         ArrayList<Cliente> usuarios = GuardarLeerObjetos.leerClientes();
         ArrayList<Producto> productos = GuardarLeerObjetos.leerProductos();
         ArrayList<Venta> ventas = GuardarLeerObjetos.leerVentas();
-
+        
         // Usuario que opera con la aplicaion
         Usuario user = new Cliente();
 
@@ -207,7 +210,7 @@ public class Main {
             // Estado 0: Elegir entre "inicio de sesion" y "registrarse"
             if (estado == 0) {
                 // Pedimos al usuario que seleccione una operacion a realizar
-                System.out.println("Estado 0:");
+                //System.out.println("Estado 0:");
                 System.out.println("¿Que operación desea realizar?\n"
                         + "1.- Iniciar sesion\n"
                         + "2.- Registrarse\n"
@@ -217,7 +220,7 @@ public class Main {
 
                 // Ejecutamos esa operacion
                 switch (operacion) {
-                    
+
                     case 1: // Realizar el "inicio de sesion"
                         returns = login(usuarios, read);
                         if ((boolean) returns.get(0)) {
@@ -226,12 +229,12 @@ public class Main {
                             user = (Usuario) returns.get(1);
                             if (user instanceof Admin) {
                                 estado = 1;
-                            } else if (user instanceof Cliente){
+                            } else if (user instanceof Cliente) {
                                 estado = 2;
                             }
                         }
                         break;
-                        
+
                     case 2:// Realizar el "registro de usuario"
                         returns = register(usuarios, read);
                         if (!(boolean) returns.get(0)) {
@@ -239,17 +242,16 @@ public class Main {
                             estado = 2;
                         }
                         break;
-                        
+
                     case 3:// Salimos del bucle principal
                         finalizar = true;
                         break;
                 }
-            }
-            // Estado 1: Menu principal del administrador
+            } // Estado 1: Menu principal del administrador
             else if (estado == 1) {
 
                 // Pedimos al usuario que seleccione una operacion a realizar
-                System.out.println("Estado 1:");
+                //System.out.println("Estado 1:");
                 System.out.println("¿Que operación desea realizar?\n"
                         + "1.- Consultar usuario\n"
                         + "2.- Consultar producto\n"
@@ -261,91 +263,112 @@ public class Main {
 
                 // Ejecutamos esa operacion
                 switch (operacion) {
-                    
+
                     case 1:// Consultar usuario
                         Admin.ConsultarUsuario(usuarios, read);
                         break;
-                        
+
                     case 2:// Consultar producto
                         Admin.ConsultarProducto(productos, read);
                         break;
-                        
-                    case 3:// 
-                        
 
+                    case 3:// 
+                        Admin.ConsultarVentas(ventas, read);
                         break;
-                        
+
                     case 4:// Saltamos al estado 0
                         estado = 0;
                         break;
-                        
+
                     case 5:// Salimos del bucle principal
                         finalizar = true;
                         break;
                 }
-            }
-            // Estado 2: Menu principal del cliente
+            } // Estado 2: Menu principal del cliente
             else if (estado == 2) {
                 // Pedimos al usuario que seleccione una operacion a realizar
-                System.out.println("Estado 2:");
-                ((Cliente)user).displayVentas();
+                //System.out.println("Estado 2:");
+                ((Cliente) user).displayVentas();
                 if (!(user instanceof Profesional)) {
                     System.out.println("¿Que operación desea realizar?\n"
                             + "1.- Comprar\n"
-                            + "2.- Dar de alta producto\n"
-                            + "3.- Mis productos\n"
-                            + "4.- Mejorar a licencia pro\n"
-                            + "5.- Cerrar sesión\n"
-                            + "6.- Salir");
+                            + "2.- Mis productos\n"
+                            + "3.- Mejorar a licencia pro\n"
+                            + "4.- Cerrar sesión\n"
+                            + "5.- Salir");
                 } else {
                     System.out.println("¿Que operación desea realizar?\n"
                             + "1.- Comprar\n"
-                            + "2.- Dar de alta producto\n"
-                            + "3.- Mis productos\n"
-                            + "4.- Renunciar licencia pro\n"
-                            + "5.- Cerrar sesión\n"
-                            + "6.- Salir");
+                            + "2.- Mis productos\n"
+                            + "3.- Renunciar licencia pro\n"
+                            + "4.- Cerrar sesión\n"
+                            + "5.- Salir");
                 }
-                operacion = read.getInt(">> ", 1, 6);
+                operacion = read.getInt(">> ", 1, 5);
 
                 // Ejecutamos esa operacion
                 switch (operacion) {
                     case 1:// Compra
-                        Searching.comprar((Cliente)user, productos, ventas, read);
+                        Searching.comprar((Cliente) user, productos, ventas, read);
                         break;
-                        
-                    case 2:// Dar de alta producto
-                        Cliente.altaProducto((Cliente)user, read, productos);
-                        break;
-                        
-                    case 3:// 
 
+                    case 2:// Mis productos
                         break;
-                        
-                    case 4:// 
 
+                    case 3:// Actualizar licencia pro
+                        if (user instanceof Profesional) {
+                            
+                        } else {
+                            ((Cliente)user).cobrar(5);
+                            usuarios.remove((Cliente)user);
+                            user = new Profesional((Cliente)user, read);
+                        }
                         break;
-                    
-                    case 5:// Saltamos al estado 0
+
+                    case 4:// Saltamos al estado 0
                         estado = 0;
                         break;
-                    
-                    case 6:// Salimos del bucle principal
+
+                    case 5:// Salimos del bucle principal
                         finalizar = true;
                         break;
                 }
+            } else if (estado == 3){
+                System.out.println("¿Que operación desea realizar?\n"
+                            + "1.- Editar productos\n"
+                            + "2.- Dar de alta producto\n"
+                            + "3.- Dar de baja producto\n"
+                            + "4.- Volver");
+                operacion = read.getInt(">> ", 1, 4);
+                
+                // Ejecutamos esa operacion
+                switch (operacion) {
+                    case 1:// Editar productos
+                        
+                        break;
+                    case 2:// Dar de alta producto
+                        Cliente.altaProducto((Cliente) user, read, productos);
+                        break;
+                    case 3:// Dar de baja producto
+                        
+                        break;
+                    case 4:
+                        estado = 2;
+                        break;
+                }
+                            
             }
         }
 
         for (int i = 0; i < usuarios.size(); i++) {
             System.out.println(usuarios.get(i).correo);
         }
-        
+
         // Final del programa: Guardamos la informacion de vuelta en los ficheros
         GuardarLeerObjetos.guardarClientes(usuarios);
         GuardarLeerObjetos.guardarProductos(productos);
         GuardarLeerObjetos.guardarVentas(ventas);
-        
+
     }
 
 }
