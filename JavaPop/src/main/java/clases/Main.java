@@ -318,11 +318,14 @@ public class Main {
 
                     case 3:// Actualizar licencia pro
                         if (user instanceof Profesional) {
-                            
+                            usuarios.remove((Profesional)user);
+                            user = new Cliente((Profesional)user);
+                            usuarios.add((Cliente)user);
                         } else {
                             ((Cliente)user).cobrar(30);
                             usuarios.remove((Cliente)user);
                             user = new Profesional((Cliente)user, read);
+                            usuarios.add((Profesional)user);
                         }
                         break;
 
