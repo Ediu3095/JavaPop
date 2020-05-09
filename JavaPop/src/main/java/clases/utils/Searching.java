@@ -9,33 +9,22 @@ import java.util.ArrayList;
  */
 public class Searching {
 
-    private static void swap(int[] arr, int a, int b){
-        int store = arr[a];
-        arr[a] = arr[b];
-        arr[b] = store;
+    public static void merge(ArrayList<Producto> arr, int index1, int index2) {
+
     }
 
-    private static int partition(int[] arr, int low, int high) {
-        int index = low;
-        for (int i = low; i<high; i++) {
-                if (arr[i]<arr[high]) {
-                        swap(arr, i, index);
-                        index++;
-                }
+    public static void sort(ArrayList<Producto> arr, int i, int j) {
+        if (i == j) {
+            
+        } else {
+            int middle = (i + j) / 2;
+
+            sort(arr, i, middle);
+            sort(arr, middle + 1, j);
         }
-        swap(arr, index, high);
-        return index;
+
     }
 
-    public static void quick_sort(int[] arr, int low, int high) {
-        int pivot;
-        if(low<high) {
-                pivot = partition(arr, low, high);
-                quick_sort(arr, low, pivot-1);
-                quick_sort(arr, pivot+1, high);
-        }
-    }
-    
     public static ArrayList<Producto> ordenarProductos(ArrayList<Producto> arr, String[] keyWords) {
         String[] productoActual;
         int[] coincidences = new int[arr.size()];

@@ -23,6 +23,9 @@ public class Producto implements Serializable{
     protected LocalDateTime fechaPublicacion;
     protected Cliente vendedor;
     protected boolean urgente;
+    
+    //Este atributo solo se utiliza en la busqueda de productos
+    public int matchDeg;
 
     public Producto(String titulo, String descripcion, Categoria categoria, Estado estado, double precio, Icon foto, Cliente vendedor, boolean urgente) {
         this.titulo = titulo;
@@ -34,6 +37,20 @@ public class Producto implements Serializable{
         this.fechaPublicacion = LocalDateTime.now();
         this.vendedor = vendedor;
         this.urgente = urgente;
+        this.matchDeg = 0;
+    }
+
+    public Producto() {
+        this.titulo = "";
+        this.descripcion = "";
+        this.categoria = Categoria.Consolas_y_videojuegos;
+        this.estado = Estado.Aceptable;
+        this.precio = 0;
+        this.foto = new ImageIcon();
+        this.fechaPublicacion = LocalDateTime.now();
+        this.vendedor = new Cliente();
+        this.urgente = false;
+        this.matchDeg = 0;
     }
 
     public String getTitulo() {
@@ -107,18 +124,4 @@ public class Producto implements Serializable{
     public void setUrgente(boolean urgente) {
         this.urgente = urgente;
     }
-    
-    public Producto() {
-        this.titulo = "";
-        this.descripcion = "";
-        this.categoria = Categoria.Consolas_y_videojuegos;
-        this.estado = Estado.Aceptable;
-        this.precio = 0;
-        this.foto = new ImageIcon();
-        this.fechaPublicacion = LocalDateTime.now();
-        this.vendedor = new Cliente();
-        this.urgente = false;
-    }
-
-
 }

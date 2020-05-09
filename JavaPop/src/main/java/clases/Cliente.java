@@ -21,7 +21,7 @@ public class Cliente extends Usuario implements Serializable {
     protected int ccpp;
     protected String ttcc;
     protected boolean profesional;
-
+    
     public Cliente() {
         this.correo = "";
         this.clave = "";
@@ -157,5 +157,9 @@ public class Cliente extends Usuario implements Serializable {
                 + "ccpp=" + ccpp + "\n"
                 + "ttcc=" + ttcc + "\n"
                 + "profesional=" + profesional;
-    } 
+    }
+    
+    public boolean equals(Cliente c){
+        return this.correo.equals(c.correo);
+    }
 }
