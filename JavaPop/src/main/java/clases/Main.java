@@ -2,6 +2,7 @@ package clases;
 
 import clases.utils.GuardarLeerObjetos;
 import clases.utils.EntradasPorConsola;
+import clases.utils.Searching;
 import java.util.*;
 
 /**
@@ -187,8 +188,9 @@ public class Main {
     public static void main(String[] args) {
 
         // Comienzo del programa: Recuperamos la informacion guardada en los ficheros
-        ArrayList<Cliente> usuarios = clases.utils.GuardarLeerObjetos.leerClientes();
-        ArrayList<Producto> productos = clases.utils.GuardarLeerObjetos.leerProductos();
+        ArrayList<Cliente> usuarios = GuardarLeerObjetos.leerClientes();
+        ArrayList<Producto> productos = GuardarLeerObjetos.leerProductos();
+        ArrayList<Venta> ventas = GuardarLeerObjetos.leerVentas();
 
         // Usuario que opera con la aplicaion
         Usuario user = new Cliente();
@@ -286,11 +288,12 @@ public class Main {
             else if (estado == 2) {
                 // Pedimos al usuario que seleccione una operacion a realizar
                 System.out.println("Estado 2:");
+                ((Cliente)user).displayVentas();
                 if (!(user instanceof Profesional)) {
                     System.out.println("¿Que operación desea realizar?\n"
                             + "1.- Comprar\n"
                             + "2.- Dar de alta producto\n"
-                            + "3.- Dar de baja producto\n"
+                            + "3.- Mis productos\n"
                             + "4.- Mejorar a licencia pro\n"
                             + "5.- Cerrar sesión\n"
                             + "6.- Salir");
@@ -298,7 +301,7 @@ public class Main {
                     System.out.println("¿Que operación desea realizar?\n"
                             + "1.- Comprar\n"
                             + "2.- Dar de alta producto\n"
-                            + "3.- Dar de baja producto\n"
+                            + "3.- Mis productos\n"
                             + "4.- Renunciar licencia pro\n"
                             + "5.- Cerrar sesión\n"
                             + "6.- Salir");
@@ -307,12 +310,12 @@ public class Main {
 
                 // Ejecutamos esa operacion
                 switch (operacion) {
-                    case 1:// 
-
+                    case 1:// Compra
+                        Searching.comprar((Cliente)user, productos, ventas, read);
                         break;
                         
                     case 2:// Dar de alta producto
-                        productos.add(Cliente.altaProducto((Cliente)user, read));
+                        Cliente.altaProducto((Cliente)user, read, productos);
                         break;
                         
                     case 3:// 
@@ -341,6 +344,7 @@ public class Main {
         // Final del programa: Guardamos la informacion de vuelta en los ficheros
         GuardarLeerObjetos.guardarClientes(usuarios);
         GuardarLeerObjetos.guardarProductos(productos);
+        GuardarLeerObjetos.guardarVentas(ventas);
         
     }
 

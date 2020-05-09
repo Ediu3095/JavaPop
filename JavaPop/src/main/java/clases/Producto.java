@@ -10,9 +10,10 @@ import clases.enumeradores.*;
 import java.io.Serializable;
 import javax.swing.Icon;
 import java.time.LocalDateTime;
+import java.util.Objects;
 import javax.swing.ImageIcon;
 
-public class Producto implements Serializable{
+public class Producto implements Serializable {
 
     protected String titulo;
     protected String descripcion;
@@ -23,7 +24,8 @@ public class Producto implements Serializable{
     protected LocalDateTime fechaPublicacion;
     protected Cliente vendedor;
     protected boolean urgente;
-    
+    protected LocalDateTime fechaUrgente;
+
     //Estos atributos solo se utilizan en la busqueda de productos
     public int matchDeg;
     public int lejania;
@@ -55,7 +57,7 @@ public class Producto implements Serializable{
         this.matchDeg = 0;
         this.lejania = 0;
     }
-    
+
     public Producto(int match, int lej) {
         this.titulo = "";
         this.descripcion = "";
@@ -138,12 +140,53 @@ public class Producto implements Serializable{
         return urgente;
     }
 
-    public void setUrgente(boolean urgente) {
-        this.urgente = urgente;
+    public void toggleUrgente(boolean urgente) {
+        if (!this.urgente){
+            this.urgente = true;
+            fechaUrgente = LocalDateTime.now();
+        }
     }
-    
+
     @Override
-    public String toString(){
+    public String toString() {
         return "matchDeg: " + this.matchDeg + " - lejania: " + this.lejania;
     }
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 89 * hash + Objects.hashCode(this.titulo);
+        hash = 89 * hash + Objects.hashCode(this.categoria);
+        hash = 89 * hash + Objects.hashCode(this.estado);
+        hash = 89 * hash + (int) (Double.doubleToLongBits(this.precio) ^ (Double.doubleToLongBits(this.precio) >>> 32));
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Producto other = (Producto) obj;
+        if (Double.doubleToLongBits(this.precio) != Double.doubleToLongBits(other.precio)) {
+            return false;
+        }
+        if (!Objects.equals(this.titulo, other.titulo)) {
+            return false;
+        }
+        if (this.categoria != other.categoria) {
+            return false;
+        }
+        if (this.estado != other.estado) {
+            return false;
+        }
+        return true;
+    }
+    
 }

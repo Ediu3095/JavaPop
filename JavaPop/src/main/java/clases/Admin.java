@@ -193,37 +193,7 @@ public class Admin extends Usuario implements Serializable {
         Categoria categoriaElegida = null;
 
         while (run_) {
-            System.out.println("Seleccionela categoría que desea comprobar:\n "
-                    + "1.- Salir\n"
-                    + "2.- Moda y accesorios\n"
-                    + "3.- Tv, audio y fotografía\n"
-                    + "4.- Moviles y telefonia\n"
-                    + "5.- Informatica y electronica\n"
-                    + "6.- Consolas y videojuegos\n"
-                    + "7.- Deporte y ocio");
-            categoria = read.getInt(">> ", 1, 11);
-            switch (categoria) {
-                case 1:// Salir 
-                    return;
-                case 2: //Moda y accesorios
-                    categoriaElegida = Categoria.Moda_y_accesorios;
-                    break;
-                case 3: // Tv, audio y fotográfia
-                    categoriaElegida = Categoria.Tv_audio_y_foto;
-                    break;
-                case 4: // Moviles y telefonia
-                    categoriaElegida = Categoria.Moviles_y_telefonia;
-                    break;
-                case 5: // Informatica y electronica
-                    categoriaElegida = Categoria.Informatica_y_electronica;
-                    break;
-                case 6: // Consolas y videojuegos
-                    categoriaElegida = Categoria.Consolas_y_videojuegos;
-                    break;
-                case 7: // Deporte y ocio
-                    categoriaElegida = Categoria.Deporte_y_ocio;
-                    break;
-            }
+            categoriaElegida = read.getCategoria(">> ");
             for (int i = 0; i < producto.size(); i++) {
                 if (producto.get(i).categoria.equals(categoriaElegida)) {
                     arr.add(producto.get(i));

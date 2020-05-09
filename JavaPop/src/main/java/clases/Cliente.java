@@ -3,7 +3,6 @@ package clases;
 import clases.utils.EntradasPorConsola;
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.awt.Image;
 import clases.enumeradores.*;
 import javax.swing.Icon;
 
@@ -13,25 +12,14 @@ import javax.swing.Icon;
  * @author Luis Miguel Sobrino Zamora
  */
 public class Cliente extends Usuario implements Serializable {
-// Datos
 
     protected ArrayList<Producto> productos;
+    protected ArrayList<Venta> ventasNuevas;
     protected String dni;
     protected String nombre;
     protected int ccpp;
     protected String ttcc;
     protected boolean profesional;
-    
-    public Cliente() {
-        this.correo = "";
-        this.clave = "";
-        this.dni = "";
-        this.nombre = "";
-        this.ccpp = 0;
-        this.ttcc = "";
-        this.productos = new ArrayList<>();
-        this.profesional = false;
-    }
     
     public Cliente(String correo, String clave, String dni, String nombre, int ccpp, String ttcc) {
         this.correo = correo;
@@ -40,6 +28,17 @@ public class Cliente extends Usuario implements Serializable {
         this.nombre = nombre;
         this.ccpp = ccpp;
         this.ttcc = ttcc;
+        this.productos = new ArrayList<>();
+        this.profesional = false;
+    }
+    
+    public Cliente() {
+        this.correo = "";
+        this.clave = "";
+        this.dni = "";
+        this.nombre = "";
+        this.ccpp = 0;
+        this.ttcc = "";
         this.productos = new ArrayList<>();
         this.profesional = false;
     }
@@ -88,6 +87,20 @@ public class Cliente extends Usuario implements Serializable {
         return this.productos;
     }
 
+    public ArrayList<Venta> getVentasNuevas() {
+        return ventasNuevas;
+    }
+
+    public void displayVentas(){
+        if (this.ventasNuevas.size() > 0){
+            System.out.println("Se vendieron algunos de tus productos!!");
+            for(int i = 0; i<this.ventasNuevas.size(); i++){
+                System.out.println(this.ventasNuevas.get(i));
+            }
+            this.ventasNuevas.clear();
+        }
+    }
+    
     /**<head>Esta función pide a traves de la consola todos los datos necesarios
      * para dar de alta un producto, como son el nombre, descripcion, categoria,
      * estado, precio y si la venta del producto es urgente o no.</head>
@@ -99,34 +112,35 @@ public class Cliente extends Usuario implements Serializable {
      * @param   read
      *          Es un objeto que se utiliza para pedir los inputs y
      *          comprobar si son correos o contraseñas validos.
-     * 
-     * @return  El objeto producto que se crea con los datos introducidos para
-     *          que se pueda guardar en la lista global de productos.
      *
      * @author  Eduardo Ruiz Sabajanes
      * </body>
      */
-    public static Producto altaProducto(Cliente user, EntradasPorConsola read){
-        System.out.println("Introduzca un título del producto: ");
+    public static void altaProducto(Cliente user, EntradasPorConsola read, ArrayList<Producto> productos){
+        System.out.println("Introduzca un título del producto(qwerty para volver atras): ");
         String titulo = read.getString(">> ");
-        System.out.println("Introduzca una descripción del producto: ");
-        String descripcion = read.getString(">> ");
-        Categoria categoria = read.getCategoria(">> ");
-        Estado estado = read.getEstado(">> ");
-        System.out.println("Introduzca un precio: ");
-        Double precio = read.getDouble(">> ",0 , Double.MAX_VALUE);
-        System.out.println("Introduzca la dirección en su ordenador de una foto del producto: ");
-        Icon imagen = read.getImage(">> ");
-        System.out.println("¿Quiere marcar la venta de este producto como urgente?\n"
-                + "1.- Si"
-                + "2.- No");
-        Boolean urgente = true;
-        if (read.getInt(">> ", 1, 2) == 2){
-            urgente = false;
+        if (!titulo.equals("qwerty")) {
+            System.out.println("Introduzca una descripción del producto: ");
+            String descripcion = read.getString(">> ");
+            Categoria categoria = read.getCategoria(">> ");
+            Estado estado = read.getEstado(">> ");
+            System.out.println("Introduzca un precio: ");
+            Double precio = read.getDouble(">> ",0 , Double.MAX_VALUE);
+            System.out.println("Introduzca la dirección en su ordenador de una foto del producto: ");
+            Icon imagen = read.getImage(">> ");
+            System.out.println("¿Quiere marcar la venta de este producto como urgente?\n"
+                    + "1.- Si"
+                    + "2.- No");
+            Boolean urgente = true;
+            if (read.getInt(">> ", 1, 2) == 2){
+                urgente = false;
+            }
+            Producto producto = new Producto(titulo, descripcion, categoria, estado, precio, imagen, user, urgente);
+            user.introducirProducto(producto);
+            if (!productos.contains(producto)){
+                productos.add(producto);
+            }
         }
-        Producto producto = new Producto(titulo, descripcion, categoria, estado, precio, imagen, user, urgente);
-        user.introducirProducto(producto);
-        return producto;
     }
     
     public String introducirProducto(Producto p) {
@@ -146,6 +160,10 @@ public class Cliente extends Usuario implements Serializable {
             return "El producto " + p + " ha sido retirado: ";
         }
     }
+    
+    public void cobrar(double precio){
+        // Something
+    }
 
     @Override
     public String toString() {
@@ -157,9 +175,5 @@ public class Cliente extends Usuario implements Serializable {
                 + "ccpp=" + ccpp + "\n"
                 + "ttcc=" + ttcc + "\n"
                 + "profesional=" + profesional;
-    }
-    
-    public boolean equals(Cliente c){
-        return this.correo.equals(c.correo);
     }
 }

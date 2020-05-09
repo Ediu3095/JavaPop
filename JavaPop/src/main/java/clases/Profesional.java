@@ -7,7 +7,7 @@ import java.io.Serializable;
  * @author Eduardo Ruiz Sabajanes
  * @author Luis Miguel Sobrino Zamora
  */
-public class Profesional extends Cliente implements Serializable {
+public final class Profesional extends Cliente implements Serializable {
 
     protected String descripcion;
     protected String horario;

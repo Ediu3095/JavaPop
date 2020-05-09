@@ -1,17 +1,16 @@
 package clases;
 
-/**
- *
- * @author Eduardo Ruiz Sabajanes
- * @author Luis Miguel Sobrino Zamora
- */
-import java.util.ArrayList;
 import java.io.Serializable;
 import clases.enumeradores.*;
 import javax.swing.Icon;
 import java.time.LocalDateTime;
 import javax.swing.ImageIcon;
 
+/**
+ *
+ * @author Eduardo Ruiz Sabajanes
+ * @author Luis Miguel Sobrino Zamora
+ */
 public class Venta implements Serializable {
 
     protected String vendedor;
@@ -23,19 +22,6 @@ public class Venta implements Serializable {
     protected LocalDateTime fechaVenta;
     protected double precio;
     protected String descripcion;
-
-    public Venta(String vendedor, String comprador, String titulo, Estado estado, Categoria categoria, Icon foto, LocalDateTime fechaPublicacion, double precio, String descripcion) {
-        this.vendedor = vendedor;
-        this.comprador = comprador;
-        this.titulo = titulo;
-        this.estado = estado;
-        this.categoria = categoria;
-        this.foto = foto;
-        this.fechaVenta = LocalDateTime.now();
-        this.precio = precio;
-        this.descripcion = descripcion;
-            
-    }
 
     public Venta(String comprador , Producto producto) {
         this.vendedor = producto.vendedor.correo;
