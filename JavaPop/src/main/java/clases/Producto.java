@@ -24,8 +24,9 @@ public class Producto implements Serializable{
     protected Cliente vendedor;
     protected boolean urgente;
     
-    //Este atributo solo se utiliza en la busqueda de productos
+    //Estos atributos solo se utilizan en la busqueda de productos
     public int matchDeg;
+    public int lejania;
 
     public Producto(String titulo, String descripcion, Categoria categoria, Estado estado, double precio, Icon foto, Cliente vendedor, boolean urgente) {
         this.titulo = titulo;
@@ -38,6 +39,7 @@ public class Producto implements Serializable{
         this.vendedor = vendedor;
         this.urgente = urgente;
         this.matchDeg = 0;
+        this.lejania = 0;
     }
 
     public Producto() {
@@ -51,6 +53,7 @@ public class Producto implements Serializable{
         this.vendedor = new Cliente();
         this.urgente = false;
         this.matchDeg = 0;
+        this.lejania = 0;
     }
 
     public String getTitulo() {
