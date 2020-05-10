@@ -21,7 +21,9 @@ public final class Profesional extends Cliente implements Serializable {
         super("", "", "", "", 0, "");
     }
 
-    /** <head> Crea una cuenta profesional a partir de un cliente</head>
+    /** <head>
+     * <p>
+     * Crea una cuenta profesional a partir de un cliente</p></head>
      *
      * <body>
      *
