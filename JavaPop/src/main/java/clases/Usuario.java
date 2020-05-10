@@ -1,16 +1,12 @@
 package clases;
 
-/**
- *
- * @author Eduardo Ruiz Sabajanes
- * @author Luis Miguel Sobrino Zamora
- */
 import java.io.Serializable;
 import java.util.Objects;
 
 /**
  *
- * @author Eduardo Ruiz Sabajanes y Luis Miguel Sobrino Zamora
+ * @author Eduardo Ruiz Sabajanes
+ * @author Luis Miguel Sobrino Zamora
  */
 public abstract class Usuario implements Serializable {
 

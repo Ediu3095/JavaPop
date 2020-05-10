@@ -173,6 +173,24 @@ public class Cliente extends Usuario implements Serializable {
                 + "\nttcc: " + ttcc;
     }
 
+    /**
+     * <p>
+     * Esta función proporciona al cliente un menú donde buscar productos
+     * ordenados alfabeticamente y le permite editar sus atributos como titulo, descripción
+     * categoría, estado, foto , precio o el activar el producto como urgente. </p>
+     *
+     * <p>
+     * Se solicitará al cliente el dato que decida editar y este se sustituirá
+     * por el antiguo que poseía el producto</p>
+     *
+     * @param producto Es la lista de usuarios en la que se hace la
+     * edición.
+     * @param read Es un objeto que se utiliza para pedir los inputs 
+     *
+     * @author Luis Miguel Sobrino Zamora
+     * 
+     */
+    
     public static void editarProducto(Cliente c, ArrayList<Producto> productosGlobal, ConsoleIO read) {
         Producto product = new Producto();
         ArrayList<Producto> producto = c.productos;

@@ -8,7 +8,6 @@ import javax.swing.ImageIcon;
 
 /**
  *
- * @author Eduardo Ruiz Sabajanes
  * @author Luis Miguel Sobrino Zamora
  */
 public class Venta implements Serializable {
