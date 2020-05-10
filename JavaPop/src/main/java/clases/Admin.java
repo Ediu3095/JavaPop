@@ -224,14 +224,13 @@ public class Admin extends Usuario implements Serializable {
         Categoria categoriaElegida;
         int seleccion;
 
-        while (run_) {
-            categoriaElegida = read.getCategoria(">> ");
-            for (int i = 0; i < producto.size(); i++) {
-                if (producto.get(i).getCategoria().equals(categoriaElegida)) {
-                    arr.add(producto.get(i));
-                }
+        categoriaElegida = read.getCategoria(">> ");
+        for (int i = 0; i < producto.size(); i++) {
+            if (producto.get(i).getCategoria().equals(categoriaElegida)) {
+                arr.add(producto.get(i));
             }
         }
+        
         while (run_) {
             System.out.println("Seleccione el producto que desea comprobar:\n"
                     + "1.- Pagina siguiente\n"
@@ -329,8 +328,6 @@ public class Admin extends Usuario implements Serializable {
         int posicionMin = 0;
         int posicionMax = 0;
         int seleccion;
-        boolean run__ = true;
-        int categoria = 0;
         ArrayList<Venta> arr = new ArrayList();
         Categoria categoriaElegida = null;
 
@@ -340,7 +337,7 @@ public class Admin extends Usuario implements Serializable {
                 arr.add(ventas.get(i));
             }
         }
-        while (run__) {
+        while (run_) {
             System.out.println("Seleccione la venta que desea comprobar:\n"
                     + "1.- Pagina siguiente\n"
                     + "2.- Pagina anterior\n"

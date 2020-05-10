@@ -199,14 +199,13 @@ public class Cliente extends Usuario implements Serializable {
         Categoria cat;
         int seleccion;
 
-        while (run_) {
-            cat = read.getCategoria(">> ");
-            for (int i = 0; i < productos.size(); i++) {
-                if (productos.get(i).getCategoria().equals(cat)) {
-                    arr.add(productos.get(i));
-                }
+        cat = read.getCategoria(">> ");
+        for (int i = 0; i < productos.size(); i++) {
+            if (productos.get(i).getCategoria().equals(cat)) {
+                arr.add(productos.get(i));
             }
         }
+            
         while (run_) {
             System.out.println("Seleccione el producto que desea editar:\n"
                     + "1.- Pagina siguiente\n"
