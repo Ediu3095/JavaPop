@@ -208,26 +208,25 @@ public class Admin extends Usuario implements Serializable {
      * Se solicitará al administrador el dato que decida editar y este se
      * sustituirá por el antiguo que poseía el producto</p>
      *
-     * @param producto Es la lista de usuarios en la que se hace la edición.
+     * @param productos Es la lista de usuarios en la que se hace la edición.
      * @param read Es un objeto que se utiliza para pedir los inputs
      *
      * @author Luis Miguel Sobrino Zamora
      *
      */
-    public static void ConsultarProducto(ArrayList<Producto> producto, ConsoleIO read) {
+    public static void ConsultarProducto(ArrayList<Producto> productos, ConsoleIO read) {
         ArrayList<Producto> arr = new ArrayList();
-        Producto product = new Producto();
+        Producto producto = new Producto();
         boolean run_ = true;
-        boolean run__ = true;
         int posicionMin = 0;
         int posicionMax = 0;
         Categoria categoriaElegida;
         int seleccion;
 
         categoriaElegida = read.getCategoria(">> ");
-        for (int i = 0; i < producto.size(); i++) {
-            if (producto.get(i).getCategoria().equals(categoriaElegida)) {
-                arr.add(producto.get(i));
+        for (int i = 0; i < productos.size(); i++) {
+            if (productos.get(i).getCategoria().equals(categoriaElegida)) {
+                arr.add(productos.get(i));
             }
         }
         
@@ -249,7 +248,7 @@ public class Admin extends Usuario implements Serializable {
             seleccion = read.getInt(">> ", 1, posicionMax - posicionMin + 4);
             if (seleccion == 1) {
                 posicionMin += 10;
-                if (posicionMin >= producto.size()) {
+                if (posicionMin >= productos.size()) {
                     posicionMin -= 10;
                 }
             } else if (seleccion == 2) {
@@ -260,13 +259,13 @@ public class Admin extends Usuario implements Serializable {
             } else if (seleccion == 3) {
                 return;
             } else {
-                product = arr.get(posicionMin + seleccion - 4);
+                producto = arr.get(posicionMin + seleccion - 4);
                 run_ = false;
             }
         }
         run_ = true;
         while (run_) {
-            System.out.println(product);
+            System.out.println(producto);
             System.out.println("Que operación desea realizar:\n"
                     + "1.- Salir\n"
                     + "2.- Editar titulo\n"
@@ -285,25 +284,25 @@ public class Admin extends Usuario implements Serializable {
                 case 2: //Editar titulo
                     System.out.println("Nuevo titulo del producto:");
                     String titulo = read.getString(">> ");
-                    product.setTitulo(titulo);
+                    producto.setTitulo(titulo);
                     break;
 
                 case 3: //Editar descripcion
                     System.out.println("Nueva descripción del producto:");
                     String descripcion = read.getString(">> ");
-                    product.setDescripcion(descripcion);
+                    producto.setDescripcion(descripcion);
                     break;
 
                 case 4: // Editar categoria
-                    product.categoria = read.getCategoria(">> ");
+                    producto.categoria = read.getCategoria(">> ");
                     break;
 
                 case 5: // Editar estado
-                    product.estado = read.getEstado(">> ");
+                    producto.estado = read.getEstado(">> ");
                     break;
 
                 case 6: //Eliminar foto
-                    product.foto = new ImageIcon("./resources/imagenes/White.jpeg");
+                    producto.foto = new ImageIcon("./resources/imagenes/White.jpeg");
                     break;
             }
         }

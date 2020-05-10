@@ -193,7 +193,6 @@ public class Cliente extends Usuario implements Serializable {
         ArrayList<Producto> arr = new ArrayList();
         Producto producto = new Producto();
         boolean run_ = true;
-        boolean run__ = true;
         int posicionMin = 0;
         int posicionMax = 0;
         Categoria cat;
@@ -242,6 +241,7 @@ public class Cliente extends Usuario implements Serializable {
         run_ = true;
         while (run_) {
             System.out.println(producto);
+            System.out.println("Urgente: " + producto.isUrgente());
             System.out.println("Que operación desea realizar:\n"
                     + "1.- Salir\n"
                     + "2.- Editar titulo\n"

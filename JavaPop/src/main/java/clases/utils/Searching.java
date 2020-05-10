@@ -31,26 +31,37 @@ public class Searching {
     public static void merge(ArrayList<Producto> arr, int i1, int i2, int j1, int j2) { // Incluir urgencia
         Producto aux;
         do {
-            if (arr.get(i1).matchDeg < arr.get(j1).matchDeg) {
-                aux = arr.get(j1);
-                arr.remove(j1);
-                arr.add(i1, aux);
-                i1++;
-                j1++;
-            } else if (arr.get(i1).matchDeg == arr.get(j1).matchDeg) {
-                if (arr.get(i1).lejania > arr.get(j1).lejania) {
+            if (arr.get(i1).isUrgente() == arr.get(j1).isUrgente()){
+                if (arr.get(i1).getMatchDeg() < arr.get(j1).getMatchDeg()) {
                     aux = arr.get(j1);
                     arr.remove(j1);
                     arr.add(i1, aux);
                     i1++;
                     j1++;
-                } else if (arr.get(i1).lejania <= arr.get(j1).lejania) {
+                } else if (arr.get(i1).getMatchDeg() == arr.get(j1).getMatchDeg()) {
+                    if (arr.get(i1).getLejania() > arr.get(j1).getLejania()) {
+                        aux = arr.get(j1);
+                        arr.remove(j1);
+                        arr.add(i1, aux);
+                        i1++;
+                        j1++;
+                    } else if (arr.get(i1).getLejania() <= arr.get(j1).getLejania()) {
+                        i1++;
+                    }
+                } else if (arr.get(i1).getMatchDeg() > arr.get(j1).getMatchDeg()) {
                     i1++;
                 }
-            } else if (arr.get(i1).matchDeg > arr.get(j1).matchDeg) {
+            } else if (arr.get(i1).isUrgente() && !arr.get(j1).isUrgente()){
                 i1++;
+            } else {
+                aux = arr.get(j1);
+                arr.remove(j1);
+                arr.add(i1, aux);
+                i1++;
+                j1++;
             }
         } while (i1 <= i2 && j1 <= j2);
+        
     }
 
     /**
@@ -102,17 +113,17 @@ public class Searching {
     public static void updateTags(Cliente user, Producto prod, String[] kWords) {
         String[] tWords = prod.getTitulo().split(" ");
 
-        prod.matchDeg = 0;
+        prod.setMatchDeg(0);
         if (user.getCCPP() > prod.getVendedor().getCCPP()) {
-            prod.lejania = user.getCCPP() - prod.getVendedor().getCCPP();
+            prod.setLejania(user.getCCPP() - prod.getVendedor().getCCPP());
         } else {
-            prod.lejania = prod.getVendedor().getCCPP() - user.getCCPP();
+            prod.setLejania(prod.getVendedor().getCCPP() - user.getCCPP());
         }
 
         for (int i = 0; i < tWords.length; i++) {
             for (int j = 0; j < kWords.length; j++) {
                 if (tWords[i].equals(kWords[j])) {
-                    prod.matchDeg++;
+                    prod.setMatchDeg(prod.getMatchDeg()+1);
                 }
             }
         }

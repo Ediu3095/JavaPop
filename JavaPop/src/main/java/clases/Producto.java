@@ -60,6 +60,22 @@ public class Producto implements Serializable {
         this.lejania = 0;
     }
 
+    public int getMatchDeg() {
+        return matchDeg;
+    }
+
+    public int getLejania() {
+        return lejania;
+    }
+
+    public void setMatchDeg(int matchDeg) {
+        this.matchDeg = matchDeg;
+    }
+
+    public void setLejania(int lejania) {
+        this.lejania = lejania;
+    }
+
     public String getTitulo() {
         return titulo;
     }
