@@ -4,6 +4,8 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 
 import clases.enumeradores.*;
+import java.util.regex.Pattern;
+import java.util.regex.Matcher;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.FileSystem;
@@ -16,7 +18,6 @@ import javax.swing.ImageIcon;
 /**
  *
  * @author Eduardo Ruiz Sabajanes
- * @author Luis Miguel Sobrino Zamora
  */
 public class ConsoleIO {
 
@@ -30,8 +31,8 @@ public class ConsoleIO {
 
     /**
      * <p>
-     * Recibe un String y comprueba que pueda ser un correo asegurandose de que
-     * tiene al menos un <b>@</b>, y un <b>.</b> después del <b>@</b>.</p>
+     * Recibe un String y lo compara con un pattern para comprobar que tenga
+     * formato de correo electronico.</p>
      *
      * @param str_ el string del que se va a comprobar el formato.
      *
@@ -39,56 +40,18 @@ public class ConsoleIO {
      * tiene.
      *
      * @author Eduardo Ruiz Sabajanes
-     *
      */
     public boolean checkCorreo(String str_) {
-        /*char[] correoChars;
-        int atCounter = 0;
-        int atPosition = 0;
-        correoChars = str_.toCharArray();
-        for (int i = 0; i < correoChars.length; i++) {
-            if (correoChars[i] == '@') {
-                atCounter++;
-                atPosition = i;
-            }
-        }
-        if (atCounter != 1) {
-            return false;
-        } else {
-            for (int i = ++atPosition; i < correoChars.length; i++) {
-                if (correoChars[i] == '.') {
-                    atCounter++;
-                    break;
-                }
-            }
-            if (atCounter == 1) {
-                return false;
-            } else {
-                return true;
-            }
-        }*/
-        String[] correo = str_.split("@");
-        if(correo.length != 2){
-            return false;
-        } else {
-            if(correo[0].length()<1 || correo[1].length()<1){
-                return false;
-            } else {
-                correo = correo[1].split(".");
-                for (String fragmento : correo) {
-                    if (fragmento.length() < 1) {
-                        return false;
-                    }
-                }
-            }
-        }
-        return true;
+        Pattern pattern = Pattern.compile("^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@"
+                + "[A-Za-z0-9-]+(\\.[A-Za-z0-9-]+)*(\\.[A-Za-z]{2,})$");
+        Matcher matcher_ = pattern.matcher(str_);
+        return matcher_.find();
     }
 
     /**
      * <p>
-     * Recibe un string y comprueba que solo tiene caracteres de entre una lista
-     * de caracteres permitidos para las contraseñas.</p>
+     * Recibe un string y comprueba que solo tiene letras y numeros (únicos
+     * caracteres permitidos para las contraseñas).</p>
      *
      * @param str_ el string del que se comprobaran los caracteres.
      *
@@ -97,31 +60,100 @@ public class ConsoleIO {
      * @author Eduardo Ruiz Sabajanes
      */
     public boolean checkClave(String str_) {
-        char[] validChars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890".toCharArray();
-        boolean valid = false;
-        for (int i = 0; i < str_.length(); i++) {
-            for (int j = 0; j < validChars.length; j++) {
-                if (str_.charAt(i) == validChars[j]) {
-                    valid = true;
-                    break;
-                }
-            }
-            if (!valid) {
-                break;
-            } else if (i != str_.length() - 1) {
-                valid = false;
-            }
-        }
-        return valid;
+        Pattern pattern = Pattern.compile("[A-Za-z0-9]{1,}");
+        Matcher matcher = pattern.matcher(str_);
+        return matcher.find();
     }
 
+    /**
+     * <p>
+     * Se pide un dni a traves de la consola y se comprueba que tenga formato de
+     * dni y que la letra sea la correspondiente a el número.</p>
+     *
+     * @param str_ un string que mostrar en la consola para indicar que se está
+     * pidiendo una entrada.
+     *
+     * @return el string introducido por consola como dni que haya cumplido las
+     * condiciones.
+     * 
+     * @author Eduardo Ruiz Sabajanes
+     */
+    public String getDNI(String str_) {
+        char[] letras = "TRWAGMYFPDXBNJZSQVHLCKE".toCharArray();
+        Pattern pattern = Pattern.compile("[0-9]{7,8}[A-Za-z]");
+        Matcher matcher_;
+        String DNI;
+        int NIE;
+        while (true) {
+            DNI = this.getString(str_, 9);
+            matcher_ = pattern.matcher(DNI);
+            if (matcher_.find()) {
+                NIE = Integer.parseInt(DNI.substring(0, 8));
+                if (DNI.charAt(8) == letras[NIE % 23]) {
+                    return DNI;
+                }
+            }
+        }
+    }
+
+    /**
+     * <p>
+     * Se pide un codigo postal a través de la consola y se comprueba que tenga
+     * el formato de uno.</p>
+     *
+     * @param str_ un string que mostrar en la consola para indicar que se está
+     * pidiendo una entrada.
+     *
+     * @return el entero introducido por consola como codigo postal que haya
+     * cumplido las condiciones.
+     * 
+     * @author Eduardo Ruiz Sabajanes
+     */
+    public int getCodigoPostal(String str_) {
+        Pattern pattern = Pattern.compile("[0-9]{5}");
+        Matcher matcher_;
+        String ccpp;
+        while (true) {
+            ccpp = this.getString(str_, 5);
+            matcher_ = pattern.matcher(ccpp);
+            if (matcher_.find()) {
+                return Integer.parseInt(ccpp);
+            }
+        }
+    }
+
+    /**
+     * <p>
+     * Se pide el número de una tarjeta de crédito a través de la consola y se
+     * comprueba que tenga el formato de uno.</p>
+     *
+     * @param str_ un string que mostrar en la consola para indicar que se está
+     * pidiendo una entrada.
+     *
+     * @return el string introducido por consola como numero de tarjeta de credito
+     * que haya cumplido las condiciones.
+     * 
+     * @author Eduardo Ruiz Sabajanes
+     */
+    public String getTarjetaCredito(String str_) {
+        Pattern pattern = Pattern.compile("[0-9]{16}");
+        Matcher matcher_;
+        String ttcc;
+        while (true) {
+            ttcc = this.getString(str_, 16);
+            matcher_ = pattern.matcher(ttcc);
+            if (matcher_.find()) {
+                return ttcc;
+            }
+        }
+    }
+    
     /**
      * <p>
      * Pide un string que se debe corresponder con el path de una foto, en el
      * caso de que la foto exista, la copia en <b>./resources/imagenes</b>
      * para poder acceder a ella más tarde aunque se borre la original y
-     * finalmente crea un objeto Icon de la imagen copiada y lo
-     * devuelve.</p>
+     * finalmente crea un objeto Icon de la imagen copiada y lo devuelve.</p>
      *
      * @param str_ un string que mostrar en la consola para indicar que se está
      * pidiendo una entrada.
@@ -247,8 +279,7 @@ public class ConsoleIO {
 
     /**
      * <p>
-     * Pide por consola un número entero hasta que este sea
-     * introducido.</p>
+     * Pide por consola un número entero hasta que este sea introducido.</p>
      *
      * @param str un string que mostrar en la consola para indicar que se está
      * pidiendo una entrada.
@@ -306,8 +337,7 @@ public class ConsoleIO {
 
     /**
      * <p>
-     * Pide por consola un número decimal hasta que este sea
-     * introducido.</p>
+     * Pide por consola un número decimal hasta que este sea introducido.</p>
      *
      * @param str un string que mostrar en la consola para indicar que se está
      * pidiendo una entrada.
@@ -391,8 +421,7 @@ public class ConsoleIO {
 
     /**
      * <p>
-     * Pide por consola una cadena de texto de una longitud
-     * determinada.</p>
+     * Pide por consola una cadena de texto de una longitud determinada.</p>
      *
      * @param str_ un string que mostrar en la consola para indicar que se está
      * pidiendo una entrada.
