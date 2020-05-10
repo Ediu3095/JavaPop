@@ -170,13 +170,23 @@ public class Searching {
 
         // Se pidan unas palabras clave
         System.out.println("Introduzca una cadena de palabras clave que buscar:");
-        keyWords = read.getString(">>").split(" ");
+        String kW = read.getString(">>");
+        keyWords = kW.split(" ");
 
         // Se actualizan los parametros de busqueda de los productos
         for (int i = 0; i < prodDefinitivo.size(); i++) {
             updateTags(user, prodDefinitivo.get(i), keyWords);
         }
-
+        
+        if (!kW.equals("")){
+            for (int i = 0; i<prodDefinitivo.size(); i++){
+                if (prodDefinitivo.get(i).getMatchDeg() == 0){
+                    prodDefinitivo.remove(i);
+                    i--;
+                }
+            }
+        }
+        
         // Se organizan los productos
         sort(prodDefinitivo, 0, prodDefinitivo.size() - 1);
 

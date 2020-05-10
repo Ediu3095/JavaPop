@@ -33,18 +33,16 @@ public class Admin extends Usuario implements Serializable {
      * @param read Es un objeto que se utiliza para pedir los inputs
      *
      * @author Luis Miguel Sobrino Zamora
-     *
+     * 
      */
     public static void ConsultarUsuario(ArrayList<Cliente> usuarios, ConsoleIO read) {
-
-        boolean run__ = true;
         boolean run_ = true;
         Cliente usuario = new Cliente();
         Profesional usuarioPro = new Profesional();
         int posicionMin = 0;
         int posicionMax = 0;
+        boolean run__;
         int seleccion;
-        String dato;
 
         while (run_) {
             System.out.println("Seleccione el correo de usuario que desea comprobar:\n"
@@ -54,7 +52,7 @@ public class Admin extends Usuario implements Serializable {
             for (int i = 1; i <= 10; i++) {
                 posicionMax = posicionMin + i - 1;
                 if (posicionMax < usuarios.size()) {
-                    System.out.println((i + 3) + ".- " + usuarios.get(posicionMax).correo);
+                    System.out.println((i + 3) + ".- " + usuarios.get(posicionMax).getCorreo());
                 } else {
                     posicionMax--;
                     break;
@@ -62,19 +60,19 @@ public class Admin extends Usuario implements Serializable {
             }
 
             seleccion = read.getInt(">> ", 1, posicionMax - posicionMin + 4);
-            if (seleccion == 1) {
+            if (seleccion == 1) { // Siguiente pagina 
                 posicionMin += 10;
                 if (posicionMin >= usuarios.size()) {
                     posicionMin -= 10;
                 }
-            } else if (seleccion == 2) {
+            } else if (seleccion == 2) { // Pagina anterior
                 posicionMin -= 10;
                 if (posicionMin <= 0) {
                     posicionMin += 10;
                 }
-            } else if (seleccion == 3) {
+            } else if (seleccion == 3) { // Salir
                 return;
-            } else {
+            } else { // Seleccionar un usuario
                 usuario = usuarios.get(posicionMin + seleccion - 4);
                 run_ = false;
             }
@@ -238,7 +236,7 @@ public class Admin extends Usuario implements Serializable {
             for (int i = 1; i <= 10; i++) {
                 posicionMax = posicionMin + i - 1;
                 if (posicionMax < arr.size()) {
-                    System.out.println((i + 3) + ".- " + arr.get(posicionMax).titulo);
+                    System.out.println((i + 3) + ".- " + arr.get(posicionMax).getTitulo());
                 } else {
                     posicionMax--;
                     break;
@@ -246,19 +244,19 @@ public class Admin extends Usuario implements Serializable {
             }
 
             seleccion = read.getInt(">> ", 1, posicionMax - posicionMin + 4);
-            if (seleccion == 1) {
+            if (seleccion == 1) { // Siguiente pagina
                 posicionMin += 10;
                 if (posicionMin >= productos.size()) {
                     posicionMin -= 10;
                 }
-            } else if (seleccion == 2) {
+            } else if (seleccion == 2) { // Pagina anterior
                 posicionMin -= 10;
                 if (posicionMin <= 0) {
                     posicionMin += 10;
                 }
-            } else if (seleccion == 3) {
+            } else if (seleccion == 3) { // Salir
                 return;
-            } else {
+            } else { // Seleccionar un producto
                 producto = arr.get(posicionMin + seleccion - 4);
                 run_ = false;
             }
