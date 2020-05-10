@@ -381,9 +381,9 @@ public class Main {
             }
         }
 
-        for (int i = 0; i < usuarios.size(); i++) {
-            System.out.println(usuarios.get(i).correo);
-        }
+        /*for (int i = 0; i < usuarios.size(); i++) {
+            System.out.println(usuarios.get(i).getCorreo());
+        }*/
 
         // Final del programa: Guardamos la informacion de vuelta en los ficheros
         IOCustomLib.guardarClientes(usuarios);

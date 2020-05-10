@@ -240,7 +240,7 @@ public class Admin extends Usuario implements Serializable {
                         + "3.- Salir");
                 for (int i = 1; i <= 10; i++) {
                     posicionMax = posicionMin + i - 1;
-                    if (posicionMax < producto.size()) {
+                    if (posicionMax < arr.size()) {
                         System.out.println((i + 3) + ".- " + arr.get(posicionMax).titulo);
                     } else {
                         posicionMax--;
@@ -351,7 +351,7 @@ public class Admin extends Usuario implements Serializable {
                         + "3.- Salir");
                 for (int i = 1; i <= 10; i++) {
                     posicionMax = posicionMin + i - 1;
-                    if (posicionMax < ventas.size()) {
+                    if (posicionMax < arr.size()) {
                         System.out.println((i + 3) + ".- "
                                 + arr.get(posicionMax).getComprador()
                                 + " " + arr.get(posicionMax).getFechaVenta());
