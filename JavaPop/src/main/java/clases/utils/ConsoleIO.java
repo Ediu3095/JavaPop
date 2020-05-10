@@ -167,16 +167,18 @@ public class ConsoleIO {
         File imgFolder = new File("./resources/imagenes/");
         String address;
         String newAddress = "./resources/imagenes/";
+        newAddress += imgFolder.listFiles().length + "_";
         while (run) {
             System.out.println("Introduzca la dirección en su ordenador de una imagen del producto:\n"
                     + "(La separación entre carpetas se indicará con /)\n"
                     + "(Indicar el formato de la imagen con .jpg, .png ...)");
             address = this.getString(str_);
-            newAddress += imgFolder.listFiles().length + "_";
             try {
                 File imagen = new File(address);
                 if (!imagen.exists()) {
                     throw new RuntimeException("La foto no existe");
+                } else if (imagen.isDirectory()){
+                    throw new RuntimeException("Lo que se introdujo no es una foto");
                 }
                 newAddress += imagen.getName();
                 Files.copy(this.fileSys.getPath(address), this.fileSys.getPath(newAddress), REPLACE_EXISTING);

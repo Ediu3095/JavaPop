@@ -282,15 +282,15 @@ public class Main {
                 // Ejecutamos esa operacion
                 switch (operacion) {
 
-                    case 1:// Consultar usuario
+                    case 1:// Consultar usuarios
                         Admin.ConsultarUsuario(usuarios, read);
                         break;
 
-                    case 2:// Consultar producto
+                    case 2:// Consultar productos
                         Admin.ConsultarProducto(productos, read);
                         break;
 
-                    case 3:// 
+                    case 3:// Consultar ventas
                         Admin.ConsultarVentas(ventas, read);
                         break;
 
@@ -306,7 +306,7 @@ public class Main {
             else if (estado == 2) {
                 // Pedimos al usuario que seleccione una operacion a realizar
                 //System.out.println("Estado 2:");
-                //((Cliente)user).displayVentas();
+                ((Cliente)user).displayVentas();
                 if (!(user instanceof Profesional)) {
                     System.out.println("¿Que operación desea realizar?\n"
                             + "1.- Comprar\n"
@@ -370,11 +370,10 @@ public class Main {
                     case 2:// Dar de alta producto
                         Cliente.altaProducto((Cliente) user, read, productos);
                         break;
-                    case 3:
+                    case 3:// Volver al estado 2
                         estado = 2;
                         break;
                 }
-
             }
         }
 
