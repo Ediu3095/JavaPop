@@ -15,6 +15,7 @@ public class Cliente extends Usuario implements Serializable {
 
     protected ArrayList<Producto> productos;
     protected ArrayList<Venta> ventasNuevas;
+    protected ArrayList<Venta> comprasConfirmadas;
     protected String dni;
     protected String nombre;
     protected int ccpp;
@@ -40,6 +41,7 @@ public class Cliente extends Usuario implements Serializable {
         this.ttcc = ttcc;
         this.productos = new ArrayList(0);
         this.ventasNuevas = new ArrayList(0);
+        this.comprasConfirmadas = new ArrayList(0);
     }
 
     public Cliente() {
@@ -51,6 +53,19 @@ public class Cliente extends Usuario implements Serializable {
         this.ttcc = "";
         this.productos = new ArrayList(0);
         this.ventasNuevas = new ArrayList(0);
+        this.comprasConfirmadas = new ArrayList(0);
+    }
+
+    public ArrayList<Venta> getComprasConfirmadas() {
+        return comprasConfirmadas;
+    }
+
+    public int getCcpp() {
+        return ccpp;
+    }
+
+    public String getTtcc() {
+        return ttcc;
     }
 
     public String getDni() {

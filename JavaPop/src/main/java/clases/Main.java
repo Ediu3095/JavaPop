@@ -303,9 +303,11 @@ public class Main {
                         break;
                 }
             }
-            // Estado 2: Comprobar ventas nuevas del cliente
+            // Estado 2: Comprobar ventas nuevas y compras confirmadas del cliente
             else if (estado == 2){
                 // System.out.println("Estado 2:");
+                
+                // Confirmacion de solicitudes de compra de productos propios
                 for (Venta venta : ((Cliente) user).getVentasNuevas()) {
                     System.out.println("Le desean comprar el siguiente producto:");
                     System.out.println(venta);
@@ -320,6 +322,7 @@ public class Main {
                             ((Cliente) user).ingresar(venta.getProducto().getPrecio()); // Realizamos el ingreso al vendedor
                             productos.remove(venta.getProducto()); // Eliminamos el producto de la lista global de productos
                             ((Cliente) user).getProductos().remove(venta.getProducto()); // Eliminamos el producto de la lista de productos del vendedor
+                            venta.getComprador().getComprasConfirmadas().add(venta);
                             break;
                             
                         case 2: //Eliminar venta (No hacemos nada)
@@ -327,6 +330,14 @@ public class Main {
                     }
                 }
                 ((Cliente) user).getVentasNuevas().clear(); // Limpiamos la lista de ventas nuevas del usuario
+                
+                // Notificación de solicitudes de compra confirmadas
+                for (Venta venta : ((Cliente) user).getComprasConfirmadas()) {
+                    System.out.println("Se confirmó la compra del siguiente producto:");
+                    System.out.println(venta);
+                }
+                
+                ((Cliente) user).getComprasConfirmadas().clear(); // Limpiamos la lista de compras confirmadas del usuario
                 estado = 3; // Vamos al menú principal de clientes
             }
             // Estado 3: Menu principal del cliente
