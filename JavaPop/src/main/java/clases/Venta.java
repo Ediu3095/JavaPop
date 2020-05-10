@@ -121,7 +121,15 @@ public class Venta implements Serializable {
 
     @Override
     public String toString() {
-        return "Venta{" + "vendedor=" + vendedor + ", comprador=" + comprador + ", titulo=" + titulo + ", estado=" + estado + ", categoria=" + categoria + ", foto=" + foto + ", fechaVenta=" + fechaVenta + ", precio=" + precio + ", descripcion=" + descripcion + '}';
+        return "Venta{" + "vendedor: " + vendedor
+                + "\ncomprador: " + comprador
+                + "\ntitulo: " + titulo
+                + "\nestado: " + estado
+                + "\ncategoria: " + categoria
+                + "\nfoto: " + foto
+                + "\nfechaVenta: " + fechaVenta
+                + "\nprecio: " + precio
+                + "\ndescripcion: " + descripcion + '}';
     }
 
 }

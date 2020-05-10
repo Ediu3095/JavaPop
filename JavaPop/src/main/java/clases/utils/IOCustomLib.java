@@ -20,20 +20,15 @@ import java.util.ArrayList;
  */
 public class IOCustomLib {
 
-    /** <head>
+    /**
      * <p>
      * La función crea el fichero <b>ventas.dat</b> en el directorio
      * <b>./resources/datFiles</b>.</p>
      *
      * <p>
-     * Esta solamente es llamada en el caso de que el archivo no
-     * exista.</p></head>
-     *
-     * <body>
-     *
+     * Esta solamente es llamada en el caso de que el archivo no exista.</p>
      *
      * @author Luis Miguel Sobrino Zamora
-     * </body>
      */
     private static void crearVentasDat() {
         try {
@@ -47,21 +42,15 @@ public class IOCustomLib {
         }
     }
 
-    /** <head>
+    /**
      * <p>
      * La función crea el fichero <b>clientes.dat</b> en el directorio
      * <b>./resources/datFiles</b>.</p>
      *
      * <p>
-     * Esta solamente es llamada en el caso de que el archivo no
-     * exista.</p></head>
-     *
-     * <body>
-     * <p>
      * Esta solamente es llamada en el caso de que el archivo no exista.</p>
      *
      * @author Eduardo Ruiz Sabajanes
-     * </body>
      */
     private static void crearClientesDat() {
         try {
@@ -75,21 +64,15 @@ public class IOCustomLib {
         }
     }
 
-    /** <head>
+    /**
      * <p>
      * La función crea el fichero <b>productos.dat</b> en el directorio
      * <b>./resources/datFiles</b>.</p>
      *
      * <p>
-     * Esta solamente es llamada en el caso de que el archivo no
-     * exista.</p></head>
-     *
-     * <body>
-     * <p>
      * Esta solamente es llamada en el caso de que el archivo no exista.</p>
      *
      * @author Eduardo Ruiz Sabajanes
-     * </body>
      */
     private static void crearProductosDat() {
         try {
@@ -103,7 +86,7 @@ public class IOCustomLib {
         }
     }
 
-    /** <head>
+    /**
      * <p>
      * La función reescribe el fichero <b>ventas.dat</b> para que almacene los
      * datos de una lista de ventas que pasaremos como parametro, de forma que
@@ -114,15 +97,12 @@ public class IOCustomLib {
      * Las ventas se almacenan de una en una de forma que en la lectura también
      * se leeran las ventas como objetos independientes y se deberan volver a
      * almacenar en alguna estructura de datos para su manejo en el
-     * programa.</p></head>
-     *
-     * <body>
+     * programa.</p>
      *
      * @param saleList El ArrayList que contiene las ventas que se han de
      * guardar para la proxima ejecución del programa.
      *
      * @author Luis Miguel Sobrino Zamora
-     * </body>
      */
     public static void guardarVentas(ArrayList<Venta> saleList) {
         try {
@@ -138,7 +118,7 @@ public class IOCustomLib {
         }
     }
 
-    /** <head>
+    /**
      * <p>
      * La función reescribe el fichero <b>clientes.dat</b> para que almacene los
      * datos de una lista de clientes que pasaremos como parametro, de forma que
@@ -149,16 +129,12 @@ public class IOCustomLib {
      * Los clientes se almacenan de uno en uno de forma que en la lectura
      * también se leeran los clientes como objetos independientes y se deberan
      * volver a almacenar en alguna estructura de datos para su manejo en el
-     * programa.</p></head>
-     *
-     * <body>
-     *
+     * programa.</p>
      *
      * @param userList El ArrayList que contiene los clientes que se han de
      * guardar para la proxima ejecución del programa.
      *
      * @author Eduardo Ruiz Sabajanes
-     * </body>
      */
     public static void guardarClientes(ArrayList<Cliente> userList) {
         try {
@@ -174,7 +150,7 @@ public class IOCustomLib {
         }
     }
 
-    /** <head>
+    /**
      * <p>
      * La función reescribe el fichero <b>productos.dat</b> para que almacene
      * los datos de una lista de productos que pasaremos como parametro, de
@@ -185,15 +161,12 @@ public class IOCustomLib {
      * Los productos se almacenan de uno en uno de forma que en la lectura
      * también se leeran los productos como objetos independientes y se deberan
      * volver a almacenar en alguna estructura de datos para su manejo en el
-     * programa.</p></head>
-     *
-     * <body>
+     * programa.</p>
      *
      * @param productList El ArrayList que contiene los productos que se han de
      * guardar para la proxima ejecución del programa.
      *
      * @author Eduardo Ruiz Sabajanes
-     * </body>
      */
     public static void guardarProductos(ArrayList<Producto> productList) {
         try {
@@ -209,18 +182,15 @@ public class IOCustomLib {
         }
     }
 
-    /** <head>
+    /**
      * <p>
      * La función lee el fichero <b>ventas.dat</b> y almacena las ventas leídas
-     * en una ArrayList de ventas que devolveremos.</p></head>
-     *
-     * <body>
+     * en una ArrayList de ventas que devolveremos.</p>
      *
      * @return Un <b>ArrayList</b> con todos las ventas almacenadas en el
      * fichero <b>ventas.dat</b>
      *
      * @author Luis Miguel Sobrino
-     * </body>
      */
     public static ArrayList<Venta> leerVentas() {
         ArrayList<Venta> ventas = new ArrayList();
@@ -254,18 +224,15 @@ public class IOCustomLib {
         return ventas;
     }
 
-    /** <head>
+    /**
      * <p>
      * La función lee el fichero <b>clientes.dat</b> y almacena los clientes
-     * leídos en una ArrayList de clientes que devolveremos.</p></head>
-     *
-     * <body>
+     * leídos en una ArrayList de clientes que devolveremos.</p>
      *
      * @return Un <b>ArrayList</b> con todos los clientes almacenados en el
      * fichero <b>clientes.dat</b>
      *
      * @author Eduardo Ruiz Sabajanes
-     * </body>
      */
     public static ArrayList<Cliente> leerClientes() {
         ArrayList<Cliente> clientes = new ArrayList();
@@ -299,18 +266,15 @@ public class IOCustomLib {
         return clientes;
     }
 
-    /** <head>
+    /**
      * <p>
      * La función lee el fichero <b>productos.dat</b> y almacena los clientes
-     * leídos en una ArrayList de productos que devolveremos.</p></head>
-     *
-     * <body>
+     * leídos en una ArrayList de productos que devolveremos.</p>
      *
      * @return Un <b>ArrayList</b> con todos los productos almacenados en el
      * fichero <b>productos.dat</b>
      *
      * @author Eduardo Ruiz Sabajanes
-     * </body>
      */
     public static ArrayList<Producto> leerProductos() {
         ArrayList<Producto> productList = new ArrayList();

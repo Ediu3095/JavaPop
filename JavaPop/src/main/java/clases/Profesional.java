@@ -21,18 +21,15 @@ public final class Profesional extends Cliente implements Serializable {
         super("", "", "", "", 0, "");
     }
 
-    /** <head>
+    /**
      * <p>
-     * Crea una cuenta profesional a partir de un cliente</p></head>
-     *
-     * <body>
+     * Crea una cuenta profesional a partir de un cliente</p>
      *
      * @param c el cliente del que nace esta cuenta profesional
      * @param read un objeto utilizado para pedirle entradas por consola al
      * usuario
      *
      * @author Eduardo Ruiz Sabajanes
-     * </body>
      */
     public Profesional(Cliente c, ConsoleIO read) {
         super(c.correo, c.clave, c.dni, c.nombre, c.ccpp, c.ttcc);

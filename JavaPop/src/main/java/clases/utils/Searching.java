@@ -12,15 +12,13 @@ import java.util.ArrayList;
  */
 public class Searching {
 
-    /** <head>
+    /**
      * <p>
      * Fusiona los elementos de 2 "sublistas" (indicamos las sublistas a través
      * de 2 index que marcan el inicio y el final de la sublista) de forma que
      * queden organizados <b>de mayor a menor grado de coincidencia</b> (o
      * matchDeg) y <b>de menor a mayor distancia</b> (para los elementos con el
-     * mismo grado de coincidencia).</p></head>
-     *
-     * <body>
+     * mismo grado de coincidencia).</p>
      *
      * @param arr ArrayList de productos que ordenar
      * @param i1 index que marca el principio del primer grupo que fusionar
@@ -29,7 +27,6 @@ public class Searching {
      * @param j2 index que marca el final del segundo grupo que fusionar
      *
      * @author Eduardo Ruiz Sabajanes
-     * </body>
      */
     public static void merge(ArrayList<Producto> arr, int i1, int i2, int j1, int j2) { // Incluir urgencia
         Producto aux;
@@ -56,20 +53,17 @@ public class Searching {
         } while (i1 <= i2 && j1 <= j2);
     }
 
-    /** <head>
+    /**
      * <p>
      * Ordena la primera mitad de la sublista y luego ordena la segunda mitad de
      * la sublista para finalmente fusionarlas dando lugar a una lista
-     * ordenada.</p></head>
-     *
-     * <body>
+     * ordenada.</p>
      *
      * @param arr ArrayList de productos que ordenar
      * @param i index que marca el principio de la sublista que ordenar
      * @param j index que marca el final de la sublista que ordenar
      *
      * @author Eduardo Ruiz Sabajanes
-     * </body>
      */
     public static void sort(ArrayList<Producto> arr, int i, int j) {
         if (!(i == j) && arr.size() > 0) {
@@ -82,7 +76,7 @@ public class Searching {
         }
     }
 
-    /** <head>
+    /**
      * <p>
      * Actualiza el grado de coincidencia (o matchDeg) con respecto a un array
      * de palabras clave y la lejanía de un producto con respecto a un
@@ -94,9 +88,7 @@ public class Searching {
      *
      * <p>
      * La lejanía es el valor absoluto de la diferencia entre el codigo postal
-     * del vendedor y el codigo postal del comprador.</p></head>
-     *
-     * <body>
+     * del vendedor y el codigo postal del comprador.</p>
      *
      * @param user usuario que está comprando productos con respecto al cual se
      * actualiza la lejanía
@@ -106,7 +98,6 @@ public class Searching {
      * grado de coincidencia
      *
      * @author Eduardo Ruiz Sabajanes
-     * </body>
      */
     public static void updateTags(Cliente user, Producto prod, String[] kWords) {
         String[] tWords = prod.getTitulo().split(" ");
@@ -127,7 +118,7 @@ public class Searching {
         }
     }
 
-    /** <head><p>
+    /**<p>
      * Se le pide por consola al usuario que introduzca una categoría y unas
      * palabras clave y se le muestran todos los productos de dicha categoría en
      * orden decreciente de coincidencia con esas palabras clave primero y en
@@ -137,9 +128,7 @@ public class Searching {
      * Los productos se muestran en grupos de diez a través de los cuales el
      * usuario puede navegar y además se puede seleccionar un producto tras lo
      * cual se le dará la opción al cliente de comprar el producto o de salir de
-     * la busqueda de productos.</p></head>
-     *
-     * <body>
+     * la busqueda de productos.</p>
      *
      * @param user el usuario que va a efectuar la compra
      * @param productos la lista global de productos
@@ -147,7 +136,6 @@ public class Searching {
      * @param read un objeto para pedir entradas por consola al usuario
      *
      * @author Eduardo Ruiz Sabajanes
-     * </body>
      */
     public static void comprar(Cliente user, ArrayList<Producto> productos, ArrayList<Venta> ventas, ConsoleIO read) {
         ArrayList<Producto> prodDefinitivo = new ArrayList();

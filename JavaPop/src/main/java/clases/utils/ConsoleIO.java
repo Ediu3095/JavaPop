@@ -85,19 +85,16 @@ public class ConsoleIO {
         return true;
     }
 
-    /** <head>
+    /**
      * <p>
      * Recibe un string y comprueba que solo tiene caracteres de entre una lista
-     * de caracteres permitidos para las contraseñas.</p></head>
-     *
-     * <body>
+     * de caracteres permitidos para las contraseñas.</p>
      *
      * @param str_ el string del que se comprobaran los caracteres.
      *
      * @return verdadero si no tiene caracteres prohibidos y falso si los tiene.
      *
      * @author Eduardo Ruiz Sabajanes
-     * </body>
      */
     public boolean checkClave(String str_) {
         char[] validChars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890".toCharArray();
@@ -118,15 +115,13 @@ public class ConsoleIO {
         return valid;
     }
 
-    /** <head>
+    /**
      * <p>
      * Pide un string que se debe corresponder con el path de una foto, en el
      * caso de que la foto exista, la copia en <b>./resources/imagenes</b>
      * para poder acceder a ella más tarde aunque se borre la original y
      * finalmente crea un objeto Icon de la imagen copiada y lo
-     * devuelve.</p></head>
-     *
-     * <body>
+     * devuelve.</p>
      *
      * @param str_ un string que mostrar en la consola para indicar que se está
      * pidiendo una entrada.
@@ -134,7 +129,6 @@ public class ConsoleIO {
      * @return un objeto de la clase <i>Icon</i>.
      *
      * @author Eduardo Ruiz Sabajanes
-     * </body>
      */
     public Icon getImage(String str_) {
         boolean run = true;
@@ -165,12 +159,10 @@ public class ConsoleIO {
         return icon;
     }
 
-    /** <head>
+    /**
      * <p>
      * Pide un numero del 1 al 5 que se corresponda con alguno de los estados
-     * enumeradas previamente en la consola.</p></head>
-     *
-     * <body>
+     * enumeradas previamente en la consola.</p>
      *
      * @param str_ un string que mostrar en la consola para indicar que se está
      * pidiendo una entrada.
@@ -178,7 +170,6 @@ public class ConsoleIO {
      * @return un estado del enum Estado.
      *
      * @author Eduardo Ruiz Sabajanes
-     * </body>
      */
     public Estado getEstado(String str_) {
         Estado estado = Estado.Bueno;
@@ -209,12 +200,10 @@ public class ConsoleIO {
         return estado;
     }
 
-    /** <head>
+    /**
      * <p>
      * Pide un numero del 1 al 6 que se corresponda con alguna de las categorías
-     * enumeradas previamente en la consola.</p></head>
-     *
-     * <body>
+     * enumeradas previamente en la consola.</p>
      *
      * @param str_ un string que mostrar en la consola para indicar que se está
      * pidiendo una entrada.
@@ -222,7 +211,6 @@ public class ConsoleIO {
      * @return una categoría del enum Categoria.
      *
      * @author Eduardo Ruiz Sabajanes
-     * </body>
      */
     public Categoria getCategoria(String str_) {
         Categoria categoria = Categoria.Moda_y_accesorios;
@@ -257,12 +245,10 @@ public class ConsoleIO {
         return categoria;
     }
 
-    /** <head>
+    /**
      * <p>
      * Pide por consola un número entero hasta que este sea
-     * introducido.</p></head>
-     *
-     * <body>
+     * introducido.</p>
      *
      * @param str un string que mostrar en la consola para indicar que se está
      * pidiendo una entrada.
@@ -270,7 +256,6 @@ public class ConsoleIO {
      * @return el número entero introducido por consola.
      *
      * @author Eduardo Ruiz Sabajanes
-     * </body>
      */
     public int getInt(String str) {
         boolean run = true;
@@ -287,12 +272,10 @@ public class ConsoleIO {
         return num;
     }
 
-    /** <head>
+    /**
      * <p>
      * Pide por consola un número entero que se encuente entre dos limites (o en
-     * los limites) hasta que este sea introducido.</p></head>
-     *
-     * <body>
+     * los limites) hasta que este sea introducido.</p>
      *
      * @param str un string que mostrar en la consola para indicar que se está
      * pidiendo una entrada.
@@ -302,7 +285,6 @@ public class ConsoleIO {
      * @return el número entero introducido por consola.
      *
      * @author Eduardo Ruiz Sabajanes
-     * </body>
      */
     public int getInt(String str, int low, int high) {
         boolean run = true;
@@ -322,12 +304,10 @@ public class ConsoleIO {
         return num;
     }
 
-    /** <head>
+    /**
      * <p>
      * Pide por consola un número decimal hasta que este sea
-     * introducido.</p></head>
-     *
-     * <body>
+     * introducido.</p>
      *
      * @param str un string que mostrar en la consola para indicar que se está
      * pidiendo una entrada.
@@ -335,7 +315,6 @@ public class ConsoleIO {
      * @return el número decimal introducido por consola.
      *
      * @author Eduardo Ruiz Sabajanes
-     * </body>
      */
     public double getDouble(String str) {
         boolean run = true;
@@ -352,12 +331,10 @@ public class ConsoleIO {
         return num;
     }
 
-    /** <head>
+    /**
      * <p>
      * Pide por consola un número decimal que se encuente entre dos limites (o
-     * en los limites) hasta que este sea introducido.</p></head>
-     *
-     * <body>
+     * en los limites) hasta que este sea introducido.</p>
      *
      * @param str un string que mostrar en la consola para indicar que se está
      * pidiendo una entrada.
@@ -367,7 +344,6 @@ public class ConsoleIO {
      * @return el número decimal introducido por consola.
      *
      * @author Eduardo Ruiz Sabajanes
-     * </body>
      */
     public double getDouble(String str, double low, double high) {
         boolean run = true;
@@ -387,11 +363,9 @@ public class ConsoleIO {
         return num;
     }
 
-    /** <head>
+    /**
      * <p>
-     * Pide por consola una cadena de texto.</p></head>
-     *
-     * <body>
+     * Pide por consola una cadena de texto.</p>
      *
      * @param str_ un string que mostrar en la consola para indicar que se está
      * pidiendo una entrada.
@@ -399,7 +373,6 @@ public class ConsoleIO {
      * @return el string de texto introducido por la consola.
      *
      * @author Eduardo Ruiz Sabajanes
-     * </body>
      */
     public String getString(String str_) {
         boolean run = true;
@@ -416,12 +389,10 @@ public class ConsoleIO {
         return str;
     }
 
-    /** <head>
+    /**
      * <p>
      * Pide por consola una cadena de texto de una longitud
-     * determinada.</p></head>
-     *
-     * <body>
+     * determinada.</p>
      *
      * @param str_ un string que mostrar en la consola para indicar que se está
      * pidiendo una entrada.
@@ -430,7 +401,6 @@ public class ConsoleIO {
      * @return el string de texto introducido por la consola.
      *
      * @author Eduardo Ruiz Sabajanes
-     * </body>
      */
     public String getString(String str_, int length_) {
         boolean run = true;
