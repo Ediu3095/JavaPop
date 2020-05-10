@@ -3,6 +3,7 @@ package clases;
 import clases.utils.IOCustomLib;
 import clases.utils.ConsoleIO;
 import clases.utils.Searching;
+import java.time.LocalDateTime;
 import java.util.*;
 
 /**
@@ -30,9 +31,9 @@ public class Main {
      * @param read Es un objeto que se utiliza para pedir los inputs y comprobar
      * si son correos o contraseñas validos.
      *
-     * @return La funcion devuelve un ArrayList formado en cuya primera
-     * posicion se encuentra un booleano que nos dice si hay o no un registro y
-     * , en segunda posicion nos devuelve un objeto Cliente creado con los datos
+     * @return La funcion devuelve un ArrayList formado en cuya primera posicion
+     * se encuentra un booleano que nos dice si hay o no un registro y , en
+     * segunda posicion nos devuelve un objeto Cliente creado con los datos
      * previamente introducidos.
      *
      * @author Eduardo Ruiz Sabajanes
@@ -86,11 +87,11 @@ public class Main {
                             System.out.println("Introduzca nombre y apellidos:");
                             String nombre = read.getString(">> ");
                             System.out.println("Introduzca su DNI:");
-                            String dni = read.getString(">> ");
-                            System.out.println("Introduzca su codigo postal:");
-                            int ccpp = read.getInt(">> ");
-                            System.out.println("Introduzca los datos de su tarjeta de credito:");
-                            String ttcc = read.getString(">> ");
+                            String dni = read.getDNI(">> ");
+                            System.out.println("Introduzca su código postal:");
+                            int ccpp = read.getCodigoPostal(">> ");
+                            System.out.println("Introduzca los datos de su tarjeta de crédito:");
+                            String ttcc = read.getTarjetaCredito(">> ");
                             Cliente c1 = new Cliente(correo, clave, nombre, dni, ccpp, ttcc);
                             usuarios.add(c1);
                             arr.set(1, c1);
@@ -121,16 +122,15 @@ public class Main {
      * después se pedirá una contraseña hasta que se introduzcauna contraseña
      * valida. Además se repetirá este proceso hasta que se introduzca la clave
      * de salida "qwerty" como correo o hasta que se den unos credenciales
-     * pertenecientes a algún usuario de la lista con la que se
-     * compara.</p>
+     * pertenecientes a algún usuario de la lista con la que se compara.</p>
      *
      * @param usuarios Es la lista de usuarios en la que se hace la
      * comprobacion.
      * @param read Es un objeto que se utiliza para pedir los inputs y comprobar
      * si son correos o contraseñas validos.
      *
-     * @return La funcion devuelve un ArrayList con un booleano que indica si
-     * se ha introducido el código de salida o no, y el usuario que se haya
+     * @return La funcion devuelve un ArrayList con un booleano que indica si se
+     * ha introducido el código de salida o no, y el usuario que se haya
      * obtenido como coincidente con los credenciales introducidos.
      *
      * @author Eduardo Ruiz Sabajanes
@@ -194,6 +194,24 @@ public class Main {
         ArrayList<Cliente> usuarios = IOCustomLib.leerClientes();
         ArrayList<Producto> productos = IOCustomLib.leerProductos();
         ArrayList<Venta> ventas = IOCustomLib.leerVentas();
+
+        for (Producto producto : productos) {
+            if (producto.urgente) {
+                producto.fechaUrgente.plusDays(7);
+                if (producto.fechaUrgente.isBefore(LocalDateTime.now())) {
+                    producto.urgente = false;
+                }
+            }
+        }
+
+        for (Cliente cliente : usuarios) {
+            if (cliente instanceof Profesional) {
+                ((Profesional) cliente).pagoPro.plusMonths(1);
+                if (((Profesional) cliente).pagoPro.isBefore(LocalDateTime.now())) {
+                    cliente.cobrar(30);
+                }
+            }
+        }
 
         // Usuario que opera con la aplicaion
         Usuario user = new Cliente();
