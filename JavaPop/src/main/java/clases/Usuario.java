@@ -16,19 +16,19 @@ public abstract class Usuario implements Serializable {
 
     protected String correo;
     protected String clave;
-    
-    public String getCorreo(){
+
+    public String getCorreo() {
         return this.correo;
     }
-    
-    public String getClave(){
+
+    public String getClave() {
         return this.clave;
     }
-    
+
     public void setCorreo(String correo) {
         this.correo = correo;
     }
-    
+
     public void setClave(String clave) {
         this.clave = clave;
     }
@@ -57,6 +57,5 @@ public abstract class Usuario implements Serializable {
         }
         return true;
     }
-    
-    
+
 }

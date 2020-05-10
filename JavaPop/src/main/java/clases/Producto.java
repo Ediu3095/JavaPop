@@ -5,7 +5,6 @@ package clases;
  * @author Eduardo Ruiz Sabajanes
  * @author Luis Miguel Sobrino Zamora
  */
-import java.util.ArrayList;
 import clases.enumeradores.*;
 import java.io.Serializable;
 import javax.swing.Icon;
@@ -42,7 +41,7 @@ public class Producto implements Serializable {
         this.urgente = urgente;
         this.matchDeg = 0;
         this.lejania = 0;
-        if(urgente){
+        if (urgente) {
             this.fechaUrgente = LocalDateTime.now();
         }
     }
@@ -59,20 +58,6 @@ public class Producto implements Serializable {
         this.urgente = false;
         this.matchDeg = 0;
         this.lejania = 0;
-    }
-
-    public Producto(int match, int lej) {
-        this.titulo = "";
-        this.descripcion = "";
-        this.categoria = Categoria.Consolas_y_videojuegos;
-        this.estado = Estado.Aceptable;
-        this.precio = 0;
-        this.foto = new ImageIcon();
-        this.fechaPublicacion = LocalDateTime.now();
-        this.vendedor = new Cliente();
-        this.urgente = false;
-        this.matchDeg = match;
-        this.lejania = lej;
     }
 
     public String getTitulo() {
@@ -127,16 +112,8 @@ public class Producto implements Serializable {
         return fechaPublicacion;
     }
 
-    public void setFechaPublicacion(LocalDateTime fechaPublicacion) {
-        this.fechaPublicacion = fechaPublicacion;
-    }
-
     public Cliente getVendedor() {
         return vendedor;
-    }
-
-    public void setVendedor(Cliente vendedor) {
-        this.vendedor = vendedor;
     }
 
     public boolean isUrgente() {
@@ -144,7 +121,7 @@ public class Producto implements Serializable {
     }
 
     public void toggleUrgente() {
-        if (!this.urgente){
+        if (!this.urgente) {
             this.urgente = true;
             fechaUrgente = LocalDateTime.now();
             this.vendedor.cobrar(5);
@@ -153,14 +130,14 @@ public class Producto implements Serializable {
 
     @Override
     public String toString() {
-        return "titulo=" + titulo + 
-                "\ndescripcion=" + descripcion + 
-                "\ncategoria=" + categoria + 
-                "\nestado=" + estado + 
-                "\nprecio=" + precio + 
-                "\nfoto=" + foto + 
-                "\nfechaPublicacion=" + fechaPublicacion + 
-                "\nvendedor=" + vendedor;
+        return "titulo: " + titulo
+                + "\ndescripcion: " + descripcion
+                + "\ncategoria: " + categoria
+                + "\nestado: " + estado
+                + "\nprecio: " + precio
+                + "\nfoto: " + foto
+                + "\nfechaPublicacion: " + fechaPublicacion
+                + "\nvendedor: " + vendedor.correo;
     }
 
     @Override
@@ -199,5 +176,5 @@ public class Producto implements Serializable {
         }
         return true;
     }
-    
+
 }

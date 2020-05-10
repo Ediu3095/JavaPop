@@ -23,7 +23,7 @@ public class Venta implements Serializable {
     protected double precio;
     protected String descripcion;
 
-    public Venta(String comprador , Producto producto) {
+    public Venta(String comprador, Producto producto) {
         this.vendedor = producto.vendedor.correo;
         this.comprador = comprador;
         this.titulo = producto.titulo;
@@ -34,7 +34,7 @@ public class Venta implements Serializable {
         this.precio = producto.precio;
         this.descripcion = producto.descripcion;
     }
-    
+
     public Venta() {
         this.vendedor = "";
         this.comprador = "";
@@ -123,7 +123,5 @@ public class Venta implements Serializable {
     public String toString() {
         return "Venta{" + "vendedor=" + vendedor + ", comprador=" + comprador + ", titulo=" + titulo + ", estado=" + estado + ", categoria=" + categoria + ", foto=" + foto + ", fechaVenta=" + fechaVenta + ", precio=" + precio + ", descripcion=" + descripcion + '}';
     }
-    
-    
 
 }

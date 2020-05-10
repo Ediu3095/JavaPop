@@ -3,7 +3,6 @@ package clases;
 import clases.utils.GuardarLeerObjetos;
 import clases.utils.EntradasPorConsola;
 import clases.utils.Searching;
-import java.time.LocalDateTime;
 import java.util.*;
 
 /**
@@ -40,7 +39,7 @@ public class Main {
      * </body>
      */
     public static ArrayList register(ArrayList<Cliente> usuarios, EntradasPorConsola read) {
-        
+
         ArrayList arr = new ArrayList();
         arr.add(false);
         arr.add(new Cliente());
@@ -73,7 +72,7 @@ public class Main {
                 // Si el correo ya pertenece a un usuario...
                 if (run_) {
                     System.out.println("Usuario existente, introduzca un correo no registardo");
-                    
+
                 }// Si el correo está disponible...
                 else {
                     while (run__) {
@@ -96,7 +95,7 @@ public class Main {
                             usuarios.add(c1);
                             arr.set(1, c1);
                             run__ = false;
-                            
+
                         }// Si la contraseña no es valida pide una nueva.
                         else {
                             System.out.println("La clave introducida no es valida");
@@ -141,7 +140,7 @@ public class Main {
         arr.add(false);
         arr.add(new Cliente());
         boolean run_ = true;
-        
+
         while (run_) {
             // Pide al usuario un correo
             System.out.println("Introduzca su correo (qwerty para volver atras):");
@@ -187,7 +186,7 @@ public class Main {
         }
         return arr;
     }
-    
+
     public static void main(String[] args) {
 
         // Comienzo del programa: Recuperamos la informacion guardada en los ficheros
@@ -220,7 +219,7 @@ public class Main {
 
                 // Ejecutamos esa operacion
                 switch (operacion) {
-                    
+
                     case 1: // Realizar el "inicio de sesion"
                         returns = login(usuarios, read);
                         if ((boolean) returns.get(0)) {
@@ -234,7 +233,7 @@ public class Main {
                             }
                         }
                         break;
-                    
+
                     case 2:// Realizar el "registro de usuario"
                         returns = register(usuarios, read);
                         if (!(boolean) returns.get(0)) {
@@ -242,7 +241,7 @@ public class Main {
                             estado = 2;
                         }
                         break;
-                    
+
                     case 3:// Salimos del bucle principal
                         finalizar = true;
                         break;
@@ -263,23 +262,23 @@ public class Main {
 
                 // Ejecutamos esa operacion
                 switch (operacion) {
-                    
+
                     case 1:// Consultar usuario
                         Admin.ConsultarUsuario(usuarios, read);
                         break;
-                    
+
                     case 2:// Consultar producto
                         Admin.ConsultarProducto(productos, read);
                         break;
-                    
+
                     case 3:// 
                         Admin.ConsultarVentas(ventas, read);
                         break;
-                    
+
                     case 4:// Saltamos al estado 0
                         estado = 0;
                         break;
-                    
+
                     case 5:// Salimos del bucle principal
                         finalizar = true;
                         break;
@@ -311,28 +310,28 @@ public class Main {
                     case 1:// Compra
                         Searching.comprar((Cliente) user, productos, ventas, read);
                         break;
-                    
+
                     case 2:// Mis productos
                         estado = 3;
                         break;
-                    
+
                     case 3:// Actualizar licencia pro
                         if (user instanceof Profesional) {
-                            usuarios.remove((Profesional)user);
-                            user = new Cliente((Profesional)user);
-                            usuarios.add((Cliente)user);
+                            usuarios.remove((Profesional) user);
+                            user = new Cliente((Profesional) user);
+                            usuarios.add((Cliente) user);
                         } else {
-                            ((Cliente)user).cobrar(30);
-                            usuarios.remove((Cliente)user);
-                            user = new Profesional((Cliente)user, read);
-                            usuarios.add((Profesional)user);
+                            ((Cliente) user).cobrar(30);
+                            usuarios.remove((Cliente) user);
+                            user = new Profesional((Cliente) user, read);
+                            usuarios.add((Profesional) user);
                         }
                         break;
-                    
+
                     case 4:// Saltamos al estado 0
                         estado = 0;
                         break;
-                    
+
                     case 5:// Salimos del bucle principal
                         finalizar = true;
                         break;
@@ -341,8 +340,7 @@ public class Main {
                 System.out.println("¿Que operación desea realizar?\n"
                         + "1.- Editar productos\n"
                         + "2.- Dar de alta producto\n"
-                        + "3.- Dar de baja producto\n"
-                        + "4.- Volver");
+                        + "3.- Volver");
                 operacion = read.getInt(">> ", 1, 4);
 
                 // Ejecutamos esa operacion
@@ -353,17 +351,14 @@ public class Main {
                     case 2:// Dar de alta producto
                         Cliente.altaProducto((Cliente) user, read, productos);
                         break;
-                    case 3:// Dar de baja producto
-                        
-                        break;
-                    case 4:
+                    case 3:
                         estado = 2;
-                        break;                       
+                        break;
                 }
-                
+
             }
         }
-        
+
         for (int i = 0; i < usuarios.size(); i++) {
             System.out.println(usuarios.get(i).correo);
         }
@@ -372,7 +367,7 @@ public class Main {
         GuardarLeerObjetos.guardarClientes(usuarios);
         GuardarLeerObjetos.guardarProductos(productos);
         GuardarLeerObjetos.guardarVentas(ventas);
-        
+
     }
-    
+
 }

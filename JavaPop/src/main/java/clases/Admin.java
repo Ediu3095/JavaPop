@@ -245,41 +245,41 @@ public class Admin extends Usuario implements Serializable {
                     + "4.- Editar categoria\n"
                     + "5.- Editar estado\n"
                     + "6.- Eliminar foto");
-            
-                seleccionDato = read.getInt(">> ", 1, 6);
+
+            seleccionDato = read.getInt(">> ", 1, 6);
 
             switch (seleccionDato) {
 
                 case 1: //Salir
                     return;
- 
+
                 case 2: //Editar titulo
                     System.out.println("Nuevo titulo del producto:");
-                    String titulo = read.getString(">> ");                                       
+                    String titulo = read.getString(">> ");
                     product.setTitulo(titulo);
                     break;
 
                 case 3: //Editar descripcion
                     System.out.println("Nueva descripción del producto:");
-                    String descripcion = read.getString(">> ");                                     
+                    String descripcion = read.getString(">> ");
                     product.setDescripcion(descripcion);
                     break;
 
                 case 4: // Editar categoria
-                    product.categoria = read.getCategoria(">> ");                 
+                    product.categoria = read.getCategoria(">> ");
                     break;
-                    
+
                 case 5: // Editar estado
-                    product.estado = read.getEstado(">> ");                 
+                    product.estado = read.getEstado(">> ");
                     break;
 
                 case 6: //Eliminar foto
                     product.foto = new ImageIcon("./resources/imagenes/White.jpeg");
-                    break;  
+                    break;
             }
         }
     }
-    
+
     public static void ConsultarVentas(ArrayList<Venta> venta, EntradasPorConsola read) {
 
         Venta sale = new Venta();
@@ -375,7 +375,7 @@ public class Admin extends Usuario implements Serializable {
 
                 case 1: //Salir
                     return;
-         
+
             }
         }
     }

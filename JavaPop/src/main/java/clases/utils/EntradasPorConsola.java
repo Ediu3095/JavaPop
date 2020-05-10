@@ -28,9 +28,11 @@ public class EntradasPorConsola {
         this.fileSys = FileSystems.getDefault();
     }
 
-    /** <head>Recibe un String y comprueba que pueda ser un correo asegurandose
-     * de que tiene al menos un <b>@</b>, y un <b>.</b> después del
-     * <b>@</b>.</head>
+    /** <head>
+     * <p>
+     * Recibe un String y comprueba que pueda ser un correo asegurandose de que
+     * tiene al menos un <b>@</b>, y un <b>.</b> después del
+     * <b>@</b>.</p></head>
      *
      * <body>
      *
@@ -70,8 +72,10 @@ public class EntradasPorConsola {
         }
     }
 
-    /** <head>Recibe un string y comprueba que solo tiene caracteres de entre
-     * una lista de caracteres permitidos para las contraseñas.</head>
+    /** <head>
+     * <p>
+     * Recibe un string y comprueba que solo tiene caracteres de entre una lista
+     * de caracteres permitidos para las contraseñas.</p></head>
      *
      * <body>
      *
@@ -101,10 +105,13 @@ public class EntradasPorConsola {
         return valid;
     }
 
-    /** <head>Pide un string que se debe corresponder con el path de una foto,
-     * en el caso de que la foto exista, la copia en <b>./resources/imagenes</b>
+    /** <head>
+     * <p>
+     * Pide un string que se debe corresponder con el path de una foto, en el
+     * caso de que la foto exista, la copia en <b>./resources/imagenes</b>
      * para poder acceder a ella más tarde aunque se borre la original y
-     * finalmente crea un objeto Icon de la imagen copiada y lo devuelve.</head>
+     * finalmente crea un objeto Icon de la imagen copiada y lo
+     * devuelve.</p></head>
      *
      * <body>
      *
@@ -145,8 +152,10 @@ public class EntradasPorConsola {
         return icon;
     }
 
-    /** <head>Pide un numero del 1 al 5 que se corresponda con alguno de los
-     * estados enumeradas previamente en la consola.</head>
+    /** <head>
+     * <p>
+     * Pide un numero del 1 al 5 que se corresponda con alguno de los estados
+     * enumeradas previamente en la consola.</p></head>
      *
      * <body>
      *
@@ -187,8 +196,10 @@ public class EntradasPorConsola {
         return estado;
     }
 
-    /** <head>Pide un numero del 1 al 6 que se corresponda con alguna de las
-     * categorías enumeradas previamente en la consola.</head>
+    /** <head>
+     * <p>
+     * Pide un numero del 1 al 6 que se corresponda con alguna de las categorías
+     * enumeradas previamente en la consola.</p></head>
      *
      * <body>
      *
@@ -233,8 +244,10 @@ public class EntradasPorConsola {
         return categoria;
     }
 
-    /** <head>Pide por consola un número entero hasta que este sea
-     * introducido.</head>
+    /** <head>
+     * <p>
+     * Pide por consola un número entero hasta que este sea
+     * introducido.</p></head>
      *
      * <body>
      *
@@ -261,8 +274,10 @@ public class EntradasPorConsola {
         return num;
     }
 
-    /** <head>Pide por consola un número entero que se encuente entre dos
-     * limites (o en los limites) hasta que este sea introducido.</head>
+    /** <head>
+     * <p>
+     * Pide por consola un número entero que se encuente entre dos limites (o en
+     * los limites) hasta que este sea introducido.</p></head>
      *
      * <body>
      *
@@ -294,8 +309,10 @@ public class EntradasPorConsola {
         return num;
     }
 
-    /** <head>Pide por consola un número decimal hasta que este sea
-     * introducido.</head>
+    /** <head>
+     * <p>
+     * Pide por consola un número decimal hasta que este sea
+     * introducido.</p></head>
      *
      * <body>
      *
@@ -322,8 +339,10 @@ public class EntradasPorConsola {
         return num;
     }
 
-    /** <head>Pide por consola un número decimal que se encuente entre dos
-     * limites (o en los limites) hasta que este sea introducido.</head>
+    /** <head>
+     * <p>
+     * Pide por consola un número decimal que se encuente entre dos limites (o
+     * en los limites) hasta que este sea introducido.</p></head>
      *
      * <body>
      *
@@ -355,7 +374,9 @@ public class EntradasPorConsola {
         return num;
     }
 
-    /** <head>Pide por consola una cadena de texto.</head>
+    /** <head>
+     * <p>
+     * Pide por consola una cadena de texto.</p></head>
      *
      * <body>
      *
@@ -381,16 +402,17 @@ public class EntradasPorConsola {
         }
         return str;
     }
-    
-    /** <head>Pide por consola una cadena de texto de una longitud determinada.</head>
+
+    /** <head>
+     * <p>
+     * Pide por consola una cadena de texto de una longitud
+     * determinada.</p></head>
      *
      * <body>
      *
-     * @param   str_
-     *          un string que mostrar en la consola para indicar que se está
-     *          pidiendo una entrada.
-     * @param   length_
-     *          longitud que debe tener la entrada.
+     * @param str_ un string que mostrar en la consola para indicar que se está
+     * pidiendo una entrada.
+     * @param length_ longitud que debe tener la entrada.
      *
      * @return el string de texto introducido por la consola.
      *
@@ -404,7 +426,7 @@ public class EntradasPorConsola {
             try {
                 System.out.print(str_);
                 str = this.read.readLine();
-                if (str.length() != length_){
+                if (str.length() != length_) {
                     throw new RuntimeException("La longitud de la entrada debe ser de " + length_ + " caracteres");
                 }
                 run = false;

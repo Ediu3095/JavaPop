@@ -111,22 +111,22 @@ public class Cliente extends Usuario implements Serializable {
      * <body>
      *
      * @param user El usuario en al que le vamos a añadir el producto.
-     *
      * @param read Es un objeto que se utiliza para pedir los inputs y comprobar
      * si son correos o contraseñas validos.
+     * @param productos Lista global de productos
      *
      * @author Eduardo Ruiz Sabajanes
      * </body>
      */
     public static void altaProducto(Cliente user, EntradasPorConsola read, ArrayList<Producto> productos) {
-        System.out.println("Introduzca un título del producto(qwerty para volver atras): ");
+        System.out.println("Introduzca un título del producto(qwerty para volver atras):");
         String titulo = read.getString(">> ");
         if (!titulo.equals("qwerty")) {
-            System.out.println("Introduzca una descripción del producto: ");
+            System.out.println("Introduzca una descripción del producto:");
             String descripcion = read.getString(">> ");
             Categoria categoria = read.getCategoria(">> ");
             Estado estado = read.getEstado(">> ");
-            System.out.println("Introduzca un precio: ");
+            System.out.println("Introduzca un precio:");
             Double precio = read.getDouble(">> ", 0, Double.MAX_VALUE);
             Icon imagen = read.getImage(">> ");
             System.out.println("¿Quiere marcar la venta de este producto como urgente?\n"
@@ -144,43 +144,38 @@ public class Cliente extends Usuario implements Serializable {
         }
     }
 
-    public String introducirProducto(Producto p) {
-        if (this.productos.contains(p)) {//si esta dentro
-            return "El producto ya está a la venta";
-        } else {
+    public void introducirProducto(Producto p) {
+        if (!this.productos.contains(p)) {
             this.productos.add(p);
-            return "Producto añadido";
         }
     }
 
-    public String sacarProducto(Producto p) {
-        if (!this.productos.contains(p)) { // no esta dentro
-            return "El prodcuto no se encuentra en venta";
-        } else {
+    public void sacarProducto(Producto p) {
+        try {
             this.productos.remove(p);
-            return "El producto " + p + " ha sido retirado: ";
+        } catch (Exception e) {
         }
     }
 
     public void cobrar(double precio) {
-        // Something
+        // Aquí se efectuaria el cobro
+        System.out.println("Se efectuó un cobro de " + precio + '€');
     }
 
     @Override
     public String toString() {
-        return "correo=" + correo + "\n"
-                + "clave=" + clave + "\n"
-                + "productos=" + productos + "\n"
-                + "dni=" + dni + "\n"
-                + "nombre=" + nombre + "\n"
-                + "ccpp=" + ccpp + "\n"
-                + "ttcc=" + ttcc;
+        return "correo: " + correo
+                + "\nclave: " + clave
+                + "\nproductos: " + productos
+                + "\ndni: " + dni
+                + "\nnombre: " + nombre
+                + "\nccpp: " + ccpp
+                + "\nttcc: " + ttcc;
     }
 
-    public static void editarProducto(Cliente c, ArrayList<Producto> productosGlobal,EntradasPorConsola read) {
-
+    public static void editarProducto(Cliente c, ArrayList<Producto> productosGlobal, EntradasPorConsola read) {
         Producto product = new Producto();
-        ArrayList<Producto> producto = c.productos;       
+        ArrayList<Producto> producto = c.productos;
         int seleccionDato = 0;
         boolean run_ = true;
         int posicionMin = 0;
@@ -199,7 +194,7 @@ public class Cliente extends Usuario implements Serializable {
                 }
             }
             while (run__) {
-                System.out.println("Seleccione el producto que desea editar:\n "
+                System.out.println("Seleccione el producto que desea editar:\n"
                         + "1.- Pagina siguiente\n"
                         + "2.- Pagina anterior\n"
                         + "3.- Salir");
@@ -236,7 +231,7 @@ public class Cliente extends Usuario implements Serializable {
         run_ = true;
         while (run_) {
             System.out.println(product);
-            System.out.println("Que operación desea realizar:\n "
+            System.out.println("Que operación desea realizar:\n"
                     + "1.- Salir\n"
                     + "2.- Editar titulo\n"
                     + "3.- Editar descripcion\n"
@@ -280,16 +275,16 @@ public class Cliente extends Usuario implements Serializable {
                 case 7: //Editar precio
                     product.precio = read.getDouble(">> ", 0, Double.MAX_VALUE);
                     break;
-                    
+
                 case 8: // Activar urgente
                     product.toggleUrgente();
                     break;
-                
+
                 case 9: //Dar de baja producto
                     c.sacarProducto(product);
                     productosGlobal.remove(product);
                     return;
             }
         }
-    }    
+    }
 }

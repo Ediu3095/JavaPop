@@ -20,18 +20,19 @@ public final class Profesional extends Cliente implements Serializable {
     public Profesional() {
         super("", "", "", "", 0, "");
     }
-    
-    /**<head> Crea una cuenta profesional a partir de un cliente</head>
-     * 
+
+    /** <head> Crea una cuenta profesional a partir de un cliente</head>
+     *
      * <body>
-     * @param   c
-     *          el cliente del que nace esta cuenta profesional
-     * @param   read
-     *          un objeto utilizado para pedirle entradas por consola al usuario
-     * 
+     *
+     * @param c el cliente del que nace esta cuenta profesional
+     * @param read un objeto utilizado para pedirle entradas por consola al
+     * usuario
+     *
      * @author Eduardo Ruiz Sabajanes
-     * </body>*/
-    public Profesional(Cliente c, EntradasPorConsola read){
+     * </body>
+     */
+    public Profesional(Cliente c, EntradasPorConsola read) {
         super(c.correo, c.clave, c.dni, c.nombre, c.ccpp, c.ttcc);
         System.out.println("Introduzca una descripción de su cuenta: ");
         this.descripcion = read.getString(">> ");
