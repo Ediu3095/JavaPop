@@ -419,7 +419,6 @@ public class Main {
         // Final del programa: Guardamos la informacion de vuelta en los ficheros
         IOCustomLib.guardarClientes(usuarios);
         IOCustomLib.guardarProductos(productos);
-        // Las fotos de los productos están comentadas porque al ser Icon y no ser serializable detiene la ejecucion y evita que el programa guarde datos en los ficheros .dat
         IOCustomLib.guardarVentas(ventas);
 
     }

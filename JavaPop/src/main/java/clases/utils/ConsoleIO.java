@@ -242,7 +242,7 @@ public class ConsoleIO {
      *
      * @author Eduardo Ruiz Sabajanes
      */
-    public Icon getImage(String str_) {
+    public String getImage(String str_) {
         boolean run = true;
         File imgFolder = new File("./resources/imagenes/");
         String address;
@@ -269,8 +269,7 @@ public class ConsoleIO {
                 System.out.println(ex.getMessage());
             }
         }
-        Icon icon = new ImageIcon(newAddress);
-        return icon;
+        return newAddress;
     }
 
     /**

@@ -7,10 +7,8 @@ package clases;
  */
 import clases.enumeradores.*;
 import java.io.Serializable;
-import javax.swing.Icon;
 import java.time.LocalDateTime;
 import java.util.Objects;
-import javax.swing.ImageIcon;
 
 public class Producto implements Serializable {
 
@@ -19,7 +17,7 @@ public class Producto implements Serializable {
     protected Categoria categoria;
     protected Estado estado;
     protected double precio;
-    // protected Icon foto;
+    protected String foto;
     protected LocalDateTime fechaPublicacion;
     protected Cliente vendedor;
     protected boolean urgente;
@@ -29,13 +27,13 @@ public class Producto implements Serializable {
     public int matchDeg;
     public int lejania;
 
-    public Producto(String titulo, String descripcion, Categoria categoria, Estado estado, double precio, Icon foto, Cliente vendedor, boolean urgente) {
+    public Producto(String titulo, String descripcion, Categoria categoria, Estado estado, double precio, String foto, Cliente vendedor, boolean urgente) {
         this.titulo = titulo;
         this.descripcion = descripcion;
         this.categoria = categoria;
         this.estado = estado;
         this.precio = precio;
-        // this.foto = foto;
+        this.foto = foto;
         this.fechaPublicacion = LocalDateTime.now();
         this.vendedor = vendedor;
         this.urgente = urgente;
@@ -52,7 +50,7 @@ public class Producto implements Serializable {
         this.categoria = Categoria.Consolas_y_videojuegos;
         this.estado = Estado.Aceptable;
         this.precio = 0;
-        // this.foto = new ImageIcon();
+        this.foto = "";
         this.fechaPublicacion = LocalDateTime.now();
         this.vendedor = new Cliente();
         this.urgente = false;
@@ -120,15 +118,13 @@ public class Producto implements Serializable {
         this.precio = precio;
     }
 
-    /*
-    public Icon getFoto() {
+    public String getFoto() {
         return foto;
     }
 
-    public void setFoto(Icon foto) {
+    public void setFoto(String foto) {
         this.foto = foto;
     }
-    */
 
     public LocalDateTime getFechaPublicacion() {
         return fechaPublicacion;
@@ -157,7 +153,7 @@ public class Producto implements Serializable {
                 + "\nCategoria: " + this.categoria
                 + "\nEstado: " + this.estado
                 + "\nPrecio: " + this.precio
-                + "\nFoto: "/* + this.foto*/
+                + "\nFoto: " + this.foto
                 + "\nFecha publicacion: " + this.fechaPublicacion
                 + "\nCorreo del vendedor: " + this.vendedor.getCorreo();
         if (this.vendedor instanceof Profesional) {
