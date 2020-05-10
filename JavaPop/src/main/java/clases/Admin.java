@@ -20,22 +20,21 @@ public class Admin extends Usuario implements Serializable {
     /**
      * <p>
      * Esta función proporciona al administrador un menú donde buscar usuarios
-     * ordenados alfabeticamente y le permite editar sus atributos como correo, clave
-     * nombre, dni, tarjeta de credito o codigo postal, asi como descripción, horario,
-     * teléfono o web si el usuario seleccionado es profesional</p>
+     * ordenados alfabeticamente y le permite editar sus atributos como correo,
+     * clave nombre, dni, tarjeta de credito o codigo postal, asi como
+     * descripción, horario, teléfono o web si el usuario seleccionado es
+     * profesional</p>
      *
      * <p>
-     * Se solicitará al administrador el dato que decida editar y este se sustituirá
-     * por el antiguo que poseía el cliente</p>
+     * Se solicitará al administrador el dato que decida editar y este se
+     * sustituirá por el antiguo que poseía el cliente</p>
      *
-     * @param usuarios Es la lista de usuarios en la que se hace la
-     * edición.
-     * @param read Es un objeto que se utiliza para pedir los inputs 
+     * @param usuarios Es la lista de usuarios en la que se hace la edición.
+     * @param read Es un objeto que se utiliza para pedir los inputs
      *
      * @author Luis Miguel Sobrino Zamora
-     * 
+     *
      */
-    
     public static void ConsultarUsuario(ArrayList<Cliente> usuarios, ConsoleIO read) {
 
         boolean run__ = true;
@@ -112,12 +111,12 @@ public class Admin extends Usuario implements Serializable {
                         //Pedimos un correo
                         System.out.println("Nuevo correo del usuario:");
                         String correo = read.getString(">> ");
-                        
+
                         // Comprobamos que el correo sea valido
                         if (read.checkCorreo(correo)) {
 
                             //Comprobamos que no haya otro usuario con el mismo correo
-                            for (Usuario user: usuarios) {
+                            for (Usuario user : usuarios) {
                                 if (user.getCorreo().equals(correo)) { // Si el correo ya pertenece a un usuario
                                     run__ = true;
                                     System.out.println("Ese correo ya es utilizado por otro usuario!!");
@@ -130,13 +129,13 @@ public class Admin extends Usuario implements Serializable {
                     }
                     break;
 
-                    case 3: //Editar clave
+                case 3: //Editar clave
                     run__ = true;
                     while (run__) {
                         // Pedimos una contraseña
                         System.out.println("Nueva clave:");
                         String clave = read.getString(">> ");
-                        
+
                         //Comprobamos que la contraseña sea valida
                         if (read.checkClave(clave)) {
                             run__ = false;
@@ -197,25 +196,24 @@ public class Admin extends Usuario implements Serializable {
             }
         }
     }
-    
+
     /**
      * <p>
      * Esta función proporciona al administrador un menú donde buscar productos
-     * ordenados alfabeticamente y le permite editar sus atributos como titulo, descripción
-     * categoría, estado o eliminar la foto remplazandola por una en blanco </p>
+     * ordenados alfabeticamente y le permite editar sus atributos como titulo,
+     * descripción categoría, estado o eliminar la foto remplazandola por una en
+     * blanco </p>
      *
      * <p>
-     * Se solicitará al administrador el dato que decida editar y este se sustituirá
-     * por el antiguo que poseía el producto</p>
+     * Se solicitará al administrador el dato que decida editar y este se
+     * sustituirá por el antiguo que poseía el producto</p>
      *
-     * @param producto Es la lista de usuarios en la que se hace la
-     * edición.
-     * @param read Es un objeto que se utiliza para pedir los inputs 
+     * @param producto Es la lista de usuarios en la que se hace la edición.
+     * @param read Es un objeto que se utiliza para pedir los inputs
      *
      * @author Luis Miguel Sobrino Zamora
-     * 
+     *
      */
-    
     public static void ConsultarProducto(ArrayList<Producto> producto, ConsoleIO read) {
         ArrayList<Producto> arr = new ArrayList();
         Producto product = new Producto();
@@ -233,40 +231,39 @@ public class Admin extends Usuario implements Serializable {
                     arr.add(producto.get(i));
                 }
             }
-            while (run__) {
-                System.out.println("Seleccione el producto que desea comprobar:\n"
-                        + "1.- Pagina siguiente\n"
-                        + "2.- Pagina anterior\n"
-                        + "3.- Salir");
-                for (int i = 1; i <= 10; i++) {
-                    posicionMax = posicionMin + i - 1;
-                    if (posicionMax < arr.size()) {
-                        System.out.println((i + 3) + ".- " + arr.get(posicionMax).titulo);
-                    } else {
-                        posicionMax--;
-                        break;
-                    }
-                }
-
-                seleccion = read.getInt(">> ", 1, posicionMax - posicionMin + 4);
-                if (seleccion == 1) {
-                    posicionMin += 10;
-                    if (posicionMin >= producto.size()) {
-                        posicionMin -= 10;
-                    }
-                } else if (seleccion == 2) {
-                    posicionMin -= 10;
-                    if (posicionMin <= 0) {
-                        posicionMin += 10;
-                    }
-                } else if (seleccion == 3) {
-                    return;
+        }
+        while (run_) {
+            System.out.println("Seleccione el producto que desea comprobar:\n"
+                    + "1.- Pagina siguiente\n"
+                    + "2.- Pagina anterior\n"
+                    + "3.- Salir");
+            for (int i = 1; i <= 10; i++) {
+                posicionMax = posicionMin + i - 1;
+                if (posicionMax < arr.size()) {
+                    System.out.println((i + 3) + ".- " + arr.get(posicionMax).titulo);
                 } else {
-                    product = arr.get(posicionMin + seleccion - 4);
-                    run_ = false;
+                    posicionMax--;
+                    break;
                 }
             }
 
+            seleccion = read.getInt(">> ", 1, posicionMax - posicionMin + 4);
+            if (seleccion == 1) {
+                posicionMin += 10;
+                if (posicionMin >= producto.size()) {
+                    posicionMin -= 10;
+                }
+            } else if (seleccion == 2) {
+                posicionMin -= 10;
+                if (posicionMin <= 0) {
+                    posicionMin += 10;
+                }
+            } else if (seleccion == 3) {
+                return;
+            } else {
+                product = arr.get(posicionMin + seleccion - 4);
+                run_ = false;
+            }
         }
         run_ = true;
         while (run_) {
@@ -316,17 +313,16 @@ public class Admin extends Usuario implements Serializable {
     /**
      * <p>
      * Esta función proporciona al administrador un menú donde buscar las ventas
-     * ordenadas alfabeticamente. En este caso no podrá editar los datos de las ventas
-     * solo consultarlos.</p>
+     * ordenadas alfabeticamente. En este caso no podrá editar los datos de las
+     * ventas solo consultarlos.</p>
      *
      *
      * @param ventas Es la lista de ventas que se muestra al administrador.
-     * @param read Es un objeto que se utiliza para pedir los inputs. 
+     * @param read Es un objeto que se utiliza para pedir los inputs.
      *
      * @author Luis Miguel Sobrino Zamora
-     * 
+     *
      */
-    
     public static void ConsultarVentas(ArrayList<Venta> ventas, ConsoleIO read) {
         Venta sale = new Venta();
         boolean run_ = true;
@@ -339,46 +335,46 @@ public class Admin extends Usuario implements Serializable {
         Categoria categoriaElegida = null;
 
         categoriaElegida = read.getCategoria(">> ");
-            for (int i = 0; i < ventas.size(); i++) {
-                if (ventas.get(i).getCategoria().equals(categoriaElegida)) {
-                    arr.add(ventas.get(i));
-                }
+        for (int i = 0; i < ventas.size(); i++) {
+            if (ventas.get(i).getCategoria().equals(categoriaElegida)) {
+                arr.add(ventas.get(i));
             }
-            while (run__) {
-                System.out.println("Seleccione la venta que desea comprobar:\n"
-                        + "1.- Pagina siguiente\n"
-                        + "2.- Pagina anterior\n"
-                        + "3.- Salir");
-                for (int i = 1; i <= 10; i++) {
-                    posicionMax = posicionMin + i - 1;
-                    if (posicionMax < arr.size()) {
-                        System.out.println((i + 3) + ".- "
-                                + arr.get(posicionMax).getComprador()
-                                + " " + arr.get(posicionMax).getFechaVenta());
-                    } else {
-                        posicionMax--;
-                        break;
-                    }
-                }
-
-                seleccion = read.getInt(">> ", 1, posicionMax - posicionMin + 4);
-                if (seleccion == 1) {
-                    posicionMin += 10;
-                    if (posicionMin >= ventas.size()) {
-                        posicionMin -= 10;
-                    }
-                } else if (seleccion == 2) {
-                    posicionMin -= 10;
-                    if (posicionMin <= 0) {
-                        posicionMin += 10;
-                    }
-                } else if (seleccion == 3) {
-                    return;
+        }
+        while (run__) {
+            System.out.println("Seleccione la venta que desea comprobar:\n"
+                    + "1.- Pagina siguiente\n"
+                    + "2.- Pagina anterior\n"
+                    + "3.- Salir");
+            for (int i = 1; i <= 10; i++) {
+                posicionMax = posicionMin + i - 1;
+                if (posicionMax < arr.size()) {
+                    System.out.println((i + 3) + ".- "
+                            + arr.get(posicionMax).getComprador()
+                            + " " + arr.get(posicionMax).getFechaVenta());
                 } else {
-                    sale = ventas.get(posicionMin + seleccion - 4);
-                    run_ = false;
+                    posicionMax--;
+                    break;
                 }
             }
+
+            seleccion = read.getInt(">> ", 1, posicionMax - posicionMin + 4);
+            if (seleccion == 1) {
+                posicionMin += 10;
+                if (posicionMin >= ventas.size()) {
+                    posicionMin -= 10;
+                }
+            } else if (seleccion == 2) {
+                posicionMin -= 10;
+                if (posicionMin <= 0) {
+                    posicionMin += 10;
+                }
+            } else if (seleccion == 3) {
+                return;
+            } else {
+                sale = ventas.get(posicionMin + seleccion - 4);
+                run_ = false;
+            }
+        }
         run_ = true;
         while (run_) {
             System.out.println(ventas);
