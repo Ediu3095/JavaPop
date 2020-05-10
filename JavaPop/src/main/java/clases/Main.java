@@ -200,6 +200,8 @@ public class Main {
                 producto.fechaUrgente.plusDays(7);
                 if (producto.fechaUrgente.isBefore(LocalDateTime.now())) {
                     producto.urgente = false;
+                } else {
+                    producto.fechaUrgente.minusDays(7);
                 }
             }
         }
@@ -209,6 +211,8 @@ public class Main {
                 ((Profesional) cliente).pagoPro.plusMonths(1);
                 if (((Profesional) cliente).pagoPro.isBefore(LocalDateTime.now())) {
                     cliente.cobrar(30);
+                } else {
+                    ((Profesional) cliente).pagoPro.minusMonths(1);
                 }
             }
         }
