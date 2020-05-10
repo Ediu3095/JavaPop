@@ -1,7 +1,7 @@
 package clases;
 
-import clases.utils.GuardarLeerObjetos;
-import clases.utils.EntradasPorConsola;
+import clases.utils.IOCustomLib;
+import clases.utils.ConsoleIO;
 import clases.utils.Searching;
 import java.util.*;
 
@@ -12,7 +12,7 @@ import java.util.*;
  */
 public class Main {
 
-    /** <head>
+    /**
      * <p>
      * Esta función solicita un nombre de usuario, una contraseña y demás datos
      * del usuario (nombre y appelidos,DNI,tarjeta de credito y codigo postal
@@ -23,25 +23,22 @@ public class Main {
      * Se solicitara un correo al usuario hasta que se compruebe que el correo
      * es válido y se esperará a que introduzca una contraseña que cumpla los
      * requisitos. Este proceso se repetirá hasta que se complete el registro o
-     * el usuario salga de la funcion.</p></head>
-     *
-     * <body>
+     * el usuario salga de la funcion.</p>
      *
      * @param usuarios Es la lista de usuarios en la que se hace la
      * comprobacion.
      * @param read Es un objeto que se utiliza para pedir los inputs y comprobar
      * si son correos o contraseñas validos.
      *
-     * @returns La funcion devuelve un ArrayList formado en cuya primera
+     * @return La funcion devuelve un ArrayList formado en cuya primera
      * posicion se encuentra un booleano que nos dice si hay o no un registro y
      * , en segunda posicion nos devuelve un objeto Cliente creado con los datos
      * previamente introducidos.
      *
      * @author Eduardo Ruiz Sabajanes
      * @author Luis Miguel Sobrino Zamora
-     * </body>
      */
-    public static ArrayList register(ArrayList<Cliente> usuarios, EntradasPorConsola read) {
+    public static ArrayList register(ArrayList<Cliente> usuarios, ConsoleIO read) {
 
         ArrayList arr = new ArrayList();
         arr.add(false);
@@ -113,7 +110,7 @@ public class Main {
         return arr;
     }
 
-    /** <head>
+    /**
      * <p>
      * Esta función pide a traves de la consola un usuario y una contraseña y
      * comprueba si existe algún usuario que tenga esas credenciales en una
@@ -125,24 +122,21 @@ public class Main {
      * valida. Además se repetirá este proceso hasta que se introduzca la clave
      * de salida "qwerty" como correo o hasta que se den unos credenciales
      * pertenecientes a algún usuario de la lista con la que se
-     * compara.</p></head>
-     *
-     * <body>
+     * compara.</p>
      *
      * @param usuarios Es la lista de usuarios en la que se hace la
      * comprobacion.
      * @param read Es un objeto que se utiliza para pedir los inputs y comprobar
      * si son correos o contraseñas validos.
      *
-     * @returns La funcion devuelve un ArrayList con un booleano que indica si
+     * @return La funcion devuelve un ArrayList con un booleano que indica si
      * se ha introducido el código de salida o no, y el usuario que se haya
      * obtenido como coincidente con los credenciales introducidos.
      *
      * @author Eduardo Ruiz Sabajanes
      * @author Luis Miguel Sobrino Zamora
-     * </body>
      */
-    private static ArrayList login(ArrayList<Cliente> usuarios, EntradasPorConsola read) {
+    private static ArrayList login(ArrayList<Cliente> usuarios, ConsoleIO read) {
         ArrayList arr = new ArrayList(2);
         arr.add(false);
         arr.add(new Cliente());
@@ -197,15 +191,15 @@ public class Main {
     public static void main(String[] args) {
 
         // Comienzo del programa: Recuperamos la informacion guardada en los ficheros
-        ArrayList<Cliente> usuarios = GuardarLeerObjetos.leerClientes();
-        ArrayList<Producto> productos = GuardarLeerObjetos.leerProductos();
-        ArrayList<Venta> ventas = GuardarLeerObjetos.leerVentas();
+        ArrayList<Cliente> usuarios = IOCustomLib.leerClientes();
+        ArrayList<Producto> productos = IOCustomLib.leerProductos();
+        ArrayList<Venta> ventas = IOCustomLib.leerVentas();
 
         // Usuario que opera con la aplicaion
         Usuario user = new Cliente();
 
         // Variables de lectura y comprobacion de estado
-        EntradasPorConsola read = new EntradasPorConsola();
+        ConsoleIO read = new ConsoleIO();
         ArrayList returns;
         int operacion;
         int estado = 0;
@@ -294,7 +288,7 @@ public class Main {
             else if (estado == 2) {
                 // Pedimos al usuario que seleccione una operacion a realizar
                 //System.out.println("Estado 2:");
-                ((Cliente) user).displayVentas();
+                //((Cliente)user).displayVentas();
                 if (!(user instanceof Profesional)) {
                     System.out.println("¿Que operación desea realizar?\n"
                             + "1.- Comprar\n"
@@ -371,9 +365,9 @@ public class Main {
         }
 
         // Final del programa: Guardamos la informacion de vuelta en los ficheros
-        GuardarLeerObjetos.guardarClientes(usuarios);
-        GuardarLeerObjetos.guardarProductos(productos);
-        GuardarLeerObjetos.guardarVentas(ventas);
+        IOCustomLib.guardarClientes(usuarios);
+        IOCustomLib.guardarProductos(productos);
+        IOCustomLib.guardarVentas(ventas);
 
     }
 

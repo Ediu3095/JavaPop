@@ -18,23 +18,20 @@ import javax.swing.ImageIcon;
  * @author Eduardo Ruiz Sabajanes
  * @author Luis Miguel Sobrino Zamora
  */
-public class EntradasPorConsola {
+public class ConsoleIO {
 
     private final BufferedReader read;
     private final FileSystem fileSys;
 
-    public EntradasPorConsola() {
+    public ConsoleIO() {
         this.read = new BufferedReader(new InputStreamReader(System.in));
         this.fileSys = FileSystems.getDefault();
     }
 
-    /** <head>
+    /**
      * <p>
      * Recibe un String y comprueba que pueda ser un correo asegurandose de que
-     * tiene al menos un <b>@</b>, y un <b>.</b> después del
-     * <b>@</b>.</p></head>
-     *
-     * <body>
+     * tiene al menos un <b>@</b>, y un <b>.</b> después del <b>@</b>.</p>
      *
      * @param str_ el string del que se va a comprobar el formato.
      *
@@ -42,10 +39,10 @@ public class EntradasPorConsola {
      * tiene.
      *
      * @author Eduardo Ruiz Sabajanes
-     * </body>
+     *
      */
     public boolean checkCorreo(String str_) {
-        char[] correoChars;
+        /*char[] correoChars;
         int atCounter = 0;
         int atPosition = 0;
         correoChars = str_.toCharArray();
@@ -69,7 +66,23 @@ public class EntradasPorConsola {
             } else {
                 return true;
             }
+        }*/
+        String[] correo = str_.split("@");
+        if(correo.length != 2){
+            return false;
+        } else {
+            if(correo[0].length()<1 || correo[1].length()<1){
+                return false;
+            } else {
+                correo = correo[1].split(".");
+                for (String fragmento : correo) {
+                    if (fragmento.length() < 1) {
+                        return false;
+                    }
+                }
+            }
         }
+        return true;
     }
 
     /** <head>

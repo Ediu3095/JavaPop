@@ -1,6 +1,6 @@
 package clases;
 
-import clases.utils.EntradasPorConsola;
+import clases.utils.ConsoleIO;
 import java.io.Serializable;
 import java.time.LocalDateTime;
 
@@ -34,7 +34,7 @@ public final class Profesional extends Cliente implements Serializable {
      * @author Eduardo Ruiz Sabajanes
      * </body>
      */
-    public Profesional(Cliente c, EntradasPorConsola read) {
+    public Profesional(Cliente c, ConsoleIO read) {
         super(c.correo, c.clave, c.dni, c.nombre, c.ccpp, c.ttcc);
         System.out.println("Introduzca una descripción de su cuenta: ");
         this.descripcion = read.getString(">> ");

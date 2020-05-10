@@ -18,7 +18,7 @@ import java.util.ArrayList;
  * @author Eduardo Ruiz Sabajanes
  * @author Luis Miguel Sobrino Zamora
  */
-public class GuardarLeerObjetos {
+public class IOCustomLib {
 
     /** <head>
      * <p>

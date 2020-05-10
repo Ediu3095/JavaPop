@@ -1,7 +1,7 @@
 package clases;
 
 import clases.enumeradores.Categoria;
-import clases.utils.EntradasPorConsola;
+import clases.utils.ConsoleIO;
 import java.io.Serializable;
 import java.util.*;
 import javax.swing.ImageIcon;
@@ -18,7 +18,7 @@ public class Admin extends Usuario implements Serializable {
         this.clave = "admin";
     }
 
-    public static void ConsultarUsuario(ArrayList<Cliente> usuarios, EntradasPorConsola read) {
+    public static void ConsultarUsuario(ArrayList<Cliente> usuarios, ConsoleIO read) {
 
         boolean run__ = true;
         boolean run_ = true;
@@ -180,7 +180,7 @@ public class Admin extends Usuario implements Serializable {
         }
     }
 
-    public static void ConsultarProducto(ArrayList<Producto> producto, EntradasPorConsola read) {
+    public static void ConsultarProducto(ArrayList<Producto> producto, ConsoleIO read) {
 
         Producto product = new Producto();
         int seleccionDato = 0;
@@ -280,7 +280,7 @@ public class Admin extends Usuario implements Serializable {
         }
     }
 
-    public static void ConsultarVentas(ArrayList<Venta> venta, EntradasPorConsola read) {
+    public static void ConsultarVentas(ArrayList<Venta> venta, ConsoleIO read) {
 
         Venta sale = new Venta();
         int seleccionDato = 0;

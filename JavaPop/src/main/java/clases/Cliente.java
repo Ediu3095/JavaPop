@@ -1,6 +1,6 @@
 package clases;
 
-import clases.utils.EntradasPorConsola;
+import clases.utils.ConsoleIO;
 import java.io.Serializable;
 import java.util.ArrayList;
 import clases.enumeradores.*;
@@ -118,7 +118,7 @@ public class Cliente extends Usuario implements Serializable {
      * @author Eduardo Ruiz Sabajanes
      * </body>
      */
-    public static void altaProducto(Cliente user, EntradasPorConsola read, ArrayList<Producto> productos) {
+    public static void altaProducto(Cliente user, ConsoleIO read, ArrayList<Producto> productos) {
         System.out.println("Introduzca un título del producto(qwerty para volver atras):");
         String titulo = read.getString(">> ");
         if (!titulo.equals("qwerty")) {
@@ -173,7 +173,7 @@ public class Cliente extends Usuario implements Serializable {
                 + "\nttcc: " + ttcc;
     }
 
-    public static void editarProducto(Cliente c, ArrayList<Producto> productosGlobal, EntradasPorConsola read) {
+    public static void editarProducto(Cliente c, ArrayList<Producto> productosGlobal, ConsoleIO read) {
         Producto product = new Producto();
         ArrayList<Producto> producto = c.productos;
         int seleccionDato = 0;

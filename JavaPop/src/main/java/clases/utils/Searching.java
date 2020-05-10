@@ -149,7 +149,7 @@ public class Searching {
      * @author Eduardo Ruiz Sabajanes
      * </body>
      */
-    public static void comprar(Cliente user, ArrayList<Producto> productos, ArrayList<Venta> ventas, EntradasPorConsola read) {
+    public static void comprar(Cliente user, ArrayList<Producto> productos, ArrayList<Venta> ventas, ConsoleIO read) {
         ArrayList<Producto> prodDefinitivo = new ArrayList();
         Producto producto = new Producto();
         Categoria cat;
