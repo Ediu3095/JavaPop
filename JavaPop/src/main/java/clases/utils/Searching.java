@@ -103,10 +103,10 @@ public class Searching {
         String[] tWords = prod.getTitulo().split(" ");
 
         prod.matchDeg = 0;
-        if (user.getccpp() > prod.getVendedor().getccpp()) {
-            prod.lejania = user.getccpp() - prod.getVendedor().getccpp();
+        if (user.getCCPP() > prod.getVendedor().getCCPP()) {
+            prod.lejania = user.getCCPP() - prod.getVendedor().getCCPP();
         } else {
-            prod.lejania = prod.getVendedor().getccpp() - user.getccpp();
+            prod.lejania = prod.getVendedor().getCCPP() - user.getCCPP();
         }
 
         for (int i = 0; i < tWords.length; i++) {

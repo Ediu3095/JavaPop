@@ -130,14 +130,21 @@ public class Producto implements Serializable {
 
     @Override
     public String toString() {
-        return "titulo: " + titulo
-                + "\ndescripcion: " + descripcion
-                + "\ncategoria: " + categoria
-                + "\nestado: " + estado
-                + "\nprecio: " + precio
-                + "\nfoto: " + foto
-                + "\nfechaPublicacion: " + fechaPublicacion
-                + "\nvendedor: " + vendedor.correo;
+        String returns = "Titulo: " + this.titulo
+                + "\nDescripcion: " + this.descripcion
+                + "\nCategoria: " + this.categoria
+                + "\nEstado: " + this.estado
+                + "\nPrecio: " + this.precio
+                + "\nFoto: " + this.foto
+                + "\nFecha publicacion: " + this.fechaPublicacion
+                + "\nCorreo del vendedor: " + this.vendedor.getCorreo();
+        if (this.vendedor instanceof Profesional) {
+            returns += "\nTelefono del vendedor: " + ((Profesional) this.vendedor).getTelefono()
+                    + "\nDecripcion del vendedor: " + ((Profesional) this.vendedor).getDescripcion()
+                    + "\nHorario del vendedor: " + ((Profesional) this.vendedor).getHorario()
+                    + "\nWeb del vendedor: " + ((Profesional) this.vendedor).getWeb();
+        }
+        return returns;
     }
 
     @Override
@@ -171,10 +178,7 @@ public class Producto implements Serializable {
         if (this.categoria != other.categoria) {
             return false;
         }
-        if (this.estado != other.estado) {
-            return false;
-        }
-        return true;
+        return this.estado == other.estado;
     }
 
 }

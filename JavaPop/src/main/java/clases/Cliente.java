@@ -69,11 +69,11 @@ public class Cliente extends Usuario implements Serializable {
         this.nombre = nombre;
     }
 
-    public int getccpp() {
+    public int getCCPP() {
         return ccpp;
     }
 
-    public void setccpp(int ccpp) {
+    public void setCCPP(int ccpp) {
         this.ccpp = ccpp;
     }
 
@@ -103,12 +103,10 @@ public class Cliente extends Usuario implements Serializable {
         }
     }
 
-    /** <head>Esta función pide a traves de la consola todos los datos
+    /**Esta función pide a traves de la consola todos los datos
      * necesarios para dar de alta un producto, como son el nombre, descripcion,
      * categoria, estado, precio y si la venta del producto es urgente o
-     * no.</head>
-     *
-     * <body>
+     * no.
      *
      * @param user El usuario en al que le vamos a añadir el producto.
      * @param read Es un objeto que se utiliza para pedir los inputs y comprobar
@@ -116,7 +114,6 @@ public class Cliente extends Usuario implements Serializable {
      * @param productos Lista global de productos
      *
      * @author Eduardo Ruiz Sabajanes
-     * </body>
      */
     public static void altaProducto(Cliente user, ConsoleIO read, ArrayList<Producto> productos) {
         System.out.println("Introduzca un título del producto(qwerty para volver atras):");
@@ -176,39 +173,37 @@ public class Cliente extends Usuario implements Serializable {
     /**
      * <p>
      * Esta función proporciona al cliente un menú donde buscar productos
-     * ordenados alfabeticamente y le permite editar sus atributos como titulo, descripción
-     * categoría, estado, foto , precio o el activar el producto como urgente. </p>
+     * ordenados alfabeticamente y le permite editar sus atributos como titulo,
+     * descripción, categoría, estado, foto , precio o el activar el producto
+     * como urgente.</p>
      *
      * <p>
      * Se solicitará al cliente el dato que decida editar y este se sustituirá
      * por el antiguo que poseía el producto</p>
      *
-     * @param producto Es la lista de usuarios en la que se hace la
-     * edición.
+     * @param c el cliente que quyiere editar sus productos
+     * @param productosGlobal la lista global de productos
      * @param read Es un objeto que se utiliza para pedir los inputs 
      *
      * @author Luis Miguel Sobrino Zamora
      * 
      */
-    
     public static void editarProducto(Cliente c, ArrayList<Producto> productosGlobal, ConsoleIO read) {
-        Producto product = new Producto();
-        ArrayList<Producto> producto = c.productos;
-        int seleccionDato = 0;
+        ArrayList<Producto> productos = c.getProductos();
+        ArrayList<Producto> arr = new ArrayList();
+        Producto producto = new Producto();
         boolean run_ = true;
+        boolean run__ = true;
         int posicionMin = 0;
         int posicionMax = 0;
+        Categoria cat;
         int seleccion;
-        boolean run__ = true;
-        int categoria = 0;
-        ArrayList<Producto> arr = new ArrayList();
-        Categoria categoriaElegida = null;
 
         while (run_) {
-            categoriaElegida = read.getCategoria(">> ");
-            for (int i = 0; i < producto.size(); i++) {
-                if (producto.get(i).categoria.equals(categoriaElegida)) {
-                    arr.add(producto.get(i));
+            cat = read.getCategoria(">> ");
+            for (int i = 0; i < productos.size(); i++) {
+                if (productos.get(i).getCategoria().equals(cat)) {
+                    arr.add(productos.get(i));
                 }
             }
             while (run__) {
@@ -218,8 +213,8 @@ public class Cliente extends Usuario implements Serializable {
                         + "3.- Salir");
                 for (int i = 1; i <= 10; i++) {
                     posicionMax = posicionMin + i - 1;
-                    if (posicionMax < producto.size()) {
-                        System.out.println((i + 3) + ".- " + producto.get(posicionMax).titulo);
+                    if (posicionMax < productos.size()) {
+                        System.out.println((i + 3) + ".- " + arr.get(posicionMax).getTitulo());
                     } else {
                         posicionMax--;
                         break;
@@ -229,7 +224,7 @@ public class Cliente extends Usuario implements Serializable {
                 seleccion = read.getInt(">> ", 1, posicionMax - posicionMin + 4);
                 if (seleccion == 1) {
                     posicionMin += 10;
-                    if (posicionMin >= producto.size()) {
+                    if (posicionMin >= productos.size()) {
                         posicionMin -= 10;
                     }
                 } else if (seleccion == 2) {
@@ -240,7 +235,7 @@ public class Cliente extends Usuario implements Serializable {
                 } else if (seleccion == 3) {
                     return;
                 } else {
-                    product = producto.get(posicionMin + seleccion - 4);
+                    producto = arr.get(posicionMin + seleccion - 4);
                     run_ = false;
                 }
             }
@@ -248,7 +243,7 @@ public class Cliente extends Usuario implements Serializable {
         }
         run_ = true;
         while (run_) {
-            System.out.println(product);
+            System.out.println(producto);
             System.out.println("Que operación desea realizar:\n"
                     + "1.- Salir\n"
                     + "2.- Editar titulo\n"
@@ -259,48 +254,48 @@ public class Cliente extends Usuario implements Serializable {
                     + "7.- Editar precio\n"
                     + "8.- Activar venta urgente");
 
-            seleccionDato = read.getInt(">> ", 1, 8);
+            seleccion = read.getInt(">> ", 1, 8);
 
-            switch (seleccionDato) {
-
+            switch (seleccion) {
                 case 1: //Salir
                     return;
 
                 case 2: //Editar titulo
                     System.out.println("Nuevo titulo del producto:");
                     String titulo = read.getString(">> ");
-                    product.setTitulo(titulo);
+                    producto.setTitulo(titulo);
                     break;
 
                 case 3: //Editar descripcion
                     System.out.println("Nueva descripción del producto:");
                     String descripcion = read.getString(">> ");
-                    product.setDescripcion(descripcion);
+                    producto.setDescripcion(descripcion);
                     break;
 
                 case 4: // Editar categoria
-                    product.categoria = read.getCategoria(">> ");
+                    producto.setCategoria(read.getCategoria(">> "));
                     break;
 
                 case 5: // Editar estado
-                    product.estado = read.getEstado(">> ");
+                    producto.setEstado(read.getEstado(">> "));
                     break;
 
                 case 6: //Editar foto
-                    product.foto = read.getImage(">> ");
+                    producto.setFoto(read.getImage(">> "));
                     break;
 
                 case 7: //Editar precio
-                    product.precio = read.getDouble(">> ", 0, Double.MAX_VALUE);
+                    System.out.println("Nuevo precio del producto:");
+                    producto.setPrecio(read.getDouble(">> ", 0, Double.MAX_VALUE));
                     break;
 
                 case 8: // Activar urgente
-                    product.toggleUrgente();
+                    producto.toggleUrgente();
                     break;
 
                 case 9: //Dar de baja producto
-                    c.sacarProducto(product);
-                    productosGlobal.remove(product);
+                    c.sacarProducto(producto);
+                    productosGlobal.remove(producto);
                     return;
             }
         }

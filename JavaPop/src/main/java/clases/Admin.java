@@ -44,8 +44,7 @@ public class Admin extends Usuario implements Serializable {
         Profesional usuarioPro = new Profesional();
         int posicionMin = 0;
         int posicionMax = 0;
-        int seleccion = 0;
-        int seleccionDato = 0;
+        int seleccion;
         String dato;
 
         while (run_) {
@@ -98,53 +97,54 @@ public class Admin extends Usuario implements Serializable {
                         + "9.- Editar horario\n"
                         + "10.- Editar teléfono\n"
                         + "11.- Editar web");
-                seleccionDato = read.getInt(">> ", 1, 11);
+                seleccion = read.getInt(">> ", 1, 11);
             } else {
-                seleccionDato = read.getInt(">> ", 1, 7);
+                seleccion = read.getInt(">> ", 1, 7);
             }
-            switch (seleccionDato) {
+            switch (seleccion) {
 
                 case 1: //Salir
                     return;
 
                 case 2: //Editar correo
-                    System.out.println("Nuevo correo del usuario:");
-                    String correo = read.getString(">> ");
+                    run__ = true;
                     while (run__) {
-
+                        //Pedimos un correo
+                        System.out.println("Nuevo correo del usuario:");
+                        String correo = read.getString(">> ");
+                        
                         // Comprobamos que el correo sea valido
                         if (read.checkCorreo(correo)) {
-                            run__ = false;
 
                             //Comprobamos que no haya otro usuario con el mismo correo
-                            for (int i = 0; i < usuarios.size(); i++) {
-                                if (usuarios.get(i).correo.equals(correo)) {
+                            for (Usuario user: usuarios) {
+                                if (user.getCorreo().equals(correo)) { // Si el correo ya pertenece a un usuario
                                     run__ = true;
-                                    break;
+                                    System.out.println("Ese correo ya es utilizado por otro usuario!!");
+                                } else { // Si el correo no pertenece a ningún usuario
+                                    run__ = false;
+                                    usuario.setCorreo(correo);
                                 }
-                            }
-                            // Si el correo ya pertenece a un usuario...
-                            if (run__) {
-                                System.out.println("Usuario existente, introduzca un correo no registardo");
                             }
                         }
                     }
-                    run__ = true;
-                    usuario.setCorreo(correo);
                     break;
 
-                case 3: //Editar clave
-                    System.out.println("Nueva clave:");
-                    String clave = read.getString(">> ");
+                    case 3: //Editar clave
+                    run__ = true;
                     while (run__) {
-
+                        // Pedimos una contraseña
+                        System.out.println("Nueva clave:");
+                        String clave = read.getString(">> ");
+                        
                         //Comprobamos que la contraseña sea valida
                         if (read.checkClave(clave)) {
                             run__ = false;
+                            usuario.setClave(clave);
+                        } else {
+                            System.out.println("Contraseña no válida");
                         }
                     }
-                    run__ = true;
-                    usuario.setClave(clave);
                     break;
 
                 case 4: // Editar nombre
@@ -155,19 +155,19 @@ public class Admin extends Usuario implements Serializable {
 
                 case 5: // Edtitar DNI
                     System.out.println("Nuevo DNI: ");
-                    String dni = read.getString(">> ");
+                    String dni = read.getDNI(">> ");
                     usuario.setDni(dni);
                     break;
 
                 case 6: //Editar codigo postal
                     System.out.println("Nuevo codigo postal: ");
-                    int ccpp = read.getInt(">> ");
-                    usuario.setccpp(ccpp);
+                    int ccpp = read.getCodigoPostal(">> ");
+                    usuario.setCCPP(ccpp);
                     break;
 
                 case 7: // Editar tarjeta de credito
                     System.out.println("Nueva tarjeta de credito");
-                    String ttcc = read.getString(">> ");
+                    String ttcc = read.getTarjetaCredito(">> ");
                     usuario.setTTCC(ttcc);
                     break;
 
@@ -217,22 +217,19 @@ public class Admin extends Usuario implements Serializable {
      */
     
     public static void ConsultarProducto(ArrayList<Producto> producto, ConsoleIO read) {
-
+        ArrayList<Producto> arr = new ArrayList();
         Producto product = new Producto();
-        int seleccionDato = 0;
         boolean run_ = true;
+        boolean run__ = true;
         int posicionMin = 0;
         int posicionMax = 0;
+        Categoria categoriaElegida;
         int seleccion;
-        boolean run__ = true;
-        int categoria = 0;
-        ArrayList<Producto> arr = new ArrayList();
-        Categoria categoriaElegida = null;
 
         while (run_) {
             categoriaElegida = read.getCategoria(">> ");
             for (int i = 0; i < producto.size(); i++) {
-                if (producto.get(i).categoria.equals(categoriaElegida)) {
+                if (producto.get(i).getCategoria().equals(categoriaElegida)) {
                     arr.add(producto.get(i));
                 }
             }
@@ -244,7 +241,7 @@ public class Admin extends Usuario implements Serializable {
                 for (int i = 1; i <= 10; i++) {
                     posicionMax = posicionMin + i - 1;
                     if (posicionMax < producto.size()) {
-                        System.out.println((i + 3) + ".- " + producto.get(posicionMax).titulo);
+                        System.out.println((i + 3) + ".- " + arr.get(posicionMax).titulo);
                     } else {
                         posicionMax--;
                         break;
@@ -265,7 +262,7 @@ public class Admin extends Usuario implements Serializable {
                 } else if (seleccion == 3) {
                     return;
                 } else {
-                    product = producto.get(posicionMin + seleccion - 4);
+                    product = arr.get(posicionMin + seleccion - 4);
                     run_ = false;
                 }
             }
@@ -282,9 +279,9 @@ public class Admin extends Usuario implements Serializable {
                     + "5.- Editar estado\n"
                     + "6.- Eliminar foto");
 
-            seleccionDato = read.getInt(">> ", 1, 6);
+            seleccion = read.getInt(">> ", 1, 6);
 
-            switch (seleccionDato) {
+            switch (seleccion) {
 
                 case 1: //Salir
                     return;
@@ -323,17 +320,15 @@ public class Admin extends Usuario implements Serializable {
      * solo consultarlos.</p>
      *
      *
-     * @param venta Es la lista de ventas que se muestra al administrador.
+     * @param ventas Es la lista de ventas que se muestra al administrador.
      * @param read Es un objeto que se utiliza para pedir los inputs. 
      *
      * @author Luis Miguel Sobrino Zamora
      * 
      */
     
-    public static void ConsultarVentas(ArrayList<Venta> venta, ConsoleIO read) {
-
+    public static void ConsultarVentas(ArrayList<Venta> ventas, ConsoleIO read) {
         Venta sale = new Venta();
-        int seleccionDato = 0;
         boolean run_ = true;
         int posicionMin = 0;
         int posicionMax = 0;
@@ -343,41 +338,10 @@ public class Admin extends Usuario implements Serializable {
         ArrayList<Venta> arr = new ArrayList();
         Categoria categoriaElegida = null;
 
-        while (run_) {
-            System.out.println("Seleccionela categoría que desea comprobar:\n"
-                    + "1.- Salir\n"
-                    + "2.- Moda y accesorios\n"
-                    + "3.- Tv, audio y fotografía\n"
-                    + "4.- Moviles y telefonia\n"
-                    + "5.- Informatica y electronica\n"
-                    + "6.- Consolas y videojuegos\n"
-                    + "7.- Deporte y ocio");
-            categoria = read.getInt(">> ", 1, 11);
-            switch (categoria) {
-                case 1:// Salir 
-                    return;
-                case 2: //Moda y accesorios
-                    categoriaElegida = Categoria.Moda_y_accesorios;
-                    break;
-                case 3: // Tv, audio y fotográfia
-                    categoriaElegida = Categoria.Tv_audio_y_foto;
-                    break;
-                case 4: // Moviles y telefonia
-                    categoriaElegida = Categoria.Moviles_y_telefonia;
-                    break;
-                case 5: // Informatica y electronica
-                    categoriaElegida = Categoria.Informatica_y_electronica;
-                    break;
-                case 6: // Consolas y videojuegos
-                    categoriaElegida = Categoria.Consolas_y_videojuegos;
-                    break;
-                case 7: // Deporte y ocio
-                    categoriaElegida = Categoria.Deporte_y_ocio;
-                    break;
-            }
-            for (int i = 0; i < venta.size(); i++) {
-                if (venta.get(i).categoria.equals(categoriaElegida)) {
-                    arr.add(venta.get(i));
+        categoriaElegida = read.getCategoria(">> ");
+            for (int i = 0; i < ventas.size(); i++) {
+                if (ventas.get(i).getCategoria().equals(categoriaElegida)) {
+                    arr.add(ventas.get(i));
                 }
             }
             while (run__) {
@@ -387,8 +351,10 @@ public class Admin extends Usuario implements Serializable {
                         + "3.- Salir");
                 for (int i = 1; i <= 10; i++) {
                     posicionMax = posicionMin + i - 1;
-                    if (posicionMax < venta.size()) {
-                        System.out.println((i + 3) + ".- " + venta.get(posicionMax).comprador + " " + venta.get(posicionMax).fechaVenta);
+                    if (posicionMax < ventas.size()) {
+                        System.out.println((i + 3) + ".- "
+                                + arr.get(posicionMax).getComprador()
+                                + " " + arr.get(posicionMax).getFechaVenta());
                     } else {
                         posicionMax--;
                         break;
@@ -398,7 +364,7 @@ public class Admin extends Usuario implements Serializable {
                 seleccion = read.getInt(">> ", 1, posicionMax - posicionMin + 4);
                 if (seleccion == 1) {
                     posicionMin += 10;
-                    if (posicionMin >= venta.size()) {
+                    if (posicionMin >= ventas.size()) {
                         posicionMin -= 10;
                     }
                 } else if (seleccion == 2) {
@@ -409,25 +375,21 @@ public class Admin extends Usuario implements Serializable {
                 } else if (seleccion == 3) {
                     return;
                 } else {
-                    sale = venta.get(posicionMin + seleccion - 4);
+                    sale = ventas.get(posicionMin + seleccion - 4);
                     run_ = false;
                 }
             }
-
-        }
         run_ = true;
         while (run_) {
-            System.out.println(venta.toString());
+            System.out.println(ventas);
             System.out.println("1.- Salir");
-            seleccionDato = read.getInt(">> ", 1, 1);
+            seleccion = read.getInt(">> ", 1, 1);
 
-            switch (seleccionDato) {
-
+            switch (seleccion) {
                 case 1: //Salir
                     return;
 
             }
         }
     }
-
 }
