@@ -170,7 +170,7 @@ public class Searching {
 
         // Se pidan unas palabras clave
         System.out.println("Introduzca una cadena de palabras clave que buscar:");
-        String kW = read.getString(">>");
+        String kW = read.getString(">> ");
         keyWords = kW.split(" ");
 
         // Se actualizan los parametros de busqueda de los productos

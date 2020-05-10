@@ -163,7 +163,7 @@ public class Admin extends Usuario implements Serializable {
                     break;
 
                 case 7: // Editar tarjeta de credito
-                    System.out.println("Nueva tarjeta de credito");
+                    System.out.println("Nueva tarjeta de credito: ");
                     String ttcc = read.getTarjetaCredito(">> ");
                     usuario.setTTCC(ttcc);
                     break;
@@ -175,7 +175,7 @@ public class Admin extends Usuario implements Serializable {
                     break;
 
                 case 9: //Editar Horario
-                    System.out.println("Nuevo horario: ");
+                    System.out.println("Nuevo horario(hh:mm-hh:mm): ");
                     String horario = read.getHorario(">> ");
                     usuarioPro.setHorario(horario);
                     break;
@@ -300,7 +300,7 @@ public class Admin extends Usuario implements Serializable {
                     break;
 
                 case 6: //Eliminar foto
-                    producto.foto = new ImageIcon("./resources/imagenes/White.jpeg");
+                    /*producto.foto = new ImageIcon("./resources/imagenes/White.jpeg");*/
                     break;
             }
         }

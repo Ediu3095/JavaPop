@@ -45,7 +45,7 @@ public class Venta implements Serializable {
                 + "\ntitulo: " + producto.getTitulo()
                 + "\nestado: " + producto.getEstado()
                 + "\ncategoria: " + producto.getCategoria()
-                + "\nfoto: " + producto.getFoto()
+                + "\nfoto: " /*+ producto.getFoto()*/
                 + "\nprecio: " + producto.getPrecio()
                 + "\ndescripcion: " + producto.getDescripcion() 
                 + "\nfechaVenta: " + fechaVenta + '}';

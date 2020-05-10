@@ -19,7 +19,7 @@ public class Producto implements Serializable {
     protected Categoria categoria;
     protected Estado estado;
     protected double precio;
-    protected Icon foto;
+    // protected Icon foto;
     protected LocalDateTime fechaPublicacion;
     protected Cliente vendedor;
     protected boolean urgente;
@@ -35,7 +35,7 @@ public class Producto implements Serializable {
         this.categoria = categoria;
         this.estado = estado;
         this.precio = precio;
-        this.foto = foto;
+        // this.foto = foto;
         this.fechaPublicacion = LocalDateTime.now();
         this.vendedor = vendedor;
         this.urgente = urgente;
@@ -52,12 +52,16 @@ public class Producto implements Serializable {
         this.categoria = Categoria.Consolas_y_videojuegos;
         this.estado = Estado.Aceptable;
         this.precio = 0;
-        this.foto = new ImageIcon();
+        // this.foto = new ImageIcon();
         this.fechaPublicacion = LocalDateTime.now();
         this.vendedor = new Cliente();
         this.urgente = false;
         this.matchDeg = 0;
         this.lejania = 0;
+    }
+
+    public void setVendedor(Cliente vendedor) {
+        this.vendedor = vendedor;
     }
 
     public int getMatchDeg() {
@@ -116,6 +120,7 @@ public class Producto implements Serializable {
         this.precio = precio;
     }
 
+    /*
     public Icon getFoto() {
         return foto;
     }
@@ -123,6 +128,7 @@ public class Producto implements Serializable {
     public void setFoto(Icon foto) {
         this.foto = foto;
     }
+    */
 
     public LocalDateTime getFechaPublicacion() {
         return fechaPublicacion;
@@ -151,7 +157,7 @@ public class Producto implements Serializable {
                 + "\nCategoria: " + this.categoria
                 + "\nEstado: " + this.estado
                 + "\nPrecio: " + this.precio
-                + "\nFoto: " + this.foto
+                + "\nFoto: "/* + this.foto*/
                 + "\nFecha publicacion: " + this.fechaPublicacion
                 + "\nCorreo del vendedor: " + this.vendedor.getCorreo();
         if (this.vendedor instanceof Profesional) {

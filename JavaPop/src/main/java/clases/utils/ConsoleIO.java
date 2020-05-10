@@ -88,7 +88,7 @@ public class ConsoleIO {
             matcher_ = pattern.matcher(DNI);
             if (matcher_.matches()) {
                 NIE = Integer.parseInt(DNI.substring(0, DNI.length() - 1));
-                if (DNI.charAt(8) == letras[NIE % 23]) {
+                if (DNI.charAt(DNI.length() - 1) == letras[NIE % 23]) {
                     return DNI;
                 }
             }

@@ -322,10 +322,10 @@ public class Main {
                             ((Cliente) user).ingresar(venta.getProducto().getPrecio()); // Realizamos el ingreso al vendedor
                             productos.remove(venta.getProducto()); // Eliminamos el producto de la lista global de productos
                             ((Cliente) user).getProductos().remove(venta.getProducto()); // Eliminamos el producto de la lista de productos del vendedor
-                            venta.getComprador().getComprasConfirmadas().add(venta);
+                            venta.getComprador().getComprasConfirmadas().add(venta); // Añadimos una compra confirmada al comprador
                             break;
                             
-                        case 2: //Eliminar venta (No hacemos nada)
+                        case 2: // Denegar venta (No hacemos nada)
                             break;
                     }
                 }
@@ -414,14 +414,13 @@ public class Main {
                         break;
                 }
             }
-            
         }
 
         // Final del programa: Guardamos la informacion de vuelta en los ficheros
         IOCustomLib.guardarClientes(usuarios);
         IOCustomLib.guardarProductos(productos);
+        // Las fotos de los productos están comentadas porque al ser Icon y no ser serializable detiene la ejecucion y evita que el programa guarde datos en los ficheros .dat
         IOCustomLib.guardarVentas(ventas);
 
     }
-
 }

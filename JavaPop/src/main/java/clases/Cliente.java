@@ -287,7 +287,7 @@ public class Cliente extends Usuario implements Serializable {
                     break;
 
                 case 6: //Editar foto
-                    producto.setFoto(read.getImage(">> "));
+                    /*producto.setFoto(read.getImage(">> "));*/
                     break;
 
                 case 7: //Editar precio

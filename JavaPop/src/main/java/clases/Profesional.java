@@ -35,13 +35,17 @@ public final class Profesional extends Cliente implements Serializable {
         super(c.correo, c.clave, c.dni, c.nombre, c.ccpp, c.ttcc);
         System.out.println("Introduzca una descripción de su cuenta: ");
         this.descripcion = read.getString(">> ");
-        System.out.println("Introduzca un horario: ");
+        System.out.println("Introduzca un horario(hh:mm-hh:mm): ");
         this.horario = read.getHorario(">> ");
-        System.out.println("Introduzca un teléfono de contacto (de 9 dígitos): ");
+        System.out.println("Introduzca un teléfono de contacto: ");
         this.telefono = read.getTelefono(">> ");
         System.out.println("Introduzca una página web asociada: ");
         this.web = read.getWeb(">> ");
-        this.pagoPro = LocalDateTime.now();
+        this.pagoPro = LocalDateTime.now().plusMonths(1);
+        this.productos = c.productos;
+        for (Producto producto: this.productos){
+            producto.setVendedor(this);
+        }
     }
 
     public String getDescripcion() {
