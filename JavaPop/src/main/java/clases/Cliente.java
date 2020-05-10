@@ -38,8 +38,8 @@ public class Cliente extends Usuario implements Serializable {
         this.nombre = nombre;
         this.ccpp = ccpp;
         this.ttcc = ttcc;
-        this.productos = new ArrayList();
-        this.ventasNuevas = new ArrayList();
+        this.productos = new ArrayList(0);
+        this.ventasNuevas = new ArrayList(0);
     }
 
     public Cliente() {
@@ -49,8 +49,8 @@ public class Cliente extends Usuario implements Serializable {
         this.nombre = "";
         this.ccpp = 0;
         this.ttcc = "";
-        this.productos = new ArrayList();
-        this.ventasNuevas = new ArrayList();
+        this.productos = new ArrayList(0);
+        this.ventasNuevas = new ArrayList(0);
     }
 
     public String getDni() {
@@ -91,16 +91,6 @@ public class Cliente extends Usuario implements Serializable {
 
     public ArrayList<Venta> getVentasNuevas() {
         return ventasNuevas;
-    }
-
-    public void displayVentas() {
-        if (this.ventasNuevas.size() > 0) {
-            System.out.println("Se vendieron algunos de tus productos!!");
-            for (int i = 0; i < this.ventasNuevas.size(); i++) {
-                System.out.println(this.ventasNuevas.get(i));
-            }
-            this.ventasNuevas.clear();
-        }
     }
 
     /**Esta función pide a traves de la consola todos los datos
@@ -155,8 +145,11 @@ public class Cliente extends Usuario implements Serializable {
     }
 
     public void cobrar(double precio) {
-        // Aquí se efectuaria el cobro
-        System.out.println("Se efectuó un cobro de " + precio + '€');
+        // Aquí se efectuaria un cobro
+    }
+    
+    public void ingresar(double precio){
+        // Aquí se efetuaría un ingreso
     }
 
     @Override

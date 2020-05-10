@@ -231,18 +231,16 @@ public class Main {
         while (!finalizar) {
             // Estado 0: Elegir entre "inicio de sesion" y "registrarse"
             if (estado == 0) {
-                // Pedimos al usuario que seleccione una operacion a realizar
                 //System.out.println("Estado 0:");
+                // Pedimos al usuario que seleccione una operacion a realizar
                 System.out.println("¿Que operación desea realizar?\n"
                         + "1.- Iniciar sesion\n"
                         + "2.- Registrarse\n"
                         + "3.- Salir");
                 operacion = read.getInt(">> ", 1, 3);
-                System.out.println();
 
                 // Ejecutamos esa operacion
                 switch (operacion) {
-
                     case 1: // Realizar el "inicio de sesion"
                         returns = login(usuarios, read);
                         if ((boolean) returns.get(0)) {
@@ -269,9 +267,8 @@ public class Main {
                         finalizar = true;
                         break;
                 }
-            } // Estado 1: Menu principal del administrador
+            }// Estado 1: Menu principal del administrador
             else if (estado == 1) {
-
                 // Pedimos al usuario que seleccione una operacion a realizar
                 //System.out.println("Estado 1:");
                 System.out.println("¿Que operación desea realizar?\n"
@@ -281,7 +278,6 @@ public class Main {
                         + "4.- Cerrar sesión\n"
                         + "5.- Salir");
                 operacion = read.getInt(">> ", 1, 5);
-                System.out.println();
 
                 // Ejecutamos esa operacion
                 switch (operacion) {
@@ -306,11 +302,37 @@ public class Main {
                         finalizar = true;
                         break;
                 }
-            } // Estado 2: Menu principal del cliente
-            else if (estado == 2) {
+            }
+            // Estado 2: Comprobar ventas nuevas del cliente
+            else if (estado == 2){
+                // System.out.println("Estado 2:");
+                for (Venta venta : ((Cliente) user).getVentasNuevas()) {
+                    System.out.println("Le desean comprar el siguiente producto:");
+                    System.out.println(venta);
+                    System.out.println("¿Desea confirmar la venta?\n"
+                            + "1.- Si\n"
+                            + "2.- No");
+                    operacion = read.getInt(">> ", 1, 2);
+                    switch (operacion) {
+                        case 1: // Confirmar venta
+                            ventas.add(venta); // Añadimos la venta a la lista de ventas confirmadas
+                            venta.getComprador().cobrar(venta.getProducto().getPrecio()); // Realizamos el cobro al comprador
+                            ((Cliente) user).ingresar(venta.getProducto().getPrecio()); // Realizamos el ingreso al vendedor
+                            productos.remove(venta.getProducto()); // Eliminamos el producto de la lista global de productos
+                            ((Cliente) user).getProductos().remove(venta.getProducto()); // Eliminamos el producto de la lista de productos del vendedor
+                            break;
+                            
+                        case 2: //Eliminar venta (No hacemos nada)
+                            break;
+                    }
+                }
+                ((Cliente) user).getVentasNuevas().clear(); // Limpiamos la lista de ventas nuevas del usuario
+                estado = 3; // Vamos al menú principal de clientes
+            }
+            // Estado 3: Menu principal del cliente
+            else if (estado == 3) {
+                // System.out.println("Estado 3:");
                 // Pedimos al usuario que seleccione una operacion a realizar
-                //System.out.println("Estado 2:");
-                ((Cliente)user).displayVentas();
                 if (!(user instanceof Profesional)) {
                     System.out.println("¿Que operación desea realizar?\n"
                             + "1.- Comprar\n"
@@ -331,11 +353,11 @@ public class Main {
                 // Ejecutamos esa operacion
                 switch (operacion) {
                     case 1:// Compra
-                        Searching.comprar((Cliente) user, productos, ventas, read);
+                        Searching.comprar((Cliente) user, productos, read);
                         break;
 
                     case 2:// Mis productos
-                        estado = 3;
+                        estado = 4;
                         break;
 
                     case 3:// Actualizar licencia pro
@@ -359,7 +381,9 @@ public class Main {
                         finalizar = true;
                         break;
                 }
-            } else if (estado == 3) {
+            }// Estado 4: Productos del cliente
+            else if (estado == 4) {
+                // System.out.println("Estado 4:");
                 System.out.println("¿Que operación desea realizar?\n"
                         + "1.- Editar productos\n"
                         + "2.- Dar de alta producto\n"
@@ -374,16 +398,13 @@ public class Main {
                     case 2:// Dar de alta producto
                         Cliente.altaProducto((Cliente) user, read, productos);
                         break;
-                    case 3:// Volver al estado 2
-                        estado = 2;
+                    case 3:// Volver al estado 3
+                        estado = 3;
                         break;
                 }
             }
+            
         }
-
-        /*for (int i = 0; i < usuarios.size(); i++) {
-            System.out.println(usuarios.get(i).getCorreo());
-        }*/
 
         // Final del programa: Guardamos la informacion de vuelta en los ficheros
         IOCustomLib.guardarClientes(usuarios);

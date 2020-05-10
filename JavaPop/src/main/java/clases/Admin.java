@@ -178,19 +178,19 @@ public class Admin extends Usuario implements Serializable {
 
                 case 9: //Editar Horario
                     System.out.println("Nuevo horario: ");
-                    String horario = read.getString(">> ");
+                    String horario = read.getHorario(">> ");
                     usuarioPro.setHorario(horario);
                     break;
 
                 case 10: // Editar telefono
                     System.out.println("Nuevo telefono: ");
-                    String telefono = read.getString(">> ");
+                    String telefono = read.getTelefono(">> ");
                     usuarioPro.setTelefono(telefono);
                     break;
 
                 case 11: //Editar web
                     System.out.println("Nueva web: ");
-                    String web = read.getString(">> ");
+                    String web = read.getWeb(">> ");
                     usuarioPro.setWeb(web);
                     break;
             }
@@ -229,7 +229,7 @@ public class Admin extends Usuario implements Serializable {
                 arr.add(productos.get(i));
             }
         }
-        
+
         while (run_) {
             System.out.println("Seleccione el producto que desea comprobar:\n"
                     + "1.- Pagina siguiente\n"
@@ -322,17 +322,16 @@ public class Admin extends Usuario implements Serializable {
      *
      */
     public static void ConsultarVentas(ArrayList<Venta> ventas, ConsoleIO read) {
-        Venta sale = new Venta();
+        ArrayList<Venta> arr = new ArrayList();
         boolean run_ = true;
         int posicionMin = 0;
         int posicionMax = 0;
         int seleccion;
-        ArrayList<Venta> arr = new ArrayList();
-        Categoria categoriaElegida = null;
+        Categoria categoriaElegida;
 
         categoriaElegida = read.getCategoria(">> ");
         for (int i = 0; i < ventas.size(); i++) {
-            if (ventas.get(i).getCategoria().equals(categoriaElegida)) {
+            if (ventas.get(i).getProducto().getCategoria().equals(categoriaElegida)) {
                 arr.add(ventas.get(i));
             }
         }
@@ -345,7 +344,8 @@ public class Admin extends Usuario implements Serializable {
                 posicionMax = posicionMin + i - 1;
                 if (posicionMax < arr.size()) {
                     System.out.println((i + 3) + ".- "
-                            + arr.get(posicionMax).getComprador()
+                            + arr.get(posicionMax).getComprador().getCorreo()
+                            + " " + arr.get(posicionMax).getProducto().getVendedor().getCorreo()
                             + " " + arr.get(posicionMax).getFechaVenta());
                 } else {
                     posicionMax--;
@@ -354,34 +354,29 @@ public class Admin extends Usuario implements Serializable {
             }
 
             seleccion = read.getInt(">> ", 1, posicionMax - posicionMin + 4);
-            if (seleccion == 1) {
+            if (seleccion == 1) { // Página siguiente
                 posicionMin += 10;
                 if (posicionMin >= ventas.size()) {
                     posicionMin -= 10;
                 }
-            } else if (seleccion == 2) {
+            } else if (seleccion == 2) { // Página anterior
                 posicionMin -= 10;
                 if (posicionMin <= 0) {
                     posicionMin += 10;
                 }
-            } else if (seleccion == 3) {
+            } else if (seleccion == 3) { // Salir
                 return;
-            } else {
-                sale = ventas.get(posicionMin + seleccion - 4);
-                run_ = false;
+            } else { // Seleccionar una venta
+                System.out.println(ventas.get(posicionMin + seleccion - 4));
+                System.out.println("1.- Salir");
+                seleccion = read.getInt(">> ", 1, 1);
+                switch (seleccion) {
+                    case 1: //Salir
+                        return;
+                }
             }
-        }
-        run_ = true;
-        while (run_) {
-            System.out.println(ventas);
-            System.out.println("1.- Salir");
-            seleccion = read.getInt(">> ", 1, 1);
 
-            switch (seleccion) {
-                case 1: //Salir
-                    return;
-
-            }
         }
+
     }
 }

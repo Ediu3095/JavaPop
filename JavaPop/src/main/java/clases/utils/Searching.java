@@ -16,9 +16,9 @@ public class Searching {
      * <p>
      * Fusiona los elementos de 2 "sublistas" (indicamos las sublistas a través
      * de 2 index que marcan el inicio y el final de la sublista) de forma que
-     * queden organizados <b>de mayor a menor grado de coincidencia</b> (o
-     * matchDeg) y <b>de menor a mayor distancia</b> (para los elementos con el
-     * mismo grado de coincidencia).</p>
+     * queden organizados <b>de mayor a menor urgencia</b> primero, <b>de mayor
+     * a menor grado de coincidencia</b> (o matchDeg) después y por último <b>de
+     * menor a mayor distancia</b>.</p>
      *
      * @param arr ArrayList de productos que ordenar
      * @param i1 index que marca el principio del primer grupo que fusionar
@@ -28,10 +28,10 @@ public class Searching {
      *
      * @author Eduardo Ruiz Sabajanes
      */
-    public static void merge(ArrayList<Producto> arr, int i1, int i2, int j1, int j2) { // Incluir urgencia
+    public static void merge(ArrayList<Producto> arr, int i1, int i2, int j1, int j2) {
         Producto aux;
         do {
-            if (arr.get(i1).isUrgente() == arr.get(j1).isUrgente()){
+            if (arr.get(i1).isUrgente() == arr.get(j1).isUrgente()) {
                 if (arr.get(i1).getMatchDeg() < arr.get(j1).getMatchDeg()) {
                     aux = arr.get(j1);
                     arr.remove(j1);
@@ -51,7 +51,7 @@ public class Searching {
                 } else if (arr.get(i1).getMatchDeg() > arr.get(j1).getMatchDeg()) {
                     i1++;
                 }
-            } else if (arr.get(i1).isUrgente() && !arr.get(j1).isUrgente()){
+            } else if (arr.get(i1).isUrgente() && !arr.get(j1).isUrgente()) {
                 i1++;
             } else {
                 aux = arr.get(j1);
@@ -61,7 +61,7 @@ public class Searching {
                 j1++;
             }
         } while (i1 <= i2 && j1 <= j2);
-        
+
     }
 
     /**
@@ -123,13 +123,14 @@ public class Searching {
         for (int i = 0; i < tWords.length; i++) {
             for (int j = 0; j < kWords.length; j++) {
                 if (tWords[i].equals(kWords[j])) {
-                    prod.setMatchDeg(prod.getMatchDeg()+1);
+                    prod.setMatchDeg(prod.getMatchDeg() + 1);
                 }
             }
         }
     }
 
-    /**<p>
+    /**
+     * <p>
      * Se le pide por consola al usuario que introduzca una categoría y unas
      * palabras clave y se le muestran todos los productos de dicha categoría en
      * orden decreciente de coincidencia con esas palabras clave primero y en
@@ -143,12 +144,11 @@ public class Searching {
      *
      * @param user el usuario que va a efectuar la compra
      * @param productos la lista global de productos
-     * @param ventas la lista global de ventas
      * @param read un objeto para pedir entradas por consola al usuario
      *
      * @author Eduardo Ruiz Sabajanes
      */
-    public static void comprar(Cliente user, ArrayList<Producto> productos, ArrayList<Venta> ventas, ConsoleIO read) {
+    public static void comprar(Cliente user, ArrayList<Producto> productos, ConsoleIO read) {
         ArrayList<Producto> prodDefinitivo = new ArrayList();
         Producto producto = new Producto();
         Categoria cat;
@@ -158,8 +158,8 @@ public class Searching {
         int posicionMax = 0;
         int seleccion;
 
+        // Se filtran los productos por categoría
         cat = read.getCategoria(">> ");
-
         for (int i = 0; i < productos.size(); i++) {
             if (productos.get(i).getCategoria() == cat) {
                 if (!productos.get(i).getVendedor().equals(user)) {
@@ -168,15 +168,19 @@ public class Searching {
             }
         }
 
+        // Se pidan unas palabras clave
         System.out.println("Introduzca una cadena de palabras clave que buscar:");
         keyWords = read.getString(">>").split(" ");
 
+        // Se actualizan los parametros de busqueda de los productos
         for (int i = 0; i < prodDefinitivo.size(); i++) {
             updateTags(user, prodDefinitivo.get(i), keyWords);
         }
 
+        // Se organizan los productos
         sort(prodDefinitivo, 0, prodDefinitivo.size() - 1);
 
+        // Displayea los productos de 10 en 10 y permite navegar a traves de ellos y seleccionarlos
         while (run_) {
             System.out.println("Seleccione el producto que desea comprar:\n"
                     + "1.- Pagina siguiente\n"
@@ -224,12 +228,8 @@ public class Searching {
                     return;
 
                 case 2: //Efectuar compra
-                    producto.getVendedor().sacarProducto(producto);
-                    productos.remove(producto);
-                    Venta venta = new Venta(user.getCorreo(), producto);
-                    ventas.add(venta);
-                    user.getVentasNuevas().add(venta);
-                    user.cobrar(producto.getPrecio());
+                    Venta venta = new Venta(user, producto);
+                    producto.getVendedor().getVentasNuevas().add(venta);
                     return;
             }
         }

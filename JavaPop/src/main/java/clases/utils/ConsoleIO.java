@@ -1,19 +1,18 @@
 package clases.utils;
 
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
-
 import clases.enumeradores.*;
 import java.util.regex.Pattern;
 import java.util.regex.Matcher;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.FileSystem;
 import java.nio.file.FileSystems;
 import java.nio.file.Files;
 import static java.nio.file.StandardCopyOption.REPLACE_EXISTING;
-import javax.swing.Icon;
-import javax.swing.ImageIcon;
 
 /**
  *
@@ -45,7 +44,7 @@ public class ConsoleIO {
         Pattern pattern = Pattern.compile("^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@"
                 + "[A-Za-z0-9-]+(\\.[A-Za-z0-9-]+)*(\\.[A-Za-z]{2,})$");
         Matcher matcher_ = pattern.matcher(str_);
-        return matcher_.find();
+        return matcher_.matches();
     }
 
     /**
@@ -62,7 +61,7 @@ public class ConsoleIO {
     public boolean checkClave(String str_) {
         Pattern pattern = Pattern.compile("[A-Za-z0-9]{1,}");
         Matcher matcher = pattern.matcher(str_);
-        return matcher.find();
+        return matcher.matches();
     }
 
     /**
@@ -75,20 +74,20 @@ public class ConsoleIO {
      *
      * @return el string introducido por consola como dni que haya cumplido las
      * condiciones.
-     * 
+     *
      * @author Eduardo Ruiz Sabajanes
      */
     public String getDNI(String str_) {
         char[] letras = "TRWAGMYFPDXBNJZSQVHLCKE".toCharArray();
-        Pattern pattern = Pattern.compile("[0-9]{7,8}[A-Za-z]");
+        Pattern pattern = Pattern.compile("[0-9]{7,8}[A-Z]");
         Matcher matcher_;
         String DNI;
         int NIE;
         while (true) {
-            DNI = this.getString(str_, 9);
+            DNI = this.getString(str_);
             matcher_ = pattern.matcher(DNI);
-            if (matcher_.find()) {
-                NIE = Integer.parseInt(DNI.substring(0, 8));
+            if (matcher_.matches()) {
+                NIE = Integer.parseInt(DNI.substring(0, DNI.length() - 1));
                 if (DNI.charAt(8) == letras[NIE % 23]) {
                     return DNI;
                 }
@@ -106,7 +105,7 @@ public class ConsoleIO {
      *
      * @return el entero introducido por consola como codigo postal que haya
      * cumplido las condiciones.
-     * 
+     *
      * @author Eduardo Ruiz Sabajanes
      */
     public int getCodigoPostal(String str_) {
@@ -116,7 +115,7 @@ public class ConsoleIO {
         while (true) {
             ccpp = this.getString(str_, 5);
             matcher_ = pattern.matcher(ccpp);
-            if (matcher_.find()) {
+            if (matcher_.matches()) {
                 return Integer.parseInt(ccpp);
             }
         }
@@ -130,9 +129,9 @@ public class ConsoleIO {
      * @param str_ un string que mostrar en la consola para indicar que se está
      * pidiendo una entrada.
      *
-     * @return el string introducido por consola como numero de tarjeta de credito
-     * que haya cumplido las condiciones.
-     * 
+     * @return el string introducido por consola como numero de tarjeta de
+     * credito que haya cumplido las condiciones.
+     *
      * @author Eduardo Ruiz Sabajanes
      */
     public String getTarjetaCredito(String str_) {
@@ -142,12 +141,93 @@ public class ConsoleIO {
         while (true) {
             ttcc = this.getString(str_, 16);
             matcher_ = pattern.matcher(ttcc);
-            if (matcher_.find()) {
+            if (matcher_.matches()) {
                 return ttcc;
             }
         }
     }
-    
+
+    /**
+     * <p>
+     * Se pide un número de telefono a través de la consola y se comprueba que
+     * tenga el formato de uno.</p>
+     *
+     * @param str_ un string que mostrar en la consola para indicar que se está
+     * pidiendo una entrada.
+     *
+     * @return el string introducido por consola como numero de teléfono válido.
+     *
+     * @author Eduardo Ruiz Sabajanes
+     */
+    public String getTelefono(String str_) {
+        Pattern pattern = Pattern.compile("[0-9]{4,}");
+        Matcher matcher_;
+        String ttcc;
+        while (true) {
+            ttcc = this.getString(str_);
+            matcher_ = pattern.matcher(ttcc);
+            if (matcher_.matches()) {
+                return ttcc;
+            }
+        }
+    }
+
+    /**
+     * <p>
+     * Se pide un horario (hh:mm-hh:mm) a través de la consola y se comprueba que
+     * tenga el formato de uno.</p>
+     *
+     * @param str_ un string que mostrar en la consola para indicar que se está
+     * pidiendo una entrada.
+     *
+     * @return el string introducido por consola como horario válido.
+     *
+     * @author Eduardo Ruiz Sabajanes
+     */
+    public String getHorario(String str_) {
+        Pattern pattern = Pattern.compile("[0-9]{2}+:+[0-9]{2}" + "-" + "[0-9]{2}+:+[0-9]{2}");
+        Matcher matcher_;
+        String horario;
+        while (true) {
+            horario = this.getString(str_);
+            matcher_ = pattern.matcher(horario);
+            if (matcher_.matches()) {
+                if (Integer.parseInt(horario.substring(0, 2)) < 24
+                        && Integer.parseInt(horario.substring(3, 5)) < 60
+                        && Integer.parseInt(horario.substring(6, 8)) < 24
+                        && Integer.parseInt(horario.substring(9, 11)) < 60) {
+                    return horario;
+                }
+            }
+        }
+    }
+
+    /**
+     * <p>
+     * Se pide una pagina web (la url) a través de la consola y se comprueba que
+     * tenga el formato de una.</p>
+     *
+     * @param str_ un string que mostrar en la consola para indicar que se está
+     * pidiendo una entrada.
+     *
+     * @return el string introducido por consola como pagina web válida.
+     *
+     * @author Eduardo Ruiz Sabajanes
+     */
+    public String getWeb(String str_) {
+        Pattern pattern = Pattern.compile("^((((https?|ftps?|gopher|telnet|nntp)://)|(mailto:|news:))"
+                + "(%[0-9A-Fa-f]{2}|[-()_.!~*';/?:@&=+$, A-Za-z0-9])+)" + "([).!';/?:, ][[:blank:]])?$");
+        Matcher matcher_;
+        String web;
+        while (true) {
+            web = this.getString(str_);
+            matcher_ = pattern.matcher(web);
+            if (matcher_.matches()) {
+                return web;
+            }
+        }
+    }
+
     /**
      * <p>
      * Pide un string que se debe corresponder con el path de una foto, en el
@@ -158,7 +238,7 @@ public class ConsoleIO {
      * @param str_ un string que mostrar en la consola para indicar que se está
      * pidiendo una entrada.
      *
-     * @return un objeto de la clase <i>Icon</i>.
+     * @return un objeto de la clase <b>Icon</b>.
      *
      * @author Eduardo Ruiz Sabajanes
      */
@@ -177,7 +257,7 @@ public class ConsoleIO {
                 File imagen = new File(address);
                 if (!imagen.exists()) {
                     throw new RuntimeException("La foto no existe");
-                } else if (imagen.isDirectory()){
+                } else if (imagen.isDirectory()) {
                     throw new RuntimeException("Lo que se introdujo no es una foto");
                 }
                 newAddress += imagen.getName();

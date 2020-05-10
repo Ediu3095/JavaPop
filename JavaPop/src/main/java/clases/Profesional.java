@@ -36,11 +36,11 @@ public final class Profesional extends Cliente implements Serializable {
         System.out.println("Introduzca una descripción de su cuenta: ");
         this.descripcion = read.getString(">> ");
         System.out.println("Introduzca un horario: ");
-        this.horario = read.getString(">> ");
+        this.horario = read.getHorario(">> ");
         System.out.println("Introduzca un teléfono de contacto (de 9 dígitos): ");
-        this.telefono = read.getString(">> ", 9);
+        this.telefono = read.getTelefono(">> ");
         System.out.println("Introduzca una página web asociada: ");
-        this.web = read.getString(">> ");
+        this.web = read.getWeb(">> ");
         this.pagoPro = LocalDateTime.now();
     }
 
@@ -74,10 +74,6 @@ public final class Profesional extends Cliente implements Serializable {
 
     public void setWeb(String web) {
         this.web = web;
-    }
-
-    public void cobro() {
-
     }
 
     public void editarDatos() {
