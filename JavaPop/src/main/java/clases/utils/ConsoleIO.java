@@ -3,8 +3,6 @@ package clases.utils;
 import clases.enumeradores.*;
 import java.util.regex.Pattern;
 import java.util.regex.Matcher;
-import javax.swing.Icon;
-import javax.swing.ImageIcon;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.io.File;
@@ -78,7 +76,8 @@ public class ConsoleIO {
      * @author Eduardo Ruiz Sabajanes
      */
     public String getDNI(String str_) {
-        char[] letras = "TRWAGMYFPDXBNJZSQVHLCKE".toCharArray();
+        char[] upper = "TRWAGMYFPDXBNJZSQVHLCKE".toCharArray();
+        char[] lower = "TRWAGMYFPDXBNJZSQVHLCKE".toLowerCase().toCharArray();
         Pattern pattern = Pattern.compile("[0-9]{7,8}[A-Z]");
         Matcher matcher_;
         String DNI;
@@ -88,7 +87,9 @@ public class ConsoleIO {
             matcher_ = pattern.matcher(DNI);
             if (matcher_.matches()) {
                 NIE = Integer.parseInt(DNI.substring(0, DNI.length() - 1));
-                if (DNI.charAt(DNI.length() - 1) == letras[NIE % 23]) {
+                if (DNI.charAt(DNI.length() - 1) == upper[NIE % 23]
+                        || DNI.charAt(DNI.length() - 1) == lower[NIE % 23]) {
+                    DNI = DNI.toUpperCase();
                     return DNI;
                 }
             }
@@ -185,7 +186,7 @@ public class ConsoleIO {
      * @author Eduardo Ruiz Sabajanes
      */
     public String getHorario(String str_) {
-        Pattern pattern = Pattern.compile("[0-9]{2}+:+[0-9]{2}" + "-" + "[0-9]{2}+:+[0-9]{2}");
+        Pattern pattern = Pattern.compile("[0-9]{2}+:+[0-9]{2}-[0-9]{2}+:+[0-9]{2}");
         Matcher matcher_;
         String horario;
         while (true) {
@@ -228,6 +229,31 @@ public class ConsoleIO {
         }
     }
 
+    /**
+     * <p>
+     * Se pide un precio a través de la consola y se comprueba que tenga el
+     * formato correcto.</p>
+     *
+     * @param str_ un string que mostrar en la consola para indicar que se está
+     * pidiendo una entrada.
+     *
+     * @return el double introducido por consola como precio válido.
+     *
+     * @author Eduardo Ruiz Sabajanes
+     */
+    public double getPrecio(String str_) {
+        Pattern pattern = Pattern.compile("[0-9]{1,}+.+[0-9]{2}");
+        Matcher matcher_;
+        String precio;
+        while (true) {
+            precio = this.getString(str_);
+            matcher_ = pattern.matcher(precio);
+            if (matcher_.matches()) {
+                return Double.parseDouble(precio);
+            }
+        }
+    }
+    
     /**
      * <p>
      * Pide un string que se debe corresponder con el path de una foto, en el

@@ -129,7 +129,7 @@ public class Cliente extends Usuario implements Serializable {
             Categoria categoria = read.getCategoria(">> ");
             Estado estado = read.getEstado(">> ");
             System.out.println("Introduzca un precio:");
-            Double precio = read.getDouble(">> ", 0, Double.MAX_VALUE);
+            Double precio = read.getPrecio(">> ");
             String imagen = read.getImage(">> ");
             System.out.println("¿Quiere marcar la venta de este producto como urgente?\n"
                     + "1.- Si\n"
@@ -292,7 +292,7 @@ public class Cliente extends Usuario implements Serializable {
 
                 case 7: //Editar precio
                     System.out.println("Nuevo precio del producto:");
-                    producto.setPrecio(read.getDouble(">> ", 0, Double.MAX_VALUE));
+                    producto.setPrecio(read.getPrecio(">> "));
                     break;
 
                 case 8: // Activar urgente
