@@ -77,18 +77,16 @@ public class ConsoleIO {
      */
     public String getDNI(String str_) {
         char[] upper = "TRWAGMYFPDXBNJZSQVHLCKE".toCharArray();
-        char[] lower = "TRWAGMYFPDXBNJZSQVHLCKE".toLowerCase().toCharArray();
         Pattern pattern = Pattern.compile("[0-9]{7,8}[A-Z]");
         Matcher matcher_;
         String DNI;
         int NIE;
         while (true) {
-            DNI = this.getString(str_);
+            DNI = this.getString(str_).toUpperCase();
             matcher_ = pattern.matcher(DNI);
             if (matcher_.matches()) {
                 NIE = Integer.parseInt(DNI.substring(0, DNI.length() - 1));
-                if (DNI.charAt(DNI.length() - 1) == upper[NIE % 23]
-                        || DNI.charAt(DNI.length() - 1) == lower[NIE % 23]) {
+                if (DNI.charAt(DNI.length() - 1) == upper[NIE % 23]) {
                     DNI = DNI.toUpperCase();
                     return DNI;
                 }
@@ -175,8 +173,8 @@ public class ConsoleIO {
 
     /**
      * <p>
-     * Se pide un horario (hh:mm-hh:mm) a través de la consola y se comprueba que
-     * tenga el formato de uno.</p>
+     * Se pide un horario (hh:mm-hh:mm) a través de la consola y se comprueba
+     * que tenga el formato de uno.</p>
      *
      * @param str_ un string que mostrar en la consola para indicar que se está
      * pidiendo una entrada.
@@ -253,7 +251,7 @@ public class ConsoleIO {
             }
         }
     }
-    
+
     /**
      * <p>
      * Pide un string que se debe corresponder con el path de una foto, en el

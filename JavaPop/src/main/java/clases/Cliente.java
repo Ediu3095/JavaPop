@@ -4,7 +4,6 @@ import clases.utils.ConsoleIO;
 import java.io.Serializable;
 import java.util.ArrayList;
 import clases.enumeradores.*;
-import javax.swing.Icon;
 
 /**
  *
