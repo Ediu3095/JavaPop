@@ -12,12 +12,12 @@ import java.util.regex.Pattern;
  *
  * @author TheElctrMsc_Gaming
  */
-public class loginCard extends javax.swing.JPanel {
+public class loginFields extends javax.swing.JPanel {
 
     /**
      * Creates new form loginCard
      */
-    public loginCard() {
+    public loginFields() {
         initComponents();
     }
 
@@ -34,9 +34,6 @@ public class loginCard extends javax.swing.JPanel {
         emailField1 = new javax.swing.JTextField();
         passwordLabel1 = new javax.swing.JLabel();
         passwordField1 = new javax.swing.JPasswordField();
-        loginButton = new javax.swing.JButton();
-        fillerLeft1 = new javax.swing.Box.Filler(new java.awt.Dimension(100, 380), new java.awt.Dimension(100, 380), new java.awt.Dimension(100, 380));
-        fillerRight1 = new javax.swing.Box.Filler(new java.awt.Dimension(150, 380), new java.awt.Dimension(150, 380), new java.awt.Dimension(150, 380));
 
         emailLabel1.setText("Email:");
 
@@ -48,47 +45,29 @@ public class loginCard extends javax.swing.JPanel {
 
         passwordLabel1.setText("Password:");
 
-        loginButton.setText("Login");
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(fillerLeft1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(passwordLabel1)
+                    .addComponent(emailLabel1))
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(loginButton, javax.swing.GroupLayout.PREFERRED_SIZE, 226, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(passwordLabel1)
-                            .addComponent(emailLabel1))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(emailField1, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(passwordField1, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(18, 18, 18)
-                .addComponent(fillerRight1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(emailField1, javax.swing.GroupLayout.DEFAULT_SIZE, 110, Short.MAX_VALUE)
+                    .addComponent(passwordField1)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(fillerLeft1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(fillerRight1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(0, 0, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(139, 139, 139)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(emailField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(emailLabel1))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(passwordField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(passwordLabel1))
-                .addGap(18, 18, 18)
-                .addComponent(loginButton)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(passwordLabel1)))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -106,9 +85,6 @@ public class loginCard extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField emailField1;
     private javax.swing.JLabel emailLabel1;
-    private javax.swing.Box.Filler fillerLeft1;
-    private javax.swing.Box.Filler fillerRight1;
-    private javax.swing.JButton loginButton;
     private javax.swing.JPasswordField passwordField1;
     private javax.swing.JLabel passwordLabel1;
     // End of variables declaration//GEN-END:variables

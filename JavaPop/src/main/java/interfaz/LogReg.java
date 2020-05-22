@@ -37,10 +37,14 @@ public class LogReg extends javax.swing.JFrame {
 
         mainPanel = new javax.swing.JPanel();
         itemsPanel = new javax.swing.JPanel();
-        loginCard1 = new interfaz.loginCard();
-        registerCard1 = new interfaz.registerCard();
+        loginCard = new javax.swing.JPanel();
+        loginFields1 = new interfaz.loginFields();
+        jButton1 = new javax.swing.JButton();
+        filler2 = new javax.swing.Box.Filler(new java.awt.Dimension(10, 10), new java.awt.Dimension(10, 10), new java.awt.Dimension(10, 10));
+        registerCard = new javax.swing.JPanel();
+        registerFields1 = new interfaz.registerFields();
+        jButton2 = new javax.swing.JButton();
         buttonPanel = new javax.swing.JPanel();
-        loginRegisterCard = new javax.swing.JPanel();
         loginMenuButton = new javax.swing.JButton();
         registerMenuButton = new javax.swing.JButton();
         exitButton = new javax.swing.JButton();
@@ -53,13 +57,63 @@ public class LogReg extends javax.swing.JFrame {
 
         itemsPanel.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED));
         itemsPanel.setLayout(new java.awt.CardLayout());
-        itemsPanel.add(loginCard1, "login");
-        itemsPanel.add(registerCard1, "register");
+
+        jButton1.setText("Login");
+
+        javax.swing.GroupLayout loginCardLayout = new javax.swing.GroupLayout(loginCard);
+        loginCard.setLayout(loginCardLayout);
+        loginCardLayout.setHorizontalGroup(
+            loginCardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(loginCardLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(loginCardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(filler2, javax.swing.GroupLayout.DEFAULT_SIZE, 210, Short.MAX_VALUE)
+                    .addComponent(loginFields1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
+        );
+        loginCardLayout.setVerticalGroup(
+            loginCardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(loginCardLayout.createSequentialGroup()
+                .addContainerGap(83, Short.MAX_VALUE)
+                .addComponent(loginFields1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jButton1)
+                .addGap(18, 18, 18)
+                .addComponent(filler2, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
+
+        itemsPanel.add(loginCard, "login");
+
+        jButton2.setText("Register");
+
+        javax.swing.GroupLayout registerCardLayout = new javax.swing.GroupLayout(registerCard);
+        registerCard.setLayout(registerCardLayout);
+        registerCardLayout.setHorizontalGroup(
+            registerCardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(registerCardLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(registerCardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(registerCardLayout.createSequentialGroup()
+                        .addComponent(registerFields1, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
+        );
+        registerCardLayout.setVerticalGroup(
+            registerCardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(registerCardLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(registerFields1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jButton2)
+                .addContainerGap(14, Short.MAX_VALUE))
+        );
+
+        itemsPanel.add(registerCard, "register");
 
         buttonPanel.setBackground(new java.awt.Color(0, 0, 51));
-        buttonPanel.setLayout(new java.awt.CardLayout());
-
-        loginRegisterCard.setBackground(new java.awt.Color(0, 0, 51));
 
         loginMenuButton.setText("Login");
         loginMenuButton.addActionListener(new java.awt.event.ActionListener() {
@@ -82,31 +136,29 @@ public class LogReg extends javax.swing.JFrame {
             }
         });
 
-        javax.swing.GroupLayout loginRegisterCardLayout = new javax.swing.GroupLayout(loginRegisterCard);
-        loginRegisterCard.setLayout(loginRegisterCardLayout);
-        loginRegisterCardLayout.setHorizontalGroup(
-            loginRegisterCardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(loginRegisterCardLayout.createSequentialGroup()
+        javax.swing.GroupLayout buttonPanelLayout = new javax.swing.GroupLayout(buttonPanel);
+        buttonPanel.setLayout(buttonPanelLayout);
+        buttonPanelLayout.setHorizontalGroup(
+            buttonPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(buttonPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(loginRegisterCardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(buttonPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(loginMenuButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(registerMenuButton, javax.swing.GroupLayout.DEFAULT_SIZE, 80, Short.MAX_VALUE)
                     .addComponent(exitButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
-        loginRegisterCardLayout.setVerticalGroup(
-            loginRegisterCardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(loginRegisterCardLayout.createSequentialGroup()
+        buttonPanelLayout.setVerticalGroup(
+            buttonPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(buttonPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(loginMenuButton)
                 .addGap(18, 18, 18)
                 .addComponent(registerMenuButton)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 275, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(exitButton)
                 .addContainerGap())
         );
-
-        buttonPanel.add(loginRegisterCard, "card2");
 
         javax.swing.GroupLayout mainPanelLayout = new javax.swing.GroupLayout(mainPanel);
         mainPanel.setLayout(mainPanelLayout);
@@ -115,25 +167,25 @@ public class LogReg extends javax.swing.JFrame {
             .addGroup(mainPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(buttonPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(itemsPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(itemsPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         mainPanelLayout.setVerticalGroup(
             mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(mainPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(itemsPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(buttonPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(mainPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(mainPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -192,12 +244,16 @@ public class LogReg extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel buttonPanel;
     private javax.swing.JButton exitButton;
+    private javax.swing.Box.Filler filler2;
     private javax.swing.JPanel itemsPanel;
-    private interfaz.loginCard loginCard1;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JPanel loginCard;
+    private interfaz.loginFields loginFields1;
     private javax.swing.JButton loginMenuButton;
-    private javax.swing.JPanel loginRegisterCard;
     private javax.swing.JPanel mainPanel;
-    private interfaz.registerCard registerCard1;
+    private javax.swing.JPanel registerCard;
+    private interfaz.registerFields registerFields1;
     private javax.swing.JButton registerMenuButton;
     // End of variables declaration//GEN-END:variables
 }
