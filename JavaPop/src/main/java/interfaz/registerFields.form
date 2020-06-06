@@ -16,38 +16,30 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" alignment="1" attributes="0">
-              <EmptySpace min="116" max="32767" attributes="0"/>
-              <Component id="nameField" min="-2" pref="110" max="-2" attributes="0"/>
-          </Group>
-          <Group type="102" alignment="1" attributes="0">
-              <Component id="emailLabel" min="-2" max="-2" attributes="0"/>
-              <EmptySpace max="32767" attributes="0"/>
-              <Component id="emailField" min="-2" pref="110" max="-2" attributes="0"/>
-          </Group>
           <Group type="102" alignment="0" attributes="0">
-              <Component id="passwordLabel" min="-2" max="-2" attributes="0"/>
-              <EmptySpace max="32767" attributes="0"/>
-              <Component id="passwordField" min="-2" pref="110" max="-2" attributes="0"/>
-          </Group>
-          <Group type="102" alignment="0" attributes="0">
-              <Component id="ppccLabel" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="41" max="32767" attributes="0"/>
-              <Component id="ppccField" min="-2" pref="110" max="-2" attributes="0"/>
-          </Group>
-          <Group type="102" alignment="0" attributes="0">
-              <Component id="nameLabel" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="nameLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Component id="passwordLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Component id="emailLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Component id="ppccLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="passwordField" pref="95" max="32767" attributes="0"/>
+                  <Component id="nameField" alignment="0" max="32767" attributes="0"/>
+                  <Component id="emailField" max="32767" attributes="0"/>
+                  <Component id="ppccField" alignment="0" max="32767" attributes="0"/>
+              </Group>
           </Group>
           <Group type="102" alignment="1" attributes="0">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="ccLabel" alignment="0" min="-2" max="-2" attributes="0"/>
                   <Component id="idLabel" alignment="0" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace max="32767" attributes="0"/>
-              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+              <EmptySpace min="-2" pref="43" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="ccField" max="32767" attributes="0"/>
                   <Component id="idField" max="32767" attributes="0"/>
-                  <Component id="ccField" pref="110" max="32767" attributes="0"/>
               </Group>
           </Group>
       </Group>
@@ -126,6 +118,9 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="ccField">
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ccFieldActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="idLabel">
       <Properties>
