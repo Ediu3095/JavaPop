@@ -381,6 +381,31 @@ public class ConsoleIO {
         }
         return categoria;
     }
+    
+    public static Categoria getCategoria(int index) {
+        Categoria categoria = Categoria.Moda_y_accesorios;
+        switch (index) {
+            case 0:
+                categoria = Categoria.Moda_y_accesorios;
+                break;
+            case 1:
+                categoria = Categoria.Tv_audio_y_foto;
+                break;
+            case 2:
+                categoria = Categoria.Moviles_y_telefonia;
+                break;
+            case 3:
+                categoria = Categoria.Informatica_y_electronica;
+                break;
+            case 4:
+                categoria = Categoria.Consolas_y_videojuegos;
+                break;
+            case 5:
+                categoria = Categoria.Deporte_y_ocio;
+                break;
+        }
+        return categoria;
+    }
 
     /**
      * <p>

@@ -17,7 +17,7 @@ import javax.swing.JOptionPane;
  */
 public class LogReg extends javax.swing.JFrame {
 
-    CardLayout itemCL;
+    private CardLayout itemCL;
 
     /**
      * Creates new form LogReg
