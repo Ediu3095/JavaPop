@@ -133,6 +133,12 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
         displayProductos.setLayout(new java.awt.CardLayout());
 
+        productoMin6.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                productoMin6MouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout paginaLayout = new javax.swing.GroupLayout(pagina);
         pagina.setLayout(paginaLayout);
         paginaLayout.setHorizontalGroup(
@@ -341,6 +347,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void exitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitButtonActionPerformed
@@ -354,6 +361,11 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private void realizarCompraButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_realizarCompraButtonActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_realizarCompraButtonActionPerformed
+
+    private void productoMin6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_productoMin6MouseClicked
+        // TODO add your handling code here:
+        System.out.println("holiwi");
+    }//GEN-LAST:event_productoMin6MouseClicked
 
     /**
      * @param args the command line arguments

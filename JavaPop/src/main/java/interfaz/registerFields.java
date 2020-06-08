@@ -45,12 +45,6 @@ public class registerFields extends javax.swing.JPanel {
 
         emailLabel.setText("Email:");
 
-        emailField.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                emailFieldFocusLost(evt);
-            }
-        });
-
         passwordLabel.setText("Password:");
 
         nameLabel.setText("Name and surname:");
@@ -59,19 +53,7 @@ public class registerFields extends javax.swing.JPanel {
 
         ccLabel.setText("Credit card:");
 
-        ccField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ccFieldActionPerformed(evt);
-            }
-        });
-
         idLabel.setText("ID:");
-
-        idField.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                idFieldFocusLost(evt);
-            }
-        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -126,39 +108,6 @@ public class registerFields extends javax.swing.JPanel {
                     .addComponent(idLabel)))
         );
     }// </editor-fold>//GEN-END:initComponents
-
-    private void emailFieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_emailFieldFocusLost
-        // TODO add your handling code here:
-        Pattern pattern = Pattern.compile("^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@"
-                + "[A-Za-z0-9-]+(\\.[A-Za-z0-9-]+)*(\\.[A-Za-z]{2,})$");
-        Matcher matcher_ = pattern.matcher(emailField.getText());
-        if (!matcher_.matches()) {
-            emailField.setText("");
-        }
-    }//GEN-LAST:event_emailFieldFocusLost
-
-    private void idFieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_idFieldFocusLost
-        // TODO add your handling code here:
-        char[] upper = "TRWAGMYFPDXBNJZSQVHLCKE".toCharArray();
-        Pattern pattern = Pattern.compile("[0-9]{7,8}[A-Z]");
-        Matcher matcher_;
-        String DNI;
-        int NIE;
-        DNI = idField.getText().toUpperCase();
-        matcher_ = pattern.matcher(DNI);
-        if (matcher_.matches()) {
-            NIE = Integer.parseInt(DNI.substring(0, DNI.length() - 1));
-            if (!(DNI.charAt(DNI.length() - 1) == upper[NIE % 23])) {
-                idField.setText("");
-            }
-        } else {
-            idField.setText("");
-        }
-    }//GEN-LAST:event_idFieldFocusLost
-
-    private void ccFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ccFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_ccFieldActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

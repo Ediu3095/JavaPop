@@ -87,9 +87,6 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="emailField">
-      <Events>
-        <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="emailFieldFocusLost"/>
-      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="passwordLabel">
       <Properties>
@@ -118,9 +115,6 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="ccField">
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ccFieldActionPerformed"/>
-      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="idLabel">
       <Properties>
@@ -128,9 +122,6 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="idField">
-      <Events>
-        <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="idFieldFocusLost"/>
-      </Events>
     </Component>
   </SubComponents>
 </Form>
