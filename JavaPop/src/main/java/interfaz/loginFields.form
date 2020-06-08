@@ -54,6 +54,7 @@
     <Component class="javax.swing.JTextField" name="emailField1">
       <Events>
         <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="emailField1FocusLost"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="emailField1ActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="passwordLabel1">

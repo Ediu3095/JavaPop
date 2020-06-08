@@ -5,8 +5,16 @@
  */
 package interfaz;
 
+import clases.Admin;
+import clases.Cliente;
+import clases.utils.ConsoleIO.*;
+import clases.utils.IOCustomLib.*;
+import java.util.*;
 import java.awt.CardLayout;
 import java.awt.event.WindowEvent;
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.util.ArrayList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import javax.swing.JOptionPane;
@@ -93,6 +101,11 @@ public class LogReg extends javax.swing.JFrame {
         itemsPanel.add(loginCard, "login");
 
         jButton2.setText("Register");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout registerCardLayout = new javax.swing.GroupLayout(registerCard);
         registerCard.setLayout(registerCardLayout);
@@ -216,9 +229,54 @@ public class LogReg extends javax.swing.JFrame {
     }//GEN-LAST:event_exitButtonActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-        JOptionPane.showMessageDialog(this, "Debe escribir algo para añadir un elemento", "Empty field", JOptionPane.INFORMATION_MESSAGE);
+
+        ArrayList<Cliente> usuarios = new ArrayList();
+        ArrayList arr = new ArrayList(2);
+        arr.add(false);
+        arr.add(new Cliente());
+        boolean run_ = true;
+
+        while (run_) {
+            // Pide al usuario los credenciales
+            String correo = loginFields1.getEmailField1().getText();
+            String clave = new String(loginFields1.getPasswordField1().getPassword());
+
+            // Comprobamos si el correo es válido
+            if (checkCorreo(correo)) {
+                arr.set(0, false);
+
+                // Si la contraseña es valida
+                if (checkClave(clave)) {
+                    if (correo.equals("admin@javapop.com") && clave.equals("admin")) {
+                        arr.set(1, new Admin());
+                        run_ = false;
+                    } else {
+                        // Se comprueba que exista algún usuario con ese correo y contraseña
+                        for (int i = 0; i < usuarios.size(); i++) {
+                            if (usuarios.get(i).correo.equals(correo)) {
+                                if (usuarios.get(i).clave.equals(clave)) {
+                                    arr.set(1, usuarios.get(i));
+                                    run_ = false;
+                                    break;
+                                }
+                            }
+                        }
+                    }
+                }
+                // Si la contraseña y el correo no coinciden con los de ningun usuario
+                if (run_) {
+                    JOptionPane.showMessageDialog(this, "Los datos introducidos son incorrectos", "Credenciales no válidos", JOptionPane.INFORMATION_MESSAGE);
+                }
+            } else {
+                JOptionPane.showMessageDialog(this, "El correo no es válido", "Credenciales no válidos", JOptionPane.INFORMATION_MESSAGE);
+            }
+            return arr;
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel buttonPanel;
@@ -235,4 +293,17 @@ public class LogReg extends javax.swing.JFrame {
     private interfaz.registerFields registerFields1;
     private javax.swing.JButton registerMenuButton;
     // End of variables declaration//GEN-END:variables
+
+    private boolean checkCorreo(String correo) {
+        Pattern pattern = Pattern.compile("^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@"
+                + "[A-Za-z0-9-]+(\\.[A-Za-z0-9-]+)*(\\.[A-Za-z]{2,})$");
+        Matcher matcher_ = pattern.matcher(correo);
+        return matcher_.matches();
+    }
+
+    private boolean checkClave(String clave) {
+        Pattern pattern = Pattern.compile("[A-Za-z0-9]{1,}");
+        Matcher matcher = pattern.matcher(clave);
+        return matcher.matches();
+    }
 }

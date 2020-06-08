@@ -7,6 +7,8 @@ package interfaz;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import javax.swing.JPasswordField;
+import javax.swing.JTextField;
 
 /**
  *
@@ -19,6 +21,14 @@ public class loginFields extends javax.swing.JPanel {
      */
     public loginFields() {
         initComponents();
+    }
+
+    public JTextField getEmailField1() {
+        return emailField1;
+    }
+
+    public JPasswordField getPasswordField1() {
+        return passwordField1;
     }
 
     /**
@@ -40,6 +50,11 @@ public class loginFields extends javax.swing.JPanel {
         emailField1.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
                 emailField1FocusLost(evt);
+            }
+        });
+        emailField1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                emailField1ActionPerformed(evt);
             }
         });
 
@@ -80,6 +95,10 @@ public class loginFields extends javax.swing.JPanel {
             emailField1.setText("");
         }
     }//GEN-LAST:event_emailField1FocusLost
+
+    private void emailField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_emailField1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_emailField1ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

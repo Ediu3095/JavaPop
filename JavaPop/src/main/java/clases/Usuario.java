@@ -10,8 +10,8 @@ import java.util.Objects;
  */
 public abstract class Usuario implements Serializable {
 
-    protected String correo;
-    protected String clave;
+    public String correo;
+    public String clave;
 
     public String getCorreo() {
         return this.correo;
