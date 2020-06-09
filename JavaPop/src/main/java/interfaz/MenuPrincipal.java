@@ -32,11 +32,9 @@ public class MenuPrincipal extends javax.swing.JFrame {
      * Creates new form MenuPrincipal
      */
     public MenuPrincipal(Cliente user) {
-        this.user = user;
-        prodDefinitivo = new ArrayList();
-        posicionMin = 0;
-        posicionMax = 0;
         initComponents();
+        this.setVisible(true);
+        
         camposCL = (CardLayout) campos.getLayout();
         productoMin1.setVisible(false);
         productoMin2.setVisible(false);
@@ -46,22 +44,11 @@ public class MenuPrincipal extends javax.swing.JFrame {
         productoMin6.setVisible(false);
         productoMin7.setVisible(false);
         productoMin8.setVisible(false);
-    }
-    
-    public MenuPrincipal() {
-        this.user = new Cliente();
+        
+        this.user = user;
         prodDefinitivo = new ArrayList();
         posicionMin = 0;
         posicionMax = 0;
-        initComponents();
-        productoMin1.setVisible(false);
-        productoMin2.setVisible(false);
-        productoMin3.setVisible(false);
-        productoMin4.setVisible(false);
-        productoMin5.setVisible(false);
-        productoMin6.setVisible(false);
-        productoMin7.setVisible(false);
-        productoMin8.setVisible(false);
     }
 
     /**
@@ -899,43 +886,6 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private void miProductoMin8MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_miProductoMin8MouseClicked
         // TODO add your handling code here:
     }//GEN-LAST:event_miProductoMin8MouseClicked
-
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    //javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    javax.swing.UIManager.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel");
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(MenuPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(MenuPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(MenuPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(MenuPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new MenuPrincipal().setVisible(true);
-            }
-        });
-    }
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton actualizarLicenciaButton;
     private javax.swing.JButton avPag;
