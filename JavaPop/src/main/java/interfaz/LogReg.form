@@ -95,8 +95,8 @@
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Component id="filler2" alignment="0" pref="350" max="32767" attributes="0"/>
-                              <Component id="loginFields1" max="32767" attributes="0"/>
                               <Component id="jButton1" alignment="0" max="32767" attributes="0"/>
+                              <Component id="loginFields1" alignment="0" max="32767" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                       </Group>
@@ -105,7 +105,7 @@
                 <DimensionLayout dim="1">
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace pref="83" max="32767" attributes="0"/>
+                          <EmptySpace pref="49" max="32767" attributes="0"/>
                           <Component id="loginFields1" min="-2" max="-2" attributes="0"/>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Component id="jButton1" min="-2" max="-2" attributes="0"/>
@@ -117,8 +117,6 @@
                 </DimensionLayout>
               </Layout>
               <SubComponents>
-                <Component class="interfaz.loginFields" name="loginFields1">
-                </Component>
                 <Component class="javax.swing.JButton" name="jButton1">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Login"/>
@@ -142,6 +140,8 @@
                   <AuxValues>
                     <AuxValue name="classDetails" type="java.lang.String" value="Box.Filler.RigidArea"/>
                   </AuxValues>
+                </Component>
+                <Component class="interfaz.loginFields" name="loginFields1">
                 </Component>
               </SubComponents>
             </Container>

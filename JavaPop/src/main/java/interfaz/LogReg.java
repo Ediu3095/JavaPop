@@ -7,6 +7,7 @@ package interfaz;
 
 import clases.Admin;
 import clases.Cliente;
+import static clases.utils.Colecciones.usuarios;
 import clases.utils.ConsoleIO.*;
 import clases.utils.IOCustomLib.*;
 import java.util.*;
@@ -33,6 +34,8 @@ public class LogReg extends javax.swing.JFrame {
     public LogReg() {
         initComponents();
         itemCL = (CardLayout) itemsPanel.getLayout();
+        loginFields1.jLabel1.setText("");
+        loginFields1.jLabel2.setText("");
     }
 
     /**
@@ -47,9 +50,9 @@ public class LogReg extends javax.swing.JFrame {
         mainPanel = new javax.swing.JPanel();
         itemsPanel = new javax.swing.JPanel();
         loginCard = new javax.swing.JPanel();
-        loginFields1 = new interfaz.loginFields();
         jButton1 = new javax.swing.JButton();
         filler2 = new javax.swing.Box.Filler(new java.awt.Dimension(10, 10), new java.awt.Dimension(10, 10), new java.awt.Dimension(10, 10));
+        loginFields1 = new interfaz.loginFields();
         registerCard = new javax.swing.JPanel();
         jButton2 = new javax.swing.JButton();
         registerFields1 = new interfaz.registerFields();
@@ -82,14 +85,14 @@ public class LogReg extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(loginCardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(filler2, javax.swing.GroupLayout.DEFAULT_SIZE, 350, Short.MAX_VALUE)
-                    .addComponent(loginFields1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(loginFields1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         loginCardLayout.setVerticalGroup(
             loginCardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(loginCardLayout.createSequentialGroup()
-                .addContainerGap(83, Short.MAX_VALUE)
+                .addContainerGap(49, Short.MAX_VALUE)
                 .addComponent(loginFields1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jButton1)
@@ -229,49 +232,49 @@ public class LogReg extends javax.swing.JFrame {
     }//GEN-LAST:event_exitButtonActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-/*
-        ArrayList<Cliente> usuarios = new ArrayList();
-        ArrayList arr = new ArrayList(2);
-        arr.add(false);
-        arr.add(new Cliente());
-        boolean run_ = true;
+        loginFields1.jLabel1.setText("");
+        loginFields1.jLabel2.setText("");
+        boolean validUser = true;
 
-        while (run_) {
-            // Pide al usuario los credenciales
-            String correo = loginFields1.getEmailField1().getText();
-            String clave = new String(loginFields1.getPasswordField1().getPassword());
+        // Recoje los credenciales del usuario
+        String correo = loginFields1.getEmailField1().getText();
+        String clave = new String(loginFields1.getPasswordField1().getPassword());
 
-            // Comprobamos si el correo es válido
-            if (checkCorreo(correo)) {
-                arr.set(0, false);
+        // Comprobamos si el correo es válido
+        if (checkCorreo(correo)) {
 
-                // Si la contraseña es valida
-                if (checkClave(clave)) {
-                    if (correo.equals("admin@javapop.com") && clave.equals("admin")) {
-                        arr.set(1, new Admin());
-                        run_ = false;
-                    } else {
-                        // Se comprueba que exista algún usuario con ese correo y contraseña
-                        for (int i = 0; i < usuarios.size(); i++) {
-                            if (usuarios.get(i).correo.equals(correo)) {
-                                if (usuarios.get(i).clave.equals(clave)) {
-                                    arr.set(1, usuarios.get(i));
-                                    run_ = false;
-                                    break;
-                                }
+            // Si la contraseña es valida
+            if (checkClave(clave)) {
+                if (correo.equals("admin@javapop.com") && clave.equals("admin")) {
+                    // Abrir menu admin
+                    this.dispose();
+                } else {
+                    validUser = false;
+                    // Se comprueba que exista algún usuario con ese correo y contraseña
+                    for (int i = 0; i < usuarios.size(); i++) {
+                        if (usuarios.get(i).correo.equals(correo)) {
+                            if (usuarios.get(i).clave.equals(clave)) {
+                                // vv Abrir menu usuario con ese user vv
+                                //          usuarios.get(i);
+                                validUser = true;
+                                this.dispose();
+                                break;
                             }
                         }
                     }
                 }
-                // Si la contraseña y el correo no coinciden con los de ningun usuario
-                if (run_) {
-                    JOptionPane.showMessageDialog(this, "Los datos introducidos son incorrectos", "Credenciales no válidos", JOptionPane.INFORMATION_MESSAGE);
-                }
-            } else {
-                JOptionPane.showMessageDialog(this, "El correo no es válido", "Credenciales no válidos", JOptionPane.INFORMATION_MESSAGE);
+            } else {// Si la contraseña y el correo no coinciden con los de ningun usuario
+            // JOptionPane.showMessageDialog(this, "Los datos introducidos son incorrectos", "Credenciales no válidos", JOptionPane.INFORMATION_MESSAGE);
+                loginFields1.jLabel2.setText("Contraseña inválida");
             }
-            return arr;
-        }*/
+        } else {
+            // JOptionPane.showMessageDialog(this, "El correo no es válido", "Credenciales no válidos", JOptionPane.INFORMATION_MESSAGE);
+            loginFields1.jLabel1.setText("Correo inválido");
+        }
+        
+        if (!validUser) {
+            JOptionPane.showMessageDialog(this, "No existe un usuario con el correo indicado, o la contraseña es incorrecta.\nPor favor revise los credenciales e intentelo de nuevo.", "Credenciales no válidos", JOptionPane.INFORMATION_MESSAGE);
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -301,14 +304,14 @@ public class LogReg extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(MenuPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
-        
+
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new LogReg().setVisible(true);
             }
         });
     }
-    
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel buttonPanel;
     private javax.swing.JButton exitButton;
