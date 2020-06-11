@@ -34,9 +34,7 @@ public class LogReg extends javax.swing.JFrame {
     public LogReg() {
         initComponents();
         itemCL = (CardLayout) itemsPanel.getLayout();
-        loginFields1.jLabel1.setText("");
-        loginFields1.jLabel2.setText("");
-        super.setVisible(true);        
+        super.setVisible(true);
     }
 
     /**
@@ -48,19 +46,22 @@ public class LogReg extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jLabel1 = new javax.swing.JLabel();
         mainPanel = new javax.swing.JPanel();
         itemsPanel = new javax.swing.JPanel();
         loginCard = new javax.swing.JPanel();
         jButton1 = new javax.swing.JButton();
         filler2 = new javax.swing.Box.Filler(new java.awt.Dimension(10, 10), new java.awt.Dimension(10, 10), new java.awt.Dimension(10, 10));
-        loginFields1 = new interfaz.loginFields();
+        loginFields = new interfaz.loginFields();
         registerCard = new javax.swing.JPanel();
         jButton2 = new javax.swing.JButton();
-        registerFields1 = new interfaz.registerFields();
+        registerFields = new interfaz.registerFields();
         buttonPanel = new javax.swing.JPanel();
         loginMenuButton = new javax.swing.JButton();
         registerMenuButton = new javax.swing.JButton();
         exitButton = new javax.swing.JButton();
+
+        jLabel1.setText("jLabel1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(0, 0, 51));
@@ -72,7 +73,8 @@ public class LogReg extends javax.swing.JFrame {
         itemsPanel.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED));
         itemsPanel.setLayout(new java.awt.CardLayout());
 
-        jButton1.setText("Login");
+        jButton1.setBackground(new java.awt.Color(255, 255, 255));
+        jButton1.setText("Iniciar Sesión");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -83,29 +85,29 @@ public class LogReg extends javax.swing.JFrame {
         loginCard.setLayout(loginCardLayout);
         loginCardLayout.setHorizontalGroup(
             loginCardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(filler2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 355, Short.MAX_VALUE)
             .addGroup(loginCardLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(loginCardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(filler2, javax.swing.GroupLayout.DEFAULT_SIZE, 350, Short.MAX_VALUE)
                     .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(loginFields1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(loginFields, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         loginCardLayout.setVerticalGroup(
             loginCardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(loginCardLayout.createSequentialGroup()
-                .addContainerGap(49, Short.MAX_VALUE)
-                .addComponent(loginFields1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(51, Short.MAX_VALUE)
+                .addComponent(loginFields, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jButton1)
-                .addGap(18, 18, 18)
-                .addComponent(filler2, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(filler2, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(19, 19, 19))
         );
 
         itemsPanel.add(loginCard, "login");
 
-        jButton2.setText("Register");
+        jButton2.setText("Registrarse");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
@@ -119,39 +121,39 @@ public class LogReg extends javax.swing.JFrame {
             .addGroup(registerCardLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(registerCardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, 350, Short.MAX_VALUE)
-                    .addComponent(registerFields1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(registerFields, javax.swing.GroupLayout.DEFAULT_SIZE, 335, Short.MAX_VALUE)
+                    .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         registerCardLayout.setVerticalGroup(
             registerCardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(registerCardLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(registerFields1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addComponent(registerFields, javax.swing.GroupLayout.PREFERRED_SIZE, 198, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 13, Short.MAX_VALUE)
                 .addComponent(jButton2)
-                .addContainerGap(14, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         itemsPanel.add(registerCard, "register");
 
         buttonPanel.setBackground(new java.awt.Color(0, 0, 51));
 
-        loginMenuButton.setText("Login");
+        loginMenuButton.setText("Iniciar Sesión");
         loginMenuButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 loginMenuButtonActionPerformed(evt);
             }
         });
 
-        registerMenuButton.setText("Register");
+        registerMenuButton.setText("Registrarse");
         registerMenuButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 registerMenuButtonActionPerformed(evt);
             }
         });
 
-        exitButton.setText("Exit");
+        exitButton.setText("Salir");
         exitButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 exitButtonActionPerformed(evt);
@@ -165,9 +167,9 @@ public class LogReg extends javax.swing.JFrame {
             .addGroup(buttonPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(buttonPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(exitButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(loginMenuButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(registerMenuButton, javax.swing.GroupLayout.DEFAULT_SIZE, 80, Short.MAX_VALUE)
-                    .addComponent(exitButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(registerMenuButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         buttonPanelLayout.setVerticalGroup(
@@ -177,9 +179,9 @@ public class LogReg extends javax.swing.JFrame {
                 .addComponent(loginMenuButton)
                 .addGap(18, 18, 18)
                 .addComponent(registerMenuButton)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 158, Short.MAX_VALUE)
                 .addComponent(exitButton)
-                .addContainerGap())
+                .addGap(95, 95, 95))
         );
 
         javax.swing.GroupLayout mainPanelLayout = new javax.swing.GroupLayout(mainPanel);
@@ -197,9 +199,9 @@ public class LogReg extends javax.swing.JFrame {
             mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(mainPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(itemsPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(buttonPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(buttonPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(itemsPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -211,7 +213,7 @@ public class LogReg extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(mainPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(mainPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 284, Short.MAX_VALUE)
         );
 
         pack();
@@ -234,13 +236,13 @@ public class LogReg extends javax.swing.JFrame {
     }//GEN-LAST:event_exitButtonActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        loginFields1.jLabel1.setText("");
-        loginFields1.jLabel2.setText("");
+        loginFields.emailErrorLabel.setText("");
+        loginFields.passwordErrorLabel.setText("");
         boolean validUser = true;
 
         // Recoje los credenciales del usuario
-        String correo = loginFields1.getEmailField1().getText();
-        String clave = new String(loginFields1.getPasswordField1().getPassword());
+        String correo = loginFields.getEmailField1().getText();
+        String clave = new String(loginFields.getPasswordField1().getPassword());
 
         // Comprobamos si el correo es válido
         if (checkCorreo(correo)) {
@@ -267,22 +269,72 @@ public class LogReg extends javax.swing.JFrame {
                     }
                 }
             } else {// Si la contraseña y el correo no coinciden con los de ningun usuario
-            // JOptionPane.showMessageDialog(this, "Los datos introducidos son incorrectos", "Credenciales no válidos", JOptionPane.INFORMATION_MESSAGE);
-                loginFields1.jLabel2.setText("Contraseña inválida");
+                // JOptionPane.showMessageDialog(this, "Los datos introducidos son incorrectos", "Credenciales no válidos", JOptionPane.INFORMATION_MESSAGE);
+                loginFields.passwordErrorLabel.setText("Contraseña inválida");
             }
         } else {
             // JOptionPane.showMessageDialog(this, "El correo no es válido", "Credenciales no válidos", JOptionPane.INFORMATION_MESSAGE);
-            loginFields1.jLabel1.setText("Correo inválido");
+            loginFields.emailErrorLabel.setText("Correo inválido");
         }
-        
+
         if (!validUser) {
             JOptionPane.showMessageDialog(this, "No existe un usuario con el correo indicado, o la contraseña es incorrecta.\nPor favor revise los credenciales e intentelo de nuevo.", "Credenciales no válidos", JOptionPane.INFORMATION_MESSAGE);
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        registerFields.emailErrorLabel.setText("");
+        registerFields.passwordErrorLabel.setText("");
+        registerFields.nameErrorLabel.setText("");
+        registerFields.ppccErrorLabel.setText("");
+        registerFields.ccErrorLabel.setText("");
+        registerFields.dniErrorLabel.setText("");
+        boolean validUser = true;
 
+        //Recoje los creedenciales del usuario
+        String correo = registerFields.getEmailField().getText();
+        String clave = registerFields.getPasswordField().getText();
+        String name = registerFields.getNameField().getText();
+        int ccpp = Integer.parseInt(registerFields.getPpccField().getText());
+        String ttcc = registerFields.getCcField().getText();
+        String dni = registerFields.getIdField().getText();
+
+        //Comprobamos que el correo sea válido
+        if (checkCorreo(correo)) {
+            for (int i = 0; i < usuarios.size(); i++) {
+                if (usuarios.get(i).correo.equals(correo)) {
+                    registerFields.emailErrorLabel.setText("Correo inválido o en uso");
+                } else {
+                    if (!checkClave(clave)) {
+                        registerFields.passwordErrorLabel.setText("Contraseña no válida");
+                    } else {
+                        if (!checkCodigoPostal(ccpp)) {
+                            registerFields.ppccErrorLabel.setText("Codigo postal no válido");
+                        } else {
+                            if (!checkTarjetaCredito(ttcc)) {
+                                registerFields.ccErrorLabel.setText("Tarjeta de credito no válida");
+                            } else {
+                                if (!checkDni(dni)) {
+                                    registerFields.dniErrorLabel.setText("DNI no válido");
+                                } else {
+                                    Cliente c1 = new Cliente(correo, clave, name, dni, ccpp, ttcc);
+                                    usuarios.add(c1);
+                                    // vv Abrir menu usuario con ese user vv
+                                    new MenuPrincipal(usuarios.get(i));
+                                    validUser = true;
+                                    this.dispose();
+                                    break;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        } else {
+            registerFields.emailErrorLabel.setText("Correo inválido o en uso");
+        }
     }//GEN-LAST:event_jButton2ActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel buttonPanel;
     private javax.swing.JButton exitButton;
@@ -290,12 +342,13 @@ public class LogReg extends javax.swing.JFrame {
     private javax.swing.JPanel itemsPanel;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel loginCard;
-    private interfaz.loginFields loginFields1;
+    private interfaz.loginFields loginFields;
     private javax.swing.JButton loginMenuButton;
     private javax.swing.JPanel mainPanel;
     private javax.swing.JPanel registerCard;
-    private interfaz.registerFields registerFields1;
+    private interfaz.registerFields registerFields;
     private javax.swing.JButton registerMenuButton;
     // End of variables declaration//GEN-END:variables
 
@@ -310,5 +363,52 @@ public class LogReg extends javax.swing.JFrame {
         Pattern pattern = Pattern.compile("[A-Za-z0-9]{1,}");
         Matcher matcher = pattern.matcher(clave);
         return matcher.matches();
+    }
+
+    public boolean checkDni(String str_) {
+        char[] upper = "TRWAGMYFPDXBNJZSQVHLCKE".toCharArray();
+        Pattern pattern = Pattern.compile("[0-9]{7,8}[A-Z]");
+        Matcher matcher_;
+        String DNI;
+        int NIE;
+        DNI = str_.toUpperCase();
+        matcher_ = pattern.matcher(DNI);
+        if (matcher_.matches()) {
+            NIE = Integer.parseInt(DNI.substring(0, DNI.length() - 1));
+            if (DNI.charAt(DNI.length() - 1) == upper[NIE % 23]) {
+                DNI = DNI.toUpperCase();
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public boolean checkCodigoPostal(int entero) {
+        String str_ = String.valueOf(entero);
+        Pattern pattern = Pattern.compile("[0-9]{5}");
+        Matcher matcher_;
+        String ccpp;
+        if (str_.length() < 5) {
+            ccpp = str_;
+            matcher_ = pattern.matcher(ccpp);
+            if (matcher_.matches()) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public boolean checkTarjetaCredito(String str_) {
+        Pattern pattern = Pattern.compile("[0-9]{16}");
+        Matcher matcher_;
+        String ttcc;
+        if (str_.length() < 16) {
+            ttcc = str_;
+            matcher_ = pattern.matcher(ttcc);
+            if (matcher_.matches()) {
+                return true;
+            }
+        }
+        return false;
     }
 }
