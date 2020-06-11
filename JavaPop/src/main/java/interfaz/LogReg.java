@@ -18,6 +18,7 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
 /**
@@ -33,6 +34,8 @@ public class LogReg extends javax.swing.JFrame {
      */
     public LogReg() {
         initComponents();
+        ImageIcon img = new ImageIcon(".\\resources\\logo\\IconoJavaPop2.png");
+        super.setIconImage(img.getImage());
         itemCL = (CardLayout) itemsPanel.getLayout();
         super.setVisible(true);
     }
@@ -64,6 +67,7 @@ public class LogReg extends javax.swing.JFrame {
         jLabel1.setText("jLabel1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("JavaPop - Inicio de sesión");
         setBackground(new java.awt.Color(0, 0, 51));
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         setResizable(false);

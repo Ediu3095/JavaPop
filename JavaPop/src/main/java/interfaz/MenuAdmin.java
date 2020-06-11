@@ -46,6 +46,7 @@ public class MenuAdmin extends javax.swing.JFrame {
         panelVentas = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("JavaPop - Menú del administrador");
         setResizable(false);
 
         jPanel1.setBackground(new java.awt.Color(0, 0, 51));

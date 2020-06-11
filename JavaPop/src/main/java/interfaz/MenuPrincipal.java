@@ -127,6 +127,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         cartaPro = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("JavaPop - Menú principal");
         setResizable(false);
 
         mainPanel.setBackground(new java.awt.Color(0, 0, 51));
