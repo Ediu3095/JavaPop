@@ -146,7 +146,7 @@ public class IOCustomLib {
             fos.close();
             oos.close();
         } catch (IOException ex) {
-            System.out.println(ex);
+            //System.out.println(ex);
         }
     }
 
@@ -295,7 +295,7 @@ public class IOCustomLib {
                 try {
                     ois.close();
                 } catch (NullPointerException ex) {
-                    // System.out.println(ex + ": Aun no hay productos");
+                    //System.out.println(ex + ": Aun no hay productos");
                 }
                 run = false;
             } catch (FileNotFoundException ex) {

@@ -33,10 +33,10 @@ public class LogReg extends javax.swing.JFrame {
      */
     public LogReg() {
         initComponents();
-        super.setVisible(true);
         itemCL = (CardLayout) itemsPanel.getLayout();
         loginFields1.jLabel1.setText("");
         loginFields1.jLabel2.setText("");
+        super.setVisible(true);        
     }
 
     /**
@@ -64,6 +64,7 @@ public class LogReg extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(0, 0, 51));
+        setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         setResizable(false);
 
         mainPanel.setBackground(new java.awt.Color(0, 0, 51));
@@ -248,6 +249,7 @@ public class LogReg extends javax.swing.JFrame {
             if (checkClave(clave)) {
                 if (correo.equals("admin@javapop.com") && clave.equals("admin")) {
                     // Abrir menu admin
+                    new MenuAdmin();
                     this.dispose();
                 } else {
                     validUser = false;
@@ -281,7 +283,6 @@ public class LogReg extends javax.swing.JFrame {
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
 
     }//GEN-LAST:event_jButton2ActionPerformed
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel buttonPanel;
     private javax.swing.JButton exitButton;

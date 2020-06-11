@@ -49,17 +49,6 @@ public class loginFields extends javax.swing.JPanel {
 
         emailLabel1.setText("Email:");
 
-        emailField1.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                emailField1FocusLost(evt);
-            }
-        });
-        emailField1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                emailField1ActionPerformed(evt);
-            }
-        });
-
         passwordLabel1.setText("Password:");
 
         jLabel1.setForeground(new java.awt.Color(255, 0, 0));
@@ -103,20 +92,6 @@ public class loginFields extends javax.swing.JPanel {
                 .addGap(5, 5, 5))
         );
     }// </editor-fold>//GEN-END:initComponents
-
-    private void emailField1FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_emailField1FocusLost
-        // TODO add your handling code here:
-        Pattern pattern = Pattern.compile("^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@"
-                + "[A-Za-z0-9-]+(\\.[A-Za-z0-9-]+)*(\\.[A-Za-z]{2,})$");
-        Matcher matcher_ = pattern.matcher(emailField1.getText());
-        if (!matcher_.matches()) {
-            emailField1.setText("");
-        }
-    }//GEN-LAST:event_emailField1FocusLost
-
-    private void emailField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_emailField1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_emailField1ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

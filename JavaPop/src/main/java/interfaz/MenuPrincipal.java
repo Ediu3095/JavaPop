@@ -30,10 +30,10 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
     /**
      * Creates new form MenuPrincipal
+     * @param user usuario con el que se entra en la aplicación.
      */
     public MenuPrincipal(Cliente user) {
         initComponents();
-        this.setVisible(true);
         
         camposCL = (CardLayout) campos.getLayout();
         productoMin1.setVisible(false);
@@ -49,6 +49,8 @@ public class MenuPrincipal extends javax.swing.JFrame {
         prodDefinitivo = new ArrayList();
         posicionMin = 0;
         posicionMax = 0;
+        
+        super.setVisible(true);
     }
 
     /**
@@ -122,6 +124,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
 
         mainPanel.setBackground(new java.awt.Color(0, 0, 51));
         mainPanel.setForeground(new java.awt.Color(0, 0, 51));
@@ -696,12 +699,14 @@ public class MenuPrincipal extends javax.swing.JFrame {
         Categoria cat;
         String[] keyWords;
         
-        productos = IOCustomLib.leerProductos();
+        // productos = IOCustomLib.leerProductos();
         prodDefinitivo.clear();
         
+        /*
         for (Producto prod: productos) {
             System.out.println(prod);
         }
+        */
 
         // Se filtran los productos por categoría
         cat = getCategoria(comboBoxCategoria.getSelectedIndex());
