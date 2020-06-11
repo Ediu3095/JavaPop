@@ -21,6 +21,8 @@ public class loginFields extends javax.swing.JPanel {
      */
     public loginFields() {
         initComponents();
+        emailErrorLabel.setText("");
+        passwordErrorLabel.setText("");
     }
 
     public JTextField getEmailField1() {
@@ -42,20 +44,20 @@ public class loginFields extends javax.swing.JPanel {
 
         emailLabel1 = new javax.swing.JLabel();
         emailField1 = new javax.swing.JTextField();
+        emailErrorLabel = new javax.swing.JLabel();
         passwordLabel1 = new javax.swing.JLabel();
         passwordField1 = new javax.swing.JPasswordField();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
+        passwordErrorLabel = new javax.swing.JLabel();
 
         emailLabel1.setText("Email:");
 
-        passwordLabel1.setText("Password:");
+        emailErrorLabel.setForeground(new java.awt.Color(255, 0, 0));
+        emailErrorLabel.setText("Error");
 
-        jLabel1.setForeground(new java.awt.Color(255, 0, 0));
-        jLabel1.setText("jLabel1");
+        passwordLabel1.setText("Contraseña:");
 
-        jLabel2.setForeground(new java.awt.Color(255, 0, 0));
-        jLabel2.setText("jLabel2");
+        passwordErrorLabel.setForeground(new java.awt.Color(255, 0, 0));
+        passwordErrorLabel.setText("Error");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -67,24 +69,24 @@ public class loginFields extends javax.swing.JPanel {
                     .addComponent(emailLabel1))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(emailField1, javax.swing.GroupLayout.DEFAULT_SIZE, 110, Short.MAX_VALUE)
+                    .addComponent(emailField1, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE)
                     .addComponent(passwordField1, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel1))
+                            .addComponent(passwordErrorLabel)
+                            .addComponent(emailErrorLabel))
                         .addGap(0, 0, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addComponent(jLabel1)
+                .addComponent(emailErrorLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(emailField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(emailLabel1))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 7, Short.MAX_VALUE)
-                .addComponent(jLabel2)
+                .addComponent(passwordErrorLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(passwordField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -95,10 +97,10 @@ public class loginFields extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    public javax.swing.JLabel emailErrorLabel;
     private javax.swing.JTextField emailField1;
     private javax.swing.JLabel emailLabel1;
-    public javax.swing.JLabel jLabel1;
-    public javax.swing.JLabel jLabel2;
+    public javax.swing.JLabel passwordErrorLabel;
     private javax.swing.JPasswordField passwordField1;
     private javax.swing.JLabel passwordLabel1;
     // End of variables declaration//GEN-END:variables

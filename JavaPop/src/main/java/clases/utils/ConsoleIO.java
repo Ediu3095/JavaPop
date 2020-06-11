@@ -62,6 +62,53 @@ public class ConsoleIO {
         return matcher.matches();
     }
 
+    public boolean checkDni(String str_) {
+        char[] upper = "TRWAGMYFPDXBNJZSQVHLCKE".toCharArray();
+        Pattern pattern = Pattern.compile("[0-9]{7,8}[A-Z]");
+        Matcher matcher_;
+        String DNI;
+        int NIE;
+        DNI = str_.toUpperCase();
+        matcher_ = pattern.matcher(DNI);
+        if (matcher_.matches()) {
+            NIE = Integer.parseInt(DNI.substring(0, DNI.length() - 1));
+            if (DNI.charAt(DNI.length() - 1) == upper[NIE % 23]) {
+                DNI = DNI.toUpperCase();
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public boolean checkCodigoPostal(int entero) {
+        String str_ = String.valueOf(entero);
+        Pattern pattern = Pattern.compile("[0-9]{5}");
+        Matcher matcher_;
+        String ccpp;
+        if (str_.length() < 5) {
+            ccpp = str_;
+            matcher_ = pattern.matcher(ccpp);
+            if (matcher_.matches()) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public boolean checkTarjetaCredito(String str_) {
+        Pattern pattern = Pattern.compile("[0-9]{16}");
+        Matcher matcher_;
+        String ttcc;
+        if (str_.length() < 16) {
+            ttcc = str_;
+            matcher_ = pattern.matcher(ttcc);
+            if (matcher_.matches()) {
+                return true;
+            }
+        }
+        return false;
+    }
+
     /**
      * <p>
      * Se pide un dni a traves de la consola y se comprueba que tenga formato de
@@ -381,7 +428,7 @@ public class ConsoleIO {
         }
         return categoria;
     }
-    
+
     public static Categoria getCategoria(int index) {
         Categoria categoria = Categoria.Moda_y_accesorios;
         switch (index) {
