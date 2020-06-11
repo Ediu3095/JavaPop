@@ -18,6 +18,7 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
 /**
@@ -33,10 +34,12 @@ public class LogReg extends javax.swing.JFrame {
      */
     public LogReg() {
         initComponents();
+        ImageIcon img = new ImageIcon(".\\resources\\logo\\IconoJavaPop2.png");
+        super.setIconImage(img.getImage());
         itemCL = (CardLayout) itemsPanel.getLayout();
         loginFields1.jLabel1.setText("");
         loginFields1.jLabel2.setText("");
-        super.setVisible(true);        
+        super.setVisible(true);
     }
 
     /**

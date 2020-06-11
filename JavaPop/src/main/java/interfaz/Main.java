@@ -14,11 +14,7 @@ import clases.utils.IOCustomLib;
  */
 public class Main {
 
-    public static void main(String[] args) {
-        usuarios = IOCustomLib.leerClientes();
-        productos = IOCustomLib.leerProductos();
-        ventas = IOCustomLib.leerVentas();
-
+    public static void main(String[] args) throws InterruptedException {
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
@@ -42,7 +38,16 @@ public class Main {
         }
         //</editor-fold>
         
+        LoadingScreen ls = new LoadingScreen();
+        
+        usuarios = IOCustomLib.leerClientes();
+        productos = IOCustomLib.leerProductos();
+        ventas = IOCustomLib.leerVentas();
+        
+        Thread.sleep(4000);
+        
         new LogReg();
+        ls.dispose();
         
     }
 }
