@@ -2,6 +2,7 @@ package clases;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
+import clases.Cliente;
 
 /**
  *
@@ -25,7 +26,7 @@ public class Venta implements Serializable {
         this.producto = new Producto();
         this.fechaVenta = LocalDateTime.now();
     }
-
+    
     public Cliente getComprador() {
         return comprador;
     }
@@ -50,5 +51,7 @@ public class Venta implements Serializable {
                 + "\ndescripcion: " + producto.getDescripcion() 
                 + "\nfechaVenta: " + fechaVenta + '}';
     }
+
+   
 
 }

@@ -47,17 +47,18 @@ public class ProductoMax extends javax.swing.JPanel {
             .addComponent(imagen, javax.swing.GroupLayout.DEFAULT_SIZE, 400, Short.MAX_VALUE)
         );
 
-        titulo.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        titulo.setFont(new java.awt.Font("OCR A Extended", 1, 20)); // NOI18N
         titulo.setText("Titulo");
 
-        vendedor.setFont(new java.awt.Font("Tahoma", 2, 11)); // NOI18N
+        vendedor.setFont(new java.awt.Font("OCR A Extended", 2, 11)); // NOI18N
         vendedor.setForeground(new java.awt.Color(100, 100, 100));
         vendedor.setText("Vendedor");
 
-        precio.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        precio.setFont(new java.awt.Font("OCR A Extended", 0, 16)); // NOI18N
         precio.setForeground(new java.awt.Color(0, 0, 150));
         precio.setText("Precio ");
 
+        descripcion.setFont(new java.awt.Font("OCR A Extended", 0, 11)); // NOI18N
         descripcion.setForeground(new java.awt.Color(100, 100, 100));
         descripcion.setText("Descripción");
 
@@ -74,7 +75,7 @@ public class ProductoMax extends javax.swing.JPanel {
                     .addComponent(titulo)
                     .addComponent(vendedor)
                     .addComponent(descripcion))
-                .addContainerGap(158, Short.MAX_VALUE))
+                .addContainerGap(135, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

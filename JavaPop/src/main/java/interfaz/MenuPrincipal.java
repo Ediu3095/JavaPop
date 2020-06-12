@@ -76,6 +76,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         panelPerfil = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("JavaPop - Menú Principal\n");
         setResizable(false);
 
         banner.setBackground(new java.awt.Color(51, 153, 255));
@@ -106,6 +107,11 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
         comboBoxCategoria.setFont(new java.awt.Font("OCR A Extended", 0, 12)); // NOI18N
         comboBoxCategoria.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Moda y acesorios", "Tv, audio y foto", "Moviles y telefónica", "Informática y electrónica", "Consolas y videojuegos", "Deporte y ocio" }));
+        comboBoxCategoria.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                comboBoxCategoriaActionPerformed(evt);
+            }
+        });
 
         etiquetaCategoria.setFont(new java.awt.Font("OCR A Extended", 0, 12)); // NOI18N
         etiquetaCategoria.setText("Categoría:");
@@ -182,7 +188,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         );
         panelBienvenidaLayout.setVerticalGroup(
             panelBienvenidaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 578, Short.MAX_VALUE)
+            .addGap(0, 577, Short.MAX_VALUE)
         );
 
         jPanel1.add(panelBienvenida, "card2");
@@ -268,7 +274,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         );
         panelPerfilLayout.setVerticalGroup(
             panelPerfilLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 578, Short.MAX_VALUE)
+            .addGap(0, 577, Short.MAX_VALUE)
         );
 
         jPanel1.add(panelPerfil, "card4");
@@ -293,7 +299,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
                 .addComponent(banner, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(filler2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(filler2, javax.swing.GroupLayout.DEFAULT_SIZE, 613, Short.MAX_VALUE)
                     .addComponent(filler3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
@@ -376,6 +382,10 @@ public class MenuPrincipal extends javax.swing.JFrame {
         lockUnlockBotonesComprar();
         etiquetaPagina.setText("Página " + (posicionMin / 8 + 1) + " de " + (prodDefinitivo.size() / 8 + 1));
     }//GEN-LAST:event_avPagActionPerformed
+
+    private void comboBoxCategoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboBoxCategoriaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_comboBoxCategoriaActionPerformed
 
     private void lockUnlockBotonesComprar() {
         if (posicionMin - 10 < 0) {
