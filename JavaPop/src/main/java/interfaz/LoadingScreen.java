@@ -19,10 +19,17 @@ public class LoadingScreen extends javax.swing.JFrame {
      */
     public LoadingScreen() {
         initComponents();
+        
+        // setup icon
+        ImageIcon img = new ImageIcon(".\\resources\\logo\\IconoJavaPop2.png");
+        super.setIconImage(img.getImage());
+        
+        // load loading screen image
         ImageIcon icon = new ImageIcon(".\\resources\\logo\\LoadingJavaPop.png");
-        Image img = icon.getImage();
-        Image newimg = img.getScaledInstance(600, 600,  java.awt.Image.SCALE_SMOOTH);
+        Image img2 = icon.getImage();
+        Image newimg = img2.getScaledInstance(600, 600,  java.awt.Image.SCALE_SMOOTH);
         jLabel1.setIcon(new ImageIcon(newimg));
+        
         super.setVisible(true);
     }
 

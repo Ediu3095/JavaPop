@@ -38,10 +38,10 @@ public class ConsoleIO {
      *
      * @author Eduardo Ruiz Sabajanes
      */
-    public boolean checkCorreo(String str_) {
+    public static boolean checkCorreo(String correo) {
         Pattern pattern = Pattern.compile("^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@"
                 + "[A-Za-z0-9-]+(\\.[A-Za-z0-9-]+)*(\\.[A-Za-z]{2,})$");
-        Matcher matcher_ = pattern.matcher(str_);
+        Matcher matcher_ = pattern.matcher(correo);
         return matcher_.matches();
     }
 
@@ -56,13 +56,13 @@ public class ConsoleIO {
      *
      * @author Eduardo Ruiz Sabajanes
      */
-    public boolean checkClave(String str_) {
+    public static boolean checkClave(String str_) {
         Pattern pattern = Pattern.compile("[A-Za-z0-9]{1,}");
         Matcher matcher = pattern.matcher(str_);
         return matcher.matches();
     }
 
-    public boolean checkDni(String str_) {
+    public static boolean checkDni(String str_) {
         char[] upper = "TRWAGMYFPDXBNJZSQVHLCKE".toCharArray();
         Pattern pattern = Pattern.compile("[0-9]{7,8}[A-Z]");
         Matcher matcher_;
@@ -80,33 +80,19 @@ public class ConsoleIO {
         return false;
     }
 
-    public boolean checkCodigoPostal(int entero) {
-        String str_ = String.valueOf(entero);
+    public static boolean checkCodigoPostal(String ccpp) {
         Pattern pattern = Pattern.compile("[0-9]{5}");
         Matcher matcher_;
-        String ccpp;
-        if (str_.length() < 5) {
-            ccpp = str_;
-            matcher_ = pattern.matcher(ccpp);
-            if (matcher_.matches()) {
-                return true;
-            }
-        }
-        return false;
+        matcher_ = pattern.matcher(ccpp);
+        return matcher_.matches();
     }
 
-    public boolean checkTarjetaCredito(String str_) {
-        Pattern pattern = Pattern.compile("[0-9]{16}");
+    public static boolean checkTarjetaCredito(String ttcc) {
+        System.out.println(ttcc);
+        Pattern pattern = Pattern.compile("[0-9]{4}[-][0-9]{4}[-][0-9]{4}[-][0-9]{4}");
         Matcher matcher_;
-        String ttcc;
-        if (str_.length() < 16) {
-            ttcc = str_;
-            matcher_ = pattern.matcher(ttcc);
-            if (matcher_.matches()) {
-                return true;
-            }
-        }
-        return false;
+        matcher_ = pattern.matcher(ttcc);
+        return matcher_.matches();
     }
 
     /**

@@ -8,16 +8,8 @@ package interfaz;
 import clases.Admin;
 import clases.Cliente;
 import static clases.utils.Colecciones.usuarios;
-import clases.utils.ConsoleIO.*;
-import clases.utils.IOCustomLib.*;
-import java.util.*;
+import static clases.utils.ConsoleIO.*;
 import java.awt.CardLayout;
-import java.awt.event.WindowEvent;
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
-import java.util.ArrayList;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
@@ -34,9 +26,12 @@ public class LogReg extends javax.swing.JFrame {
      */
     public LogReg() {
         initComponents();
+
         ImageIcon img = new ImageIcon(".\\resources\\logo\\IconoJavaPop2.png");
         super.setIconImage(img.getImage());
+        
         itemCL = (CardLayout) itemsPanel.getLayout();
+
         super.setVisible(true);
     }
 
@@ -100,13 +95,12 @@ public class LogReg extends javax.swing.JFrame {
         loginCardLayout.setVerticalGroup(
             loginCardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(loginCardLayout.createSequentialGroup()
-                .addContainerGap(51, Short.MAX_VALUE)
+                .addContainerGap(79, Short.MAX_VALUE)
                 .addComponent(loginFields, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jButton1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(filler2, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(19, 19, 19))
+                .addComponent(filler2, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         itemsPanel.add(loginCard, "login");
@@ -134,9 +128,9 @@ public class LogReg extends javax.swing.JFrame {
             .addGroup(registerCardLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(registerFields, javax.swing.GroupLayout.PREFERRED_SIZE, 198, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 13, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
                 .addComponent(jButton2)
-                .addContainerGap())
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         itemsPanel.add(registerCard, "register");
@@ -183,9 +177,9 @@ public class LogReg extends javax.swing.JFrame {
                 .addComponent(loginMenuButton)
                 .addGap(18, 18, 18)
                 .addComponent(registerMenuButton)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 158, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(exitButton)
-                .addGap(95, 95, 95))
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout mainPanelLayout = new javax.swing.GroupLayout(mainPanel);
@@ -203,9 +197,9 @@ public class LogReg extends javax.swing.JFrame {
             mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(mainPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(buttonPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(itemsPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(itemsPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(buttonPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -217,7 +211,7 @@ public class LogReg extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(mainPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 284, Short.MAX_VALUE)
+            .addComponent(mainPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
@@ -287,56 +281,58 @@ public class LogReg extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // Borra todas las alertas de errores
         registerFields.emailErrorLabel.setText("");
         registerFields.passwordErrorLabel.setText("");
         registerFields.nameErrorLabel.setText("");
         registerFields.ppccErrorLabel.setText("");
         registerFields.ccErrorLabel.setText("");
-        registerFields.dniErrorLabel.setText("");
+        registerFields.idErrorLabel.setText("");
+
+        // Variable auxiliar
         boolean validUser = true;
 
-        //Recoje los creedenciales del usuario
-        String correo = registerFields.getEmailField().getText();
-        String clave = registerFields.getPasswordField().getText();
-        String name = registerFields.getNameField().getText();
-        int ccpp = Integer.parseInt(registerFields.getPpccField().getText());
-        String ttcc = registerFields.getCcField().getText();
-        String dni = registerFields.getIdField().getText();
+        // Recoje los creedenciales del usuario
+        String correo = registerFields.getEmail();
+        String clave = registerFields.getPassword();
+        String name = registerFields.getNameSurname();
+        String ccpp = registerFields.getPPCC();
+        String ttcc = registerFields.getCC();
+        String dni = registerFields.getID();
 
-        //Comprobamos que el correo sea válido
-        if (checkCorreo(correo)) {
+        // Comprobamos que el correo sea válido
+        if (!checkCorreo(correo)) {
+            registerFields.emailErrorLabel.setText("Correo inválido");
+        } else if (!checkClave(clave)) {
+            registerFields.passwordErrorLabel.setText("Contraseña inválido");
+        } else if (!checkCodigoPostal(ccpp)) {
+            registerFields.ppccErrorLabel.setText("Codigo postal inválido");
+        } else if (!checkTarjetaCredito(ttcc)) {
+            registerFields.ccErrorLabel.setText("Tarjeta de crédito inválido");
+        } else if (!checkDni(dni)) {
+            registerFields.idErrorLabel.setText("DNI inválido");
+        } else {
+            validUser = true;
             for (int i = 0; i < usuarios.size(); i++) {
                 if (usuarios.get(i).correo.equals(correo)) {
-                    registerFields.emailErrorLabel.setText("Correo inválido o en uso");
-                } else {
-                    if (!checkClave(clave)) {
-                        registerFields.passwordErrorLabel.setText("Contraseña no válida");
-                    } else {
-                        if (!checkCodigoPostal(ccpp)) {
-                            registerFields.ppccErrorLabel.setText("Codigo postal no válido");
-                        } else {
-                            if (!checkTarjetaCredito(ttcc)) {
-                                registerFields.ccErrorLabel.setText("Tarjeta de credito no válida");
-                            } else {
-                                if (!checkDni(dni)) {
-                                    registerFields.dniErrorLabel.setText("DNI no válido");
-                                } else {
-                                    Cliente c1 = new Cliente(correo, clave, name, dni, ccpp, ttcc);
-                                    usuarios.add(c1);
-                                    // vv Abrir menu usuario con ese user vv
-                                    new MenuPrincipal(usuarios.get(i));
-                                    validUser = true;
-                                    this.dispose();
-                                    break;
-                                }
-                            }
-                        }
-                    }
+                    registerFields.emailErrorLabel.setText("Correo en uso");
+                    validUser = false;
+                    break;
                 }
             }
-        } else {
-            registerFields.emailErrorLabel.setText("Correo inválido o en uso");
+            
+            // Si superamos todas estas comprobaciones el usuario es valido y entra al menú principal
+            if (validUser) {
+                System.out.println("si");
+                Cliente user = new Cliente(correo, clave, name, dni, Integer.parseInt(ccpp), ttcc);
+                usuarios.add(user);
+                // vv Abrir menu usuario con ese user vv
+                new MenuPrincipal(user);
+                this.dispose();
+            }
         }
+
+
     }//GEN-LAST:event_jButton2ActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -355,64 +351,4 @@ public class LogReg extends javax.swing.JFrame {
     private interfaz.registerFields registerFields;
     private javax.swing.JButton registerMenuButton;
     // End of variables declaration//GEN-END:variables
-
-    private boolean checkCorreo(String correo) {
-        Pattern pattern = Pattern.compile("^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@"
-                + "[A-Za-z0-9-]+(\\.[A-Za-z0-9-]+)*(\\.[A-Za-z]{2,})$");
-        Matcher matcher_ = pattern.matcher(correo);
-        return matcher_.matches();
-    }
-
-    private boolean checkClave(String clave) {
-        Pattern pattern = Pattern.compile("[A-Za-z0-9]{1,}");
-        Matcher matcher = pattern.matcher(clave);
-        return matcher.matches();
-    }
-
-    public boolean checkDni(String str_) {
-        char[] upper = "TRWAGMYFPDXBNJZSQVHLCKE".toCharArray();
-        Pattern pattern = Pattern.compile("[0-9]{7,8}[A-Z]");
-        Matcher matcher_;
-        String DNI;
-        int NIE;
-        DNI = str_.toUpperCase();
-        matcher_ = pattern.matcher(DNI);
-        if (matcher_.matches()) {
-            NIE = Integer.parseInt(DNI.substring(0, DNI.length() - 1));
-            if (DNI.charAt(DNI.length() - 1) == upper[NIE % 23]) {
-                DNI = DNI.toUpperCase();
-                return true;
-            }
-        }
-        return false;
-    }
-
-    public boolean checkCodigoPostal(int entero) {
-        String str_ = String.valueOf(entero);
-        Pattern pattern = Pattern.compile("[0-9]{5}");
-        Matcher matcher_;
-        String ccpp;
-        if (str_.length() < 5) {
-            ccpp = str_;
-            matcher_ = pattern.matcher(ccpp);
-            if (matcher_.matches()) {
-                return true;
-            }
-        }
-        return false;
-    }
-
-    public boolean checkTarjetaCredito(String str_) {
-        Pattern pattern = Pattern.compile("[0-9]{16}");
-        Matcher matcher_;
-        String ttcc;
-        if (str_.length() < 16) {
-            ttcc = str_;
-            matcher_ = pattern.matcher(ttcc);
-            if (matcher_.matches()) {
-                return true;
-            }
-        }
-        return false;
-    }
 }

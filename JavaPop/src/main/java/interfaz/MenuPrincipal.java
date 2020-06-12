@@ -5,14 +5,14 @@
  */
 package interfaz;
 
-import clases.Cliente;
-import clases.Producto;
+import static clases.utils.Colecciones.*;
+import static clases.utils.ConsoleIO.*;
+import static clases.utils.Searching.*;
 import clases.enumeradores.Categoria;
-import static clases.utils.Colecciones.productos;
-import static clases.utils.ConsoleIO.getCategoria;
 import clases.utils.IOCustomLib;
-import static clases.utils.Searching.sort;
-import static clases.utils.Searching.updateTags;
+import clases.Producto;
+import clases.Cliente;
+
 import java.awt.CardLayout;
 import java.util.ArrayList;
 import javax.swing.ImageIcon;
@@ -129,6 +129,11 @@ public class MenuPrincipal extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("JavaPop - Menú principal");
         setResizable(false);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                MenuPrincipal.this.windowClosing(evt);
+            }
+        });
 
         mainPanel.setBackground(new java.awt.Color(0, 0, 51));
         mainPanel.setForeground(new java.awt.Color(0, 0, 51));
@@ -957,6 +962,13 @@ public class MenuPrincipal extends javax.swing.JFrame {
         lockUnlockBotonesComprar();
         etiquetaPagina.setText("Página " + (posicionMin / 8 + 1) + " de " + (prodDefinitivo.size() / 8));
     }//GEN-LAST:event_rePagActionPerformed
+
+    private void windowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_windowClosing
+        IOCustomLib.guardarClientes(usuarios);
+        IOCustomLib.guardarProductos(productos);
+        IOCustomLib.guardarVentas(ventas);
+        System.exit(0);
+    }//GEN-LAST:event_windowClosing
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton actualizarLicenciaButton;

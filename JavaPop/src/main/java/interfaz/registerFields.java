@@ -26,8 +26,8 @@ public class registerFields extends javax.swing.JPanel {
         nameErrorLabel.setText("");
         ppccErrorLabel.setText("");
         ccErrorLabel.setText("");
-        dniErrorLabel.setText("");
-        
+        idErrorLabel.setText("");
+
     }
 
     /**
@@ -50,13 +50,13 @@ public class registerFields extends javax.swing.JPanel {
         nameField = new javax.swing.JTextField();
         ppccErrorLabel = new javax.swing.JLabel();
         ppccLabel = new javax.swing.JLabel();
-        ppccField = new javax.swing.JTextField();
+        ppccField = new javax.swing.JFormattedTextField();
         ccLabel = new javax.swing.JLabel();
-        ccField = new javax.swing.JTextField();
         ccErrorLabel = new javax.swing.JLabel();
+        ccField = new javax.swing.JFormattedTextField();
         idLabel = new javax.swing.JLabel();
-        idField = new javax.swing.JTextField();
-        dniErrorLabel = new javax.swing.JLabel();
+        idErrorLabel = new javax.swing.JLabel();
+        idField = new javax.swing.JFormattedTextField();
 
         emailErrorLabel.setForeground(new java.awt.Color(255, 0, 0));
         emailErrorLabel.setText("Error");
@@ -81,17 +81,40 @@ public class registerFields extends javax.swing.JPanel {
 
         ppccLabel.setText("Código Postal:");
 
+        try {
+            ppccField.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("#####")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+
         ccLabel.setText("Tarjeta de Crédito:");
 
         ccErrorLabel.setForeground(new java.awt.Color(255, 0, 0));
         ccErrorLabel.setText("Error");
         ccErrorLabel.setToolTipText("");
 
+        try {
+            ccField.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("####-####-####-####")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+        ccField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ccFieldActionPerformed(evt);
+            }
+        });
+
         idLabel.setText("DNI:");
 
-        dniErrorLabel.setForeground(new java.awt.Color(255, 0, 0));
-        dniErrorLabel.setText("Error");
-        dniErrorLabel.setToolTipText("");
+        idErrorLabel.setForeground(new java.awt.Color(255, 0, 0));
+        idErrorLabel.setText("Error");
+        idErrorLabel.setToolTipText("");
+
+        try {
+            idField.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("########?")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -103,7 +126,7 @@ public class registerFields extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(emailErrorLabel)
-                        .addContainerGap(76, Short.MAX_VALUE))
+                        .addContainerGap())
                     .addComponent(emailField)))
             .addGroup(layout.createSequentialGroup()
                 .addComponent(passwordLabel)
@@ -124,10 +147,10 @@ public class registerFields extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(dniErrorLabel)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(ccField)
-                    .addComponent(idField)))
+                        .addComponent(idErrorLabel)
+                        .addContainerGap())
+                    .addComponent(ccField, javax.swing.GroupLayout.DEFAULT_SIZE, 120, Short.MAX_VALUE)
+                    .addComponent(idField, javax.swing.GroupLayout.Alignment.TRAILING)))
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
@@ -137,13 +160,13 @@ public class registerFields extends javax.swing.JPanel {
                         .addComponent(nameLabel)
                         .addGap(6, 6, 6)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(ppccField, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(nameField, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(ccErrorLabel)
                             .addComponent(ppccErrorLabel))
-                        .addGap(0, 0, Short.MAX_VALUE))))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(ppccField, javax.swing.GroupLayout.Alignment.TRAILING)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -169,56 +192,60 @@ public class registerFields extends javax.swing.JPanel {
                 .addComponent(ppccErrorLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(ppccField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(ppccLabel))
+                    .addComponent(ppccLabel)
+                    .addComponent(ppccField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(ccErrorLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(ccField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(ccLabel))
+                    .addComponent(ccLabel)
+                    .addComponent(ccField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(dniErrorLabel)
+                .addComponent(idErrorLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(idField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(idLabel)))
+                    .addComponent(idLabel)
+                    .addComponent(idField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    public JTextField getCcField() {
-        return ccField;
+    private void ccFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ccFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ccFieldActionPerformed
+
+    public String getEmail() {
+        return emailField.getText();
     }
 
-    public JTextField getEmailField() {
-        return emailField;
+    public String getNameSurname() {
+        return nameField.getText();
     }
 
-    public JTextField getIdField() {
-        return idField;
+    public String getPassword() {
+        return new String(passwordField.getPassword());
     }
 
-    public JTextField getNameField() {
-        return nameField;
+    public String getPPCC() {
+        return ppccField.getText();
     }
 
-    public JPasswordField getPasswordField() {
-        return passwordField;
+    public String getCC() {
+        return ccField.getText();
     }
 
-    public JTextField getPpccField() {
-        return ppccField;
+    public String getID() {
+        return idField.getText().strip();
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public static javax.swing.JLabel ccErrorLabel;
-    private javax.swing.JTextField ccField;
+    private javax.swing.JFormattedTextField ccField;
     private javax.swing.JLabel ccLabel;
-    public static javax.swing.JLabel dniErrorLabel;
     public static javax.swing.JLabel emailErrorLabel;
     private javax.swing.JTextField emailField;
     private javax.swing.JLabel emailLabel;
-    private javax.swing.JTextField idField;
+    public static javax.swing.JLabel idErrorLabel;
+    private javax.swing.JFormattedTextField idField;
     private javax.swing.JLabel idLabel;
     public static javax.swing.JLabel nameErrorLabel;
     private javax.swing.JTextField nameField;
@@ -227,7 +254,7 @@ public class registerFields extends javax.swing.JPanel {
     private javax.swing.JPasswordField passwordField;
     private javax.swing.JLabel passwordLabel;
     public static javax.swing.JLabel ppccErrorLabel;
-    private javax.swing.JTextField ppccField;
+    private javax.swing.JFormattedTextField ppccField;
     private javax.swing.JLabel ppccLabel;
     // End of variables declaration//GEN-END:variables
 }
