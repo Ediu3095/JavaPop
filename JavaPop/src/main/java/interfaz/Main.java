@@ -46,7 +46,7 @@ public class Main {
         
         Thread.sleep(4000);
         
-        new LogReg();
+        new LoginScreen();
         ls.dispose();
         
     }

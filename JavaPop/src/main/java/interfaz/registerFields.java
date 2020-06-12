@@ -58,155 +58,104 @@ public class registerFields extends javax.swing.JPanel {
         idErrorLabel = new javax.swing.JLabel();
         idField = new javax.swing.JFormattedTextField();
 
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        emailErrorLabel.setFont(new java.awt.Font("OCR A Extended", 0, 12)); // NOI18N
         emailErrorLabel.setForeground(new java.awt.Color(255, 0, 0));
         emailErrorLabel.setText("Error");
         emailErrorLabel.setToolTipText("");
+        add(emailErrorLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 0, -1, 20));
 
+        emailLabel.setFont(new java.awt.Font("OCR A Extended", 0, 12)); // NOI18N
         emailLabel.setText("Email:");
+        add(emailLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 20, -1, 20));
 
+        emailField.setFont(new java.awt.Font("OCR A Extended", 0, 12)); // NOI18N
+        add(emailField, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 20, 230, -1));
+
+        passwordErrorLabel.setFont(new java.awt.Font("OCR A Extended", 0, 12)); // NOI18N
         passwordErrorLabel.setForeground(new java.awt.Color(255, 0, 0));
         passwordErrorLabel.setText("Error");
         passwordErrorLabel.setToolTipText("");
+        add(passwordErrorLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 50, -1, 20));
 
+        passwordLabel.setFont(new java.awt.Font("OCR A Extended", 0, 12)); // NOI18N
         passwordLabel.setText("Contraseña:");
+        add(passwordLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 70, -1, 20));
 
+        passwordField.setFont(new java.awt.Font("OCR A Extended", 0, 12)); // NOI18N
+        add(passwordField, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 70, 230, -1));
+
+        nameErrorLabel.setFont(new java.awt.Font("OCR A Extended", 0, 12)); // NOI18N
         nameErrorLabel.setForeground(new java.awt.Color(255, 0, 0));
         nameErrorLabel.setText("Error");
+        add(nameErrorLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 100, -1, 20));
 
+        nameLabel.setFont(new java.awt.Font("OCR A Extended", 0, 12)); // NOI18N
         nameLabel.setText("Nombre y apellidos:");
+        add(nameLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 120, -1, 20));
 
+        nameField.setFont(new java.awt.Font("OCR A Extended", 0, 12)); // NOI18N
+        add(nameField, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 120, 230, -1));
+
+        ppccErrorLabel.setFont(new java.awt.Font("OCR A Extended", 0, 12)); // NOI18N
         ppccErrorLabel.setForeground(new java.awt.Color(255, 0, 0));
         ppccErrorLabel.setText("Error");
         ppccErrorLabel.setToolTipText("");
+        add(ppccErrorLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 150, -1, 20));
 
+        ppccLabel.setFont(new java.awt.Font("OCR A Extended", 0, 12)); // NOI18N
         ppccLabel.setText("Código Postal:");
+        add(ppccLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 170, -1, 20));
 
         try {
             ppccField.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("#####")));
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
+        ppccField.setFont(new java.awt.Font("OCR A Extended", 0, 12)); // NOI18N
+        add(ppccField, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 170, 230, -1));
 
+        ccLabel.setFont(new java.awt.Font("OCR A Extended", 0, 12)); // NOI18N
         ccLabel.setText("Tarjeta de Crédito:");
+        add(ccLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 220, -1, 20));
 
+        ccErrorLabel.setFont(new java.awt.Font("OCR A Extended", 0, 12)); // NOI18N
         ccErrorLabel.setForeground(new java.awt.Color(255, 0, 0));
         ccErrorLabel.setText("Error");
         ccErrorLabel.setToolTipText("");
+        add(ccErrorLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 200, -1, 20));
 
         try {
             ccField.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("####-####-####-####")));
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
+        ccField.setFont(new java.awt.Font("OCR A Extended", 0, 12)); // NOI18N
         ccField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ccFieldActionPerformed(evt);
             }
         });
+        add(ccField, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 220, 230, -1));
 
+        idLabel.setFont(new java.awt.Font("OCR A Extended", 0, 12)); // NOI18N
         idLabel.setText("DNI:");
+        add(idLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 270, -1, 20));
 
+        idErrorLabel.setFont(new java.awt.Font("OCR A Extended", 0, 12)); // NOI18N
         idErrorLabel.setForeground(new java.awt.Color(255, 0, 0));
         idErrorLabel.setText("Error");
         idErrorLabel.setToolTipText("");
+        add(idErrorLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 250, -1, 20));
 
         try {
             idField.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("########?")));
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(emailLabel)
-                .addGap(72, 72, 72)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(emailErrorLabel)
-                        .addContainerGap())
-                    .addComponent(emailField)))
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(passwordLabel)
-                .addGap(40, 40, 40)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(passwordField, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(passwordErrorLabel)
-                        .addGap(0, 0, Short.MAX_VALUE))))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(100, 100, 100)
-                .addComponent(nameErrorLabel)
-                .addGap(0, 0, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(idLabel)
-                    .addComponent(ccLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(idErrorLabel)
-                        .addContainerGap())
-                    .addComponent(ccField, javax.swing.GroupLayout.DEFAULT_SIZE, 120, Short.MAX_VALUE)
-                    .addComponent(idField, javax.swing.GroupLayout.Alignment.TRAILING)))
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(ppccLabel)
-                        .addGap(31, 31, 31))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(nameLabel)
-                        .addGap(6, 6, 6)))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(nameField, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(ccErrorLabel)
-                            .addComponent(ppccErrorLabel))
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(ppccField, javax.swing.GroupLayout.Alignment.TRAILING)))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(emailErrorLabel)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(emailField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(emailLabel))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(passwordErrorLabel)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(passwordField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(passwordLabel))
-                .addGap(8, 8, 8)
-                .addComponent(nameErrorLabel)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(nameLabel)
-                    .addComponent(nameField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(ppccErrorLabel)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(ppccLabel)
-                    .addComponent(ppccField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(ccErrorLabel)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(ccLabel)
-                    .addComponent(ccField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(idErrorLabel)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(idLabel)
-                    .addComponent(idField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-        );
+        idField.setFont(new java.awt.Font("OCR A Extended", 0, 12)); // NOI18N
+        add(idField, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 270, 230, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void ccFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ccFieldActionPerformed

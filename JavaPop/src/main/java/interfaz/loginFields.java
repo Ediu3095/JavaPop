@@ -49,50 +49,31 @@ public class loginFields extends javax.swing.JPanel {
         passwordField1 = new javax.swing.JPasswordField();
         passwordErrorLabel = new javax.swing.JLabel();
 
-        emailLabel1.setText("Email:");
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        emailLabel1.setFont(new java.awt.Font("OCR A Extended", 0, 12)); // NOI18N
+        emailLabel1.setText("Email:");
+        add(emailLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 20, -1, 20));
+
+        emailField1.setFont(new java.awt.Font("OCR A Extended", 0, 12)); // NOI18N
+        add(emailField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 20, 260, -1));
+
+        emailErrorLabel.setFont(new java.awt.Font("OCR A Extended", 0, 12)); // NOI18N
         emailErrorLabel.setForeground(new java.awt.Color(255, 0, 0));
         emailErrorLabel.setText("Error");
+        add(emailErrorLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 0, -1, 20));
 
+        passwordLabel1.setFont(new java.awt.Font("OCR A Extended", 0, 12)); // NOI18N
         passwordLabel1.setText("Contraseña:");
+        add(passwordLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 70, -1, 20));
 
+        passwordField1.setFont(new java.awt.Font("OCR A Extended", 0, 12)); // NOI18N
+        add(passwordField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 70, 260, -1));
+
+        passwordErrorLabel.setFont(new java.awt.Font("OCR A Extended", 0, 12)); // NOI18N
         passwordErrorLabel.setForeground(new java.awt.Color(255, 0, 0));
         passwordErrorLabel.setText("Error");
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(passwordLabel1)
-                    .addComponent(emailLabel1))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(emailField1, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE)
-                    .addComponent(passwordField1, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(passwordErrorLabel)
-                            .addComponent(emailErrorLabel))
-                        .addGap(0, 0, Short.MAX_VALUE))))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addComponent(emailErrorLabel)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(emailField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(emailLabel1))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 7, Short.MAX_VALUE)
-                .addComponent(passwordErrorLabel)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(passwordField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(passwordLabel1))
-                .addGap(5, 5, 5))
-        );
+        add(passwordErrorLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 50, -1, 20));
     }// </editor-fold>//GEN-END:initComponents
 
 

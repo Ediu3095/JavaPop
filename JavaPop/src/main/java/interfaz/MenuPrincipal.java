@@ -967,7 +967,6 @@ public class MenuPrincipal extends javax.swing.JFrame {
         IOCustomLib.guardarClientes(usuarios);
         IOCustomLib.guardarProductos(productos);
         IOCustomLib.guardarVentas(ventas);
-        System.exit(0);
     }//GEN-LAST:event_windowClosing
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
