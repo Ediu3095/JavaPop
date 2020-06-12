@@ -62,7 +62,7 @@ public class registerFields extends javax.swing.JPanel {
 
         emailErrorLabel.setFont(new java.awt.Font("OCR A Extended", 0, 12)); // NOI18N
         emailErrorLabel.setForeground(new java.awt.Color(255, 0, 0));
-        emailErrorLabel.setText("Error");
+        emailErrorLabel.setText("Email no válido");
         emailErrorLabel.setToolTipText("");
         add(emailErrorLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 0, -1, 20));
 
@@ -75,7 +75,7 @@ public class registerFields extends javax.swing.JPanel {
 
         passwordErrorLabel.setFont(new java.awt.Font("OCR A Extended", 0, 12)); // NOI18N
         passwordErrorLabel.setForeground(new java.awt.Color(255, 0, 0));
-        passwordErrorLabel.setText("Error");
+        passwordErrorLabel.setText("Contraseña inválida");
         passwordErrorLabel.setToolTipText("");
         add(passwordErrorLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 50, -1, 20));
 
@@ -100,7 +100,7 @@ public class registerFields extends javax.swing.JPanel {
 
         ppccErrorLabel.setFont(new java.awt.Font("OCR A Extended", 0, 12)); // NOI18N
         ppccErrorLabel.setForeground(new java.awt.Color(255, 0, 0));
-        ppccErrorLabel.setText("Error");
+        ppccErrorLabel.setText("Codigo postal no válido");
         ppccErrorLabel.setToolTipText("");
         add(ppccErrorLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 150, -1, 20));
 
@@ -122,7 +122,7 @@ public class registerFields extends javax.swing.JPanel {
 
         ccErrorLabel.setFont(new java.awt.Font("OCR A Extended", 0, 12)); // NOI18N
         ccErrorLabel.setForeground(new java.awt.Color(255, 0, 0));
-        ccErrorLabel.setText("Error");
+        ccErrorLabel.setText("Tarjeta de credito no válida");
         ccErrorLabel.setToolTipText("");
         add(ccErrorLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 200, -1, 20));
 
@@ -145,7 +145,7 @@ public class registerFields extends javax.swing.JPanel {
 
         idErrorLabel.setFont(new java.awt.Font("OCR A Extended", 0, 12)); // NOI18N
         idErrorLabel.setForeground(new java.awt.Color(255, 0, 0));
-        idErrorLabel.setText("Error");
+        idErrorLabel.setText("DNI no válido");
         idErrorLabel.setToolTipText("");
         add(idErrorLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 250, -1, 20));
 

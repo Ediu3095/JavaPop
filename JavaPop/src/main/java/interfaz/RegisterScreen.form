@@ -117,9 +117,6 @@
               <Color blue="33" green="0" red="0" type="rgb"/>
             </Property>
             <Property name="horizontalAlignment" type="int" value="0"/>
-            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="2" name="C:\Users\TheElctrMsc_Gaming\Documents\GitHub\JavaPop\JavaPop\resources\logo\IconoJavaPop3.png"/>
-            </Property>
             <Property name="text" type="java.lang.String" value="JavaPop"/>
           </Properties>
         </Component>
