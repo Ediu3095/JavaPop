@@ -17,9 +17,10 @@ import java.util.ArrayList;
 
 /**
  *
- * @author TheElctrMsc_Gaming
+ * @author luism
+ * 
  */
-public class MenuPrincipal extends javax.swing.JFrame {
+public class MenuAdminPrueba extends javax.swing.JFrame {
 
     private CardLayout camposCL;
     private Cliente user;
@@ -30,7 +31,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
     /**
      * Creates new form MenuPrincipal1
      */
-    public MenuPrincipal(Cliente user) {
+    public MenuAdminPrueba(Cliente user) {
         initComponents();
         this.user = user;
         this.camposCL = (CardLayout) this.jPanel1.getLayout();
@@ -47,15 +48,17 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private void initComponents() {
 
         banner = new javax.swing.JPanel();
-        jButton2 = new javax.swing.JButton();
         busquedaButton = new javax.swing.JButton();
-        etiquetaBusqueda = new javax.swing.JLabel();
         claveBusqueda = new javax.swing.JTextField();
         comboBoxCategoria = new javax.swing.JComboBox<>();
-        etiquetaCategoria = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
         Logo = new javax.swing.JLabel();
         filler1 = new javax.swing.Box.Filler(new java.awt.Dimension(100, 30), new java.awt.Dimension(60, 30), new java.awt.Dimension(100, 30));
+        jButton3 = new javax.swing.JButton();
+        jButton4 = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jComboBox1 = new javax.swing.JComboBox<>();
+        jLabel3 = new javax.swing.JLabel();
         filler2 = new javax.swing.Box.Filler(new java.awt.Dimension(80, 100), new java.awt.Dimension(60, 100), new java.awt.Dimension(80, 100));
         filler3 = new javax.swing.Box.Filler(new java.awt.Dimension(80, 100), new java.awt.Dimension(60, 100), new java.awt.Dimension(80, 100));
         filler4 = new javax.swing.Box.Filler(new java.awt.Dimension(80, 80), new java.awt.Dimension(80, 30), new java.awt.Dimension(80, 80));
@@ -80,10 +83,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
         banner.setBackground(new java.awt.Color(51, 153, 255));
         banner.setForeground(new java.awt.Color(0, 0, 51));
-
-        jButton2.setFont(new java.awt.Font("OCR A Extended", 0, 12)); // NOI18N
-        jButton2.setText("Mi perfil");
-        jButton2.setPreferredSize(new java.awt.Dimension(130, 23));
+        banner.setPreferredSize(new java.awt.Dimension(945, 79));
 
         busquedaButton.setFont(new java.awt.Font("OCR A Extended", 0, 12)); // NOI18N
         busquedaButton.setText("Buscar");
@@ -94,9 +94,6 @@ public class MenuPrincipal extends javax.swing.JFrame {
             }
         });
 
-        etiquetaBusqueda.setFont(new java.awt.Font("OCR A Extended", 0, 12)); // NOI18N
-        etiquetaBusqueda.setText("Buscar:");
-
         claveBusqueda.setFont(new java.awt.Font("OCR A Extended", 0, 12)); // NOI18N
         claveBusqueda.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -106,13 +103,11 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
         comboBoxCategoria.setFont(new java.awt.Font("OCR A Extended", 0, 12)); // NOI18N
         comboBoxCategoria.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Moda y acesorios", "Tv, audio y foto", "Moviles y telefónica", "Informática y electrónica", "Consolas y videojuegos", "Deporte y ocio" }));
-
-        etiquetaCategoria.setFont(new java.awt.Font("OCR A Extended", 0, 12)); // NOI18N
-        etiquetaCategoria.setText("Categoría:");
-
-        jButton1.setFont(new java.awt.Font("OCR A Extended", 0, 12)); // NOI18N
-        jButton1.setText("Subir producto");
-        jButton1.setPreferredSize(new java.awt.Dimension(110, 23));
+        comboBoxCategoria.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                comboBoxCategoriaActionPerformed(evt);
+            }
+        });
 
         Logo.setFont(new java.awt.Font("OCR A Extended", 0, 36)); // NOI18N
         Logo.setForeground(new java.awt.Color(0, 0, 51));
@@ -121,29 +116,66 @@ public class MenuPrincipal extends javax.swing.JFrame {
         Logo.setText("JavaPop");
         Logo.setPreferredSize(new java.awt.Dimension(230, 38));
 
+        jButton3.setFont(new java.awt.Font("OCR A Extended", 0, 12)); // NOI18N
+        jButton3.setText("Cerrar Sesión");
+
+        jButton4.setFont(new java.awt.Font("OCR A Extended", 0, 12)); // NOI18N
+        jButton4.setText("Salir");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
+
+        jLabel1.setFont(new java.awt.Font("OCR A Extended", 0, 12)); // NOI18N
+        jLabel1.setText("Categoria:");
+
+        jLabel2.setFont(new java.awt.Font("OCR A Extended", 0, 12)); // NOI18N
+        jLabel2.setText("Función:");
+
+        jComboBox1.setFont(new java.awt.Font("OCR A Extended", 0, 12)); // NOI18N
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Consultar usuario", "Consultar producto", "Consultar ventas" }));
+        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox1ActionPerformed(evt);
+            }
+        });
+
+        jLabel3.setFont(new java.awt.Font("OCR A Extended", 0, 12)); // NOI18N
+        jLabel3.setText("Buscar:");
+
         javax.swing.GroupLayout bannerLayout = new javax.swing.GroupLayout(banner);
         banner.setLayout(bannerLayout);
         bannerLayout.setHorizontalGroup(
             bannerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(bannerLayout.createSequentialGroup()
                 .addComponent(Logo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(bannerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(etiquetaCategoria, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(etiquetaBusqueda, javax.swing.GroupLayout.Alignment.TRAILING))
-                .addGap(18, 18, 18)
-                .addGroup(bannerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addGroup(bannerLayout.createSequentialGroup()
-                        .addComponent(comboBoxCategoria, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(busquedaButton, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(claveBusqueda, javax.swing.GroupLayout.PREFERRED_SIZE, 385, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addComponent(filler1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(20, 20, 20)
+                        .addComponent(jLabel1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(comboBoxCategoria, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(bannerLayout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
+                .addGroup(bannerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(bannerLayout.createSequentialGroup()
+                        .addComponent(filler1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(bannerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(busquedaButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(claveBusqueda, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(bannerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jButton4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
         bannerLayout.setVerticalGroup(
@@ -152,23 +184,29 @@ public class MenuPrincipal extends javax.swing.JFrame {
             .addGroup(bannerLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(bannerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(filler1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(bannerLayout.createSequentialGroup()
+                        .addGap(20, 20, 20)
+                        .addComponent(filler1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(bannerLayout.createSequentialGroup()
                         .addGroup(bannerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(bannerLayout.createSequentialGroup()
                                 .addGroup(bannerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(etiquetaBusqueda)
-                                    .addComponent(claveBusqueda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                    .addComponent(jButton3)
+                                    .addComponent(claveBusqueda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel3))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(bannerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                     .addComponent(busquedaButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(comboBoxCategoria, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(etiquetaCategoria)))
+                                    .addComponent(jButton4)))
                             .addGroup(bannerLayout.createSequentialGroup()
-                                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                                .addGroup(bannerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jLabel2)
+                                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(8, 8, 8)
+                                .addGroup(bannerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(comboBoxCategoria, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel1))))
+                        .addGap(0, 5, Short.MAX_VALUE)))
                 .addContainerGap())
         );
 
@@ -178,11 +216,11 @@ public class MenuPrincipal extends javax.swing.JFrame {
         panelBienvenida.setLayout(panelBienvenidaLayout);
         panelBienvenidaLayout.setHorizontalGroup(
             panelBienvenidaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 838, Short.MAX_VALUE)
+            .addGap(0, 864, Short.MAX_VALUE)
         );
         panelBienvenidaLayout.setVerticalGroup(
             panelBienvenidaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 578, Short.MAX_VALUE)
+            .addGap(0, 422, Short.MAX_VALUE)
         );
 
         jPanel1.add(panelBienvenida, "card2");
@@ -264,11 +302,11 @@ public class MenuPrincipal extends javax.swing.JFrame {
         panelPerfil.setLayout(panelPerfilLayout);
         panelPerfilLayout.setHorizontalGroup(
             panelPerfilLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 838, Short.MAX_VALUE)
+            .addGap(0, 864, Short.MAX_VALUE)
         );
         panelPerfilLayout.setVerticalGroup(
             panelPerfilLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 578, Short.MAX_VALUE)
+            .addGap(0, 422, Short.MAX_VALUE)
         );
 
         jPanel1.add(panelPerfil, "card4");
@@ -277,7 +315,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(banner, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(banner, javax.swing.GroupLayout.DEFAULT_SIZE, 996, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(filler3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -293,7 +331,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
                 .addComponent(banner, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(filler2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(filler2, javax.swing.GroupLayout.DEFAULT_SIZE, 458, Short.MAX_VALUE)
                     .addComponent(filler3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
@@ -376,6 +414,18 @@ public class MenuPrincipal extends javax.swing.JFrame {
         lockUnlockBotonesComprar();
         etiquetaPagina.setText("Página " + (posicionMin / 8 + 1) + " de " + (prodDefinitivo.size() / 8 + 1));
     }//GEN-LAST:event_avPagActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void comboBoxCategoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboBoxCategoriaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_comboBoxCategoriaActionPerformed
+
+    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBox1ActionPerformed
 
     private void lockUnlockBotonesComprar() {
         if (posicionMin - 10 < 0) {
@@ -481,15 +531,17 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private javax.swing.JButton busquedaButton;
     private javax.swing.JTextField claveBusqueda;
     private javax.swing.JComboBox<String> comboBoxCategoria;
-    private javax.swing.JLabel etiquetaBusqueda;
-    private javax.swing.JLabel etiquetaCategoria;
     private javax.swing.JLabel etiquetaPagina;
     private javax.swing.Box.Filler filler1;
     private javax.swing.Box.Filler filler2;
     private javax.swing.Box.Filler filler3;
     private javax.swing.Box.Filler filler4;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
+    private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel panelBienvenida;
     private javax.swing.JPanel panelCompra;
