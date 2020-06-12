@@ -43,7 +43,7 @@ public class RegisterScreen extends javax.swing.JFrame {
         Logo = new javax.swing.JLabel();
         filler1 = new javax.swing.Box.Filler(new java.awt.Dimension(40, 160), new java.awt.Dimension(40, 160), new java.awt.Dimension(40, 160));
         filler2 = new javax.swing.Box.Filler(new java.awt.Dimension(40, 160), new java.awt.Dimension(40, 160), new java.awt.Dimension(40, 160));
-        registerFields = new interfaz.registerFields();
+        registerFields = new interfaz.panels.registerFields();
         jLabel1 = new javax.swing.JLabel();
         loginButton = new javax.swing.JLabel();
 
@@ -65,7 +65,7 @@ public class RegisterScreen extends javax.swing.JFrame {
         Logo.setFont(new java.awt.Font("OCR A Extended", 0, 36)); // NOI18N
         Logo.setForeground(new java.awt.Color(0, 0, 51));
         Logo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        Logo.setIcon(new javax.swing.ImageIcon("C:\\Users\\TheElctrMsc_Gaming\\Documents\\GitHub\\JavaPop\\JavaPop\\resources\\logo\\IconoJavaPop3.png")); // NOI18N
+        Logo.setIcon(new ImageIcon(".\\resources\\logo\\IconoJavaPop3.png"));
         Logo.setText("JavaPop");
 
         javax.swing.GroupLayout bannerLayout = new javax.swing.GroupLayout(banner);
@@ -85,6 +85,7 @@ public class RegisterScreen extends javax.swing.JFrame {
         loginButton.setFont(new java.awt.Font("OCR A Extended", 0, 12)); // NOI18N
         loginButton.setForeground(new java.awt.Color(51, 153, 255));
         loginButton.setText("Inicia sesión");
+        loginButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         loginButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 loginButtonMouseClicked(evt);
@@ -191,6 +192,7 @@ public class RegisterScreen extends javax.swing.JFrame {
                 usuarios.add(user);
                 IOCustomLib.guardarClientes(usuarios);
                 // vv Abrir menu usuario con ese user vv
+                new LoginScreen();
                 this.dispose();
             }
         }
@@ -217,6 +219,6 @@ public class RegisterScreen extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel loginButton;
     private javax.swing.JButton registerButton;
-    private interfaz.registerFields registerFields;
+    private interfaz.panels.registerFields registerFields;
     // End of variables declaration//GEN-END:variables
 }

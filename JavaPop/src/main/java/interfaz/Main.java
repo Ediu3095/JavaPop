@@ -44,7 +44,9 @@ public class Main {
         productos = IOCustomLib.leerProductos();
         ventas = IOCustomLib.leerVentas();
         
-        Thread.sleep(4000);
+        System.out.println(usuarios);
+        
+        Thread.sleep(3000);
         
         new LoginScreen();
         ls.dispose();

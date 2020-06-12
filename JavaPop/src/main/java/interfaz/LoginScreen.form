@@ -42,7 +42,7 @@
                       </Group>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="81" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="72" max="-2" attributes="0"/>
                       <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="registerButton" min="-2" max="-2" attributes="0"/>
@@ -111,15 +111,15 @@
               <Color blue="33" green="0" red="0" type="rgb"/>
             </Property>
             <Property name="horizontalAlignment" type="int" value="0"/>
-            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="2" name="C:\Users\TheElctrMsc_Gaming\Documents\GitHub\JavaPop\JavaPop\resources\logo\IconoJavaPop3.png"/>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+              <Connection code="new ImageIcon(&quot;.\\resources\\logo\\IconoJavaPop3.png&quot;)" type="code"/>
             </Property>
             <Property name="text" type="java.lang.String" value="JavaPop"/>
           </Properties>
         </Component>
       </SubComponents>
     </Container>
-    <Component class="interfaz.loginFields" name="loginFields">
+    <Component class="interfaz.panels.loginFields" name="loginFields">
     </Component>
     <Component class="javax.swing.JButton" name="loginButton">
       <Properties>
@@ -185,6 +185,9 @@
         </Property>
         <Property name="horizontalAlignment" type="int" value="0"/>
         <Property name="text" type="java.lang.String" value="Resg&#xed;strate"/>
+        <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+          <Color id="Hand Cursor"/>
+        </Property>
       </Properties>
       <Events>
         <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="registerButtonMouseClicked"/>

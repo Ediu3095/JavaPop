@@ -43,7 +43,7 @@ public class LoginScreen extends javax.swing.JFrame {
 
         banner = new javax.swing.JPanel();
         logo = new javax.swing.JLabel();
-        loginFields = new interfaz.loginFields();
+        loginFields = new interfaz.panels.loginFields();
         loginButton = new javax.swing.JButton();
         filler1 = new javax.swing.Box.Filler(new java.awt.Dimension(80, 160), new java.awt.Dimension(40, 160), new java.awt.Dimension(80, 160));
         filler2 = new javax.swing.Box.Filler(new java.awt.Dimension(80, 160), new java.awt.Dimension(40, 160), new java.awt.Dimension(80, 160));
@@ -62,7 +62,7 @@ public class LoginScreen extends javax.swing.JFrame {
         logo.setFont(new java.awt.Font("OCR A Extended", 0, 36)); // NOI18N
         logo.setForeground(new java.awt.Color(0, 0, 51));
         logo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        logo.setIcon(new javax.swing.ImageIcon("C:\\Users\\TheElctrMsc_Gaming\\Documents\\GitHub\\JavaPop\\JavaPop\\resources\\logo\\IconoJavaPop3.png")); // NOI18N
+        logo.setIcon(new ImageIcon(".\\resources\\logo\\IconoJavaPop3.png"));
         logo.setText("JavaPop");
 
         javax.swing.GroupLayout bannerLayout = new javax.swing.GroupLayout(banner);
@@ -92,6 +92,7 @@ public class LoginScreen extends javax.swing.JFrame {
         registerButton.setForeground(new java.awt.Color(51, 153, 255));
         registerButton.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         registerButton.setText("Resgístrate");
+        registerButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         registerButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 registerButtonMouseClicked(evt);
@@ -117,7 +118,7 @@ public class LoginScreen extends javax.swing.JFrame {
                             .addComponent(loginFields, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(loginButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(81, 81, 81)
+                        .addGap(72, 72, 72)
                         .addComponent(jLabel1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(registerButton)))
@@ -159,7 +160,6 @@ public class LoginScreen extends javax.swing.JFrame {
 
         // Comprobamos si el correo es válido
         if (checkCorreo(correo)) {
-
             // Si la contraseña es valida
             if (checkClave(clave)) {
                 if (correo.equals("admin@javapop.com") && clave.equals("admin")) {
@@ -214,7 +214,7 @@ public class LoginScreen extends javax.swing.JFrame {
     private javax.swing.Box.Filler filler2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JButton loginButton;
-    private interfaz.loginFields loginFields;
+    private interfaz.panels.loginFields loginFields;
     private javax.swing.JLabel logo;
     private javax.swing.JLabel registerButton;
     // End of variables declaration//GEN-END:variables

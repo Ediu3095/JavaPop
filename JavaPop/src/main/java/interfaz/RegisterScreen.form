@@ -117,8 +117,8 @@
               <Color blue="33" green="0" red="0" type="rgb"/>
             </Property>
             <Property name="horizontalAlignment" type="int" value="0"/>
-            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="2" name="C:\Users\TheElctrMsc_Gaming\Documents\GitHub\JavaPop\JavaPop\resources\logo\IconoJavaPop3.png"/>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+              <Connection code="new ImageIcon(&quot;.\\resources\\logo\\IconoJavaPop3.png&quot;)" type="code"/>
             </Property>
             <Property name="text" type="java.lang.String" value="JavaPop"/>
           </Properties>
@@ -157,7 +157,7 @@
         <AuxValue name="classDetails" type="java.lang.String" value="Box.Filler.RigidArea"/>
       </AuxValues>
     </Component>
-    <Component class="interfaz.registerFields" name="registerFields">
+    <Component class="interfaz.panels.registerFields" name="registerFields">
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel1">
       <Properties>
@@ -176,6 +176,9 @@
           <Color blue="ff" green="99" red="33" type="rgb"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Inicia sesi&#xf3;n"/>
+        <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+          <Color id="Hand Cursor"/>
+        </Property>
       </Properties>
       <Events>
         <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="loginButtonMouseClicked"/>
