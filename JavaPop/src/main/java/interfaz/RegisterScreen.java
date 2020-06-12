@@ -168,7 +168,7 @@ public class RegisterScreen extends javax.swing.JFrame {
         if (!checkCorreo(correo)) {
             registerFields.emailErrorLabel.setText("Correo inválido");
         } else if (!checkClave(clave)) {
-            registerFields.passwordErrorLabel.setText("Contraseña inválido");
+            registerFields.passwordErrorLabel.setText("Contraseña inválida");
         } else if (!checkCodigoPostal(ccpp)) {
             registerFields.ppccErrorLabel.setText("Codigo postal inválido");
         } else if (!checkTarjetaCredito(ttcc)) {
