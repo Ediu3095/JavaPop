@@ -25,8 +25,10 @@ import java.nio.file.Files;
 import static java.nio.file.StandardCopyOption.REPLACE_EXISTING;
 import java.util.ArrayList;
 import static java.util.Locale.filter;
+import java.util.Random;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
+import javax.swing.filechooser.FileNameExtensionFilter;
 
 /**
  *
@@ -40,6 +42,9 @@ public class MenuAdmin extends javax.swing.JFrame {
     private int posicionMin;
     private int posicionMax;
     private ArrayList<Cliente> clientDefinitivo;
+    private FileNameExtensionFilter filter = new FileNameExtensionFilter("Archivo de imagen (*.jpg, *.jpeg, *.png, *.gif)", "jpg", "png", "jpeg", "gif");
+    private String imageAddress;
+    private MenuPrincipal menu;
 
     /**
      * Creates new form MenuPrincipal1
@@ -166,6 +171,9 @@ public class MenuAdmin extends javax.swing.JFrame {
         botonSubir = new javax.swing.JButton();
         botonCancelar = new javax.swing.JButton();
         fieldPrecio = new javax.swing.JTextField();
+        nombreEditLabel = new javax.swing.JLabel();
+        descripcionEditLabel = new javax.swing.JLabel();
+        precioEditLabel = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("JavaPop - Menú de desarrolador\n");
@@ -547,7 +555,7 @@ public class MenuAdmin extends javax.swing.JFrame {
                                 .addGap(10, 10, 10)
                                 .addComponent(jLabel8))
                             .addComponent(ccEditField, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 633, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 637, Short.MAX_VALUE)
                 .addGroup(panelEditarUsuariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(guardarButton)
                     .addComponent(atrasButton)))
@@ -936,7 +944,7 @@ public class MenuAdmin extends javax.swing.JFrame {
         );
         panelBienvenidaLayout.setVerticalGroup(
             panelBienvenidaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1082, Short.MAX_VALUE)
+            .addGap(0, 1086, Short.MAX_VALUE)
         );
 
         jPanel1.add(panelBienvenida, "card2");
@@ -1097,6 +1105,45 @@ public class MenuAdmin extends javax.swing.JFrame {
 
         fieldPrecio.setFont(new java.awt.Font("OCR A Extended", 0, 12)); // NOI18N
 
+        nombreEditLabel.setText("Editar");
+        nombreEditLabel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                nombreEditLabelMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                nombreEditLabelMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                nombreEditLabelMouseExited(evt);
+            }
+        });
+
+        descripcionEditLabel.setText("Editar");
+        descripcionEditLabel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                descripcionEditLabelMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                descripcionEditLabelMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                descripcionEditLabelMouseExited(evt);
+            }
+        });
+
+        precioEditLabel.setText("Editar");
+        precioEditLabel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                precioEditLabelMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                precioEditLabelMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                precioEditLabelMouseExited(evt);
+            }
+        });
+
         javax.swing.GroupLayout panelEditarProductosLayout = new javax.swing.GroupLayout(panelEditarProductos);
         panelEditarProductos.setLayout(panelEditarProductosLayout);
         panelEditarProductosLayout.setHorizontalGroup(
@@ -1105,30 +1152,39 @@ public class MenuAdmin extends javax.swing.JFrame {
                 .addGap(66, 66, 66)
                 .addGroup(panelEditarProductosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(panelEditarProductosLayout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(botonCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(panelEditarProductosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(panelEditarProductosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(jLabel15)
+                                .addComponent(estadoBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jLabel12)
+                                .addComponent(fieldNombre)
+                                .addComponent(jLabel13)
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 250, Short.MAX_VALUE)
+                                .addComponent(jLabel16)
+                                .addComponent(jLabel14)
+                                .addComponent(fieldPrecio))
+                            .addComponent(categoriaBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
-                        .addComponent(botonSubir, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(panelEditarProductosLayout.createSequentialGroup()
-                        .addGroup(panelEditarProductosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jLabel15)
-                            .addComponent(estadoBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel12)
-                            .addComponent(fieldNombre)
-                            .addComponent(jLabel13)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 250, Short.MAX_VALUE)
-                            .addComponent(jLabel16)
-                            .addComponent(categoriaBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel14)
-                            .addComponent(fieldPrecio))
-                        .addGap(18, 18, 18)
-                        .addComponent(filler8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(panelEditarProductosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(panelEditarProductosLayout.createSequentialGroup()
+                                .addGroup(panelEditarProductosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(nombreEditLabel)
+                                    .addComponent(precioEditLabel))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(filler8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(descripcionEditLabel))
                         .addGap(18, 18, 18)
                         .addGroup(panelEditarProductosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(urgencia)
                             .addComponent(jLabel11)
-                            .addComponent(foto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(66, 66, 66))
+                            .addComponent(foto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(124, 124, 124))
+                    .addGroup(panelEditarProductosLayout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(botonCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(botonSubir, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(132, 132, 132))))
         );
         panelEditarProductosLayout.setVerticalGroup(
             panelEditarProductosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1138,15 +1194,24 @@ public class MenuAdmin extends javax.swing.JFrame {
                     .addGroup(panelEditarProductosLayout.createSequentialGroup()
                         .addComponent(jLabel12)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(fieldNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(panelEditarProductosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(fieldNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(nombreEditLabel))
                         .addGap(18, 18, 18)
                         .addComponent(jLabel13)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(panelEditarProductosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(panelEditarProductosLayout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(panelEditarProductosLayout.createSequentialGroup()
+                                .addGap(36, 36, 36)
+                                .addComponent(descripcionEditLabel)))
                         .addGap(18, 18, 18)
                         .addComponent(jLabel16)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(fieldPrecio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(panelEditarProductosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(fieldPrecio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(precioEditLabel))
                         .addGap(18, 18, 18)
                         .addComponent(jLabel14)
                         .addGap(12, 12, 12)
@@ -1155,14 +1220,16 @@ public class MenuAdmin extends javax.swing.JFrame {
                         .addComponent(jLabel15)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(estadoBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(filler8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(panelEditarProductosLayout.createSequentialGroup()
+                        .addGap(20, 20, 20)
+                        .addComponent(filler8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, panelEditarProductosLayout.createSequentialGroup()
                         .addComponent(jLabel11)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(foto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(urgencia)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 587, Short.MAX_VALUE)
                 .addGroup(panelEditarProductosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(botonSubir)
                     .addComponent(botonCancelar))
@@ -1303,7 +1370,7 @@ public class MenuAdmin extends javax.swing.JFrame {
         } else if (nameEditLabel.getText() == "Confirmar") {
             nameEditField.setEditable(false);
             nameEditLabel.setText("Editar");
-        }    
+        }
     }//GEN-LAST:event_nameEditLabelMouseClicked
 
     private void nameEditLabelMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_nameEditLabelMouseEntered
@@ -1544,7 +1611,7 @@ public class MenuAdmin extends javax.swing.JFrame {
             // Copiamos la imagen a un directorio propio para evitar problemas si esta es borrada o cambiada de directorio
             FileSystem fileSys = FileSystems.getDefault();
             File imgFolder = new File("./resources/imagenes/");
-            File  image = new File(imageAddress);
+            File image = new File(imageAddress);
             String newAddress;
             boolean run = true;
             int tryes = 0;
@@ -1595,6 +1662,62 @@ public class MenuAdmin extends javax.swing.JFrame {
             this.icono.setIcon(new ImageIcon(resizedImage));
         }
     }//GEN-LAST:event_iconoMouseClicked
+
+    private void nombreEditLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_nombreEditLabelMouseClicked
+        if (nombreEditLabel.getText() == "Editar") {
+            fieldNombre.setEditable(true);
+            nombreEditLabel.setText("Confirmar");
+        } else if (nombreEditLabel.getText() == "Confirmar") {
+            fieldNombre.setEditable(false);
+            nombreEditLabel.setText("Editar");
+        }
+    }//GEN-LAST:event_nombreEditLabelMouseClicked
+
+    private void nombreEditLabelMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_nombreEditLabelMouseEntered
+        nombreEditLabel.setFont(new java.awt.Font("OCR A Extended", 1, 12));
+    }//GEN-LAST:event_nombreEditLabelMouseEntered
+
+    private void nombreEditLabelMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_nombreEditLabelMouseExited
+        nombreEditLabel.setFont(new java.awt.Font("OCR A Extended", 0, 12));
+    }//GEN-LAST:event_nombreEditLabelMouseExited
+
+    private void descripcionEditLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_descripcionEditLabelMouseClicked
+
+        if (descripcionEditLabel.getText() == "Editar") {
+            fieldDescripcion.setEditable(true);
+            descripcionEditLabel.setText("Confirmar");
+        } else if (descripcionEditLabel.getText() == "Confirmar") {
+            fieldDescripcion.setEditable(false);
+            descripcionEditLabel.setText("Editar");
+        }
+    }//GEN-LAST:event_descripcionEditLabelMouseClicked
+
+    private void descripcionEditLabelMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_descripcionEditLabelMouseEntered
+        descripcionEditLabel.setFont(new java.awt.Font("OCR A Extended", 1, 12));
+    }//GEN-LAST:event_descripcionEditLabelMouseEntered
+
+    private void descripcionEditLabelMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_descripcionEditLabelMouseExited
+        descripcionEditLabel.setFont(new java.awt.Font("OCR A Extended", 0, 12));
+    }//GEN-LAST:event_descripcionEditLabelMouseExited
+
+    private void precioEditLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_precioEditLabelMouseClicked
+        
+        if (precioEditLabel.getText() == "Editar") {
+            fieldPrecio.setEditable(true);
+            precioEditLabel.setText("Confirmar");
+        } else if (precioEditLabel.getText() == "Confirmar") {
+            fieldPrecio.setEditable(false);
+            precioEditLabel.setText("Editar");
+        }
+    }//GEN-LAST:event_precioEditLabelMouseClicked
+
+    private void precioEditLabelMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_precioEditLabelMouseEntered
+        precioEditLabel.setFont(new java.awt.Font("OCR A Extended", 1, 12));
+    }//GEN-LAST:event_precioEditLabelMouseEntered
+
+    private void precioEditLabelMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_precioEditLabelMouseExited
+        precioEditLabel.setFont(new java.awt.Font("OCR A Extended", 0, 12));
+    }//GEN-LAST:event_precioEditLabelMouseExited
 
     private void lockUnlockBotonesComprar() {
         if (posicionMin - 10 < 0) {
@@ -1773,6 +1896,17 @@ public class MenuAdmin extends javax.swing.JFrame {
         }
     }
 
+    private static String randomSequence() {
+        String str = "";
+        Random rnd = new Random();
+        char[] chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890".toCharArray();
+
+        for (int i = 0; i < 12; i++) {
+            str += chars[rnd.nextInt(chars.length)];
+        }
+
+        return str;
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Buscar;
@@ -1791,6 +1925,7 @@ public class MenuAdmin extends javax.swing.JFrame {
     private javax.swing.JTextField claveBusqueda;
     private javax.swing.JComboBox<String> comboBoxCategoria;
     private javax.swing.JComboBox<String> comboBoxFuncion;
+    private javax.swing.JLabel descripcionEditLabel;
     private javax.swing.JFormattedTextField dniEditField;
     private javax.swing.JLabel dniEditLabel;
     private javax.swing.JTextField emailEditField;
@@ -1835,6 +1970,7 @@ public class MenuAdmin extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     public javax.swing.JTextField nameEditField;
     private javax.swing.JLabel nameEditLabel;
+    private javax.swing.JLabel nombreEditLabel;
     private javax.swing.JPanel panelBienvenida;
     private javax.swing.JPanel panelEditarProductos;
     private javax.swing.JPanel panelEditarUsuarios;
@@ -1846,6 +1982,7 @@ public class MenuAdmin extends javax.swing.JFrame {
     private javax.swing.JLabel passwordEditLabel;
     private javax.swing.JFormattedTextField pcEditField;
     private javax.swing.JLabel pcEditLabel;
+    private javax.swing.JLabel precioEditLabel;
     private interfaz.panels.ProductoMax productoMax1;
     private interfaz.panels.ProductoMin productoMin1;
     private interfaz.panels.ProductoMin productoMin2;
