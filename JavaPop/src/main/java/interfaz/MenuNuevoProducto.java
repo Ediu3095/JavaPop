@@ -19,8 +19,6 @@ import java.nio.file.FileSystems;
 import java.nio.file.Files;
 import static java.nio.file.StandardCopyOption.REPLACE_EXISTING;
 import java.util.Random;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
@@ -35,16 +33,18 @@ public class MenuNuevoProducto extends javax.swing.JFrame {
     private FileNameExtensionFilter filter = new FileNameExtensionFilter("Archivo de imagen (*.jpg, *.jpeg, *.png, *.gif)", "jpg", "png", "jpeg", "gif");
     private String imageAddress;
     private Cliente user;
-    
+    private MenuPrincipal menu;
 
     /**
      * Creates new form MenuNuevoProducto
      */
-    public MenuNuevoProducto(Cliente user) {
+    public MenuNuevoProducto(MenuPrincipal menu) {
         initComponents();
         super.setVisible(true);
-        this.user = user;
+        this.user = menu.user;
         this.imageAddress = "";
+        this.menu = menu;
+        this.menu.setEnabled(false);
     }
 
     /**
@@ -56,7 +56,6 @@ public class MenuNuevoProducto extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jFileChooser1 = new javax.swing.JFileChooser();
         banner = new javax.swing.JPanel();
         logo = new javax.swing.JLabel();
         filler1 = new javax.swing.Box.Filler(new java.awt.Dimension(60, 120), new java.awt.Dimension(60, 120), new java.awt.Dimension(60, 120));
@@ -81,12 +80,14 @@ public class MenuNuevoProducto extends javax.swing.JFrame {
         botonCancelar = new javax.swing.JButton();
         fieldPrecio = new javax.swing.JTextField();
 
-        jFileChooser1.setDialogTitle("");
-        jFileChooser1.setToolTipText("");
-
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setFont(new java.awt.Font("OCR A Extended", 0, 12)); // NOI18N
         setResizable(false);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                formWindowClosing(evt);
+            }
+        });
 
         banner.setBackground(new java.awt.Color(51, 153, 255));
 
@@ -278,7 +279,7 @@ public class MenuNuevoProducto extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void botonCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCancelarActionPerformed
-        new MenuPrincipal(this.user);
+        this.menu.setEnabled(true);
         this.dispose();
     }//GEN-LAST:event_botonCancelarActionPerformed
 
@@ -286,7 +287,7 @@ public class MenuNuevoProducto extends javax.swing.JFrame {
         JFileChooser fileChooser = new JFileChooser();
         fileChooser.setFileFilter(filter);
         fileChooser.setAcceptAllFileFilterUsed(false);
-        
+
         int i = fileChooser.showOpenDialog(this);
         if (i == JFileChooser.APPROVE_OPTION) {
             imageAddress = fileChooser.getSelectedFile().getPath();
@@ -312,17 +313,17 @@ public class MenuNuevoProducto extends javax.swing.JFrame {
         Estado estado = getEstado(estadoBox.getSelectedIndex());
         double precio = getPrecio(fieldPrecio.getText());
         boolean urgente = urgencia.isSelected();
-        
+
         if (precio == -1) {
             JOptionPane.showMessageDialog(this, "El formato del precio es incorrecto.\nSolamente debe separar los céntimos con una coma.", "Formato incorrecto", JOptionPane.ERROR_MESSAGE);
         } else if (titulo.equals("")) {
             JOptionPane.showMessageDialog(this, "Debe añadir un titulo al producto.", "Formato incorrecto", JOptionPane.ERROR_MESSAGE);
         } else {
-            
+
             // Copiamos la imagen a un directorio propio para evitar problemas si esta es borrada o cambiada de directorio
             FileSystem fileSys = FileSystems.getDefault();
             File imgFolder = new File("./resources/imagenes/");
-            File  image = new File(imageAddress);
+            File image = new File(imageAddress);
             String newAddress;
             boolean run = true;
             int tryes = 0;
@@ -339,30 +340,34 @@ public class MenuNuevoProducto extends javax.swing.JFrame {
                     }
                 }
             }
-            
+
             // Creamos el producto y lo añadimos a la lista de productos del cliente y a la lista global de productos
             Producto producto = new Producto(titulo, descripcion, categoria, estado, precio, this.imageAddress, this.user, urgente);
             user.introducirProducto(producto);
             if (!productos.contains(producto)) {
                 productos.add(producto);
             }
-            new MenuPrincipal(this.user);
+            this.menu.setEnabled(true);
             this.dispose();
         }
     }//GEN-LAST:event_botonSubirActionPerformed
+
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+        menu.setEnabled(true);
+    }//GEN-LAST:event_formWindowClosing
 
     private static String randomSequence() {
         String str = "";
         Random rnd = new Random();
         char[] chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890".toCharArray();
-        
+
         for (int i = 0; i < 12; i++) {
             str += chars[rnd.nextInt(chars.length)];
         }
-        
+
         return str;
     }
-    
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel banner;
     private javax.swing.JButton botonCancelar;
@@ -378,7 +383,6 @@ public class MenuNuevoProducto extends javax.swing.JFrame {
     private javax.swing.Box.Filler filler4;
     private javax.swing.JPanel foto;
     private javax.swing.JLabel icono;
-    private javax.swing.JFileChooser jFileChooser1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

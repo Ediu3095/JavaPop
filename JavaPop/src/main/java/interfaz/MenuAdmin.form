@@ -335,7 +335,7 @@
         <Container class="javax.swing.JPanel" name="panelEditarUsuarios">
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignCardLayout" value="org.netbeans.modules.form.compat2.layouts.DesignCardLayout$CardConstraintsDescription">
-              <CardConstraints cardName="Usuario&#xa;"/>
+              <CardConstraints cardName="..."/>
             </Constraint>
           </Constraints>
 
@@ -1148,7 +1148,7 @@
         <Container class="javax.swing.JPanel" name="panelViewVentas">
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignCardLayout" value="org.netbeans.modules.form.compat2.layouts.DesignCardLayout$CardConstraintsDescription">
-              <CardConstraints cardName="card9"/>
+              <CardConstraints cardName=",,,"/>
             </Constraint>
           </Constraints>
 

@@ -553,7 +553,7 @@ public class MenuAdmin extends javax.swing.JFrame {
                     .addComponent(atrasButton)))
         );
 
-        jPanel1.add(panelEditarUsuarios, "Usuario\n");
+        jPanel1.add(panelEditarUsuarios, "...");
 
         panelUsuarios.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
         panelUsuarios.add(usuarioMin1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 650, -1));
@@ -890,7 +890,7 @@ public class MenuAdmin extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jPanel1.add(panelViewVentas, "card9");
+        jPanel1.add(panelViewVentas, ",,,");
 
         javax.swing.GroupLayout panelVentasLayout = new javax.swing.GroupLayout(panelVentas);
         panelVentas.setLayout(panelVentasLayout);

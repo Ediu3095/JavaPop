@@ -10,6 +10,7 @@ import static clases.utils.CheckFunctions.*;
 import static clases.utils.Searching.*;
 import clases.enumeradores.*;
 import clases.*;
+import clases.utils.IOCustomLib;
 
 import javax.swing.ImageIcon;
 import java.awt.CardLayout;
@@ -22,8 +23,8 @@ import java.util.ArrayList;
 public class MenuPrincipal extends javax.swing.JFrame {
 
     private CardLayout camposCL;
-    private Cliente user;
-    private ArrayList<Producto> prodDefinitivo;
+    public Cliente user;
+    private ArrayList<Producto> productosFiltrado;
     private int posicionMin;
     private int posicionMax;
     
@@ -80,6 +81,11 @@ public class MenuPrincipal extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("JavaPop - Menú Principal\n");
         setResizable(false);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                formWindowClosing(evt);
+            }
+        });
 
         banner.setBackground(new java.awt.Color(51, 153, 255));
         banner.setForeground(new java.awt.Color(0, 0, 51));
@@ -128,6 +134,11 @@ public class MenuPrincipal extends javax.swing.JFrame {
         Logo.setIcon(new ImageIcon(".\\resources\\logo\\IconoJavaPop3.png"));
         Logo.setText("JavaPop");
         Logo.setPreferredSize(new java.awt.Dimension(230, 38));
+        Logo.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                LogoMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout bannerLayout = new javax.swing.GroupLayout(banner);
         banner.setLayout(bannerLayout);
@@ -187,6 +198,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         jLabel1.setText("Bienvenido a JavaPop!\n");
 
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel2.setIcon(new ImageIcon(".\\resources\\logo\\animat-shopping-cart-color.gif"));
 
         javax.swing.GroupLayout panelBienvenidaLayout = new javax.swing.GroupLayout(panelBienvenida);
         panelBienvenida.setLayout(panelBienvenidaLayout);
@@ -334,19 +346,17 @@ public class MenuPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_claveBusquedaActionPerformed
 
     private void busquedaButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_busquedaButtonActionPerformed
+        camposCL.show(jPanel1, "Compra");
+
         // Limpiamos la lista filtrada de productos
-        prodDefinitivo.clear();
-        
-        for (Producto prod: productos) {
-            System.out.println(prod);
-        }
+        productosFiltrado.clear();
         
         // Se filtran los productos por categoría
         Categoria cat = getCategoria(comboBoxCategoria.getSelectedIndex());
         for (int i = 0; i < productos.size(); i++) {
             if (productos.get(i).getCategoria() == cat) {
                 if (!productos.get(i).getVendedor().equals(user)) {
-                    prodDefinitivo.add(productos.get(i));
+                    productosFiltrado.add(productos.get(i));
                 }
             }
         }
@@ -356,90 +366,43 @@ public class MenuPrincipal extends javax.swing.JFrame {
         String[] keyWords = kW.split(" ");
 
         // Se actualizan los parametros de busqueda de los productos
-        for (int i = 0; i < prodDefinitivo.size(); i++) {
-            updateTags(user, prodDefinitivo.get(i), keyWords);
+        for (int i = 0; i < productosFiltrado.size(); i++) {
+            updateTags(user, productosFiltrado.get(i), keyWords);
         }
         
         // Si se han introducido palabras clave quitamos los productos sin coincidencias
         if (!kW.equals("")) {
-            for (int i = 0; i < prodDefinitivo.size(); i++) {
-                if (prodDefinitivo.get(i).getMatchDeg() == 0) {
-                    prodDefinitivo.remove(i);
+            for (int i = 0; i < productosFiltrado.size(); i++) {
+                if (productosFiltrado.get(i).getMatchDeg() == 0) {
+                    productosFiltrado.remove(i);
                     i--;
                 }
             }
         }
 
         // Se organizan los productos
-        sort(prodDefinitivo, 0, prodDefinitivo.size() - 1);
+        sort(productosFiltrado, 0, productosFiltrado.size() - 1);
 
         // Establece la posición mínima y máxima de los productos mostrados en 0
         posicionMin = 0;
         posicionMax = 0;
         
         // Actualiza la posicion mínima y máxima y muestra los productos
-        displayProductos(posicionMin + 1); 
+        displayProductos(); 
 
         // Activa o desactiva los botones para cambiar páginas de productos según sea necesario
         lockUnlockBotonesComprar();
         
         // Cambia el texto de la etiqueta que indica en que página estamos
-        etiquetaPagina.setText("Página " + (posicionMin / 8 + 1) + " de " + (prodDefinitivo.size() / 8 + 1));
+        etiquetaPagina.setText("Página " + (posicionMin / 8 + 1) + " de " + (productosFiltrado.size() / 8 + 1));
     }//GEN-LAST:event_busquedaButtonActionPerformed
 
-    private void rePagActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rePagActionPerformed
-        // Disminuye la posición mínima de los productos mostrados en 8
-        posicionMin -= 8;
-        
-        // Actualiza la posicion mínima y máxima y muestra los productos
-        displayProductos(posicionMin + 1);
-
-        // Activa o desactiva los botones para cambiar páginas de productos según sea necesario
-        lockUnlockBotonesComprar();
-        
-        // Cambia el texto de la etiqueta que indica en que página estamos
-        etiquetaPagina.setText("Página " + (posicionMin / 8 + 1) + " de " + (prodDefinitivo.size() / 8));
-    }//GEN-LAST:event_rePagActionPerformed
-
-    private void avPagActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_avPagActionPerformed
-        // Aumenta la posición mínima de los productos mostrados en 8
-        posicionMin += 8;
-        
-        // Actualiza la posicion mínima y máxima y muestra los productos
-        displayProductos(posicionMin + 1);
-
-        // Activa o desactiva los botones para cambiar páginas de productos según sea necesario
-        lockUnlockBotonesComprar();
-        
-        // Cambia el texto de la etiqueta que indica en que página estamos
-        etiquetaPagina.setText("Página " + (posicionMin / 8 + 1) + " de " + (prodDefinitivo.size() / 8 + 1));
-    }//GEN-LAST:event_avPagActionPerformed
-
-    private void botonSubirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonSubirActionPerformed
-        new MenuNuevoProducto(this.user);
-        this.dispose();
-    }//GEN-LAST:event_botonSubirActionPerformed
-
-    private void lockUnlockBotonesComprar() {
-        if (posicionMin - 10 < 0) {
-            rePag.setEnabled(false);
-        } else {
-            rePag.setEnabled(true);
-        }
-
-        if (posicionMin + 10 >= prodDefinitivo.size()) {
-            avPag.setEnabled(false);
-        } else {
-            avPag.setEnabled(true);
-        }
-    }
-
-    private void displayProductos(int n) {
+    private void displayProductos() {
         // actualizamos posicionMax
-        for (int i = n; i <= n + 8; i++) {
+        for (int i = posicionMin + 1; i <= posicionMin + 9; i++) {
             posicionMax = posicionMin + i - 1;
-            if (posicionMax < prodDefinitivo.size()) {
-                //System.out.println((i) + ".- " + prodDefinitivo.get(posicionMax).getTitulo());
+            if (posicionMax < productosFiltrado.size()) {
+                //System.out.println((i) + ".- " + productosFiltrado.get(posicionMax).getTitulo());
             } else {
                 posicionMax--;
                 break;
@@ -450,35 +413,35 @@ public class MenuPrincipal extends javax.swing.JFrame {
         for (int i = posicionMin; i <= posicionMax; i++) {
             switch (i % 8) {
                 case 0:
-                    productoMin1.setProducto(prodDefinitivo.get(i));
+                    productoMin1.setProducto(productosFiltrado.get(i));
                     productoMin1.setVisible(true);
                     break;
                 case 1:
-                    productoMin2.setProducto(prodDefinitivo.get(i));
+                    productoMin2.setProducto(productosFiltrado.get(i));
                     productoMin2.setVisible(true);
                     break;
                 case 2:
-                    productoMin3.setProducto(prodDefinitivo.get(i));
+                    productoMin3.setProducto(productosFiltrado.get(i));
                     productoMin3.setVisible(true);
                     break;
                 case 3:
-                    productoMin4.setProducto(prodDefinitivo.get(i));
+                    productoMin4.setProducto(productosFiltrado.get(i));
                     productoMin4.setVisible(true);
                     break;
                 case 4:
-                    productoMin5.setProducto(prodDefinitivo.get(i));
+                    productoMin5.setProducto(productosFiltrado.get(i));
                     productoMin5.setVisible(true);
                     break;
                 case 5:
-                    productoMin6.setProducto(prodDefinitivo.get(i));
+                    productoMin6.setProducto(productosFiltrado.get(i));
                     productoMin6.setVisible(true);
                     break;
                 case 6:
-                    productoMin7.setProducto(prodDefinitivo.get(i));
+                    productoMin7.setProducto(productosFiltrado.get(i));
                     productoMin7.setVisible(true);
                     break;
                 case 7:
-                    productoMin8.setProducto(prodDefinitivo.get(i));
+                    productoMin8.setProducto(productosFiltrado.get(i));
                     productoMin8.setVisible(true);
                     break;
             }
@@ -516,6 +479,62 @@ public class MenuPrincipal extends javax.swing.JFrame {
             }
         }
     }
+    
+    private void lockUnlockBotonesComprar() {
+        if (posicionMin - 10 < 0) {
+            rePag.setEnabled(false);
+        } else {
+            rePag.setEnabled(true);
+        }
+
+        if (posicionMin + 10 >= productosFiltrado.size()) {
+            avPag.setEnabled(false);
+        } else {
+            avPag.setEnabled(true);
+        }
+    }
+    
+    private void rePagActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rePagActionPerformed
+        // Disminuye la posición mínima de los productos mostrados en 8
+        posicionMin -= 8;
+        
+        // Actualiza la posicion mínima y máxima y muestra los productos
+        displayProductos(posicionMin + 1);
+
+        // Activa o desactiva los botones para cambiar páginas de productos según sea necesario
+        lockUnlockBotonesComprar();
+        
+        // Cambia el texto de la etiqueta que indica en que página estamos
+        etiquetaPagina.setText("Página " + (posicionMin / 8 + 1) + " de " + (productosFiltrado.size() / 8));
+    }//GEN-LAST:event_rePagActionPerformed
+
+    private void avPagActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_avPagActionPerformed
+        // Aumenta la posición mínima de los productos mostrados en 8
+        posicionMin += 8;
+        
+        // Actualiza la posicion mínima y máxima y muestra los productos
+        displayProductos(posicionMin + 1);
+
+        // Activa o desactiva los botones para cambiar páginas de productos según sea necesario
+        lockUnlockBotonesComprar();
+        
+        // Cambia el texto de la etiqueta que indica en que página estamos
+        etiquetaPagina.setText("Página " + (posicionMin / 8 + 1) + " de " + (productosFiltrado.size() / 8 + 1));
+    }//GEN-LAST:event_avPagActionPerformed
+
+    private void botonSubirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonSubirActionPerformed
+        new MenuNuevoProducto(this);
+    }//GEN-LAST:event_botonSubirActionPerformed
+
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+        IOCustomLib.guardarClientes(usuarios);
+        IOCustomLib.guardarProductos(productos);
+        IOCustomLib.guardarVentas(ventas);
+    }//GEN-LAST:event_formWindowClosing
+
+    private void LogoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LogoMouseClicked
+        camposCL.show(jPanel1, "Bienvenida");
+    }//GEN-LAST:event_LogoMouseClicked
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Logo;
