@@ -76,10 +76,10 @@ public class MenuNuevoProducto extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         estadoBox = new javax.swing.JComboBox<>();
         jLabel6 = new javax.swing.JLabel();
-        fieldPrecio = new javax.swing.JFormattedTextField();
         urgencia = new javax.swing.JCheckBox();
         botonSubir = new javax.swing.JButton();
         botonCancelar = new javax.swing.JButton();
+        fieldPrecio = new javax.swing.JTextField();
 
         jFileChooser1.setDialogTitle("");
         jFileChooser1.setToolTipText("");
@@ -172,9 +172,6 @@ public class MenuNuevoProducto extends javax.swing.JFrame {
         jLabel6.setFont(new java.awt.Font("OCR A Extended", 0, 12)); // NOI18N
         jLabel6.setText("Precio:");
 
-        fieldPrecio.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("###0.00 ¤"))));
-        fieldPrecio.setFont(new java.awt.Font("OCR A Extended", 0, 12)); // NOI18N
-
         urgencia.setFont(new java.awt.Font("OCR A Extended", 0, 12)); // NOI18N
         urgencia.setText("Urgente (Cuesta 5€)");
 
@@ -192,6 +189,8 @@ public class MenuNuevoProducto extends javax.swing.JFrame {
             }
         });
 
+        fieldPrecio.setFont(new java.awt.Font("OCR A Extended", 0, 12)); // NOI18N
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -208,18 +207,17 @@ public class MenuNuevoProducto extends javax.swing.JFrame {
                         .addComponent(botonSubir, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(filler3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jLabel5)
                             .addComponent(estadoBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(fieldPrecio)
-                                .addComponent(jLabel2)
-                                .addComponent(fieldNombre)
-                                .addComponent(jLabel3)
-                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jLabel6)
-                                .addComponent(categoriaBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jLabel4)))
+                            .addComponent(jLabel2)
+                            .addComponent(fieldNombre)
+                            .addComponent(jLabel3)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 250, Short.MAX_VALUE)
+                            .addComponent(jLabel6)
+                            .addComponent(categoriaBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel4)
+                            .addComponent(fieldPrecio))
                         .addGap(18, 18, 18)
                         .addComponent(filler4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
@@ -373,7 +371,7 @@ public class MenuNuevoProducto extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> estadoBox;
     private javax.swing.JTextArea fieldDescripcion;
     private javax.swing.JTextField fieldNombre;
-    private javax.swing.JFormattedTextField fieldPrecio;
+    private javax.swing.JTextField fieldPrecio;
     private javax.swing.Box.Filler filler1;
     private javax.swing.Box.Filler filler2;
     private javax.swing.Box.Filler filler3;
