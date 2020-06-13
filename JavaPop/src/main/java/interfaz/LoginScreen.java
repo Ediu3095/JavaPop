@@ -26,6 +26,7 @@ public class LoginScreen extends javax.swing.JFrame {
     public LoginScreen() {
         initComponents();
 
+        // setup icon
         ImageIcon img = new ImageIcon(".\\resources\\logo\\IconoJavaPop2.png");
         super.setIconImage(img.getImage());
 

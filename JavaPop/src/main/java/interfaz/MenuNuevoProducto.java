@@ -30,21 +30,33 @@ import javax.swing.filechooser.FileNameExtensionFilter;
  */
 public class MenuNuevoProducto extends javax.swing.JFrame {
 
-    private FileNameExtensionFilter filter = new FileNameExtensionFilter("Archivo de imagen (*.jpg, *.jpeg, *.png, *.gif)", "jpg", "png", "jpeg", "gif");
+    private final FileNameExtensionFilter filter = new FileNameExtensionFilter("Archivo de imagen (*.jpg, *.jpeg, *.png, *.gif)", "jpg", "png", "jpeg", "gif");
     private String imageAddress;
-    private Cliente user;
-    private MenuPrincipal menu;
+    private final Cliente user;
+    private final MenuPrincipal menu;
 
     /**
      * Creates new form MenuNuevoProducto
+     * @param menu Menu principal del usuario al que volveremos cuando se cierre esta ventana.
      */
     public MenuNuevoProducto(MenuPrincipal menu) {
         initComponents();
-        super.setVisible(true);
-        this.user = menu.user;
+        
+        // setup icon
+        ImageIcon img = new ImageIcon(".\\resources\\logo\\IconoJavaPop2.png");
+        super.setIconImage(img.getImage());
+        
+        // Iniciamos image address para poder utilizarla posteriormente
         this.imageAddress = "";
+        
+        // Nos guardamos el usuario
+        this.user = menu.user;
+        
+        // Nos guardamos el menu para poder volver a este a posteriori 
         this.menu = menu;
         this.menu.setEnabled(false);
+        
+        super.setVisible(true);
     }
 
     /**
