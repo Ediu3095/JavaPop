@@ -52,7 +52,6 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="filler3" alignment="0" max="32767" attributes="0"/>
                   <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace max="32767" attributes="0"/>
                       <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="filler5" min="-2" pref="30" max="-2" attributes="0"/>
@@ -336,7 +335,7 @@
         <Container class="javax.swing.JPanel" name="panelEditarUsuarios">
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignCardLayout" value="org.netbeans.modules.form.compat2.layouts.DesignCardLayout$CardConstraintsDescription">
-              <CardConstraints cardName="Usuario&#xa;"/>
+              <CardConstraints cardName="..."/>
             </Constraint>
           </Constraints>
 
@@ -374,7 +373,7 @@
         <Container class="javax.swing.JPanel" name="panelViewVentas">
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignCardLayout" value="org.netbeans.modules.form.compat2.layouts.DesignCardLayout$CardConstraintsDescription">
-              <CardConstraints cardName="card9"/>
+              <CardConstraints cardName=",,,"/>
             </Constraint>
           </Constraints>
 
