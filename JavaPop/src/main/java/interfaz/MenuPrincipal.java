@@ -6,7 +6,7 @@
 package interfaz;
 
 import static clases.utils.Colecciones.*;
-import static clases.utils.ConsoleIO.*;
+import static clases.utils.CheckFunctions.*;
 import static clases.utils.Searching.*;
 import clases.enumeradores.*;
 import clases.*;
@@ -47,13 +47,13 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private void initComponents() {
 
         banner = new javax.swing.JPanel();
-        jButton2 = new javax.swing.JButton();
+        botonPerfil = new javax.swing.JButton();
         busquedaButton = new javax.swing.JButton();
         etiquetaBusqueda = new javax.swing.JLabel();
         claveBusqueda = new javax.swing.JTextField();
         comboBoxCategoria = new javax.swing.JComboBox<>();
         etiquetaCategoria = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        botonSubir = new javax.swing.JButton();
         Logo = new javax.swing.JLabel();
         filler1 = new javax.swing.Box.Filler(new java.awt.Dimension(100, 30), new java.awt.Dimension(60, 30), new java.awt.Dimension(100, 30));
         filler2 = new javax.swing.Box.Filler(new java.awt.Dimension(80, 100), new java.awt.Dimension(60, 100), new java.awt.Dimension(80, 100));
@@ -61,6 +61,8 @@ public class MenuPrincipal extends javax.swing.JFrame {
         filler4 = new javax.swing.Box.Filler(new java.awt.Dimension(80, 80), new java.awt.Dimension(80, 30), new java.awt.Dimension(80, 80));
         jPanel1 = new javax.swing.JPanel();
         panelBienvenida = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
         panelCompra = new javax.swing.JPanel();
         productoMin1 = new interfaz.panels.ProductoMin();
         productoMin2 = new interfaz.panels.ProductoMin();
@@ -82,9 +84,9 @@ public class MenuPrincipal extends javax.swing.JFrame {
         banner.setBackground(new java.awt.Color(51, 153, 255));
         banner.setForeground(new java.awt.Color(0, 0, 51));
 
-        jButton2.setFont(new java.awt.Font("OCR A Extended", 0, 12)); // NOI18N
-        jButton2.setText("Mi perfil");
-        jButton2.setPreferredSize(new java.awt.Dimension(130, 23));
+        botonPerfil.setFont(new java.awt.Font("OCR A Extended", 0, 12)); // NOI18N
+        botonPerfil.setText("Mi perfil");
+        botonPerfil.setPreferredSize(new java.awt.Dimension(130, 23));
 
         busquedaButton.setFont(new java.awt.Font("OCR A Extended", 0, 12)); // NOI18N
         busquedaButton.setText("Buscar");
@@ -107,18 +109,18 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
         comboBoxCategoria.setFont(new java.awt.Font("OCR A Extended", 0, 12)); // NOI18N
         comboBoxCategoria.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Moda y acesorios", "Tv, audio y foto", "Moviles y telefónica", "Informática y electrónica", "Consolas y videojuegos", "Deporte y ocio" }));
-        comboBoxCategoria.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                comboBoxCategoriaActionPerformed(evt);
-            }
-        });
 
         etiquetaCategoria.setFont(new java.awt.Font("OCR A Extended", 0, 12)); // NOI18N
         etiquetaCategoria.setText("Categoría:");
 
-        jButton1.setFont(new java.awt.Font("OCR A Extended", 0, 12)); // NOI18N
-        jButton1.setText("Subir producto");
-        jButton1.setPreferredSize(new java.awt.Dimension(110, 23));
+        botonSubir.setFont(new java.awt.Font("OCR A Extended", 0, 12)); // NOI18N
+        botonSubir.setText("Subir producto");
+        botonSubir.setPreferredSize(new java.awt.Dimension(110, 23));
+        botonSubir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonSubirActionPerformed(evt);
+            }
+        });
 
         Logo.setFont(new java.awt.Font("OCR A Extended", 0, 36)); // NOI18N
         Logo.setForeground(new java.awt.Color(0, 0, 51));
@@ -148,8 +150,8 @@ public class MenuPrincipal extends javax.swing.JFrame {
                 .addComponent(filler1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(bannerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(botonPerfil, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(botonSubir, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
         bannerLayout.setVerticalGroup(
@@ -171,27 +173,43 @@ public class MenuPrincipal extends javax.swing.JFrame {
                                     .addComponent(comboBoxCategoria, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(etiquetaCategoria)))
                             .addGroup(bannerLayout.createSequentialGroup()
-                                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(botonPerfil, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(botonSubir, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
 
         jPanel1.setLayout(new java.awt.CardLayout());
 
+        jLabel1.setFont(new java.awt.Font("OCR A Extended", 0, 24)); // NOI18N
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setText("Bienvenido a JavaPop!\n");
+
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+
         javax.swing.GroupLayout panelBienvenidaLayout = new javax.swing.GroupLayout(panelBienvenida);
         panelBienvenida.setLayout(panelBienvenidaLayout);
         panelBienvenidaLayout.setHorizontalGroup(
             panelBienvenidaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 838, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelBienvenidaLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(panelBienvenidaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 818, Short.MAX_VALUE))
+                .addContainerGap())
         );
         panelBienvenidaLayout.setVerticalGroup(
             panelBienvenidaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 577, Short.MAX_VALUE)
+            .addGroup(panelBienvenidaLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 479, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
-        jPanel1.add(panelBienvenida, "card2");
+        jPanel1.add(panelBienvenida, "Bienvenida");
 
         rePag.setText("<<");
         rePag.addActionListener(new java.awt.event.ActionListener() {
@@ -264,7 +282,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
                     .addComponent(etiquetaPagina)))
         );
 
-        jPanel1.add(panelCompra, "card3");
+        jPanel1.add(panelCompra, "Compra");
 
         javax.swing.GroupLayout panelPerfilLayout = new javax.swing.GroupLayout(panelPerfil);
         panelPerfil.setLayout(panelPerfilLayout);
@@ -277,7 +295,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
             .addGap(0, 577, Short.MAX_VALUE)
         );
 
-        jPanel1.add(panelPerfil, "card4");
+        jPanel1.add(panelPerfil, "Perfil");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -316,20 +334,15 @@ public class MenuPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_claveBusquedaActionPerformed
 
     private void busquedaButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_busquedaButtonActionPerformed
-        // TODO add your handling code here:
-        Categoria cat;
-        String[] keyWords;
-
-        // productos = IOCustomLib.leerProductos();
+        // Limpiamos la lista filtrada de productos
         prodDefinitivo.clear();
-
-        /*
+        
         for (Producto prod: productos) {
             System.out.println(prod);
         }
-        */
+        
         // Se filtran los productos por categoría
-        cat = getCategoria(comboBoxCategoria.getSelectedIndex());
+        Categoria cat = getCategoria(comboBoxCategoria.getSelectedIndex());
         for (int i = 0; i < productos.size(); i++) {
             if (productos.get(i).getCategoria() == cat) {
                 if (!productos.get(i).getVendedor().equals(user)) {
@@ -340,13 +353,14 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
         // Se pidan unas palabras clave
         String kW = claveBusqueda.getText();
-        keyWords = kW.split(" ");
+        String[] keyWords = kW.split(" ");
 
         // Se actualizan los parametros de busqueda de los productos
         for (int i = 0; i < prodDefinitivo.size(); i++) {
             updateTags(user, prodDefinitivo.get(i), keyWords);
         }
-
+        
+        // Si se han introducido palabras clave quitamos los productos sin coincidencias
         if (!kW.equals("")) {
             for (int i = 0; i < prodDefinitivo.size(); i++) {
                 if (prodDefinitivo.get(i).getMatchDeg() == 0) {
@@ -359,33 +373,52 @@ public class MenuPrincipal extends javax.swing.JFrame {
         // Se organizan los productos
         sort(prodDefinitivo, 0, prodDefinitivo.size() - 1);
 
+        // Establece la posición mínima y máxima de los productos mostrados en 0
         posicionMin = 0;
         posicionMax = 0;
-        displayProductos(posicionMin + 1);
+        
+        // Actualiza la posicion mínima y máxima y muestra los productos
+        displayProductos(posicionMin + 1); 
 
+        // Activa o desactiva los botones para cambiar páginas de productos según sea necesario
         lockUnlockBotonesComprar();
-        etiquetaPagina.setText("Página " + (posicionMin / 8 + 1) + " de " + (prodDefinitivo.size() / 8));
+        
+        // Cambia el texto de la etiqueta que indica en que página estamos
+        etiquetaPagina.setText("Página " + (posicionMin / 8 + 1) + " de " + (prodDefinitivo.size() / 8 + 1));
     }//GEN-LAST:event_busquedaButtonActionPerformed
 
     private void rePagActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rePagActionPerformed
-        posicionMin -= 10;
+        // Disminuye la posición mínima de los productos mostrados en 8
+        posicionMin -= 8;
+        
+        // Actualiza la posicion mínima y máxima y muestra los productos
         displayProductos(posicionMin + 1);
 
+        // Activa o desactiva los botones para cambiar páginas de productos según sea necesario
         lockUnlockBotonesComprar();
+        
+        // Cambia el texto de la etiqueta que indica en que página estamos
         etiquetaPagina.setText("Página " + (posicionMin / 8 + 1) + " de " + (prodDefinitivo.size() / 8));
     }//GEN-LAST:event_rePagActionPerformed
 
     private void avPagActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_avPagActionPerformed
-        posicionMin += 10;
+        // Aumenta la posición mínima de los productos mostrados en 8
+        posicionMin += 8;
+        
+        // Actualiza la posicion mínima y máxima y muestra los productos
         displayProductos(posicionMin + 1);
 
+        // Activa o desactiva los botones para cambiar páginas de productos según sea necesario
         lockUnlockBotonesComprar();
+        
+        // Cambia el texto de la etiqueta que indica en que página estamos
         etiquetaPagina.setText("Página " + (posicionMin / 8 + 1) + " de " + (prodDefinitivo.size() / 8 + 1));
     }//GEN-LAST:event_avPagActionPerformed
 
-    private void comboBoxCategoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboBoxCategoriaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_comboBoxCategoriaActionPerformed
+    private void botonSubirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonSubirActionPerformed
+        new MenuNuevoProducto(this.user);
+        this.dispose();
+    }//GEN-LAST:event_botonSubirActionPerformed
 
     private void lockUnlockBotonesComprar() {
         if (posicionMin - 10 < 0) {
@@ -488,6 +521,8 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel Logo;
     private javax.swing.JButton avPag;
     private javax.swing.JPanel banner;
+    private javax.swing.JButton botonPerfil;
+    private javax.swing.JButton botonSubir;
     private javax.swing.JButton busquedaButton;
     private javax.swing.JTextField claveBusqueda;
     private javax.swing.JComboBox<String> comboBoxCategoria;
@@ -498,8 +533,8 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private javax.swing.Box.Filler filler2;
     private javax.swing.Box.Filler filler3;
     private javax.swing.Box.Filler filler4;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel panelBienvenida;
     private javax.swing.JPanel panelCompra;

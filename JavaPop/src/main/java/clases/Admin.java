@@ -1,7 +1,7 @@
 package clases;
 
 import clases.enumeradores.Categoria;
-import clases.utils.ConsoleIO;
+import clases.utils.CheckFunctions;
 import java.io.Serializable;
 import java.util.*;
 import javax.swing.ImageIcon;
@@ -35,7 +35,7 @@ public class Admin extends Usuario implements Serializable {
      * @author Luis Miguel Sobrino Zamora
      * 
      */
-    public static void ConsultarUsuario(ArrayList<Cliente> usuarios, ConsoleIO read) {
+    public static void ConsultarUsuario(ArrayList<Cliente> usuarios, CheckFunctions read) {
         boolean run_ = true;
         Cliente usuario = new Cliente();
         Profesional usuarioPro = new Profesional();
@@ -212,7 +212,7 @@ public class Admin extends Usuario implements Serializable {
      * @author Luis Miguel Sobrino Zamora
      *
      */
-    public static void ConsultarProducto(ArrayList<Producto> productos, ConsoleIO read) {
+    public static void ConsultarProducto(ArrayList<Producto> productos, CheckFunctions read) {
         ArrayList<Producto> arr = new ArrayList();
         Producto producto = new Producto();
         boolean run_ = true;
@@ -319,7 +319,7 @@ public class Admin extends Usuario implements Serializable {
      * @author Luis Miguel Sobrino Zamora
      *
      */
-    public static void ConsultarVentas(ArrayList<Venta> ventas, ConsoleIO read) {
+    public static void ConsultarVentas(ArrayList<Venta> ventas, CheckFunctions read) {
         ArrayList<Venta> arr = new ArrayList();
         boolean run_ = true;
         int posicionMin = 0;

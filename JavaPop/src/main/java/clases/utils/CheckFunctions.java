@@ -16,12 +16,12 @@ import static java.nio.file.StandardCopyOption.REPLACE_EXISTING;
  *
  * @author Eduardo Ruiz Sabajanes
  */
-public class ConsoleIO {
+public class CheckFunctions {
 
     private final BufferedReader read;
     private final FileSystem fileSys;
 
-    public ConsoleIO() {
+    public CheckFunctions() {
         this.read = new BufferedReader(new InputStreamReader(System.in));
         this.fileSys = FileSystems.getDefault();
     }
@@ -88,7 +88,6 @@ public class ConsoleIO {
     }
 
     public static boolean checkTarjetaCredito(String ttcc) {
-        System.out.println(ttcc);
         Pattern pattern = Pattern.compile("[0-9]{4}[-][0-9]{4}[-][0-9]{4}[-][0-9]{4}");
         Matcher matcher_;
         matcher_ = pattern.matcher(ttcc);
@@ -272,7 +271,7 @@ public class ConsoleIO {
      *
      * @author Eduardo Ruiz Sabajanes
      */
-    public double getPrecio(String str_) {
+    public double getPrecioConsole(String str_) {
         Pattern pattern = Pattern.compile("[0-9]{1,}+.+[0-9]{2}");
         Matcher matcher_;
         String precio;
@@ -287,18 +286,39 @@ public class ConsoleIO {
 
     /**
      * <p>
-     * Pide un string que se debe corresponder con el path de una foto, en el
-     * caso de que la foto exista, la copia en <b>./resources/imagenes</b>
-     * para poder acceder a ella más tarde aunque se borre la original y
-     * finalmente crea un objeto Icon de la imagen copiada y lo devuelve.</p>
+     * Se pide un precio a través de la consola y se comprueba que tenga el
+     * formato correcto.</p>
      *
-     * @param str_ un string que mostrar en la consola para indicar que se está
-     * pidiendo una entrada.
+     * @param str_ el String que transformar en precio.
      *
-     * @return un objeto de la clase <b>Icon</b>.
+     * @return el precio válido. Devuelve -1 si el formato es incorrecto.
      *
      * @author Eduardo Ruiz Sabajanes
      */
+    public static double getPrecio(String prc) {
+        Pattern pattern = Pattern.compile("[0-9]{1,}+[,]+[0-9]{2}");
+        Matcher matcher_;
+        matcher_ = pattern.matcher(prc);
+        if (matcher_.matches()) {
+            return Double.parseDouble(prc.replace(',', '.'));
+        }
+        return -1;
+    }
+
+    /**
+ * <p>
+ * Pide un string que se debe corresponder con el path de una foto, en el caso
+ * de que la foto exista, la copia en <b>./resources/imagenes</b>
+ * para poder acceder a ella más tarde aunque se borre la original y finalmente
+ * crea un objeto Icon de la imagen copiada y lo devuelve.</p>
+ *
+ * @param str_ un string que mostrar en la consola para indicar que se está
+ * pidiendo una entrada.
+ *
+ * @return un objeto de la clase <b>Icon</b>.
+ *
+ * @author Eduardo Ruiz Sabajanes
+ */
     public String getImage(String str_) {
         boolean run = true;
         File imgFolder = new File("./resources/imagenes/");
@@ -369,6 +389,39 @@ public class ConsoleIO {
         }
         return estado;
     }
+    
+    /**
+     * <p>
+     * Devuelve el estado correspondiente a un número del 1 al 5 segun el orden
+     * en el que aparecen en el enum Estado.</p>
+     *
+     * @param index el numero correspondiente al estado.
+     *
+     * @return una categoría del enum Estado.
+     *
+     * @author Eduardo Ruiz Sabajanes
+     */
+    public static Estado getEstado(int index) {
+        Estado estado = Estado.Bueno;
+        switch (index) {
+            case 4:
+                estado = Estado.Aceptable;
+                break;
+            case 3:
+                estado = Estado.Bueno;
+                break;
+            case 2:
+                estado = Estado.Como_nuevo;
+                break;
+            case 1:
+                estado = Estado.Nuevo;
+                break;
+            case 5:
+                estado = Estado.Regular;
+                break;
+        }
+        return estado;
+    }
 
     /**
      * <p>
@@ -415,6 +468,17 @@ public class ConsoleIO {
         return categoria;
     }
 
+    /**
+     * <p>
+     * Devuelve la categoría correspondiente a un número del 1 al 6 segun el 
+     * orden en el que aparecen en el enum Categoria.</p>
+     *
+     * @param index el numero correspondiente a la categoria
+     *
+     * @return una categoría del enum Categoria.
+     *
+     * @author Eduardo Ruiz Sabajanes
+     */
     public static Categoria getCategoria(int index) {
         Categoria categoria = Categoria.Moda_y_accesorios;
         switch (index) {

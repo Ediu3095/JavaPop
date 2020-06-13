@@ -7,7 +7,7 @@ package interfaz;
 
 import clases.Cliente;
 import static clases.utils.Colecciones.usuarios;
-import static clases.utils.ConsoleIO.*;
+import static clases.utils.CheckFunctions.*;
 import java.awt.CardLayout;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
