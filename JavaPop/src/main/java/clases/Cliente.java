@@ -1,6 +1,6 @@
 package clases;
 
-import clases.utils.ConsoleIO;
+import clases.utils.CheckFunctions;
 import java.io.Serializable;
 import java.util.ArrayList;
 import clases.enumeradores.*;
@@ -119,7 +119,7 @@ public class Cliente extends Usuario implements Serializable {
      *
      * @author Eduardo Ruiz Sabajanes
      */
-    public static void altaProducto(Cliente user, ConsoleIO read, ArrayList<Producto> productos) {
+    public static void altaProducto(Cliente user, CheckFunctions read, ArrayList<Producto> productos) {
         System.out.println("Introduzca un título del producto(qwerty para volver atras):");
         String titulo = read.getString(">> ");
         if (!titulo.equals("qwerty")) {
@@ -128,7 +128,7 @@ public class Cliente extends Usuario implements Serializable {
             Categoria categoria = read.getCategoria(">> ");
             Estado estado = read.getEstado(">> ");
             System.out.println("Introduzca un precio:");
-            Double precio = read.getPrecio(">> ");
+            Double precio = read.getPrecioConsole(">> ");
             String imagen = read.getImage(">> ");
             System.out.println("¿Quiere marcar la venta de este producto como urgente?\n"
                     + "1.- Si\n"
@@ -195,7 +195,7 @@ public class Cliente extends Usuario implements Serializable {
      * @author Luis Miguel Sobrino Zamora
      * 
      */
-    public static void editarProducto(Cliente c, ArrayList<Producto> productosGlobal, ConsoleIO read) {
+    public static void editarProducto(Cliente c, ArrayList<Producto> productosGlobal, CheckFunctions read) {
         ArrayList<Producto> productos = c.getProductos();
         ArrayList<Producto> arr = new ArrayList();
         Producto producto = new Producto();
@@ -291,7 +291,7 @@ public class Cliente extends Usuario implements Serializable {
 
                 case 7: //Editar precio
                     System.out.println("Nuevo precio del producto:");
-                    producto.setPrecio(read.getPrecio(">> "));
+                    producto.setPrecio(read.getPrecioConsole(">> "));
                     break;
 
                 case 8: // Activar urgente

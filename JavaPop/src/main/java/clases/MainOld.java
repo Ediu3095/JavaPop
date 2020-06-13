@@ -1,7 +1,7 @@
     package clases;
 
 import clases.utils.IOCustomLib;
-import clases.utils.ConsoleIO;
+import clases.utils.CheckFunctions;
 import clases.utils.Searching;
 import java.time.LocalDateTime;
 import java.util.*;
@@ -39,7 +39,7 @@ public class MainOld {
      * @author Eduardo Ruiz Sabajanes
      * @author Luis Miguel Sobrino Zamora
      */
-    public static ArrayList register(ArrayList<Cliente> usuarios, ConsoleIO read) {
+    public static ArrayList register(ArrayList<Cliente> usuarios, CheckFunctions read) {
 
         ArrayList arr = new ArrayList();
         arr.add(false);
@@ -136,7 +136,7 @@ public class MainOld {
      * @author Eduardo Ruiz Sabajanes
      * @author Luis Miguel Sobrino Zamora
      */
-    private static ArrayList login(ArrayList<Cliente> usuarios, ConsoleIO read) {
+    private static ArrayList login(ArrayList<Cliente> usuarios, CheckFunctions read) {
         ArrayList arr = new ArrayList(2);
         arr.add(false);
         arr.add(new Cliente());
@@ -221,7 +221,7 @@ public class MainOld {
         Usuario user = new Cliente();
 
         // Variables de lectura y comprobacion de estado
-        ConsoleIO read = new ConsoleIO();
+        CheckFunctions read = new CheckFunctions();
         ArrayList returns;
         int operacion;
         int estado = 0;
