@@ -45,11 +45,7 @@
                   <Component id="etiquetaCorreo" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="212" max="-2" attributes="0"/>
                   <Component id="etiquetaTipo" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace pref="183" max="32767" attributes="0"/>
-                  <Component id="etiquetaEditar" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                  <Component id="etiquetaBorrar" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace max="-2" attributes="0"/>
+                  <EmptySpace pref="273" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -62,8 +58,6 @@
                       <Component id="etiquetaNombre" alignment="3" max="32767" attributes="0"/>
                       <Component id="etiquetaCorreo" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="etiquetaTipo" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="etiquetaEditar" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="etiquetaBorrar" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
               </Group>
@@ -101,22 +95,6 @@
               <Font name="OCR A Extended" size="12" style="0"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Type"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JLabel" name="etiquetaEditar">
-          <Properties>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="OCR A Extended" size="12" style="0"/>
-            </Property>
-            <Property name="text" type="java.lang.String" value="Edit"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JLabel" name="etiquetaBorrar">
-          <Properties>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="OCR A Extended" size="12" style="0"/>
-            </Property>
-            <Property name="text" type="java.lang.String" value="Delete"/>
           </Properties>
         </Component>
       </SubComponents>

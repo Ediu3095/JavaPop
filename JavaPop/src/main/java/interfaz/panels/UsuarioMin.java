@@ -43,8 +43,6 @@ public class UsuarioMin extends javax.swing.JPanel {
         etiquetaNombre = new javax.swing.JLabel();
         etiquetaCorreo = new javax.swing.JLabel();
         etiquetaTipo = new javax.swing.JLabel();
-        etiquetaEditar = new javax.swing.JLabel();
-        etiquetaBorrar = new javax.swing.JLabel();
 
         jPanel4.setBackground(new java.awt.Color(204, 204, 204));
 
@@ -60,12 +58,6 @@ public class UsuarioMin extends javax.swing.JPanel {
         etiquetaTipo.setFont(new java.awt.Font("OCR A Extended", 0, 12)); // NOI18N
         etiquetaTipo.setText("Type");
 
-        etiquetaEditar.setFont(new java.awt.Font("OCR A Extended", 0, 12)); // NOI18N
-        etiquetaEditar.setText("Edit");
-
-        etiquetaBorrar.setFont(new java.awt.Font("OCR A Extended", 0, 12)); // NOI18N
-        etiquetaBorrar.setText("Delete");
-
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
@@ -79,11 +71,7 @@ public class UsuarioMin extends javax.swing.JPanel {
                 .addComponent(etiquetaCorreo)
                 .addGap(212, 212, 212)
                 .addComponent(etiquetaTipo)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 183, Short.MAX_VALUE)
-                .addComponent(etiquetaEditar)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(etiquetaBorrar)
-                .addContainerGap())
+                .addContainerGap(273, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -93,9 +81,7 @@ public class UsuarioMin extends javax.swing.JPanel {
                     .addComponent(etiquetaDNI, javax.swing.GroupLayout.DEFAULT_SIZE, 28, Short.MAX_VALUE)
                     .addComponent(etiquetaNombre, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(etiquetaCorreo)
-                    .addComponent(etiquetaTipo)
-                    .addComponent(etiquetaEditar)
-                    .addComponent(etiquetaBorrar))
+                    .addComponent(etiquetaTipo))
                 .addContainerGap())
         );
 
@@ -113,10 +99,8 @@ public class UsuarioMin extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel etiquetaBorrar;
     private javax.swing.JLabel etiquetaCorreo;
     private javax.swing.JLabel etiquetaDNI;
-    private javax.swing.JLabel etiquetaEditar;
     private javax.swing.JLabel etiquetaNombre;
     private javax.swing.JLabel etiquetaTipo;
     private javax.swing.JPanel jPanel4;
