@@ -45,7 +45,6 @@ public class VentaMin extends javax.swing.JPanel {
         etiquetaVendedor = new javax.swing.JLabel();
         etiquetaComprador = new javax.swing.JLabel();
         etiquetaFecha = new javax.swing.JLabel();
-        etiquetaVer = new javax.swing.JLabel();
 
         jPanel4.setBackground(new java.awt.Color(204, 204, 204));
 
@@ -61,9 +60,6 @@ public class VentaMin extends javax.swing.JPanel {
         etiquetaFecha.setFont(new java.awt.Font("OCR A Extended", 0, 12)); // NOI18N
         etiquetaFecha.setText("Date");
 
-        etiquetaVer.setFont(new java.awt.Font("OCR A Extended", 0, 12)); // NOI18N
-        etiquetaVer.setText("View");
-
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
@@ -77,9 +73,7 @@ public class VentaMin extends javax.swing.JPanel {
                 .addComponent(etiquetaComprador)
                 .addGap(212, 212, 212)
                 .addComponent(etiquetaFecha)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 138, Short.MAX_VALUE)
-                .addComponent(etiquetaVer)
-                .addGap(51, 51, 51))
+                .addContainerGap(217, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -89,8 +83,7 @@ public class VentaMin extends javax.swing.JPanel {
                     .addComponent(etiquetaProducto, javax.swing.GroupLayout.DEFAULT_SIZE, 28, Short.MAX_VALUE)
                     .addComponent(etiquetaVendedor, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(etiquetaComprador)
-                    .addComponent(etiquetaFecha)
-                    .addComponent(etiquetaVer))
+                    .addComponent(etiquetaFecha))
                 .addContainerGap())
         );
 
@@ -112,7 +105,6 @@ public class VentaMin extends javax.swing.JPanel {
     private javax.swing.JLabel etiquetaFecha;
     private javax.swing.JLabel etiquetaProducto;
     private javax.swing.JLabel etiquetaVendedor;
-    private javax.swing.JLabel etiquetaVer;
     private javax.swing.JPanel jPanel4;
     // End of variables declaration//GEN-END:variables
 }

@@ -39,12 +39,6 @@ public class UsuarioMax extends javax.swing.JPanel {
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         passwordEditField = new javax.swing.JTextField();
-        nameEditLabel = new javax.swing.JLabel();
-        emailEditLabel = new javax.swing.JLabel();
-        passwordEditLabel = new javax.swing.JLabel();
-        dniEditLabel = new javax.swing.JLabel();
-        pcEditLabel = new javax.swing.JLabel();
-        ccEditLabel = new javax.swing.JLabel();
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -52,6 +46,11 @@ public class UsuarioMax extends javax.swing.JPanel {
         nameEditField.setFont(new java.awt.Font("OCR A Extended", 2, 11)); // NOI18N
         nameEditField.setForeground(new java.awt.Color(153, 153, 153));
         nameEditField.setText("Nombre");
+        nameEditField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                nameEditFieldActionPerformed(evt);
+            }
+        });
         add(nameEditField, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 130, 396, 35));
 
         jLabel1.setFont(new java.awt.Font("OCR A Extended", 0, 11)); // NOI18N
@@ -127,90 +126,6 @@ public class UsuarioMax extends javax.swing.JPanel {
         passwordEditField.setForeground(new java.awt.Color(153, 153, 153));
         passwordEditField.setText("Clave");
         add(passwordEditField, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 230, 396, 35));
-
-        nameEditLabel.setText("Editar");
-        nameEditLabel.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                nameEditLabelMouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                nameEditLabelMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                nameEditLabelMouseExited(evt);
-            }
-        });
-        add(nameEditLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 140, -1, -1));
-
-        emailEditLabel.setText("Editar");
-        emailEditLabel.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                emailEditLabelMouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                emailEditLabelMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                emailEditLabelMouseExited(evt);
-            }
-        });
-        add(emailEditLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 190, -1, -1));
-
-        passwordEditLabel.setText("Editar");
-        passwordEditLabel.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                passwordEditLabelMouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                passwordEditLabelMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                passwordEditLabelMouseExited(evt);
-            }
-        });
-        add(passwordEditLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 240, -1, -1));
-
-        dniEditLabel.setText("Editar");
-        dniEditLabel.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                dniEditLabelMouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                dniEditLabelMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                dniEditLabelMouseExited(evt);
-            }
-        });
-        add(dniEditLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 290, -1, -1));
-
-        pcEditLabel.setText("Editar");
-        pcEditLabel.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                pcEditLabelMouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                pcEditLabelMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                pcEditLabelMouseExited(evt);
-            }
-        });
-        add(pcEditLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 340, -1, -1));
-
-        ccEditLabel.setText("Editar");
-        ccEditLabel.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                ccEditLabelMouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                ccEditLabelMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                ccEditLabelMouseExited(evt);
-            }
-        });
-        add(ccEditLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 390, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void emailEditFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_emailEditFieldActionPerformed
@@ -229,115 +144,23 @@ public class UsuarioMax extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_ccEditFieldActionPerformed
 
-    private void nameEditLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_nameEditLabelMouseClicked
+    private void nameEditFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nameEditFieldActionPerformed
         // TODO add your handling code here:
-        nameEditField.setEditable(true);
-    }//GEN-LAST:event_nameEditLabelMouseClicked
-
-    private void nameEditLabelMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_nameEditLabelMouseEntered
-        // TODO add your handling code here:
-        nameEditLabel.setFont(new java.awt.Font("OCR A Extended", 1, 12));
-    }//GEN-LAST:event_nameEditLabelMouseEntered
-
-    private void nameEditLabelMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_nameEditLabelMouseExited
-        // TODO add your handling code here:
-        nameEditLabel.setFont(new java.awt.Font("OCR A Extended", 0, 12));
-    }//GEN-LAST:event_nameEditLabelMouseExited
-
-    private void emailEditLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_emailEditLabelMouseClicked
-        // TODO add your handling code here:
-        emailEditField.setEditable(true);
-    }//GEN-LAST:event_emailEditLabelMouseClicked
-
-    private void emailEditLabelMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_emailEditLabelMouseEntered
-        // TODO add your handling code here:
-        emailEditLabel.setFont(new java.awt.Font("OCR A Extended", 1, 12));
-    }//GEN-LAST:event_emailEditLabelMouseEntered
-
-    private void emailEditLabelMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_emailEditLabelMouseExited
-        // TODO add your handling code here:
-        emailEditLabel.setFont(new java.awt.Font("OCR A Extended", 0, 12));
-    }//GEN-LAST:event_emailEditLabelMouseExited
-
-    private void passwordEditLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_passwordEditLabelMouseClicked
-        // TODO add your handling code here:
-        passwordEditField.setEditable(true);
-    }//GEN-LAST:event_passwordEditLabelMouseClicked
-
-    private void passwordEditLabelMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_passwordEditLabelMouseEntered
-        // TODO add your handling code here:
-        passwordEditLabel.setFont(new java.awt.Font("OCR A Extended", 1, 12));
-    }//GEN-LAST:event_passwordEditLabelMouseEntered
-
-    private void passwordEditLabelMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_passwordEditLabelMouseExited
-        // TODO add your handling code here:
-        passwordEditLabel.setFont(new java.awt.Font("OCR A Extended", 0, 12));
-    }//GEN-LAST:event_passwordEditLabelMouseExited
-
-    private void dniEditLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_dniEditLabelMouseClicked
-        // TODO add your handling code here:
-        dniEditField.setEditable(true);
-    }//GEN-LAST:event_dniEditLabelMouseClicked
-
-    private void dniEditLabelMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_dniEditLabelMouseEntered
-        // TODO add your handling code here:
-        dniEditLabel.setFont(new java.awt.Font("OCR A Extended", 1, 12));
-    }//GEN-LAST:event_dniEditLabelMouseEntered
-
-    private void dniEditLabelMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_dniEditLabelMouseExited
-        // TODO add your handling code here:
-        dniEditLabel.setFont(new java.awt.Font("OCR A Extended", 0, 12));
-    }//GEN-LAST:event_dniEditLabelMouseExited
-
-    private void pcEditLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pcEditLabelMouseClicked
-        // TODO add your handling code here:
-        pcEditField.setEditable(true);
-    }//GEN-LAST:event_pcEditLabelMouseClicked
-
-    private void pcEditLabelMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pcEditLabelMouseEntered
-        // TODO add your handling code here:
-        pcEditLabel.setFont(new java.awt.Font("OCR A Extended", 1, 12));
-    }//GEN-LAST:event_pcEditLabelMouseEntered
-
-    private void pcEditLabelMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pcEditLabelMouseExited
-        // TODO add your handling code here:
-        pcEditLabel.setFont(new java.awt.Font("OCR A Extended", 0, 12));
-    }//GEN-LAST:event_pcEditLabelMouseExited
-
-    private void ccEditLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ccEditLabelMouseClicked
-        // TODO add your handling code here:
-        ccEditField.setEditable(true);
-    }//GEN-LAST:event_ccEditLabelMouseClicked
-
-    private void ccEditLabelMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ccEditLabelMouseEntered
-        // TODO add your handling code here:
-        ccEditLabel.setFont(new java.awt.Font("OCR A Extended", 1, 12));
-    }//GEN-LAST:event_ccEditLabelMouseEntered
-
-    private void ccEditLabelMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ccEditLabelMouseExited
-        // TODO add your handling code here:
-        ccEditLabel.setFont(new java.awt.Font("OCR A Extended", 0, 12));
-    }//GEN-LAST:event_ccEditLabelMouseExited
+    }//GEN-LAST:event_nameEditFieldActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JFormattedTextField ccEditField;
-    private javax.swing.JLabel ccEditLabel;
     private javax.swing.JFormattedTextField dniEditField;
-    private javax.swing.JLabel dniEditLabel;
     private javax.swing.JTextField emailEditField;
-    private javax.swing.JLabel emailEditLabel;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JTextField nameEditField;
-    private javax.swing.JLabel nameEditLabel;
+    public javax.swing.JTextField nameEditField;
     private javax.swing.JTextField passwordEditField;
-    private javax.swing.JLabel passwordEditLabel;
     private javax.swing.JFormattedTextField pcEditField;
-    private javax.swing.JLabel pcEditLabel;
     // End of variables declaration//GEN-END:variables
 }

@@ -45,9 +45,7 @@
                   <Component id="etiquetaComprador" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="212" max="-2" attributes="0"/>
                   <Component id="etiquetaFecha" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace pref="138" max="32767" attributes="0"/>
-                  <Component id="etiquetaVer" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="51" max="-2" attributes="0"/>
+                  <EmptySpace pref="217" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -60,7 +58,6 @@
                       <Component id="etiquetaVendedor" alignment="3" max="32767" attributes="0"/>
                       <Component id="etiquetaComprador" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="etiquetaFecha" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="etiquetaVer" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
               </Group>
@@ -98,14 +95,6 @@
               <Font name="OCR A Extended" size="12" style="0"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Date"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JLabel" name="etiquetaVer">
-          <Properties>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="OCR A Extended" size="12" style="0"/>
-            </Property>
-            <Property name="text" type="java.lang.String" value="View"/>
           </Properties>
         </Component>
       </SubComponents>
