@@ -272,7 +272,7 @@ public class CheckFunctions {
      * @author Eduardo Ruiz Sabajanes
      */
     public double getPrecioConsole(String str_) {
-        Pattern pattern = Pattern.compile("[0-9]{1,}+.+[0-9]{2}");
+        Pattern pattern = Pattern.compile("[0-9]{1,}+.+[0-9]{0,2}");
         Matcher matcher_;
         String precio;
         while (true) {
@@ -296,7 +296,7 @@ public class CheckFunctions {
      * @author Eduardo Ruiz Sabajanes
      */
     public static double getPrecio(String prc) {
-        Pattern pattern = Pattern.compile("[0-9]{1,}+[,]+[0-9]{2}");
+        Pattern pattern = Pattern.compile("[0-9]{1,}+[,]+[0-9]{0,2}");
         Matcher matcher_;
         matcher_ = pattern.matcher(prc);
         if (matcher_.matches()) {
@@ -306,7 +306,7 @@ public class CheckFunctions {
     }
     
     public static boolean checkPrecio(String prc) {
-        Pattern pattern = Pattern.compile("[0-9]{1,}+[,]+[0-9]{2}");
+        Pattern pattern = Pattern.compile("[0-9]{1,}+[,]+[0-9]{0,2}");
         Matcher matcher_;
         matcher_ = pattern.matcher(prc);
         return matcher_.matches();

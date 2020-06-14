@@ -24,14 +24,15 @@ import javax.swing.JOptionPane;
  */
 public class MenuPrincipal extends javax.swing.JFrame {
 
-    private CardLayout camposCL;
+    private final CardLayout camposCL;
     public Cliente user;
-    private ArrayList<Producto> productosFiltrado;
+    private final ArrayList<Producto> productosFiltrado;
     private int posicionMin;
     private int posicionMax;
 
     /**
      * Creates new form MenuPrincipal1
+     * @param user
      */
     public MenuPrincipal(Cliente user) {
         initComponents();
@@ -93,6 +94,10 @@ public class MenuPrincipal extends javax.swing.JFrame {
         icon = new javax.swing.JLabel();
         errorLabel1 = new javax.swing.JLabel();
         errorLabel2 = new javax.swing.JLabel();
+        panelComprarProducto = new javax.swing.JPanel();
+        productoMax2 = new interfaz.panels.ProductoMax();
+        jButton1 = new javax.swing.JButton();
+        filler5 = new javax.swing.Box.Filler(new java.awt.Dimension(80, 80), new java.awt.Dimension(80, 30), new java.awt.Dimension(80, 80));
         panelPerfil = new javax.swing.JPanel();
         correoLabel = new javax.swing.JLabel();
         editarCorreo = new javax.swing.JLabel();
@@ -388,6 +393,39 @@ public class MenuPrincipal extends javax.swing.JFrame {
         errorLabel2.setBounds(424, 290, 410, 260);
 
         jPanel1.add(panelCompra, "Compra");
+
+        jButton1.setFont(new java.awt.Font("OCR A Extended", 0, 18)); // NOI18N
+        jButton1.setText("Comprar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout panelComprarProductoLayout = new javax.swing.GroupLayout(panelComprarProducto);
+        panelComprarProducto.setLayout(panelComprarProductoLayout);
+        panelComprarProductoLayout.setHorizontalGroup(
+            panelComprarProductoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelComprarProductoLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(panelComprarProductoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(filler5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(productoMax2, javax.swing.GroupLayout.DEFAULT_SIZE, 842, Short.MAX_VALUE))
+                .addContainerGap())
+        );
+        panelComprarProductoLayout.setVerticalGroup(
+            panelComprarProductoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelComprarProductoLayout.createSequentialGroup()
+                .addComponent(filler5, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(productoMax2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(38, 38, 38)
+                .addComponent(jButton1)
+                .addContainerGap(56, Short.MAX_VALUE))
+        );
+
+        jPanel1.add(panelComprarProducto, "Producto");
 
         correoLabel.setFont(new java.awt.Font("OCR A Extended", 0, 12)); // NOI18N
         correoLabel.setText("Correo:");
@@ -955,6 +993,10 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
         // Se organizan los productos
         sort(productosFiltrado, 0, productosFiltrado.size() - 1);
+        
+        for(Producto producto: productosFiltrado) {
+            System.out.println(producto.getTitulo() + " - " + producto.getVendedor().getCorreo());
+        }
 
         // Establece la posición mínima y máxima de los productos mostrados en 0
         posicionMin = 0;
@@ -1099,6 +1141,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
     private void botonPerfilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonPerfilActionPerformed
         camposCL.show(jPanel1, "Perfil");
+        
         correoField.setText(user.correo);
         claveField.setText(user.clave);
         nombreField.setText(user.getNombre());
@@ -1135,7 +1178,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         lockUnlockBotonesMisProductos();
     }//GEN-LAST:event_botonPerfilActionPerformed
 
-    private void displayMisProductos() {
+    public void displayMisProductos() {
         // actualizamos posicionMax (De esta forma sabemos que productos deberemos mostrar)
         ArrayList<Producto> misProductos = user.getProductos();
         for (int i = posicionMin; i < posicionMin + 4; i++) {
@@ -1173,7 +1216,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         }
     }
 
-    private void lockUnlockBotonesMisProductos() {
+    public void lockUnlockBotonesMisProductos() {
         if (posicionMin - 4 < 0) {
             prevPage.setEnabled(false);
         } else {
@@ -1432,19 +1475,27 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
     private void miProductoMin1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_miProductoMin1MouseClicked
         new MenuEditarProducto(this, miProductoMin1);
+        this.setEnabled(false);
     }//GEN-LAST:event_miProductoMin1MouseClicked
 
     private void miProductoMin2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_miProductoMin2MouseClicked
         new MenuEditarProducto(this, miProductoMin2);
+        this.setEnabled(false);
     }//GEN-LAST:event_miProductoMin2MouseClicked
 
     private void miProductoMin3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_miProductoMin3MouseClicked
         new MenuEditarProducto(this, miProductoMin3);
+        this.setEnabled(false);
     }//GEN-LAST:event_miProductoMin3MouseClicked
 
     private void miProductoMin4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_miProductoMin4MouseClicked
         new MenuEditarProducto(this, miProductoMin4);
+        this.setEnabled(false);
     }//GEN-LAST:event_miProductoMin4MouseClicked
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Logo;
@@ -1487,26 +1538,30 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private javax.swing.Box.Filler filler2;
     private javax.swing.Box.Filler filler3;
     private javax.swing.Box.Filler filler4;
+    private javax.swing.Box.Filler filler5;
     private javax.swing.JLabel fotoSinProductos;
     private javax.swing.JFormattedTextField horarioField;
     private javax.swing.JLabel horarioLabel;
     private javax.swing.JLabel icon;
     private javax.swing.JPanel imagen;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
-    private interfaz.panels.MiProductoMin miProductoMin1;
-    private interfaz.panels.MiProductoMin miProductoMin2;
-    private interfaz.panels.MiProductoMin miProductoMin3;
-    private interfaz.panels.MiProductoMin miProductoMin4;
+    public interfaz.panels.MiProductoMin miProductoMin1;
+    public interfaz.panels.MiProductoMin miProductoMin2;
+    public interfaz.panels.MiProductoMin miProductoMin3;
+    public interfaz.panels.MiProductoMin miProductoMin4;
     private javax.swing.JPanel misProductosDisplay;
     private javax.swing.JButton nextPage;
     private javax.swing.JTextField nombreField;
     private javax.swing.JLabel nombreLabel;
     private javax.swing.JPanel panelBienvenida;
     private javax.swing.JPanel panelCompra;
+    private javax.swing.JPanel panelComprarProducto;
     private javax.swing.JPanel panelPerfil;
     private javax.swing.JButton prevPage;
+    private interfaz.panels.ProductoMax productoMax2;
     private interfaz.panels.ProductoMin productoMin1;
     private interfaz.panels.ProductoMin productoMin2;
     private interfaz.panels.ProductoMin productoMin3;

@@ -6,22 +6,25 @@
 package interfaz;
 
 import clases.Producto;
-import static clases.utils.CheckFunctions.*;
 import interfaz.panels.MiProductoMin;
-import java.awt.Color;
-import java.awt.Image;
+import static clases.utils.Colecciones.*;
+import static clases.utils.CheckFunctions.*;
+
+import java.util.Random;
+
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.FileSystem;
 import java.nio.file.FileSystems;
 import java.nio.file.Files;
 import static java.nio.file.StandardCopyOption.REPLACE_EXISTING;
-import java.util.Random;
-import javax.swing.ImageIcon;
-import javax.swing.JFileChooser;
+
+import java.awt.Color;
+import java.awt.Image;
 import javax.swing.JFrame;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
-import javax.swing.JPanel;
+import javax.swing.JFileChooser;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
 /**
@@ -35,8 +38,9 @@ public class MenuEditarProducto extends javax.swing.JFrame {
     private String newImageAddress;
     private boolean imagenEditable;
     private final Producto producto;
-    private final JFrame menu;
+    private final MenuPrincipal menu;
     private final MiProductoMin miProd;
+    private final boolean borrar;
 
     /**
      * Creates new form MenuEditarProducto
@@ -44,7 +48,7 @@ public class MenuEditarProducto extends javax.swing.JFrame {
      * @param menu
      * @param container
      */
-    public MenuEditarProducto(JFrame menu, MiProductoMin container) {
+    public MenuEditarProducto(MenuPrincipal menu, MiProductoMin container) {
         initComponents();
 
         // Setup icon
@@ -55,6 +59,9 @@ public class MenuEditarProducto extends javax.swing.JFrame {
 
         // Nos guardamos el producto y su contenedor
         this.producto = container.producto;
+        menu.user.getProductos().remove(this.producto);
+        productos.remove(this.producto);
+        this.borrar = false;
         this.miProd = container;
 
         // Displayeamos los datos editables del producto
@@ -65,7 +72,7 @@ public class MenuEditarProducto extends javax.swing.JFrame {
         estadoBox.setSelectedIndex(indexOfEstado(producto.getEstado()));
         imageAddress = producto.getFoto();
         newImageAddress = producto.getFoto();
-        icono.setIcon(new ImageIcon(imageAddress));
+        icono.setIcon(new ImageIcon(new ImageIcon(imageAddress).getImage().getScaledInstance(250, 250, java.awt.Image.SCALE_DEFAULT)));
         urgencia.setSelected(producto.isUrgente());
 
         // Nos guardamos el menu para poder volver a este a posteriori 
@@ -84,7 +91,6 @@ public class MenuEditarProducto extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        icono = new javax.swing.JLabel();
         banner = new javax.swing.JPanel();
         logo = new javax.swing.JLabel();
         filler1 = new javax.swing.Box.Filler(new java.awt.Dimension(60, 120), new java.awt.Dimension(60, 120), new java.awt.Dimension(60, 120));
@@ -94,6 +100,7 @@ public class MenuEditarProducto extends javax.swing.JFrame {
         fotoLabel = new javax.swing.JLabel();
         editarFoto = new javax.swing.JLabel();
         foto = new javax.swing.JPanel();
+        icono = new javax.swing.JLabel();
         nombreLabel = new javax.swing.JLabel();
         editarNombre = new javax.swing.JLabel();
         fieldNombre = new javax.swing.JTextField();
@@ -112,25 +119,13 @@ public class MenuEditarProducto extends javax.swing.JFrame {
         estadoBox = new javax.swing.JComboBox<>();
         urgencia = new javax.swing.JCheckBox();
         botonConfirmar = new javax.swing.JButton();
-
-        icono.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        icono.setIcon(new ImageIcon(".\\resources\\logo\\uploadIcon.png"));
-        icono.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                iconoMouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                iconoMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                iconoMouseExited(evt);
-            }
-        });
+        botonBaja = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Javapop - Editar producto");
         addWindowListener(new java.awt.event.WindowAdapter() {
-            public void windowClosing(java.awt.event.WindowEvent evt) {
-                formWindowClosing(evt);
+            public void windowClosed(java.awt.event.WindowEvent evt) {
+                formWindowClosed(evt);
             }
         });
 
@@ -180,15 +175,33 @@ public class MenuEditarProducto extends javax.swing.JFrame {
         foto.setMinimumSize(new java.awt.Dimension(250, 250));
         foto.setPreferredSize(new java.awt.Dimension(250, 250));
 
+        icono.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        icono.setIcon(new ImageIcon(".\\resources\\logo\\uploadIcon.png"));
+        icono.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                iconoMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                iconoMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                iconoMouseExited(evt);
+            }
+        });
+
         javax.swing.GroupLayout fotoLayout = new javax.swing.GroupLayout(foto);
         foto.setLayout(fotoLayout);
         fotoLayout.setHorizontalGroup(
             fotoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 248, Short.MAX_VALUE)
+            .addGroup(fotoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addComponent(icono, javax.swing.GroupLayout.DEFAULT_SIZE, 248, Short.MAX_VALUE))
         );
         fotoLayout.setVerticalGroup(
             fotoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 248, Short.MAX_VALUE)
+            .addGroup(fotoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addComponent(icono, javax.swing.GroupLayout.DEFAULT_SIZE, 248, Short.MAX_VALUE))
         );
 
         nombreLabel.setFont(new java.awt.Font("OCR A Extended", 0, 12)); // NOI18N
@@ -309,11 +322,23 @@ public class MenuEditarProducto extends javax.swing.JFrame {
 
         urgencia.setFont(new java.awt.Font("OCR A Extended", 0, 12)); // NOI18N
         urgencia.setText("Urgente (Cuesta 5€)");
+        urgencia.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                urgenciaStateChanged(evt);
+            }
+        });
 
         botonConfirmar.setText("Confirmar cambios");
         botonConfirmar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botonConfirmarActionPerformed(evt);
+            }
+        });
+
+        botonBaja.setText("Dar de baja");
+        botonBaja.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonBajaActionPerformed(evt);
             }
         });
 
@@ -366,7 +391,8 @@ public class MenuEditarProducto extends javax.swing.JFrame {
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(fotoLabel)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(editarFoto)))))
+                                .addComponent(editarFoto))
+                            .addComponent(botonBaja, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(filler1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(2, 2, 2))
@@ -382,53 +408,57 @@ public class MenuEditarProducto extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                            .addComponent(nombreLabel)
-                                            .addComponent(editarNombre))
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(fieldNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(18, 18, 18)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                            .addComponent(descripcionLabel)
-                                            .addComponent(editarDescripcion))
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(18, 18, 18)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                            .addComponent(precioLabel)
-                                            .addComponent(editarPrecio))
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(fieldPrecio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(18, 18, 18)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                            .addComponent(categoriaLabel)
-                                            .addComponent(editarCategoria))
-                                        .addGap(12, 12, 12)
-                                        .addComponent(categoriaBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(18, 18, 18)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                            .addComponent(estadoLabel)
-                                            .addComponent(editarEstado))
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(estadoBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                            .addComponent(fotoLabel)
-                                            .addComponent(editarFoto))
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(foto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(urgencia)))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(botonConfirmar))
-                            .addComponent(filler4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(18, 18, 18)
+                                .addComponent(filler4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGap(18, 18, 18))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(nombreLabel)
+                                    .addComponent(editarNombre))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(fieldNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(descripcionLabel)
+                                    .addComponent(editarDescripcion))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(precioLabel)
+                                    .addComponent(editarPrecio))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(fieldPrecio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(categoriaLabel)
+                                    .addComponent(editarCategoria))
+                                .addGap(12, 12, 12)
+                                .addComponent(categoriaBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(estadoLabel)
+                                    .addComponent(editarEstado))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(estadoBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(fotoLabel)
+                                    .addComponent(editarFoto))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(foto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(urgencia)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(botonConfirmar)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 11, Short.MAX_VALUE)
+                                .addComponent(botonBaja)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
                         .addComponent(filler3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void iconoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_iconoMouseClicked
@@ -457,19 +487,7 @@ public class MenuEditarProducto extends javax.swing.JFrame {
     }//GEN-LAST:event_iconoMouseExited
 
     private void botonConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonConfirmarActionPerformed
-        String titulo = fieldNombre.getText();
-        double precio = getPrecio(fieldPrecio.getText());
-
-        if (precio == -1) {
-            JOptionPane.showMessageDialog(this, "El formato del precio es incorrecto.\nSolamente debe separar los céntimos con una coma de la forma: \"0,00\" .", "Formato incorrecto", JOptionPane.ERROR_MESSAGE);
-        } else if (titulo.equals("")) {
-            JOptionPane.showMessageDialog(this, "Debe añadir un titulo al producto.", "Campo obligatorio vacio", JOptionPane.INFORMATION_MESSAGE);
-        } else {
-            
-            // Creamos el producto y lo añadimos a la lista de productos del cliente y a la lista global de productos
-            this.menu.setEnabled(true);
-            this.dispose();
-        }
+        this.dispose();
     }//GEN-LAST:event_botonConfirmarActionPerformed
 
     private void editarNombreMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editarNombreMouseEntered
@@ -545,9 +563,9 @@ public class MenuEditarProducto extends javax.swing.JFrame {
             fieldPrecio.setEditable(false);
 
             if (checkPrecio(fieldPrecio.getText())) {
-                JOptionPane.showMessageDialog(this, "El nombre del producto no puede estar vacio.\nNo se guardaron los cambios", "Error de formato", JOptionPane.ERROR_MESSAGE);
-            } else {
                 producto.setPrecio(getPrecio(fieldPrecio.getText()));
+            } else {
+                JOptionPane.showMessageDialog(this, "El formato del precio es incorrecto.\nDebe escribir los centimos separados por una coma.\nNo se guardaron los cambios.", "Error de formato", JOptionPane.ERROR_MESSAGE);
             }
 
             fieldPrecio.setText(("" + producto.getPrecio()).replace('.', ','));
@@ -617,10 +635,31 @@ public class MenuEditarProducto extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_editarFotoMouseClicked
 
-    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+    private void urgenciaStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_urgenciaStateChanged
+        this.producto.toggleUrgente();
+    }//GEN-LAST:event_urgenciaStateChanged
+
+    private void botonBajaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonBajaActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_botonBajaActionPerformed
+
+    private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
+        if (!borrar) {
+            menu.user.introducirProducto(this.producto);
+            productos.add(this.producto);
+        }
+
+        menu.miProductoMin1.setVisible(false);
+        menu.miProductoMin2.setVisible(false);
+        menu.miProductoMin3.setVisible(false);
+        menu.miProductoMin4.setVisible(false);
+
+        menu.displayMisProductos();
+
+        menu.lockUnlockBotonesMisProductos();
+
         menu.setEnabled(true);
-        miProd.setProducto(this.producto);
-    }//GEN-LAST:event_formWindowClosing
+    }//GEN-LAST:event_formWindowClosed
 
     private static String randomSequence() {
         String str = "";
@@ -636,6 +675,7 @@ public class MenuEditarProducto extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel banner;
+    private javax.swing.JButton botonBaja;
     private javax.swing.JButton botonConfirmar;
     private javax.swing.JComboBox<String> categoriaBox;
     private javax.swing.JLabel categoriaLabel;

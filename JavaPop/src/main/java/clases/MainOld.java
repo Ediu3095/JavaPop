@@ -1,4 +1,4 @@
-    package clases;
+package clases;
 
 import clases.utils.IOCustomLib;
 import clases.utils.CheckFunctions;
@@ -188,7 +188,7 @@ public class MainOld {
         return arr;
     }
 
-    public static void main(String[] args) {
+    public static void old_main(String[] args) {
 
         // Comienzo del programa: Recuperamos la informacion guardada en los ficheros
         ArrayList<Cliente> usuarios = IOCustomLib.leerClientes();

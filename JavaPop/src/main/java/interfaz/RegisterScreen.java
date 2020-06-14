@@ -187,7 +187,6 @@ public class RegisterScreen extends javax.swing.JFrame {
 
             // Si superamos todas estas comprobaciones el usuario es valido y entra al menú principal
             if (validUser) {
-                System.out.println("si");
                 Cliente user = new Cliente(correo, clave, dni, name, Integer.parseInt(ccpp), ttcc);
                 usuarios.add(user);
                 IOCustomLib.guardarClientes(usuarios);
