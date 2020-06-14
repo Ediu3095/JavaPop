@@ -6,6 +6,7 @@
 package interfaz.panels;
 
 import clases.Producto;
+import java.awt.Image;
 import javax.swing.ImageIcon;
 
 /**
@@ -25,9 +26,9 @@ public class ProductoMin extends javax.swing.JPanel {
 
     public void setProducto(Producto prod) {
         this.producto = prod;
-        this.etiquetaPrecio.setText("" + prod.getPrecio());
         this.etiquetaTitulo.setText(prod.getTitulo());
-        this.imagen.setIcon(new ImageIcon(prod.getFoto()));
+        this.etiquetaPrecio.setText("" + prod.getPrecio());
+        this.imagen.setIcon(new ImageIcon(new ImageIcon(prod.getFoto()).getImage().getScaledInstance(180, 180,  java.awt.Image.SCALE_DEFAULT)));
     }
 
     
@@ -59,9 +60,10 @@ public class ProductoMin extends javax.swing.JPanel {
             .addComponent(imagen, javax.swing.GroupLayout.DEFAULT_SIZE, 180, Short.MAX_VALUE)
         );
 
-        etiquetaTitulo.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        etiquetaTitulo.setFont(new java.awt.Font("OCR A Extended", 1, 12)); // NOI18N
         etiquetaTitulo.setText("Titulo");
 
+        etiquetaPrecio.setFont(new java.awt.Font("OCR A Extended", 0, 12)); // NOI18N
         etiquetaPrecio.setText("Precio");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);

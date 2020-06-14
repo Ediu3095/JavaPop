@@ -304,6 +304,13 @@ public class CheckFunctions {
         }
         return -1;
     }
+    
+    public static boolean checkPrecio(String prc) {
+        Pattern pattern = Pattern.compile("[0-9]{1,}+[,]+[0-9]{2}");
+        Matcher matcher_;
+        matcher_ = pattern.matcher(prc);
+        return matcher_.matches();
+    }
 
     /**
  * <p>
@@ -404,25 +411,47 @@ public class CheckFunctions {
     public static Estado getEstado(int index) {
         Estado estado = Estado.Bueno;
         switch (index) {
-            case 4:
-                estado = Estado.Aceptable;
-                break;
-            case 3:
-                estado = Estado.Bueno;
-                break;
-            case 2:
-                estado = Estado.Como_nuevo;
-                break;
-            case 1:
+            case 0:
                 estado = Estado.Nuevo;
                 break;
-            case 5:
+            case 1:
+                estado = Estado.Como_nuevo;
+                break;
+            case 2:
+                estado = Estado.Bueno;
+                break;
+            case 3:
+                estado = Estado.Aceptable;
+                break;
+            case 4:
                 estado = Estado.Regular;
                 break;
         }
         return estado;
     }
 
+    public static int indexOfEstado(Estado est) {
+        int index = 0;
+        if (null != est) switch (est) {
+            case Nuevo:
+                index = 0;
+                break;
+            case Como_nuevo:
+                index = 1;
+                break;
+            case Bueno:
+                index = 2;
+                break;
+            case Aceptable:
+                index = 3;
+                break;
+            case Regular:
+                index = 4;
+                break;
+        }
+        return index;
+    }
+    
     /**
      * <p>
      * Pide un numero del 1 al 6 que se corresponda con alguna de las categorías
@@ -502,6 +531,31 @@ public class CheckFunctions {
                 break;
         }
         return categoria;
+    }
+    
+    public static int indexOfCategoria(Categoria cat) {
+        int index = 0;
+        if (null != cat) switch (cat) {
+            case Moda_y_accesorios:
+                index = 0;
+                break;
+            case Tv_audio_y_foto:
+                index = 1;
+                break;
+            case Moviles_y_telefonia:
+                index = 2;
+                break;
+            case Informatica_y_electronica:
+                index = 3;
+                break;
+            case Consolas_y_videojuegos:
+                index = 4;
+                break;
+            case Deporte_y_ocio:
+                index = 5;
+                break;
+        }
+        return index;
     }
 
     /**

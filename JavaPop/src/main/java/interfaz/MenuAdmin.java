@@ -51,8 +51,14 @@ public class MenuAdmin extends javax.swing.JFrame {
      */
     public MenuAdmin() {
         initComponents();
-        this.user = user;
+        
+        // setup icon
+        ImageIcon img = new ImageIcon(".\\resources\\logo\\IconoJavaPop2.png");
+        super.setIconImage(img.getImage());
+        
+        // Guardamos el CardLayout como atributo de la clase para acceder facilmente
         this.camposCL = (CardLayout) this.jPanel1.getLayout();
+        
         super.setVisible(true);
     }
 

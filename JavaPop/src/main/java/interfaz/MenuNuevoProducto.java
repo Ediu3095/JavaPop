@@ -30,21 +30,36 @@ import javax.swing.filechooser.FileNameExtensionFilter;
  */
 public class MenuNuevoProducto extends javax.swing.JFrame {
 
-    private FileNameExtensionFilter filter = new FileNameExtensionFilter("Archivo de imagen (*.jpg, *.jpeg, *.png, *.gif)", "jpg", "png", "jpeg", "gif");
+    private final FileNameExtensionFilter filter = new FileNameExtensionFilter("Archivo de imagen (*.jpg, *.jpeg, *.png, *.gif)", "jpg", "png", "jpeg", "gif");
     private String imageAddress;
-    private Cliente user;
-    private MenuPrincipal menu;
+    private boolean imagenSubida;
+    private final Cliente user;
+    private final MenuPrincipal menu;
 
     /**
      * Creates new form MenuNuevoProducto
+     *
+     * @param menu Menu principal del usuario al que volveremos cuando se cierre
+     * esta ventana.
      */
     public MenuNuevoProducto(MenuPrincipal menu) {
         initComponents();
-        super.setVisible(true);
-        this.user = menu.user;
+
+        // setup icon
+        super.setIconImage(new ImageIcon(".\\resources\\logo\\IconoJavaPop2.png").getImage());
+
+        // Iniciamos image address para poder utilizarla posteriormente e imagen subida
         this.imageAddress = "";
+        this.imagenSubida = false;
+
+        // Nos guardamos el usuario
+        this.user = menu.user;
+
+        // Nos guardamos el menu para poder volver a este a posteriori 
         this.menu = menu;
         this.menu.setEnabled(false);
+
+        super.setVisible(true);
     }
 
     /**
@@ -81,6 +96,7 @@ public class MenuNuevoProducto extends javax.swing.JFrame {
         fieldPrecio = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("JavaPop - Subir nuevo producto");
         setFont(new java.awt.Font("OCR A Extended", 0, 12)); // NOI18N
         setResizable(false);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -295,13 +311,14 @@ public class MenuNuevoProducto extends javax.swing.JFrame {
             ImageIcon icon = new ImageIcon(this.imageAddress);
             Image resizedImage = icon.getImage().getScaledInstance(250, 250, java.awt.Image.SCALE_DEFAULT);
             this.icono.setIcon(new ImageIcon(resizedImage));
+
+            this.imagenSubida = true;
         }
     }//GEN-LAST:event_iconoMouseClicked
 
     private void iconoMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_iconoMouseEntered
         this.foto.setBackground(new Color(51, 153, 255));
     }//GEN-LAST:event_iconoMouseEntered
-
     private void iconoMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_iconoMouseExited
         this.foto.setBackground(new Color(240, 240, 240));
     }//GEN-LAST:event_iconoMouseExited
@@ -317,28 +334,20 @@ public class MenuNuevoProducto extends javax.swing.JFrame {
         if (precio == -1) {
             JOptionPane.showMessageDialog(this, "El formato del precio es incorrecto.\nSolamente debe separar los céntimos con una coma.", "Formato incorrecto", JOptionPane.ERROR_MESSAGE);
         } else if (titulo.equals("")) {
-            JOptionPane.showMessageDialog(this, "Debe añadir un titulo al producto.", "Formato incorrecto", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Debe añadir un titulo al producto.", "Campo obligatorio vacio", JOptionPane.INFORMATION_MESSAGE);
+        } else if (!this.imagenSubida) {
+            JOptionPane.showMessageDialog(this, "Debe añadir una imagen al producto.", "Campo obligatorio vacio", JOptionPane.INFORMATION_MESSAGE);
         } else {
 
             // Copiamos la imagen a un directorio propio para evitar problemas si esta es borrada o cambiada de directorio
             FileSystem fileSys = FileSystems.getDefault();
-            File imgFolder = new File("./resources/imagenes/");
             File image = new File(imageAddress);
             String newAddress;
-            boolean run = true;
-            int tryes = 0;
-            while (run) {
-                newAddress = "./resources/imagenes/" + randomSequence() + "_" + image.getName();
-                try {
-                    Files.copy(fileSys.getPath(imageAddress), fileSys.getPath(newAddress), REPLACE_EXISTING);
-                    this.imageAddress = newAddress;
-                    run = false;
-                } catch (IOException ex) {
-                    tryes++;
-                    if (tryes >= 100) {
-                        run = false;
-                    }
-                }
+            newAddress = "./resources/imagenes/" + randomSequence() + "_" + image.getName();
+            try {
+                Files.copy(fileSys.getPath(imageAddress), fileSys.getPath(newAddress), REPLACE_EXISTING);
+                this.imageAddress = newAddress;
+            } catch (IOException ex) {
             }
 
             // Creamos el producto y lo añadimos a la lista de productos del cliente y a la lista global de productos

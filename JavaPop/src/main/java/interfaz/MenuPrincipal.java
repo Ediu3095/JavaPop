@@ -15,6 +15,8 @@ import clases.utils.IOCustomLib;
 import javax.swing.ImageIcon;
 import java.awt.CardLayout;
 import java.util.ArrayList;
+import java.util.Random;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -27,14 +29,25 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private ArrayList<Producto> productosFiltrado;
     private int posicionMin;
     private int posicionMax;
-    
+
     /**
      * Creates new form MenuPrincipal1
      */
     public MenuPrincipal(Cliente user) {
         initComponents();
+
+        // setup icon
+        super.setIconImage(new ImageIcon(".\\resources\\logo\\IconoJavaPop2.png").getImage());
+
+        // guardamos el usuario que esta utilizando la aplicación
         this.user = user;
+
+        // iniciamos esta lista para poder utilizarla más tarde
+        this.productosFiltrado = new ArrayList(0);
+
+        // guardamos este cardLayout como un atributo de la clase para facilitar el acceso a este
         this.camposCL = (CardLayout) this.jPanel1.getLayout();
+
         super.setVisible(true);
     }
 
@@ -76,10 +89,59 @@ public class MenuPrincipal extends javax.swing.JFrame {
         rePag = new javax.swing.JButton();
         etiquetaPagina = new javax.swing.JLabel();
         avPag = new javax.swing.JButton();
+        imagen = new javax.swing.JPanel();
+        icon = new javax.swing.JLabel();
+        errorLabel1 = new javax.swing.JLabel();
+        errorLabel2 = new javax.swing.JLabel();
         panelPerfil = new javax.swing.JPanel();
+        correoLabel = new javax.swing.JLabel();
+        editarCorreo = new javax.swing.JLabel();
+        correoField = new javax.swing.JTextField();
+        claveLabel = new javax.swing.JLabel();
+        editarClave = new javax.swing.JLabel();
+        claveField = new javax.swing.JPasswordField();
+        nombreLabel = new javax.swing.JLabel();
+        editarNombre = new javax.swing.JLabel();
+        nombreField = new javax.swing.JTextField();
+        ccppLabel = new javax.swing.JLabel();
+        editarCcpp = new javax.swing.JLabel();
+        ccppField = new javax.swing.JFormattedTextField();
+        ccLabel = new javax.swing.JLabel();
+        editarCc = new javax.swing.JLabel();
+        ccField = new javax.swing.JFormattedTextField();
+        dniLabel = new javax.swing.JLabel();
+        editarDni = new javax.swing.JLabel();
+        dniField = new javax.swing.JFormattedTextField();
+        togglePro = new javax.swing.JToggleButton();
+        toggleLabel = new javax.swing.JLabel();
+        variablesPro = new javax.swing.JPanel();
+        descripcionLabel = new javax.swing.JLabel();
+        editarDescripcion = new javax.swing.JLabel();
+        descripciónScroll = new javax.swing.JScrollPane();
+        descripcionField = new javax.swing.JTextArea();
+        horarioLabel = new javax.swing.JLabel();
+        editarHorario = new javax.swing.JLabel();
+        horarioField = new javax.swing.JFormattedTextField();
+        telefonoLabel = new javax.swing.JLabel();
+        editarTelefono = new javax.swing.JLabel();
+        telefonoField = new javax.swing.JFormattedTextField();
+        webLabel = new javax.swing.JLabel();
+        editarWeb = new javax.swing.JLabel();
+        webField = new javax.swing.JTextField();
+        productosLabel = new javax.swing.JLabel();
+        misProductosDisplay = new javax.swing.JPanel();
+        miProductoMin1 = new interfaz.panels.MiProductoMin();
+        miProductoMin4 = new interfaz.panels.MiProductoMin();
+        miProductoMin2 = new interfaz.panels.MiProductoMin();
+        miProductoMin3 = new interfaz.panels.MiProductoMin();
+        fotoSinProductos = new javax.swing.JLabel();
+        textoSinProductos1 = new javax.swing.JLabel();
+        textoSinProductos2 = new javax.swing.JLabel();
+        prevPage = new javax.swing.JButton();
+        nextPage = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("JavaPop - Menú Principal\n");
+        setTitle("JavaPop - Menú principal ");
         setResizable(false);
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowClosing(java.awt.event.WindowEvent evt) {
@@ -93,6 +155,11 @@ public class MenuPrincipal extends javax.swing.JFrame {
         botonPerfil.setFont(new java.awt.Font("OCR A Extended", 0, 12)); // NOI18N
         botonPerfil.setText("Mi perfil");
         botonPerfil.setPreferredSize(new java.awt.Dimension(130, 23));
+        botonPerfil.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonPerfilActionPerformed(evt);
+            }
+        });
 
         busquedaButton.setFont(new java.awt.Font("OCR A Extended", 0, 12)); // NOI18N
         busquedaButton.setText("Buscar");
@@ -107,11 +174,6 @@ public class MenuPrincipal extends javax.swing.JFrame {
         etiquetaBusqueda.setText("Buscar:");
 
         claveBusqueda.setFont(new java.awt.Font("OCR A Extended", 0, 12)); // NOI18N
-        claveBusqueda.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                claveBusquedaActionPerformed(evt);
-            }
-        });
 
         comboBoxCategoria.setFont(new java.awt.Font("OCR A Extended", 0, 12)); // NOI18N
         comboBoxCategoria.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Moda y acesorios", "Tv, audio y foto", "Moviles y telefónica", "Informática y electrónica", "Consolas y videojuegos", "Deporte y ocio" }));
@@ -208,7 +270,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(panelBienvenidaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 818, Short.MAX_VALUE))
+                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 842, Short.MAX_VALUE))
                 .addContainerGap())
         );
         panelBienvenidaLayout.setVerticalGroup(
@@ -217,11 +279,53 @@ public class MenuPrincipal extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 479, Short.MAX_VALUE)
+                .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 495, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
         jPanel1.add(panelBienvenida, "Bienvenida");
+
+        panelCompra.setLayout(null);
+
+        productoMin1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        productoMin1.setFont(new java.awt.Font("OCR A Extended", 0, 12)); // NOI18N
+        panelCompra.add(productoMin1);
+        productoMin1.setBounds(10, 11, 204, 270);
+
+        productoMin2.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        productoMin2.setFont(new java.awt.Font("OCR A Extended", 0, 12)); // NOI18N
+        panelCompra.add(productoMin2);
+        productoMin2.setBounds(216, 11, 204, 270);
+
+        productoMin3.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        productoMin3.setFont(new java.awt.Font("OCR A Extended", 0, 12)); // NOI18N
+        panelCompra.add(productoMin3);
+        productoMin3.setBounds(422, 11, 204, 270);
+
+        productoMin4.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        productoMin4.setFont(new java.awt.Font("OCR A Extended", 0, 12)); // NOI18N
+        panelCompra.add(productoMin4);
+        productoMin4.setBounds(628, 11, 204, 270);
+
+        productoMin5.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        productoMin5.setFont(new java.awt.Font("OCR A Extended", 0, 12)); // NOI18N
+        panelCompra.add(productoMin5);
+        productoMin5.setBounds(10, 283, 204, 270);
+
+        productoMin6.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        productoMin6.setFont(new java.awt.Font("OCR A Extended", 0, 12)); // NOI18N
+        panelCompra.add(productoMin6);
+        productoMin6.setBounds(216, 283, 204, 270);
+
+        productoMin7.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        productoMin7.setFont(new java.awt.Font("OCR A Extended", 0, 12)); // NOI18N
+        panelCompra.add(productoMin7);
+        productoMin7.setBounds(422, 283, 204, 270);
+
+        productoMin8.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        productoMin8.setFont(new java.awt.Font("OCR A Extended", 0, 12)); // NOI18N
+        panelCompra.add(productoMin8);
+        productoMin8.setBounds(628, 283, 204, 270);
 
         rePag.setText("<<");
         rePag.addActionListener(new java.awt.event.ActionListener() {
@@ -229,8 +333,14 @@ public class MenuPrincipal extends javax.swing.JFrame {
                 rePagActionPerformed(evt);
             }
         });
+        panelCompra.add(rePag);
+        rePag.setBounds(580, 560, 50, 23);
 
+        etiquetaPagina.setFont(new java.awt.Font("OCR A Extended", 0, 12)); // NOI18N
+        etiquetaPagina.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         etiquetaPagina.setText("Página 0 de 100");
+        panelCompra.add(etiquetaPagina);
+        etiquetaPagina.setBounds(630, 560, 150, 20);
 
         avPag.setText(">>");
         avPag.addActionListener(new java.awt.event.ActionListener() {
@@ -238,73 +348,530 @@ public class MenuPrincipal extends javax.swing.JFrame {
                 avPagActionPerformed(evt);
             }
         });
+        panelCompra.add(avPag);
+        avPag.setBounds(780, 560, 50, 23);
 
-        javax.swing.GroupLayout panelCompraLayout = new javax.swing.GroupLayout(panelCompra);
-        panelCompra.setLayout(panelCompraLayout);
-        panelCompraLayout.setHorizontalGroup(
-            panelCompraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelCompraLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(panelCompraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(panelCompraLayout.createSequentialGroup()
-                        .addComponent(productoMin1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(productoMin2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(productoMin3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(productoMin4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(panelCompraLayout.createSequentialGroup()
-                        .addComponent(productoMin5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(productoMin6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(productoMin7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(productoMin8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelCompraLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(rePag)
-                .addGap(18, 18, 18)
-                .addComponent(etiquetaPagina)
-                .addGap(18, 18, 18)
-                .addComponent(avPag)
-                .addContainerGap())
+        icon.setFont(new java.awt.Font("OCR A Extended", 0, 18)); // NOI18N
+        icon.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+
+        javax.swing.GroupLayout imagenLayout = new javax.swing.GroupLayout(imagen);
+        imagen.setLayout(imagenLayout);
+        imagenLayout.setHorizontalGroup(
+            imagenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 410, Short.MAX_VALUE)
+            .addGroup(imagenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(imagenLayout.createSequentialGroup()
+                    .addComponent(icon, javax.swing.GroupLayout.PREFERRED_SIZE, 410, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, Short.MAX_VALUE)))
         );
-        panelCompraLayout.setVerticalGroup(
-            panelCompraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelCompraLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(panelCompraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(productoMin4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(productoMin3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(productoMin2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(productoMin1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(panelCompraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(productoMin5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(productoMin6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(productoMin7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(productoMin8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(panelCompraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(rePag)
-                    .addComponent(avPag)
-                    .addComponent(etiquetaPagina)))
+        imagenLayout.setVerticalGroup(
+            imagenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 540, Short.MAX_VALUE)
+            .addGroup(imagenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addComponent(icon, javax.swing.GroupLayout.DEFAULT_SIZE, 540, Short.MAX_VALUE))
         );
+
+        panelCompra.add(imagen);
+        imagen.setBounds(10, 10, 410, 540);
+
+        errorLabel1.setFont(new java.awt.Font("OCR A Extended", 0, 36)); // NOI18N
+        errorLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        errorLabel1.setText("¡Vaya!");
+        errorLabel1.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+        panelCompra.add(errorLabel1);
+        errorLabel1.setBounds(424, 14, 410, 270);
+
+        errorLabel2.setFont(new java.awt.Font("OCR A Extended", 0, 14)); // NOI18N
+        errorLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        errorLabel2.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+        panelCompra.add(errorLabel2);
+        errorLabel2.setBounds(424, 290, 410, 260);
 
         jPanel1.add(panelCompra, "Compra");
+
+        correoLabel.setFont(new java.awt.Font("OCR A Extended", 0, 12)); // NOI18N
+        correoLabel.setText("Correo:");
+
+        editarCorreo.setBackground(new java.awt.Color(51, 153, 255));
+        editarCorreo.setFont(new java.awt.Font("OCR A Extended", 0, 12)); // NOI18N
+        editarCorreo.setForeground(new java.awt.Color(51, 153, 255));
+        editarCorreo.setText("editar");
+        editarCorreo.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        editarCorreo.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                editarCorreoMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                editarCorreoMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                editarCorreoMouseExited(evt);
+            }
+        });
+
+        correoField.setEditable(false);
+        correoField.setFont(new java.awt.Font("OCR A Extended", 0, 12)); // NOI18N
+
+        claveLabel.setFont(new java.awt.Font("OCR A Extended", 0, 12)); // NOI18N
+        claveLabel.setText("Contraseña:");
+
+        editarClave.setBackground(new java.awt.Color(51, 153, 255));
+        editarClave.setFont(new java.awt.Font("OCR A Extended", 0, 12)); // NOI18N
+        editarClave.setForeground(new java.awt.Color(51, 153, 255));
+        editarClave.setText("editar");
+        editarClave.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        editarClave.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                editarClaveMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                editarClaveMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                editarClaveMouseExited(evt);
+            }
+        });
+
+        claveField.setEditable(false);
+        claveField.setFont(new java.awt.Font("OCR A Extended", 0, 12)); // NOI18N
+        claveField.setEchoChar('*');
+
+        nombreLabel.setBackground(new java.awt.Color(51, 153, 255));
+        nombreLabel.setFont(new java.awt.Font("OCR A Extended", 0, 12)); // NOI18N
+        nombreLabel.setForeground(new java.awt.Color(51, 153, 255));
+        nombreLabel.setText("editar");
+        nombreLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        nombreLabel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                nombreLabelMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                nombreLabelMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                nombreLabelMouseExited(evt);
+            }
+        });
+
+        editarNombre.setFont(new java.awt.Font("OCR A Extended", 0, 12)); // NOI18N
+        editarNombre.setText("Nombre y apellidos:");
+
+        nombreField.setEditable(false);
+        nombreField.setFont(new java.awt.Font("OCR A Extended", 0, 12)); // NOI18N
+
+        ccppLabel.setFont(new java.awt.Font("OCR A Extended", 0, 12)); // NOI18N
+        ccppLabel.setText("Codigo postal:");
+
+        editarCcpp.setBackground(new java.awt.Color(51, 153, 255));
+        editarCcpp.setFont(new java.awt.Font("OCR A Extended", 0, 12)); // NOI18N
+        editarCcpp.setForeground(new java.awt.Color(51, 153, 255));
+        editarCcpp.setText("editar");
+        editarCcpp.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        editarCcpp.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                editarCcppMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                editarCcppMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                editarCcppMouseExited(evt);
+            }
+        });
+
+        ccppField.setEditable(false);
+        try {
+            ccppField.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("#####")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+        ccppField.setFont(new java.awt.Font("OCR A Extended", 0, 12)); // NOI18N
+
+        ccLabel.setFont(new java.awt.Font("OCR A Extended", 0, 12)); // NOI18N
+        ccLabel.setText("Tarjeta de crédito:");
+
+        editarCc.setBackground(new java.awt.Color(51, 153, 255));
+        editarCc.setFont(new java.awt.Font("OCR A Extended", 0, 12)); // NOI18N
+        editarCc.setForeground(new java.awt.Color(51, 153, 255));
+        editarCc.setText("editar");
+        editarCc.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        editarCc.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                editarCcMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                editarCcMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                editarCcMouseExited(evt);
+            }
+        });
+
+        ccField.setEditable(false);
+        try {
+            ccField.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("####-####-####-####")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+        ccField.setFont(new java.awt.Font("OCR A Extended", 0, 12)); // NOI18N
+
+        dniLabel.setFont(new java.awt.Font("OCR A Extended", 0, 12)); // NOI18N
+        dniLabel.setText("DNI:");
+
+        editarDni.setBackground(new java.awt.Color(51, 153, 255));
+        editarDni.setFont(new java.awt.Font("OCR A Extended", 0, 12)); // NOI18N
+        editarDni.setForeground(new java.awt.Color(51, 153, 255));
+        editarDni.setText("editar");
+        editarDni.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        editarDni.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                editarDniMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                editarDniMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                editarDniMouseExited(evt);
+            }
+        });
+
+        dniField.setEditable(false);
+        try {
+            dniField.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("########?")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+        dniField.setFont(new java.awt.Font("OCR A Extended", 0, 12)); // NOI18N
+
+        togglePro.setFont(new java.awt.Font("OCR A Extended", 0, 12)); // NOI18N
+        togglePro.setText("Hacerse Pro");
+
+        toggleLabel.setFont(new java.awt.Font("OCR A Extended", 0, 12)); // NOI18N
+        toggleLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        toggleLabel.setText("Esto supone un importe de 20€");
+
+        variablesPro.setBackground(new java.awt.Color(51, 153, 255));
+        variablesPro.setEnabled(false);
+
+        descripcionLabel.setFont(new java.awt.Font("OCR A Extended", 0, 12)); // NOI18N
+        descripcionLabel.setText("Descripción");
+
+        editarDescripcion.setBackground(new java.awt.Color(51, 153, 255));
+        editarDescripcion.setFont(new java.awt.Font("OCR A Extended", 0, 12)); // NOI18N
+        editarDescripcion.setForeground(new java.awt.Color(255, 255, 255));
+        editarDescripcion.setText("editar");
+        editarDescripcion.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        editarDescripcion.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                editarDescripcionMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                editarDescripcionMouseExited(evt);
+            }
+        });
+
+        descripcionField.setEditable(false);
+        descripcionField.setColumns(20);
+        descripcionField.setFont(new java.awt.Font("OCR A Extended", 0, 12)); // NOI18N
+        descripcionField.setRows(5);
+        descripciónScroll.setViewportView(descripcionField);
+
+        horarioLabel.setFont(new java.awt.Font("OCR A Extended", 0, 12)); // NOI18N
+        horarioLabel.setText("Horario");
+
+        editarHorario.setBackground(new java.awt.Color(51, 153, 255));
+        editarHorario.setFont(new java.awt.Font("OCR A Extended", 0, 12)); // NOI18N
+        editarHorario.setForeground(new java.awt.Color(255, 255, 255));
+        editarHorario.setText("editar");
+        editarHorario.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        editarHorario.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                editarHorarioMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                editarHorarioMouseExited(evt);
+            }
+        });
+
+        horarioField.setEditable(false);
+        try {
+            horarioField.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##:## - ##:##")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+        horarioField.setFont(new java.awt.Font("OCR A Extended", 0, 12)); // NOI18N
+
+        telefonoLabel.setFont(new java.awt.Font("OCR A Extended", 0, 12)); // NOI18N
+        telefonoLabel.setText("Teléfono");
+
+        editarTelefono.setBackground(new java.awt.Color(51, 153, 255));
+        editarTelefono.setFont(new java.awt.Font("OCR A Extended", 0, 12)); // NOI18N
+        editarTelefono.setForeground(new java.awt.Color(255, 255, 255));
+        editarTelefono.setText("editar");
+        editarTelefono.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        editarTelefono.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                editarTelefonoMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                editarTelefonoMouseExited(evt);
+            }
+        });
+
+        telefonoField.setEditable(false);
+        try {
+            telefonoField.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("### ### ###")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+        telefonoField.setFont(new java.awt.Font("OCR A Extended", 0, 12)); // NOI18N
+
+        webLabel.setFont(new java.awt.Font("OCR A Extended", 0, 12)); // NOI18N
+        webLabel.setText("Web");
+
+        editarWeb.setBackground(new java.awt.Color(51, 153, 255));
+        editarWeb.setFont(new java.awt.Font("OCR A Extended", 0, 12)); // NOI18N
+        editarWeb.setForeground(new java.awt.Color(255, 255, 255));
+        editarWeb.setText("editar");
+        editarWeb.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        editarWeb.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                editarWebMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                editarWebMouseExited(evt);
+            }
+        });
+
+        webField.setEditable(false);
+        webField.setFont(new java.awt.Font("OCR A Extended", 0, 12)); // NOI18N
+
+        javax.swing.GroupLayout variablesProLayout = new javax.swing.GroupLayout(variablesPro);
+        variablesPro.setLayout(variablesProLayout);
+        variablesProLayout.setHorizontalGroup(
+            variablesProLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(variablesProLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(variablesProLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(telefonoField)
+                    .addComponent(horarioField)
+                    .addComponent(descripciónScroll, javax.swing.GroupLayout.DEFAULT_SIZE, 350, Short.MAX_VALUE)
+                    .addGroup(variablesProLayout.createSequentialGroup()
+                        .addComponent(webLabel)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(editarWeb))
+                    .addComponent(webField)
+                    .addGroup(variablesProLayout.createSequentialGroup()
+                        .addComponent(horarioLabel)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(editarHorario))
+                    .addGroup(variablesProLayout.createSequentialGroup()
+                        .addComponent(telefonoLabel)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(editarTelefono))
+                    .addGroup(variablesProLayout.createSequentialGroup()
+                        .addComponent(descripcionLabel)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(editarDescripcion)))
+                .addContainerGap())
+        );
+        variablesProLayout.setVerticalGroup(
+            variablesProLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, variablesProLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(variablesProLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(descripcionLabel)
+                    .addComponent(editarDescripcion))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(descripciónScroll, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(variablesProLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(horarioLabel)
+                    .addComponent(editarHorario))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(horarioField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(variablesProLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(telefonoLabel)
+                    .addComponent(editarTelefono))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(telefonoField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(variablesProLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(webLabel)
+                    .addComponent(editarWeb))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(webField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
+
+        productosLabel.setFont(new java.awt.Font("OCR A Extended", 0, 12)); // NOI18N
+        productosLabel.setText("Mis productos:");
+
+        misProductosDisplay.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        miProductoMin1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        miProductoMin1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                miProductoMin1MouseClicked(evt);
+            }
+        });
+        misProductosDisplay.add(miProductoMin1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 842, -1));
+
+        miProductoMin4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        miProductoMin4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                miProductoMin4MouseClicked(evt);
+            }
+        });
+        misProductosDisplay.add(miProductoMin4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 135, 842, -1));
+
+        miProductoMin2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        miProductoMin2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                miProductoMin2MouseClicked(evt);
+            }
+        });
+        misProductosDisplay.add(miProductoMin2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 45, 842, -1));
+
+        miProductoMin3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        miProductoMin3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                miProductoMin3MouseClicked(evt);
+            }
+        });
+        misProductosDisplay.add(miProductoMin3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 90, 842, -1));
+
+        fotoSinProductos.setFont(new java.awt.Font("OCR A Extended", 0, 12)); // NOI18N
+        fotoSinProductos.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        misProductosDisplay.add(fotoSinProductos, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 430, 180));
+
+        textoSinProductos1.setFont(new java.awt.Font("OCR A Extended", 0, 36)); // NOI18N
+        textoSinProductos1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        textoSinProductos1.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+        misProductosDisplay.add(textoSinProductos1, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 0, 410, 90));
+
+        textoSinProductos2.setFont(new java.awt.Font("OCR A Extended", 0, 12)); // NOI18N
+        textoSinProductos2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        textoSinProductos2.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+        misProductosDisplay.add(textoSinProductos2, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 90, 410, 90));
+
+        prevPage.setText("<<");
+        prevPage.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                prevPageActionPerformed(evt);
+            }
+        });
+
+        nextPage.setText(">>");
+        nextPage.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                nextPageActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout panelPerfilLayout = new javax.swing.GroupLayout(panelPerfil);
         panelPerfil.setLayout(panelPerfilLayout);
         panelPerfilLayout.setHorizontalGroup(
             panelPerfilLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 838, Short.MAX_VALUE)
+            .addGroup(panelPerfilLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(panelPerfilLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelPerfilLayout.createSequentialGroup()
+                        .addGroup(panelPerfilLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(panelPerfilLayout.createSequentialGroup()
+                                .addGroup(panelPerfilLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(correoLabel, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(ccppLabel, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(claveLabel, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(editarNombre, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(ccLabel, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(dniLabel, javax.swing.GroupLayout.Alignment.LEADING))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGroup(panelPerfilLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(editarCorreo, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(editarClave, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(nombreLabel, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(editarCcpp, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(editarCc, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(editarDni, javax.swing.GroupLayout.Alignment.TRAILING)))
+                            .addComponent(correoField)
+                            .addComponent(claveField)
+                            .addComponent(dniField)
+                            .addComponent(ccField)
+                            .addComponent(ccppField)
+                            .addComponent(nombreField, javax.swing.GroupLayout.Alignment.TRAILING))
+                        .addGap(18, 18, 18)
+                        .addGroup(panelPerfilLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(variablesPro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(togglePro, javax.swing.GroupLayout.PREFERRED_SIZE, 370, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(toggleLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 370, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelPerfilLayout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(prevPage)
+                        .addGap(18, 18, 18)
+                        .addComponent(nextPage))
+                    .addGroup(panelPerfilLayout.createSequentialGroup()
+                        .addComponent(productosLabel)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(misProductosDisplay, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
         panelPerfilLayout.setVerticalGroup(
             panelPerfilLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 577, Short.MAX_VALUE)
+            .addGroup(panelPerfilLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(panelPerfilLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(panelPerfilLayout.createSequentialGroup()
+                        .addGroup(panelPerfilLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(correoLabel)
+                            .addComponent(editarCorreo))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(correoField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addGroup(panelPerfilLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(claveLabel)
+                            .addComponent(editarClave))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(claveField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addGroup(panelPerfilLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(editarNombre)
+                            .addComponent(nombreLabel))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(nombreField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addGroup(panelPerfilLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(ccppLabel)
+                            .addComponent(editarCcpp))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(ccppField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addGroup(panelPerfilLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(ccLabel)
+                            .addComponent(editarCc))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(ccField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addGroup(panelPerfilLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(dniLabel)
+                            .addComponent(editarDni))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(dniField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(panelPerfilLayout.createSequentialGroup()
+                        .addComponent(togglePro)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(toggleLabel)
+                        .addGap(18, 18, 18)
+                        .addComponent(variablesPro, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addGap(18, 18, 18)
+                .addComponent(productosLabel)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(misProductosDisplay, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(panelPerfilLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(nextPage)
+                    .addComponent(prevPage)))
         );
 
         jPanel1.add(panelPerfil, "Perfil");
@@ -329,10 +896,10 @@ public class MenuPrincipal extends javax.swing.JFrame {
                 .addComponent(banner, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(filler2, javax.swing.GroupLayout.DEFAULT_SIZE, 613, Short.MAX_VALUE)
+                    .addComponent(filler2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(filler3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                        .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(filler4, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))))
         );
@@ -341,16 +908,22 @@ public class MenuPrincipal extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void claveBusquedaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_claveBusquedaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_claveBusquedaActionPerformed
-
     private void busquedaButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_busquedaButtonActionPerformed
         camposCL.show(jPanel1, "Compra");
 
+        // Hacemos todos los productos invisibles
+        productoMin1.setVisible(false);
+        productoMin2.setVisible(false);
+        productoMin3.setVisible(false);
+        productoMin4.setVisible(false);
+        productoMin5.setVisible(false);
+        productoMin6.setVisible(false);
+        productoMin7.setVisible(false);
+        productoMin8.setVisible(false);
+
         // Limpiamos la lista filtrada de productos
         productosFiltrado.clear();
-        
+
         // Se filtran los productos por categoría
         Categoria cat = getCategoria(comboBoxCategoria.getSelectedIndex());
         for (int i = 0; i < productos.size(); i++) {
@@ -369,7 +942,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         for (int i = 0; i < productosFiltrado.size(); i++) {
             updateTags(user, productosFiltrado.get(i), keyWords);
         }
-        
+
         // Si se han introducido palabras clave quitamos los productos sin coincidencias
         if (!kW.equals("")) {
             for (int i = 0; i < productosFiltrado.size(); i++) {
@@ -386,21 +959,21 @@ public class MenuPrincipal extends javax.swing.JFrame {
         // Establece la posición mínima y máxima de los productos mostrados en 0
         posicionMin = 0;
         posicionMax = 0;
-        
-        // Actualiza la posicion mínima y máxima y muestra los productos
-        displayProductos(); 
+
+        // Actualiza la posicion máxima y muestra los productos
+        displayProductos();
 
         // Activa o desactiva los botones para cambiar páginas de productos según sea necesario
         lockUnlockBotonesComprar();
-        
+
         // Cambia el texto de la etiqueta que indica en que página estamos
         etiquetaPagina.setText("Página " + (posicionMin / 8 + 1) + " de " + (productosFiltrado.size() / 8 + 1));
     }//GEN-LAST:event_busquedaButtonActionPerformed
 
     private void displayProductos() {
-        // actualizamos posicionMax
-        for (int i = posicionMin + 1; i <= posicionMin + 9; i++) {
-            posicionMax = posicionMin + i - 1;
+        // actualizamos posicionMax (De esta forma sabemos que productos deberemos mostrar)
+        for (int i = posicionMin; i < posicionMin + 8; i++) {
+            posicionMax = i;
             if (posicionMax < productosFiltrado.size()) {
                 //System.out.println((i) + ".- " + productosFiltrado.get(posicionMax).getTitulo());
             } else {
@@ -410,114 +983,102 @@ public class MenuPrincipal extends javax.swing.JFrame {
         }
 
         // mostramos los productos corresponcientes
-        for (int i = posicionMin; i <= posicionMax; i++) {
-            switch (i % 8) {
-                case 0:
-                    productoMin1.setProducto(productosFiltrado.get(i));
-                    productoMin1.setVisible(true);
-                    break;
-                case 1:
-                    productoMin2.setProducto(productosFiltrado.get(i));
-                    productoMin2.setVisible(true);
-                    break;
-                case 2:
-                    productoMin3.setProducto(productosFiltrado.get(i));
-                    productoMin3.setVisible(true);
-                    break;
-                case 3:
-                    productoMin4.setProducto(productosFiltrado.get(i));
-                    productoMin4.setVisible(true);
-                    break;
-                case 4:
-                    productoMin5.setProducto(productosFiltrado.get(i));
-                    productoMin5.setVisible(true);
-                    break;
-                case 5:
-                    productoMin6.setProducto(productosFiltrado.get(i));
-                    productoMin6.setVisible(true);
-                    break;
-                case 6:
-                    productoMin7.setProducto(productosFiltrado.get(i));
-                    productoMin7.setVisible(true);
-                    break;
-                case 7:
-                    productoMin8.setProducto(productosFiltrado.get(i));
-                    productoMin8.setVisible(true);
-                    break;
-            }
-        }
-
-        // ponemos invisibles las casillas que no deban tener producto
-        for (int i = posicionMax + 1; i < posicionMin + 8; i++) {
-            switch (i % 8) {
-                case 0:
-                    productoMin1.setVisible(false);
-                    break;
-                case 1:
-                    productoMin2.setVisible(false);
-                    break;
-                case 2:
-                    productoMin3.setVisible(false);
-                    break;
-                case 3:
-                    productoMin4.setVisible(false);
-                    break;
-                case 4:
-                    productoMin5.setVisible(false);
-                    break;
-                case 5:
-                    productoMin6.setVisible(false);
-                    break;
-                case 6:
-                    productoMin7.setVisible(false);
-                    break;
-                case 7:
-                    productoMin8.setVisible(false);
-                    break;
-                default:
-                    break;
-            }
+        switch (posicionMax + 1 - posicionMin) {
+            case 8: // Hay que mostrar 8 productos
+                productoMin8.setVisible(true);
+                productoMin8.setProducto(productosFiltrado.get(posicionMin + 7));
+            case 7: // Hay que mostrar 7 productos
+                productoMin7.setVisible(true);
+                productoMin7.setProducto(productosFiltrado.get(posicionMin + 6));
+            case 6: // Hay que mostrar 6 productos
+                productoMin6.setVisible(true);
+                productoMin6.setProducto(productosFiltrado.get(posicionMin + 5));
+            case 5: // Hay que mostrar 5 productos
+                productoMin5.setVisible(true);
+                productoMin5.setProducto(productosFiltrado.get(posicionMin + 4));
+            case 4: // Hay que mostrar 4 productos
+                productoMin4.setVisible(true);
+                productoMin4.setProducto(productosFiltrado.get(posicionMin + 3));
+            case 3: // Hay que mostrar 3 productos
+                productoMin3.setVisible(true);
+                productoMin3.setProducto(productosFiltrado.get(posicionMin + 2));
+            case 2: // Hay que mostrar 2 productos
+                productoMin2.setVisible(true);
+                productoMin2.setProducto(productosFiltrado.get(posicionMin + 1));
+            case 1: // Hay que mostrar 1 productos
+                productoMin1.setVisible(true);
+                productoMin1.setProducto(productosFiltrado.get(posicionMin));
+                icon.setIcon(new ImageIcon(""));
+                errorLabel1.setText("");
+                errorLabel2.setText("");
+                break;
+            case 0: // Hay que mostrar 0 productos
+                Random rnd = new Random();
+                icon.setIcon(new ImageIcon(".\\resources\\logo\\notFound" + rnd.nextInt(5) + ".gif"));
+                errorLabel1.setText("¡Vaya!");
+                errorLabel2.setText("Parece que no se ha encontrado ningún producto");
+                break;
         }
     }
-    
+
     private void lockUnlockBotonesComprar() {
-        if (posicionMin - 10 < 0) {
+        if (posicionMin - 8 < 0) {
             rePag.setEnabled(false);
         } else {
             rePag.setEnabled(true);
         }
 
-        if (posicionMin + 10 >= productosFiltrado.size()) {
+        if (posicionMin + 8 >= productosFiltrado.size()) {
             avPag.setEnabled(false);
         } else {
             avPag.setEnabled(true);
         }
     }
-    
-    private void rePagActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rePagActionPerformed
-        // Disminuye la posición mínima de los productos mostrados en 8
-        posicionMin -= 8;
-        
-        // Actualiza la posicion mínima y máxima y muestra los productos
-        displayProductos(posicionMin + 1);
 
-        // Activa o desactiva los botones para cambiar páginas de productos según sea necesario
+    private void rePagActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rePagActionPerformed
+        // Hacemos los displays de los productos invisibles
+        productoMin1.setVisible(false);
+        productoMin2.setVisible(false);
+        productoMin3.setVisible(false);
+        productoMin4.setVisible(false);
+        productoMin5.setVisible(false);
+        productoMin6.setVisible(false);
+        productoMin7.setVisible(false);
+        productoMin8.setVisible(false);
+
+        // Disminuimos la posicion mínima
+        posicionMin -= 8;
+
+        // Actualiza la posición máxima y muestra los productos
+        displayProductos();
+
+        // Activa o desactiva los botones para cambiar páginas de productos, según sea necesario
         lockUnlockBotonesComprar();
-        
+
         // Cambia el texto de la etiqueta que indica en que página estamos
-        etiquetaPagina.setText("Página " + (posicionMin / 8 + 1) + " de " + (productosFiltrado.size() / 8));
+        etiquetaPagina.setText("Página " + (posicionMin / 8 + 1) + " de " + (productosFiltrado.size() / 8 + 1));
     }//GEN-LAST:event_rePagActionPerformed
 
     private void avPagActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_avPagActionPerformed
-        // Aumenta la posición mínima de los productos mostrados en 8
-        posicionMin += 8;
-        
-        // Actualiza la posicion mínima y máxima y muestra los productos
-        displayProductos(posicionMin + 1);
+        // Hacemos los displays de los productos invisibles
+        productoMin1.setVisible(false);
+        productoMin2.setVisible(false);
+        productoMin3.setVisible(false);
+        productoMin4.setVisible(false);
+        productoMin5.setVisible(false);
+        productoMin6.setVisible(false);
+        productoMin7.setVisible(false);
+        productoMin8.setVisible(false);
 
-        // Activa o desactiva los botones para cambiar páginas de productos según sea necesario
+        // Aumentamos la posicion mínima
+        posicionMin += 8;
+
+        // Actualiza la posición máxima y muestra los productos
+        displayProductos();
+
+        // Activa o desactiva los botones para cambiar páginas de productos, según sea necesario
         lockUnlockBotonesComprar();
-        
+
         // Cambia el texto de la etiqueta que indica en que página estamos
         etiquetaPagina.setText("Página " + (posicionMin / 8 + 1) + " de " + (productosFiltrado.size() / 8 + 1));
     }//GEN-LAST:event_avPagActionPerformed
@@ -536,6 +1097,355 @@ public class MenuPrincipal extends javax.swing.JFrame {
         camposCL.show(jPanel1, "Bienvenida");
     }//GEN-LAST:event_LogoMouseClicked
 
+    private void botonPerfilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonPerfilActionPerformed
+        camposCL.show(jPanel1, "Perfil");
+        correoField.setText(user.correo);
+        claveField.setText(user.clave);
+        nombreField.setText(user.getNombre());
+        ccppField.setText("" + user.getCCPP());
+        ccField.setText(user.getTTCC());
+        dniField.setText(user.getDni());
+
+        if (user instanceof Profesional) {
+            togglePro.setSelected(true);
+            variablesPro.setEnabled(true);
+            descripcionField.setText(((Profesional) user).getDescripcion());
+            horarioField.setText(((Profesional) user).getHorario());
+            telefonoField.setText(((Profesional) user).getTelefono());
+            webField.setText(((Profesional) user).getWeb());
+        } else {
+            togglePro.setSelected(false);
+            variablesPro.setEnabled(false);
+            descripcionField.setText("");
+            horarioField.setText("");
+            telefonoField.setText("");
+            webField.setText("");
+        }
+
+        miProductoMin1.setVisible(false);
+        miProductoMin2.setVisible(false);
+        miProductoMin3.setVisible(false);
+        miProductoMin4.setVisible(false);
+
+        posicionMin = 0;
+        posicionMax = 0;
+
+        displayMisProductos();
+
+        lockUnlockBotonesMisProductos();
+    }//GEN-LAST:event_botonPerfilActionPerformed
+
+    private void displayMisProductos() {
+        // actualizamos posicionMax (De esta forma sabemos que productos deberemos mostrar)
+        ArrayList<Producto> misProductos = user.getProductos();
+        for (int i = posicionMin; i < posicionMin + 4; i++) {
+            posicionMax = i;
+            if (posicionMax < misProductos.size()) {
+            } else {
+                posicionMax--;
+                break;
+            }
+        }
+
+        // mostramos los productos corresponcientes
+        switch (posicionMax + 1 - posicionMin) {
+            case 4: // Hay que mostrar 4 productos
+                miProductoMin4.setVisible(true);
+                miProductoMin4.setProducto(misProductos.get(posicionMin + 3));
+            case 3: // Hay que mostrar 3 productos
+                miProductoMin3.setVisible(true);
+                miProductoMin3.setProducto(misProductos.get(posicionMin + 2));
+            case 2: // Hay que mostrar 2 productos
+                miProductoMin2.setVisible(true);
+                miProductoMin2.setProducto(misProductos.get(posicionMin + 1));
+            case 1: // Hay que mostrar 1 productos
+                miProductoMin1.setVisible(true);
+                miProductoMin1.setProducto(misProductos.get(posicionMin));
+                fotoSinProductos.setIcon(new ImageIcon(""));
+                textoSinProductos1.setText("");
+                textoSinProductos2.setText("");
+                break;
+            case 0: // Hay que mostrar 0 productos
+                fotoSinProductos.setIcon(new ImageIcon(".\\resources\\logo\\sleepy.gif"));
+                textoSinProductos1.setText("¡Ups!");
+                textoSinProductos2.setText("Parece que aún no tienes ningún producto");
+                break;
+        }
+    }
+
+    private void lockUnlockBotonesMisProductos() {
+        if (posicionMin - 4 < 0) {
+            prevPage.setEnabled(false);
+        } else {
+            prevPage.setEnabled(true);
+        }
+
+        if (posicionMin + 4 >= user.getProductos().size()) {
+            nextPage.setEnabled(false);
+        } else {
+            nextPage.setEnabled(true);
+        }
+    }
+
+    private void editarDescripcionMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editarDescripcionMouseEntered
+        editarDescripcion.setFont(new java.awt.Font("OCR A Extended", 1, 12));
+    }//GEN-LAST:event_editarDescripcionMouseEntered
+    private void editarDescripcionMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editarDescripcionMouseExited
+        editarDescripcion.setFont(new java.awt.Font("OCR A Extended", 0, 12));
+    }//GEN-LAST:event_editarDescripcionMouseExited
+    private void editarHorarioMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editarHorarioMouseEntered
+        editarHorario.setFont(new java.awt.Font("OCR A Extended", 1, 12));
+    }//GEN-LAST:event_editarHorarioMouseEntered
+    private void editarHorarioMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editarHorarioMouseExited
+        editarHorario.setFont(new java.awt.Font("OCR A Extended", 0, 12));
+    }//GEN-LAST:event_editarHorarioMouseExited
+    private void editarTelefonoMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editarTelefonoMouseEntered
+        editarTelefono.setFont(new java.awt.Font("OCR A Extended", 1, 12));
+    }//GEN-LAST:event_editarTelefonoMouseEntered
+    private void editarTelefonoMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editarTelefonoMouseExited
+        editarTelefono.setFont(new java.awt.Font("OCR A Extended", 0, 12));
+    }//GEN-LAST:event_editarTelefonoMouseExited
+    private void editarWebMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editarWebMouseEntered
+        editarWeb.setFont(new java.awt.Font("OCR A Extended", 1, 12));
+    }//GEN-LAST:event_editarWebMouseEntered
+    private void editarWebMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editarWebMouseExited
+        editarWeb.setFont(new java.awt.Font("OCR A Extended", 0, 12));
+    }//GEN-LAST:event_editarWebMouseExited
+    private void editarCorreoMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editarCorreoMouseEntered
+        editarCorreo.setFont(new java.awt.Font("OCR A Extended", 1, 12));
+    }//GEN-LAST:event_editarCorreoMouseEntered
+    private void editarCorreoMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editarCorreoMouseExited
+        editarCorreo.setFont(new java.awt.Font("OCR A Extended", 0, 12));
+    }//GEN-LAST:event_editarCorreoMouseExited
+    private void editarClaveMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editarClaveMouseEntered
+        editarClave.setFont(new java.awt.Font("OCR A Extended", 1, 12));
+    }//GEN-LAST:event_editarClaveMouseEntered
+    private void editarClaveMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editarClaveMouseExited
+        editarClave.setFont(new java.awt.Font("OCR A Extended", 0, 12));
+    }//GEN-LAST:event_editarClaveMouseExited
+    private void nombreLabelMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_nombreLabelMouseEntered
+        nombreLabel.setFont(new java.awt.Font("OCR A Extended", 1, 12));
+    }//GEN-LAST:event_nombreLabelMouseEntered
+    private void nombreLabelMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_nombreLabelMouseExited
+        nombreLabel.setFont(new java.awt.Font("OCR A Extended", 0, 12));
+    }//GEN-LAST:event_nombreLabelMouseExited
+    private void editarCcppMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editarCcppMouseEntered
+        editarCcpp.setFont(new java.awt.Font("OCR A Extended", 1, 12));
+    }//GEN-LAST:event_editarCcppMouseEntered
+    private void editarCcppMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editarCcppMouseExited
+        editarCcpp.setFont(new java.awt.Font("OCR A Extended", 0, 12));
+    }//GEN-LAST:event_editarCcppMouseExited
+    private void editarCcMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editarCcMouseEntered
+        editarCc.setFont(new java.awt.Font("OCR A Extended", 1, 12));
+    }//GEN-LAST:event_editarCcMouseEntered
+    private void editarCcMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editarCcMouseExited
+        editarCc.setFont(new java.awt.Font("OCR A Extended", 0, 12));
+    }//GEN-LAST:event_editarCcMouseExited
+    private void editarDniMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editarDniMouseEntered
+        editarDni.setFont(new java.awt.Font("OCR A Extended", 1, 12));
+    }//GEN-LAST:event_editarDniMouseEntered
+    private void editarDniMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editarDniMouseExited
+        editarDni.setFont(new java.awt.Font("OCR A Extended", 0, 12));
+    }//GEN-LAST:event_editarDniMouseExited
+
+    private void nextPageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nextPageActionPerformed
+        miProductoMin1.setVisible(false);
+        miProductoMin2.setVisible(false);
+        miProductoMin3.setVisible(false);
+        miProductoMin4.setVisible(false);
+
+        // Aumentamos la posicion mínima
+        posicionMin += 4;
+
+        // Actualiza la posición máxima y muestra los productos
+        displayMisProductos();
+
+        // Activa o desactiva los botones para cambiar páginas de productos, según sea necesario
+        lockUnlockBotonesMisProductos();
+    }//GEN-LAST:event_nextPageActionPerformed
+
+    private void prevPageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_prevPageActionPerformed
+        miProductoMin1.setVisible(false);
+        miProductoMin2.setVisible(false);
+        miProductoMin3.setVisible(false);
+        miProductoMin4.setVisible(false);
+
+        // Aumentamos la posicion mínima
+        posicionMin -= 4;
+
+        // Actualiza la posición máxima y muestra los productos
+        displayMisProductos();
+
+        // Activa o desactiva los botones para cambiar páginas de productos, según sea necesario
+        lockUnlockBotonesMisProductos();
+    }//GEN-LAST:event_prevPageActionPerformed
+
+    private void editarCorreoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editarCorreoMouseClicked
+        if (correoField.isEditable()) {
+            // Este campo deja de ser editable
+            correoField.setEditable(false);
+            
+            // Se comprueba que el cambio sea válido
+            if (checkCorreo(correoField.getText())) {
+                // Si lo es, efectúa el cambio
+                user.setCorreo(correoField.getText());
+            } else {
+                // Si no lo es, avisa al usuario
+                JOptionPane.showMessageDialog(this, "El formato del correo es incorrecto.\nNo se guardaron los cambios.", "Error de formato", JOptionPane.ERROR_MESSAGE);
+            }
+            
+            // Cambia los textos a sus estados finales
+            correoField.setText(user.getCorreo());
+            editarCorreo.setText("editar");
+        } else {
+            // Este campo pasa a ser editable
+            correoField.setEditable(true);
+            
+            // Se cambia el texto de este "boton"
+            editarCorreo.setText("guardar");
+        }
+    }//GEN-LAST:event_editarCorreoMouseClicked
+
+    private void editarClaveMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editarClaveMouseClicked
+        if (claveField.isEditable()) {
+            // Este campo deja de ser editable
+            claveField.setEditable(false);
+            
+            // Se comprueba que el cambio sea válido
+            if (checkClave(new String(claveField.getPassword()))) {
+                // Si lo es, efectúa el cambio
+                user.setClave(new String(claveField.getPassword()));
+            } else {
+                // Si no lo es, avisa al usuario
+                JOptionPane.showMessageDialog(this, "El formato de la contraseña es incorrecto.\nEsta solamente puede contener letras y números.\nNo se guardaron los cambios.", "Error de formato", JOptionPane.ERROR_MESSAGE);
+            }
+            
+            // Cambia los textos a sus estados finales
+            claveField.setText(user.getClave());
+            editarClave.setText("editar");
+        } else {
+            // Este campo pasa a ser editable
+            claveField.setEditable(true);
+            
+            // Se cambia el texto de este "boton"
+            editarClave.setText("guardar");
+        }
+    }//GEN-LAST:event_editarClaveMouseClicked
+
+    private void nombreLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_nombreLabelMouseClicked
+        if (nombreField.isEditable()) {
+            // Este campo deja de ser editable
+            nombreField.setEditable(false);
+            
+            // Se actualiza el nombre del usuario
+            user.setNombre(nombreField.getText());
+            
+            // Cambia los textos a sus estados finales
+            nombreField.setText(user.getNombre());
+            editarNombre.setText("editar");
+        } else {
+            // Este campo pasa a ser editable
+            nombreField.setEditable(true);
+            
+            // Se cambia el texto de este "boton"
+            editarNombre.setText("guardar");
+        }
+    }//GEN-LAST:event_nombreLabelMouseClicked
+
+    private void editarCcppMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editarCcppMouseClicked
+        if (ccppField.isEditable()) {
+            // Este campo deja de ser editable
+            ccppField.setEditable(false);
+            
+            // Se comprueba que el cambio sea válido
+            if (checkCodigoPostal(ccppField.getText())) {
+                // Si lo es, efectúa el cambio
+                user.setCCPP(Integer.parseInt(ccppField.getText()));
+            } else {
+                // Si no lo es, avisa al usuario
+                JOptionPane.showMessageDialog(this, "El formato del codigo postal es incorrecto.\nNo se guardaron los cambios.", "Error de formato", JOptionPane.ERROR_MESSAGE);
+            }
+            
+            // Cambia los textos a sus estados finales
+            ccppField.setText("" + user.getCcpp());
+            editarCcpp.setText("editar");
+        } else {
+            // Este campo pasa a ser editable
+            ccppField.setEditable(true);
+            
+            // Se cambia el texto de este "boton"
+            editarCcpp.setText("guardar");
+        }
+    }//GEN-LAST:event_editarCcppMouseClicked
+
+    private void editarCcMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editarCcMouseClicked
+        if (ccField.isEditable()) {
+            // Este campo deja de ser editable
+            ccField.setEditable(false);
+            
+            // Se comprueba que el cambio sea válido
+            if (checkTarjetaCredito(ccField.getText())) {
+                // Si lo es, efectúa el cambio
+                user.setTTCC(ccField.getText());
+            } else {
+                // Si no lo es, avisa al usuario
+                JOptionPane.showMessageDialog(this, "El formato de la tarjeta de crédito es incorrecto.\nNo se guardaron los cambios.", "Error de formato", JOptionPane.ERROR_MESSAGE);
+            }
+            
+            // Cambia los textos a sus estados finales
+            ccField.setText("" + user.getTTCC());
+            editarCc.setText("editar");
+        } else {
+            // Este campo pasa a ser editable
+            ccField.setEditable(true);
+            
+            // Se cambia el texto de este "boton"
+            editarCc.setText("guardar");
+        }
+    }//GEN-LAST:event_editarCcMouseClicked
+
+    private void editarDniMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editarDniMouseClicked
+        if (dniField.isEditable()) {
+            // Este campo deja de ser editable
+            dniField.setEditable(false);
+            
+            // Se comprueba que el cambio sea válido
+            if (checkDni(dniField.getText())) {
+                // Si lo es, efectúa el cambio
+                user.setDni(dniField.getText());
+            } else {
+                // Si no lo es, avisa al usuario
+                JOptionPane.showMessageDialog(this, "El formato del DNI es incorrecto.\nNo se guardaron los cambios.", "Error de formato", JOptionPane.ERROR_MESSAGE);
+            }
+            
+            // Cambia los textos a sus estados finales
+            dniField.setText("" + user.getDni());
+            editarDni.setText("editar");
+        } else {
+            // Este campo pasa a ser editable
+            dniField.setEditable(true);
+            
+            // Se cambia el texto de este "boton"
+            editarDni.setText("guardar");
+        }
+    }//GEN-LAST:event_editarDniMouseClicked
+
+    private void miProductoMin1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_miProductoMin1MouseClicked
+        new MenuEditarProducto(this, miProductoMin1);
+    }//GEN-LAST:event_miProductoMin1MouseClicked
+
+    private void miProductoMin2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_miProductoMin2MouseClicked
+        new MenuEditarProducto(this, miProductoMin2);
+    }//GEN-LAST:event_miProductoMin2MouseClicked
+
+    private void miProductoMin3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_miProductoMin3MouseClicked
+        new MenuEditarProducto(this, miProductoMin3);
+    }//GEN-LAST:event_miProductoMin3MouseClicked
+
+    private void miProductoMin4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_miProductoMin4MouseClicked
+        new MenuEditarProducto(this, miProductoMin4);
+    }//GEN-LAST:event_miProductoMin4MouseClicked
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Logo;
     private javax.swing.JButton avPag;
@@ -543,8 +1453,33 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private javax.swing.JButton botonPerfil;
     private javax.swing.JButton botonSubir;
     private javax.swing.JButton busquedaButton;
+    private javax.swing.JFormattedTextField ccField;
+    private javax.swing.JLabel ccLabel;
+    private javax.swing.JFormattedTextField ccppField;
+    private javax.swing.JLabel ccppLabel;
     private javax.swing.JTextField claveBusqueda;
+    private javax.swing.JPasswordField claveField;
+    private javax.swing.JLabel claveLabel;
     private javax.swing.JComboBox<String> comboBoxCategoria;
+    private javax.swing.JTextField correoField;
+    private javax.swing.JLabel correoLabel;
+    private javax.swing.JTextArea descripcionField;
+    private javax.swing.JLabel descripcionLabel;
+    private javax.swing.JScrollPane descripciónScroll;
+    private javax.swing.JFormattedTextField dniField;
+    private javax.swing.JLabel dniLabel;
+    private javax.swing.JLabel editarCc;
+    private javax.swing.JLabel editarCcpp;
+    private javax.swing.JLabel editarClave;
+    private javax.swing.JLabel editarCorreo;
+    private javax.swing.JLabel editarDescripcion;
+    private javax.swing.JLabel editarDni;
+    private javax.swing.JLabel editarHorario;
+    private javax.swing.JLabel editarNombre;
+    private javax.swing.JLabel editarTelefono;
+    private javax.swing.JLabel editarWeb;
+    private javax.swing.JLabel errorLabel1;
+    private javax.swing.JLabel errorLabel2;
     private javax.swing.JLabel etiquetaBusqueda;
     private javax.swing.JLabel etiquetaCategoria;
     private javax.swing.JLabel etiquetaPagina;
@@ -552,12 +1487,26 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private javax.swing.Box.Filler filler2;
     private javax.swing.Box.Filler filler3;
     private javax.swing.Box.Filler filler4;
+    private javax.swing.JLabel fotoSinProductos;
+    private javax.swing.JFormattedTextField horarioField;
+    private javax.swing.JLabel horarioLabel;
+    private javax.swing.JLabel icon;
+    private javax.swing.JPanel imagen;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
+    private interfaz.panels.MiProductoMin miProductoMin1;
+    private interfaz.panels.MiProductoMin miProductoMin2;
+    private interfaz.panels.MiProductoMin miProductoMin3;
+    private interfaz.panels.MiProductoMin miProductoMin4;
+    private javax.swing.JPanel misProductosDisplay;
+    private javax.swing.JButton nextPage;
+    private javax.swing.JTextField nombreField;
+    private javax.swing.JLabel nombreLabel;
     private javax.swing.JPanel panelBienvenida;
     private javax.swing.JPanel panelCompra;
     private javax.swing.JPanel panelPerfil;
+    private javax.swing.JButton prevPage;
     private interfaz.panels.ProductoMin productoMin1;
     private interfaz.panels.ProductoMin productoMin2;
     private interfaz.panels.ProductoMin productoMin3;
@@ -566,6 +1515,16 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private interfaz.panels.ProductoMin productoMin6;
     private interfaz.panels.ProductoMin productoMin7;
     private interfaz.panels.ProductoMin productoMin8;
+    private javax.swing.JLabel productosLabel;
     private javax.swing.JButton rePag;
+    private javax.swing.JFormattedTextField telefonoField;
+    private javax.swing.JLabel telefonoLabel;
+    private javax.swing.JLabel textoSinProductos1;
+    private javax.swing.JLabel textoSinProductos2;
+    private javax.swing.JLabel toggleLabel;
+    private javax.swing.JToggleButton togglePro;
+    private javax.swing.JPanel variablesPro;
+    private javax.swing.JTextField webField;
+    private javax.swing.JLabel webLabel;
     // End of variables declaration//GEN-END:variables
 }
