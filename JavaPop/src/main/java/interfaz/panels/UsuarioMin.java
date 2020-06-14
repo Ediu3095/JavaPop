@@ -101,9 +101,9 @@ public class UsuarioMin extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel etiquetaCorreo;
-    private javax.swing.JLabel etiquetaDNI;
-    private javax.swing.JLabel etiquetaNombre;
+    public javax.swing.JLabel etiquetaCorreo;
+    public javax.swing.JLabel etiquetaDNI;
+    public javax.swing.JLabel etiquetaNombre;
     private javax.swing.JLabel etiquetaTipo;
     public javax.swing.JPanel jPanel4;
     // End of variables declaration//GEN-END:variables

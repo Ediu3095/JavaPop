@@ -55,6 +55,7 @@ public class MenuAdmin extends javax.swing.JFrame {
         // setup icon
         ImageIcon img = new ImageIcon(".\\resources\\logo\\IconoJavaPop2.png");
         super.setIconImage(img.getImage());
+        //this.clienteDefinitivo = ;
 
         // Guardamos el CardLayout como atributo de la clase para acceder facilmente
         comboBoxFuncion.setSelectedItem("");
@@ -87,6 +88,31 @@ public class MenuAdmin extends javax.swing.JFrame {
         filler2 = new javax.swing.Box.Filler(new java.awt.Dimension(80, 100), new java.awt.Dimension(60, 100), new java.awt.Dimension(80, 100));
         filler3 = new javax.swing.Box.Filler(new java.awt.Dimension(80, 100), new java.awt.Dimension(60, 100), new java.awt.Dimension(80, 100));
         jPanel1 = new javax.swing.JPanel();
+        panelVentas = new javax.swing.JPanel();
+        ventaMin1 = new interfaz.panels.VentaMin();
+        ventaMin2 = new interfaz.panels.VentaMin();
+        ventaMin3 = new interfaz.panels.VentaMin();
+        ventaMin4 = new interfaz.panels.VentaMin();
+        ventaMin5 = new interfaz.panels.VentaMin();
+        ventaMin6 = new interfaz.panels.VentaMin();
+        ventaMin7 = new interfaz.panels.VentaMin();
+        ventaMin8 = new interfaz.panels.VentaMin();
+        usuarioEditPanel9 = new javax.swing.JPanel();
+        ventaEditLabel5 = new javax.swing.JLabel();
+        usuarioEditPanel10 = new javax.swing.JPanel();
+        ventaEditLabel7 = new javax.swing.JLabel();
+        usuarioEditPanel11 = new javax.swing.JPanel();
+        ventaEditLabel8 = new javax.swing.JLabel();
+        usuarioEditPanel12 = new javax.swing.JPanel();
+        ventaEditLabel6 = new javax.swing.JLabel();
+        usuarioEditPanel13 = new javax.swing.JPanel();
+        ventaEditLabel4 = new javax.swing.JLabel();
+        usuarioEditPanel14 = new javax.swing.JPanel();
+        ventaEditLabel3 = new javax.swing.JLabel();
+        usuarioEditPanel15 = new javax.swing.JPanel();
+        ventaEditLabel2 = new javax.swing.JLabel();
+        usuarioEditPanel16 = new javax.swing.JPanel();
+        ventaEditLabel1 = new javax.swing.JLabel();
         panelEditarUsuario = new javax.swing.JPanel();
         nombreUsuarioEditLabel = new javax.swing.JLabel();
         correoUsuarioEditLabel = new javax.swing.JLabel();
@@ -108,11 +134,7 @@ public class MenuAdmin extends javax.swing.JFrame {
         jLabel9 = new javax.swing.JLabel();
         panelBienvenida = new javax.swing.JPanel();
         panelUsuarios = new javax.swing.JPanel();
-        usuarioMin1 = new javax.swing.JPanel();
-        etiquetaDNI1 = new javax.swing.JLabel();
-        etiquetaNombre1 = new javax.swing.JLabel();
-        etiquetaCorreo1 = new javax.swing.JLabel();
-        etiquetaTipo = new javax.swing.JLabel();
+        usuarioMin1 = new interfaz.panels.UsuarioMin();
         usuarioEditPanel1 = new javax.swing.JPanel();
         userEditLabel1 = new javax.swing.JLabel();
         usuarioMin2 = new interfaz.panels.UsuarioMin();
@@ -297,6 +319,298 @@ public class MenuAdmin extends javax.swing.JFrame {
         );
 
         jPanel1.setLayout(new java.awt.CardLayout());
+
+        panelVentas.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        panelVentas.add(ventaMin1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 670, -1));
+        panelVentas.add(ventaMin2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 490, 670, -1));
+        panelVentas.add(ventaMin3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 70, 670, -1));
+        panelVentas.add(ventaMin4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 140, 670, -1));
+        panelVentas.add(ventaMin5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 210, 670, -1));
+        panelVentas.add(ventaMin6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 280, 670, -1));
+        panelVentas.add(ventaMin7, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 350, 670, -1));
+        panelVentas.add(ventaMin8, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 420, 670, -1));
+
+        usuarioEditPanel9.setBackground(new java.awt.Color(204, 204, 204));
+
+        ventaEditLabel5.setFont(new java.awt.Font("OCR A Extended", 0, 12)); // NOI18N
+        ventaEditLabel5.setText("Edit");
+        ventaEditLabel5.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                ventaEditLabel5MouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                ventaEditLabel5MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                ventaEditLabel5MouseExited(evt);
+            }
+        });
+
+        javax.swing.GroupLayout usuarioEditPanel9Layout = new javax.swing.GroupLayout(usuarioEditPanel9);
+        usuarioEditPanel9.setLayout(usuarioEditPanel9Layout);
+        usuarioEditPanel9Layout.setHorizontalGroup(
+            usuarioEditPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, usuarioEditPanel9Layout.createSequentialGroup()
+                .addContainerGap(126, Short.MAX_VALUE)
+                .addComponent(ventaEditLabel5)
+                .addGap(106, 106, 106))
+        );
+        usuarioEditPanel9Layout.setVerticalGroup(
+            usuarioEditPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(usuarioEditPanel9Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(ventaEditLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(17, Short.MAX_VALUE))
+        );
+
+        panelVentas.add(usuarioEditPanel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 280, 260, 50));
+
+        usuarioEditPanel10.setBackground(new java.awt.Color(204, 204, 204));
+
+        ventaEditLabel7.setFont(new java.awt.Font("OCR A Extended", 0, 12)); // NOI18N
+        ventaEditLabel7.setText("Edit");
+        ventaEditLabel7.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                ventaEditLabel7MouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                ventaEditLabel7MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                ventaEditLabel7MouseExited(evt);
+            }
+        });
+
+        javax.swing.GroupLayout usuarioEditPanel10Layout = new javax.swing.GroupLayout(usuarioEditPanel10);
+        usuarioEditPanel10.setLayout(usuarioEditPanel10Layout);
+        usuarioEditPanel10Layout.setHorizontalGroup(
+            usuarioEditPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(usuarioEditPanel10Layout.createSequentialGroup()
+                .addGap(96, 96, 96)
+                .addComponent(ventaEditLabel7)
+                .addContainerGap(106, Short.MAX_VALUE))
+        );
+        usuarioEditPanel10Layout.setVerticalGroup(
+            usuarioEditPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(usuarioEditPanel10Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(ventaEditLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(15, Short.MAX_VALUE))
+        );
+
+        panelVentas.add(usuarioEditPanel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 420, 230, 50));
+
+        usuarioEditPanel11.setBackground(new java.awt.Color(204, 204, 204));
+
+        ventaEditLabel8.setFont(new java.awt.Font("OCR A Extended", 0, 12)); // NOI18N
+        ventaEditLabel8.setText("Edit");
+        ventaEditLabel8.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                ventaEditLabel8MouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                ventaEditLabel8MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                ventaEditLabel8MouseExited(evt);
+            }
+        });
+
+        javax.swing.GroupLayout usuarioEditPanel11Layout = new javax.swing.GroupLayout(usuarioEditPanel11);
+        usuarioEditPanel11.setLayout(usuarioEditPanel11Layout);
+        usuarioEditPanel11Layout.setHorizontalGroup(
+            usuarioEditPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(usuarioEditPanel11Layout.createSequentialGroup()
+                .addGap(98, 98, 98)
+                .addComponent(ventaEditLabel8)
+                .addContainerGap(104, Short.MAX_VALUE))
+        );
+        usuarioEditPanel11Layout.setVerticalGroup(
+            usuarioEditPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(usuarioEditPanel11Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(ventaEditLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, 28, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+
+        panelVentas.add(usuarioEditPanel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 490, 230, 50));
+
+        usuarioEditPanel12.setBackground(new java.awt.Color(204, 204, 204));
+
+        ventaEditLabel6.setFont(new java.awt.Font("OCR A Extended", 0, 12)); // NOI18N
+        ventaEditLabel6.setText("Edit");
+        ventaEditLabel6.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                ventaEditLabel6MouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                ventaEditLabel6MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                ventaEditLabel6MouseExited(evt);
+            }
+        });
+
+        javax.swing.GroupLayout usuarioEditPanel12Layout = new javax.swing.GroupLayout(usuarioEditPanel12);
+        usuarioEditPanel12.setLayout(usuarioEditPanel12Layout);
+        usuarioEditPanel12Layout.setHorizontalGroup(
+            usuarioEditPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(usuarioEditPanel12Layout.createSequentialGroup()
+                .addGap(96, 96, 96)
+                .addComponent(ventaEditLabel6)
+                .addContainerGap(106, Short.MAX_VALUE))
+        );
+        usuarioEditPanel12Layout.setVerticalGroup(
+            usuarioEditPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(usuarioEditPanel12Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(ventaEditLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(14, Short.MAX_VALUE))
+        );
+
+        panelVentas.add(usuarioEditPanel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 350, 230, 50));
+
+        usuarioEditPanel13.setBackground(new java.awt.Color(204, 204, 204));
+
+        ventaEditLabel4.setFont(new java.awt.Font("OCR A Extended", 0, 12)); // NOI18N
+        ventaEditLabel4.setText("Edit");
+        ventaEditLabel4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                ventaEditLabel4MouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                ventaEditLabel4MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                ventaEditLabel4MouseExited(evt);
+            }
+        });
+
+        javax.swing.GroupLayout usuarioEditPanel13Layout = new javax.swing.GroupLayout(usuarioEditPanel13);
+        usuarioEditPanel13.setLayout(usuarioEditPanel13Layout);
+        usuarioEditPanel13Layout.setHorizontalGroup(
+            usuarioEditPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(usuarioEditPanel13Layout.createSequentialGroup()
+                .addGap(98, 98, 98)
+                .addComponent(ventaEditLabel4)
+                .addContainerGap(104, Short.MAX_VALUE))
+        );
+        usuarioEditPanel13Layout.setVerticalGroup(
+            usuarioEditPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(usuarioEditPanel13Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(ventaEditLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(15, Short.MAX_VALUE))
+        );
+
+        panelVentas.add(usuarioEditPanel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 210, 230, 50));
+
+        usuarioEditPanel14.setBackground(new java.awt.Color(204, 204, 204));
+
+        ventaEditLabel3.setFont(new java.awt.Font("OCR A Extended", 0, 12)); // NOI18N
+        ventaEditLabel3.setText("Edit");
+        ventaEditLabel3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                ventaEditLabel3MouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                ventaEditLabel3MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                ventaEditLabel3MouseExited(evt);
+            }
+        });
+
+        javax.swing.GroupLayout usuarioEditPanel14Layout = new javax.swing.GroupLayout(usuarioEditPanel14);
+        usuarioEditPanel14.setLayout(usuarioEditPanel14Layout);
+        usuarioEditPanel14Layout.setHorizontalGroup(
+            usuarioEditPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(usuarioEditPanel14Layout.createSequentialGroup()
+                .addGap(99, 99, 99)
+                .addComponent(ventaEditLabel3)
+                .addContainerGap(103, Short.MAX_VALUE))
+        );
+        usuarioEditPanel14Layout.setVerticalGroup(
+            usuarioEditPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(usuarioEditPanel14Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(ventaEditLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(14, Short.MAX_VALUE))
+        );
+
+        panelVentas.add(usuarioEditPanel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 140, 230, 50));
+
+        usuarioEditPanel15.setBackground(new java.awt.Color(204, 204, 204));
+
+        ventaEditLabel2.setFont(new java.awt.Font("OCR A Extended", 0, 12)); // NOI18N
+        ventaEditLabel2.setText("Edit");
+        ventaEditLabel2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                ventaEditLabel2MouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                ventaEditLabel2MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                ventaEditLabel2MouseExited(evt);
+            }
+        });
+
+        javax.swing.GroupLayout usuarioEditPanel15Layout = new javax.swing.GroupLayout(usuarioEditPanel15);
+        usuarioEditPanel15.setLayout(usuarioEditPanel15Layout);
+        usuarioEditPanel15Layout.setHorizontalGroup(
+            usuarioEditPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(usuarioEditPanel15Layout.createSequentialGroup()
+                .addGap(99, 99, 99)
+                .addComponent(ventaEditLabel2)
+                .addContainerGap(103, Short.MAX_VALUE))
+        );
+        usuarioEditPanel15Layout.setVerticalGroup(
+            usuarioEditPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(usuarioEditPanel15Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(ventaEditLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(13, Short.MAX_VALUE))
+        );
+
+        panelVentas.add(usuarioEditPanel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 70, 230, 50));
+
+        usuarioEditPanel16.setBackground(new java.awt.Color(204, 204, 204));
+
+        ventaEditLabel1.setFont(new java.awt.Font("OCR A Extended", 0, 12)); // NOI18N
+        ventaEditLabel1.setText("Edit");
+        ventaEditLabel1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                ventaEditLabel1MouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                ventaEditLabel1MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                ventaEditLabel1MouseExited(evt);
+            }
+        });
+
+        javax.swing.GroupLayout usuarioEditPanel16Layout = new javax.swing.GroupLayout(usuarioEditPanel16);
+        usuarioEditPanel16.setLayout(usuarioEditPanel16Layout);
+        usuarioEditPanel16Layout.setHorizontalGroup(
+            usuarioEditPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(usuarioEditPanel16Layout.createSequentialGroup()
+                .addGap(101, 101, 101)
+                .addComponent(ventaEditLabel1)
+                .addContainerGap(101, Short.MAX_VALUE))
+        );
+        usuarioEditPanel16Layout.setVerticalGroup(
+            usuarioEditPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(usuarioEditPanel16Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(ventaEditLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(15, Short.MAX_VALUE))
+        );
+
+        panelVentas.add(usuarioEditPanel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 0, 230, 50));
+
+        jPanel1.add(panelVentas, "card8");
 
         nombreUsuarioEditLabel.setText("Editar");
         nombreUsuarioEditLabel.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -549,7 +863,7 @@ public class MenuAdmin extends javax.swing.JFrame {
                                 .addGap(10, 10, 10)
                                 .addComponent(jLabel5))
                             .addComponent(ccEditField, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(185, Short.MAX_VALUE))
+                .addContainerGap(176, Short.MAX_VALUE))
         );
 
         jPanel1.add(panelEditarUsuario, "card7");
@@ -562,54 +876,12 @@ public class MenuAdmin extends javax.swing.JFrame {
         );
         panelBienvenidaLayout.setVerticalGroup(
             panelBienvenidaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 592, Short.MAX_VALUE)
+            .addGap(0, 583, Short.MAX_VALUE)
         );
 
         jPanel1.add(panelBienvenida, "Bienvenida\n");
 
         panelUsuarios.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        usuarioMin1.setBackground(new java.awt.Color(204, 204, 204));
-
-        etiquetaDNI1.setFont(new java.awt.Font("OCR A Extended", 0, 12)); // NOI18N
-        etiquetaDNI1.setText("ID");
-
-        etiquetaNombre1.setFont(new java.awt.Font("OCR A Extended", 0, 12)); // NOI18N
-        etiquetaNombre1.setText("Name");
-
-        etiquetaCorreo1.setFont(new java.awt.Font("OCR A Extended", 0, 12)); // NOI18N
-        etiquetaCorreo1.setText("Email");
-
-        etiquetaTipo.setFont(new java.awt.Font("OCR A Extended", 0, 12)); // NOI18N
-        etiquetaTipo.setText("Type");
-
-        javax.swing.GroupLayout usuarioMin1Layout = new javax.swing.GroupLayout(usuarioMin1);
-        usuarioMin1.setLayout(usuarioMin1Layout);
-        usuarioMin1Layout.setHorizontalGroup(
-            usuarioMin1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(usuarioMin1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(etiquetaDNI1)
-                .addGap(105, 105, 105)
-                .addComponent(etiquetaNombre1)
-                .addGap(125, 125, 125)
-                .addComponent(etiquetaCorreo1)
-                .addGap(212, 212, 212)
-                .addComponent(etiquetaTipo)
-                .addContainerGap(93, Short.MAX_VALUE))
-        );
-        usuarioMin1Layout.setVerticalGroup(
-            usuarioMin1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(usuarioMin1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(usuarioMin1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(etiquetaDNI1, javax.swing.GroupLayout.DEFAULT_SIZE, 28, Short.MAX_VALUE)
-                    .addComponent(etiquetaNombre1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(etiquetaCorreo1)
-                    .addComponent(etiquetaTipo))
-                .addContainerGap())
-        );
-
         panelUsuarios.add(usuarioMin1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 650, -1));
 
         usuarioEditPanel1.setBackground(new java.awt.Color(204, 204, 204));
@@ -633,7 +905,7 @@ public class MenuAdmin extends javax.swing.JFrame {
         usuarioEditPanel1Layout.setHorizontalGroup(
             usuarioEditPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, usuarioEditPanel1Layout.createSequentialGroup()
-                .addContainerGap(114, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(userEditLabel1)
                 .addGap(88, 88, 88))
         );
@@ -641,11 +913,11 @@ public class MenuAdmin extends javax.swing.JFrame {
             usuarioEditPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(usuarioEditPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(userEditLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 28, Short.MAX_VALUE)
-                .addContainerGap())
+                .addComponent(userEditLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(56, 56, 56))
         );
 
-        panelUsuarios.add(usuarioEditPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 0, 230, 50));
+        panelUsuarios.add(usuarioEditPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 0, 250, 50));
         panelUsuarios.add(usuarioMin2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 70, 650, -1));
 
         usuarioEditPanel2.setBackground(new java.awt.Color(204, 204, 204));
@@ -669,7 +941,7 @@ public class MenuAdmin extends javax.swing.JFrame {
         usuarioEditPanel2Layout.setHorizontalGroup(
             usuarioEditPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, usuarioEditPanel2Layout.createSequentialGroup()
-                .addContainerGap(116, Short.MAX_VALUE)
+                .addContainerGap(136, Short.MAX_VALUE)
                 .addComponent(userEditLabel2)
                 .addGap(86, 86, 86))
         );
@@ -681,7 +953,7 @@ public class MenuAdmin extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        panelUsuarios.add(usuarioEditPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 70, 230, 50));
+        panelUsuarios.add(usuarioEditPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 70, 250, 50));
         panelUsuarios.add(usuarioMin3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 140, 650, -1));
 
         usuarioEditPanel3.setBackground(new java.awt.Color(204, 204, 204));
@@ -705,7 +977,7 @@ public class MenuAdmin extends javax.swing.JFrame {
         usuarioEditPanel3Layout.setHorizontalGroup(
             usuarioEditPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, usuarioEditPanel3Layout.createSequentialGroup()
-                .addContainerGap(116, Short.MAX_VALUE)
+                .addContainerGap(132, Short.MAX_VALUE)
                 .addComponent(userEditLabel3)
                 .addGap(90, 90, 90))
         );
@@ -717,7 +989,7 @@ public class MenuAdmin extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        panelUsuarios.add(usuarioEditPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 140, 234, 50));
+        panelUsuarios.add(usuarioEditPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 140, 250, 50));
         panelUsuarios.add(usuarioMin4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 210, 650, -1));
 
         usuarioEditPanel4.setBackground(new java.awt.Color(204, 204, 204));
@@ -741,7 +1013,7 @@ public class MenuAdmin extends javax.swing.JFrame {
         usuarioEditPanel4Layout.setHorizontalGroup(
             usuarioEditPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, usuarioEditPanel4Layout.createSequentialGroup()
-                .addContainerGap(118, Short.MAX_VALUE)
+                .addContainerGap(134, Short.MAX_VALUE)
                 .addComponent(userEditLabel4)
                 .addGap(88, 88, 88))
         );
@@ -753,7 +1025,7 @@ public class MenuAdmin extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        panelUsuarios.add(usuarioEditPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 210, 234, 50));
+        panelUsuarios.add(usuarioEditPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 210, 250, 50));
         panelUsuarios.add(usuarioMin5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 280, 650, -1));
 
         usuarioEditPanel5.setBackground(new java.awt.Color(204, 204, 204));
@@ -777,7 +1049,7 @@ public class MenuAdmin extends javax.swing.JFrame {
         usuarioEditPanel5Layout.setHorizontalGroup(
             usuarioEditPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, usuarioEditPanel5Layout.createSequentialGroup()
-                .addContainerGap(118, Short.MAX_VALUE)
+                .addContainerGap(134, Short.MAX_VALUE)
                 .addComponent(userEditLabel5)
                 .addGap(88, 88, 88))
         );
@@ -789,7 +1061,7 @@ public class MenuAdmin extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        panelUsuarios.add(usuarioEditPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 280, 234, 50));
+        panelUsuarios.add(usuarioEditPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 280, 250, 50));
         panelUsuarios.add(usuarioMin6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 350, 650, -1));
 
         usuarioEditPanel6.setBackground(new java.awt.Color(204, 204, 204));
@@ -813,7 +1085,7 @@ public class MenuAdmin extends javax.swing.JFrame {
         usuarioEditPanel6Layout.setHorizontalGroup(
             usuarioEditPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, usuarioEditPanel6Layout.createSequentialGroup()
-                .addContainerGap(118, Short.MAX_VALUE)
+                .addContainerGap(134, Short.MAX_VALUE)
                 .addComponent(userEditLabel6)
                 .addGap(88, 88, 88))
         );
@@ -825,7 +1097,7 @@ public class MenuAdmin extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        panelUsuarios.add(usuarioEditPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 350, 234, 50));
+        panelUsuarios.add(usuarioEditPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 350, 250, 50));
         panelUsuarios.add(usuarioMin7, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 420, 650, -1));
 
         usuarioEditPanel7.setBackground(new java.awt.Color(204, 204, 204));
@@ -849,7 +1121,7 @@ public class MenuAdmin extends javax.swing.JFrame {
         usuarioEditPanel7Layout.setHorizontalGroup(
             usuarioEditPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, usuarioEditPanel7Layout.createSequentialGroup()
-                .addContainerGap(119, Short.MAX_VALUE)
+                .addContainerGap(135, Short.MAX_VALUE)
                 .addComponent(userEditLabel7)
                 .addGap(87, 87, 87))
         );
@@ -861,7 +1133,7 @@ public class MenuAdmin extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        panelUsuarios.add(usuarioEditPanel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 420, 234, 50));
+        panelUsuarios.add(usuarioEditPanel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 420, 250, 50));
         panelUsuarios.add(usuarioMin8, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 490, 650, -1));
 
         usuarioEditPanel8.setBackground(new java.awt.Color(204, 204, 204));
@@ -885,7 +1157,7 @@ public class MenuAdmin extends javax.swing.JFrame {
         usuarioEditPanel8Layout.setHorizontalGroup(
             usuarioEditPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, usuarioEditPanel8Layout.createSequentialGroup()
-                .addContainerGap(119, Short.MAX_VALUE)
+                .addContainerGap(135, Short.MAX_VALUE)
                 .addComponent(userEditLabel8)
                 .addGap(87, 87, 87))
         );
@@ -897,7 +1169,7 @@ public class MenuAdmin extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        panelUsuarios.add(usuarioEditPanel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 490, 234, 50));
+        panelUsuarios.add(usuarioEditPanel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 490, 250, 50));
 
         repagUsuarioButton.setText("Atrás");
         repagUsuarioButton.setMaximumSize(new java.awt.Dimension(77, 23));
@@ -917,7 +1189,7 @@ public class MenuAdmin extends javax.swing.JFrame {
         });
         panelUsuarios.add(avpagUsuarioButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 560, -1, -1));
 
-        jPanel1.add(panelUsuarios, "Usuarios");
+        jPanel1.add(panelUsuarios, "cardUsuarios");
 
         jLabel1.setBackground(new java.awt.Color(255, 255, 255));
         jLabel1.setFont(new java.awt.Font("Tahoma", 2, 11)); // NOI18N
@@ -1035,7 +1307,7 @@ public class MenuAdmin extends javax.swing.JFrame {
                     .addComponent(etiquetaPagina)))
         );
 
-        jPanel1.add(panelProductos, "Productos\n");
+        jPanel1.add(panelProductos, "cardProductos\n");
 
         jLabel11.setFont(new java.awt.Font("OCR A Extended", 0, 12)); // NOI18N
         jLabel11.setText("Foto del producto:");
@@ -1244,7 +1516,7 @@ public class MenuAdmin extends javax.swing.JFrame {
                         .addComponent(foto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(urgencia)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 93, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 84, Short.MAX_VALUE)
                 .addGroup(panelEditarProductosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(botonSubir)
                     .addComponent(botonCancelar))
@@ -1276,7 +1548,10 @@ public class MenuAdmin extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(filler2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(filler3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(56, 56, 56)
+                        .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(168, 168, 168)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(filler5, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -1364,7 +1639,34 @@ public class MenuAdmin extends javax.swing.JFrame {
     }//GEN-LAST:event_comboBoxCategoriaActionPerformed
 
     private void comboBoxFuncionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboBoxFuncionActionPerformed
-        // TODO add your handling code here:       
+        int panel = comboBoxFuncion.getSelectedIndex();
+        if (panel == 0) {
+            panelUsuarios.setVisible(true);
+            panelProductos.setVisible(false);
+            panelVentas.setVisible(false);
+            //camposCL.show(jPanel1, "cardUsuarios");
+            
+            usuarioMin1.etiquetaCorreo.setText(user.correo);
+            usuarioMin1.etiquetaNombre.setText(user.getNombre());
+            usuarioMin1.etiquetaDNI.setText(user.getDni());
+            
+            usuarioMin2.etiquetaDNI.setText(user.getDni());
+            usuarioMin2.etiquetaNombre.setText(user.getNombre());
+            usuarioMin2.etiquetaCorreo.setText(user.getCorreo());
+            
+        } else if (panel == 1) {
+            panelProductos.setVisible(true);
+            panelUsuarios.setVisible(false);
+            panelVentas.setVisible(false);
+            System.out.println("Display Productos1");
+            //camposCL.show(jPanel1, "Productos");
+        } else if (panel == 2) {
+            panelVentas.setVisible(true);
+            panelUsuarios.setVisible(false);
+            panelProductos.setVisible(false);
+            //camposCL.show(jPanel1, "Ventas");
+        }
+        System.out.println("Display Productos2");      
     }//GEN-LAST:event_comboBoxFuncionActionPerformed
 
     private void userEditLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_userEditLabel1MouseClicked
@@ -1612,13 +1914,14 @@ public class MenuAdmin extends javax.swing.JFrame {
     }//GEN-LAST:event_precioEditLabelMouseExited
 
     private void comboBoxFuncionItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_comboBoxFuncionItemStateChanged
+        /*
         int panel = comboBoxFuncion.getSelectedIndex();
         if (panel == 0) {
-            camposCL.show(jPanel1, "Usuarios");
+            camposCL.show(jPanel1, "cardUsuarios");
             
-            etiquetaCorreo1.setText(user.correo);
-            etiquetaNombre1.setText(user.getNombre());
-            etiquetaDNI1.setText(user.getDni());
+            usuarioMin1.etiquetaCorreo.setText(user.correo);
+            usuarioMin1.etiquetaNombre.setText(user.getNombre());
+            usuarioMin1.etiquetaDNI.setText(user.getDni());
             
             usuarioMin2.etiquetaDNI.setText(user.getDni());
             usuarioMin2.etiquetaNombre.setText(user.getNombre());
@@ -1631,6 +1934,7 @@ public class MenuAdmin extends javax.swing.JFrame {
             camposCL.show(jPanel1, "Ventas");
         }
         System.out.println("Display Productos2");
+        */
     }//GEN-LAST:event_comboBoxFuncionItemStateChanged
 
     private void nombreUsuarioEditLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_nombreUsuarioEditLabelMouseClicked
@@ -1874,6 +2178,110 @@ public class MenuAdmin extends javax.swing.JFrame {
         lockUnlockBotonesUsuarios();
     }//GEN-LAST:event_repagUsuarioButtonActionPerformed
 
+    private void ventaEditLabel5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ventaEditLabel5MouseClicked
+        panelUsuarios.setVisible(false);
+        panelEditarProductos.setVisible(true);
+    }//GEN-LAST:event_ventaEditLabel5MouseClicked
+
+    private void ventaEditLabel5MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ventaEditLabel5MouseEntered
+        ventaEditLabel5.setFont(new java.awt.Font("OCR A Extended", 1, 12));
+    }//GEN-LAST:event_ventaEditLabel5MouseEntered
+
+    private void ventaEditLabel5MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ventaEditLabel5MouseExited
+        ventaEditLabel5.setFont(new java.awt.Font("OCR A Extended", 0, 12));
+    }//GEN-LAST:event_ventaEditLabel5MouseExited
+
+    private void ventaEditLabel7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ventaEditLabel7MouseClicked
+        panelUsuarios.setVisible(false);
+        panelEditarProductos.setVisible(true);
+    }//GEN-LAST:event_ventaEditLabel7MouseClicked
+
+    private void ventaEditLabel7MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ventaEditLabel7MouseEntered
+        ventaEditLabel7.setFont(new java.awt.Font("OCR A Extended", 1, 12));
+    }//GEN-LAST:event_ventaEditLabel7MouseEntered
+
+    private void ventaEditLabel7MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ventaEditLabel7MouseExited
+        ventaEditLabel7.setFont(new java.awt.Font("OCR A Extended", 0, 12));
+    }//GEN-LAST:event_ventaEditLabel7MouseExited
+
+    private void ventaEditLabel8MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ventaEditLabel8MouseClicked
+        panelUsuarios.setVisible(false);
+        panelEditarProductos.setVisible(true);
+    }//GEN-LAST:event_ventaEditLabel8MouseClicked
+
+    private void ventaEditLabel8MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ventaEditLabel8MouseEntered
+        ventaEditLabel8.setFont(new java.awt.Font("OCR A Extended", 1, 12));
+    }//GEN-LAST:event_ventaEditLabel8MouseEntered
+
+    private void ventaEditLabel8MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ventaEditLabel8MouseExited
+        ventaEditLabel8.setFont(new java.awt.Font("OCR A Extended", 0, 12));
+    }//GEN-LAST:event_ventaEditLabel8MouseExited
+
+    private void ventaEditLabel6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ventaEditLabel6MouseClicked
+        panelUsuarios.setVisible(false);
+        panelEditarProductos.setVisible(true);
+    }//GEN-LAST:event_ventaEditLabel6MouseClicked
+
+    private void ventaEditLabel6MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ventaEditLabel6MouseEntered
+        ventaEditLabel6.setFont(new java.awt.Font("OCR A Extended", 1, 12));
+    }//GEN-LAST:event_ventaEditLabel6MouseEntered
+
+    private void ventaEditLabel6MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ventaEditLabel6MouseExited
+        ventaEditLabel6.setFont(new java.awt.Font("OCR A Extended", 0, 12));
+    }//GEN-LAST:event_ventaEditLabel6MouseExited
+
+    private void ventaEditLabel4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ventaEditLabel4MouseClicked
+        panelUsuarios.setVisible(false);
+        panelEditarProductos.setVisible(true);
+    }//GEN-LAST:event_ventaEditLabel4MouseClicked
+
+    private void ventaEditLabel4MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ventaEditLabel4MouseEntered
+        ventaEditLabel4.setFont(new java.awt.Font("OCR A Extended", 1, 12));
+    }//GEN-LAST:event_ventaEditLabel4MouseEntered
+
+    private void ventaEditLabel4MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ventaEditLabel4MouseExited
+        ventaEditLabel4.setFont(new java.awt.Font("OCR A Extended", 0, 12));
+    }//GEN-LAST:event_ventaEditLabel4MouseExited
+
+    private void ventaEditLabel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ventaEditLabel3MouseClicked
+        panelUsuarios.setVisible(false);
+        panelEditarProductos.setVisible(true);
+    }//GEN-LAST:event_ventaEditLabel3MouseClicked
+
+    private void ventaEditLabel3MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ventaEditLabel3MouseEntered
+        ventaEditLabel3.setFont(new java.awt.Font("OCR A Extended", 1, 12));
+    }//GEN-LAST:event_ventaEditLabel3MouseEntered
+
+    private void ventaEditLabel3MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ventaEditLabel3MouseExited
+        ventaEditLabel3.setFont(new java.awt.Font("OCR A Extended", 0, 12));
+    }//GEN-LAST:event_ventaEditLabel3MouseExited
+
+    private void ventaEditLabel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ventaEditLabel2MouseClicked
+        panelUsuarios.setVisible(false);
+        panelEditarProductos.setVisible(true);
+    }//GEN-LAST:event_ventaEditLabel2MouseClicked
+
+    private void ventaEditLabel2MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ventaEditLabel2MouseEntered
+        ventaEditLabel2.setFont(new java.awt.Font("OCR A Extended", 1, 12));
+    }//GEN-LAST:event_ventaEditLabel2MouseEntered
+
+    private void ventaEditLabel2MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ventaEditLabel2MouseExited
+        ventaEditLabel2.setFont(new java.awt.Font("OCR A Extended", 0, 12));
+    }//GEN-LAST:event_ventaEditLabel2MouseExited
+
+    private void ventaEditLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ventaEditLabel1MouseClicked
+        panelUsuarios.setVisible(false);
+        panelEditarProductos.setVisible(true);
+    }//GEN-LAST:event_ventaEditLabel1MouseClicked
+
+    private void ventaEditLabel1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ventaEditLabel1MouseEntered
+        ventaEditLabel1.setFont(new java.awt.Font("OCR A Extended", 1, 12));
+    }//GEN-LAST:event_ventaEditLabel1MouseEntered
+
+    private void ventaEditLabel1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ventaEditLabel1MouseExited
+        ventaEditLabel1.setFont(new java.awt.Font("OCR A Extended", 1, 12));
+    }//GEN-LAST:event_ventaEditLabel1MouseExited
+
     private void lockUnlockBotonesComprar() {
         if (posicionMin - 10 < 0) {
             rePag.setEnabled(false);
@@ -1974,7 +2382,7 @@ public class MenuAdmin extends javax.swing.JFrame {
     private void displayUsuarios() {
         for (int i = posicionMin; i < posicionMin + 8; i++) {
             posicionMax = i;
-            if (posicionMax < clientDefinitivo.size()) {
+            if (posicionMax < usuarios.size()) {
             } else {
                 posicionMax--;
                 break;
@@ -1984,42 +2392,42 @@ public class MenuAdmin extends javax.swing.JFrame {
         for (int i = posicionMin; i <= posicionMax; i++) {
             switch (i % 8) {
                 case 0:
-                    usuarioMin1.setCliente(clientDefinitivo.get(i));
+                    usuarioMin1.setCliente(usuarios.get(i));
                     usuarioMin1.setVisible(true);
                     usuarioEditPanel1.setVisible(true);
                     break;
                 case 1:
-                    usuarioMin2.setCliente(clientDefinitivo.get(i));
+                    usuarioMin2.setCliente(usuarios.get(i));
                     usuarioMin2.setVisible(true);
                     usuarioEditPanel2.setVisible(true);
                     break;
                 case 2:
-                    usuarioMin3.setCliente(clientDefinitivo.get(i));
+                    usuarioMin3.setCliente(usuarios.get(i));
                     usuarioMin3.setVisible(true);
                     usuarioEditPanel3.setVisible(true);
                     break;
                 case 3:
-                    usuarioMin4.setCliente(clientDefinitivo.get(i));
+                    usuarioMin4.setCliente(usuarios.get(i));
                     usuarioMin4.setVisible(true);
                     usuarioEditPanel4.setVisible(true);
                     break;
                 case 4:
-                    usuarioMin5.setCliente(clientDefinitivo.get(i));
+                    usuarioMin5.setCliente(usuarios.get(i));
                     usuarioMin5.setVisible(true);
                     usuarioEditPanel5.setVisible(true);
                     break;
                 case 5:
-                    usuarioMin6.setCliente(clientDefinitivo.get(i));
+                    usuarioMin6.setCliente(usuarios.get(i));
                     usuarioMin6.setVisible(true);
                     usuarioEditPanel6.setVisible(true);
                     break;
                 case 6:
-                    usuarioMin7.setCliente(clientDefinitivo.get(i));
+                    usuarioMin7.setCliente(usuarios.get(i));
                     usuarioMin7.setVisible(true);
                     usuarioEditPanel7.setVisible(true);
                     break;
                 case 7:
-                    usuarioMin8.setCliente(clientDefinitivo.get(i));
+                    usuarioMin8.setCliente(usuarios.get(i));
                     usuarioMin8.setVisible(true);
                     usuarioEditPanel8.setVisible(true);
                     break;
@@ -2066,13 +2474,15 @@ public class MenuAdmin extends javax.swing.JFrame {
             }
         }
     }
+    /*
     public void setCliente(Cliente client){
         this.cliente = client;
-        this.etiquetaDNI1.setText (client.getDni());
-        this.etiquetaNombre1.setText (client.getNombre());
-        this.etiquetaCorreo1.setText (client.getCorreo());    
+        this.etiquetaDNI.setText (client.getDni());
+        this.etiquetaNombre.setText (client.getNombre());
+        this.etiquetaCorreo.setText (client.getCorreo());    
     }
-
+    */
+    
     private static String randomSequence() {
         String str = "";
         Random rnd = new Random();
@@ -2109,11 +2519,7 @@ public class MenuAdmin extends javax.swing.JFrame {
     private javax.swing.JLabel dniUsuarioEditLabel;
     public javax.swing.JTextField emailEditField;
     private javax.swing.JComboBox<String> estadoBox;
-    private javax.swing.JLabel etiquetaCorreo1;
-    private javax.swing.JLabel etiquetaDNI1;
-    private javax.swing.JLabel etiquetaNombre1;
     private javax.swing.JLabel etiquetaPagina;
-    private javax.swing.JLabel etiquetaTipo;
     private javax.swing.JTextArea fieldDescripcion;
     private javax.swing.JTextField fieldNombre;
     private javax.swing.JTextField fieldPrecio;
@@ -2149,6 +2555,7 @@ public class MenuAdmin extends javax.swing.JFrame {
     private javax.swing.JPanel panelEditarUsuario;
     private javax.swing.JPanel panelProductos;
     private javax.swing.JPanel panelUsuarios;
+    private javax.swing.JPanel panelVentas;
     private javax.swing.JPanel panelViewVentas;
     private javax.swing.JTextField passwordEditField;
     private javax.swing.JFormattedTextField pcEditField;
@@ -2175,6 +2582,13 @@ public class MenuAdmin extends javax.swing.JFrame {
     private javax.swing.JLabel userEditLabel7;
     private javax.swing.JLabel userEditLabel8;
     private javax.swing.JPanel usuarioEditPanel1;
+    private javax.swing.JPanel usuarioEditPanel10;
+    private javax.swing.JPanel usuarioEditPanel11;
+    private javax.swing.JPanel usuarioEditPanel12;
+    private javax.swing.JPanel usuarioEditPanel13;
+    private javax.swing.JPanel usuarioEditPanel14;
+    private javax.swing.JPanel usuarioEditPanel15;
+    private javax.swing.JPanel usuarioEditPanel16;
     private javax.swing.JPanel usuarioEditPanel2;
     private javax.swing.JPanel usuarioEditPanel3;
     private javax.swing.JPanel usuarioEditPanel4;
@@ -2182,7 +2596,8 @@ public class MenuAdmin extends javax.swing.JFrame {
     private javax.swing.JPanel usuarioEditPanel6;
     private javax.swing.JPanel usuarioEditPanel7;
     private javax.swing.JPanel usuarioEditPanel8;
-    private javax.swing.JPanel usuarioMin1;
+    private javax.swing.JPanel usuarioEditPanel9;
+    private interfaz.panels.UsuarioMin usuarioMin1;
     private interfaz.panels.UsuarioMin usuarioMin2;
     private interfaz.panels.UsuarioMin usuarioMin3;
     private interfaz.panels.UsuarioMin usuarioMin4;
@@ -2190,5 +2605,21 @@ public class MenuAdmin extends javax.swing.JFrame {
     private interfaz.panels.UsuarioMin usuarioMin6;
     private interfaz.panels.UsuarioMin usuarioMin7;
     private interfaz.panels.UsuarioMin usuarioMin8;
+    private javax.swing.JLabel ventaEditLabel1;
+    private javax.swing.JLabel ventaEditLabel2;
+    private javax.swing.JLabel ventaEditLabel3;
+    private javax.swing.JLabel ventaEditLabel4;
+    private javax.swing.JLabel ventaEditLabel5;
+    private javax.swing.JLabel ventaEditLabel6;
+    private javax.swing.JLabel ventaEditLabel7;
+    private javax.swing.JLabel ventaEditLabel8;
+    private interfaz.panels.VentaMin ventaMin1;
+    private interfaz.panels.VentaMin ventaMin2;
+    private interfaz.panels.VentaMin ventaMin3;
+    private interfaz.panels.VentaMin ventaMin4;
+    private interfaz.panels.VentaMin ventaMin5;
+    private interfaz.panels.VentaMin ventaMin6;
+    private interfaz.panels.VentaMin ventaMin7;
+    private interfaz.panels.VentaMin ventaMin8;
     // End of variables declaration//GEN-END:variables
 }
