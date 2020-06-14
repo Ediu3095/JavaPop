@@ -7,6 +7,7 @@ package interfaz;
 
 import clases.Producto;
 import static clases.utils.CheckFunctions.*;
+import interfaz.panels.MiProductoMin;
 import java.awt.Color;
 import java.awt.Image;
 import java.io.File;
@@ -20,6 +21,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
 /**
@@ -32,34 +34,39 @@ public class MenuEditarProducto extends javax.swing.JFrame {
     private String imageAddress;
     private String newImageAddress;
     private boolean imagenEditable;
-    private Producto producto;
+    private final Producto producto;
     private final JFrame menu;
+    private final MiProductoMin miProd;
 
     /**
      * Creates new form MenuEditarProducto
+     *
+     * @param menu
+     * @param container
      */
-    public MenuEditarProducto(JFrame menu, Producto prod) {
+    public MenuEditarProducto(JFrame menu, MiProductoMin container) {
         initComponents();
 
-        // setup icon
+        // Setup icon
         super.setIconImage(new ImageIcon(".\\resources\\logo\\IconoJavaPop2.png").getImage());
 
-        // Iniciamos new image address e imagen editable para poder utilizarlas posteriormente
-        this.newImageAddress = "";
+        // Iniciamos imagenEditable para poder utilizarla posteriormente
         this.imagenEditable = false;
 
-        // Nos guardamos el producto
-        this.producto = prod;
-        
+        // Nos guardamos el producto y su contenedor
+        this.producto = container.producto;
+        this.miProd = container;
+
         // Displayeamos los datos editables del producto
-        fieldNombre.setText(prod.getTitulo());
-        fieldDescripcion.setText(prod.getDescripcion());
-        fieldPrecio.setText("" + prod.getPrecio());
-        categoriaBox.setSelectedIndex(indexOfCategoria(prod.getCategoria()));
-        estadoBox.setSelectedIndex(indexOfEstado(prod.getEstado()));
-        this.imageAddress = prod.getFoto();
-        icono.setIcon(new ImageIcon(this.imageAddress));
-        urgencia.setSelected(prod.isUrgente());
+        fieldNombre.setText(producto.getTitulo());
+        fieldDescripcion.setText(producto.getDescripcion());
+        fieldPrecio.setText(("" + producto.getPrecio()).replace('.', ','));
+        categoriaBox.setSelectedIndex(indexOfCategoria(producto.getCategoria()));
+        estadoBox.setSelectedIndex(indexOfEstado(producto.getEstado()));
+        imageAddress = producto.getFoto();
+        newImageAddress = producto.getFoto();
+        icono.setIcon(new ImageIcon(imageAddress));
+        urgencia.setSelected(producto.isUrgente());
 
         // Nos guardamos el menu para poder volver a este a posteriori 
         this.menu = menu;
@@ -77,6 +84,7 @@ public class MenuEditarProducto extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        icono = new javax.swing.JLabel();
         banner = new javax.swing.JPanel();
         logo = new javax.swing.JLabel();
         filler1 = new javax.swing.Box.Filler(new java.awt.Dimension(60, 120), new java.awt.Dimension(60, 120), new java.awt.Dimension(60, 120));
@@ -86,7 +94,6 @@ public class MenuEditarProducto extends javax.swing.JFrame {
         fotoLabel = new javax.swing.JLabel();
         editarFoto = new javax.swing.JLabel();
         foto = new javax.swing.JPanel();
-        icono = new javax.swing.JLabel();
         nombreLabel = new javax.swing.JLabel();
         editarNombre = new javax.swing.JLabel();
         fieldNombre = new javax.swing.JTextField();
@@ -106,7 +113,26 @@ public class MenuEditarProducto extends javax.swing.JFrame {
         urgencia = new javax.swing.JCheckBox();
         botonConfirmar = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        icono.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        icono.setIcon(new ImageIcon(".\\resources\\logo\\uploadIcon.png"));
+        icono.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                iconoMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                iconoMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                iconoMouseExited(evt);
+            }
+        });
+
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                formWindowClosing(evt);
+            }
+        });
 
         banner.setBackground(new java.awt.Color(51, 153, 255));
 
@@ -135,35 +161,34 @@ public class MenuEditarProducto extends javax.swing.JFrame {
         editarFoto.setForeground(new java.awt.Color(51, 153, 255));
         editarFoto.setText("editar");
         editarFoto.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        editarFoto.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                editarFotoMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                editarFotoMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                editarFotoMouseExited(evt);
+            }
+        });
 
         foto.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         foto.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         foto.setFont(new java.awt.Font("OCR A Extended", 0, 12)); // NOI18N
+        foto.setMaximumSize(new java.awt.Dimension(250, 250));
+        foto.setMinimumSize(new java.awt.Dimension(250, 250));
         foto.setPreferredSize(new java.awt.Dimension(250, 250));
-
-        icono.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        icono.setIcon(new ImageIcon(".\\resources\\logo\\uploadIcon.png"));
-        icono.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                iconoMouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                iconoMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                iconoMouseExited(evt);
-            }
-        });
 
         javax.swing.GroupLayout fotoLayout = new javax.swing.GroupLayout(foto);
         foto.setLayout(fotoLayout);
         fotoLayout.setHorizontalGroup(
             fotoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(icono, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGap(0, 248, Short.MAX_VALUE)
         );
         fotoLayout.setVerticalGroup(
             fotoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(icono, javax.swing.GroupLayout.DEFAULT_SIZE, 248, Short.MAX_VALUE)
+            .addGap(0, 248, Short.MAX_VALUE)
         );
 
         nombreLabel.setFont(new java.awt.Font("OCR A Extended", 0, 12)); // NOI18N
@@ -173,6 +198,17 @@ public class MenuEditarProducto extends javax.swing.JFrame {
         editarNombre.setForeground(new java.awt.Color(51, 153, 255));
         editarNombre.setText("editar");
         editarNombre.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        editarNombre.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                editarNombreMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                editarNombreMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                editarNombreMouseExited(evt);
+            }
+        });
 
         fieldNombre.setEditable(false);
         fieldNombre.setFont(new java.awt.Font("OCR A Extended", 0, 12)); // NOI18N
@@ -184,6 +220,17 @@ public class MenuEditarProducto extends javax.swing.JFrame {
         editarDescripcion.setForeground(new java.awt.Color(51, 153, 255));
         editarDescripcion.setText("editar");
         editarDescripcion.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        editarDescripcion.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                editarDescripcionMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                editarDescripcionMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                editarDescripcionMouseExited(evt);
+            }
+        });
 
         jScrollPane1.setFont(new java.awt.Font("OCR A Extended", 0, 12)); // NOI18N
 
@@ -201,6 +248,17 @@ public class MenuEditarProducto extends javax.swing.JFrame {
         editarPrecio.setForeground(new java.awt.Color(51, 153, 255));
         editarPrecio.setText("editar");
         editarPrecio.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        editarPrecio.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                editarPrecioMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                editarPrecioMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                editarPrecioMouseExited(evt);
+            }
+        });
 
         fieldPrecio.setEditable(false);
         fieldPrecio.setFont(new java.awt.Font("OCR A Extended", 0, 12)); // NOI18N
@@ -212,6 +270,17 @@ public class MenuEditarProducto extends javax.swing.JFrame {
         editarCategoria.setForeground(new java.awt.Color(51, 153, 255));
         editarCategoria.setText("editar");
         editarCategoria.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        editarCategoria.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                editarCategoriaMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                editarCategoriaMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                editarCategoriaMouseExited(evt);
+            }
+        });
 
         categoriaBox.setFont(new java.awt.Font("OCR A Extended", 0, 12)); // NOI18N
         categoriaBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Moda y acesorios", "Tv, audio y foto", "Moviles y telefónica", "Informática y electrónica", "Consolas y videojuegos", "Deporte y ocio" }));
@@ -223,6 +292,17 @@ public class MenuEditarProducto extends javax.swing.JFrame {
         editarEstado.setForeground(new java.awt.Color(51, 153, 255));
         editarEstado.setText("editar");
         editarEstado.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        editarEstado.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                editarEstadoMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                editarEstadoMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                editarEstadoMouseExited(evt);
+            }
+        });
 
         estadoBox.setFont(new java.awt.Font("OCR A Extended", 0, 12)); // NOI18N
         estadoBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Nuevo", "Como nuevo", "Bueno", "Aceptable", "Regular" }));
@@ -269,27 +349,27 @@ public class MenuEditarProducto extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(editarPrecio))
                             .addComponent(fieldPrecio)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                    .addComponent(categoriaLabel)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(editarCategoria))
-                                .addComponent(categoriaBox, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(categoriaLabel)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(editarCategoria))
+                            .addComponent(categoriaBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addComponent(filler4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(botonConfirmar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(foto, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(urgencia)
                                 .addGap(0, 0, Short.MAX_VALUE))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(fotoLabel)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 82, Short.MAX_VALUE)
-                                .addComponent(editarFoto))
-                            .addComponent(foto, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(editarFoto)))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(filler1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(filler1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(2, 2, 2))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -384,37 +464,163 @@ public class MenuEditarProducto extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "El formato del precio es incorrecto.\nSolamente debe separar los céntimos con una coma de la forma: \"0,00\" .", "Formato incorrecto", JOptionPane.ERROR_MESSAGE);
         } else if (titulo.equals("")) {
             JOptionPane.showMessageDialog(this, "Debe añadir un titulo al producto.", "Campo obligatorio vacio", JOptionPane.INFORMATION_MESSAGE);
-        } else if (!this.imagenEditable) {
-            JOptionPane.showMessageDialog(this, "Debe confirmar el cambio de imagen.", "", JOptionPane.INFORMATION_MESSAGE);
         } else {
-            // Cambiamos la imagen vieja por la nueva en la carpeta de imagenes
-            if (!newImageAddress.equals("")) {
-                FileSystem fileSys = FileSystems.getDefault();
-
-                // Eliminamos la imagen vieja
-                try {
-                    Files.delete(fileSys.getPath(imageAddress));
-                } catch (IOException ex) {
-                }
-
-                // Copiamos la imagen a un directorio propio para evitar problemas si esta es borrada o cambiada de directorio
-                File image = new File(imageAddress);
-                String newAddress;
-                newAddress = "./resources/imagenes/" + randomSequence() + "_" + image.getName();
-                try {
-                    Files.copy(fileSys.getPath(imageAddress), fileSys.getPath(newAddress), REPLACE_EXISTING);
-                    this.imageAddress = newAddress;
-                } catch (IOException ex) {
-                }
-                
-                producto.setFoto(imageAddress);
-            }
-
+            
             // Creamos el producto y lo añadimos a la lista de productos del cliente y a la lista global de productos
             this.menu.setEnabled(true);
             this.dispose();
         }
     }//GEN-LAST:event_botonConfirmarActionPerformed
+
+    private void editarNombreMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editarNombreMouseEntered
+        editarNombre.setFont(new java.awt.Font("OCR A Extended", 1, 12));
+    }//GEN-LAST:event_editarNombreMouseEntered
+    private void editarNombreMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editarNombreMouseExited
+        editarNombre.setFont(new java.awt.Font("OCR A Extended", 0, 12));
+    }//GEN-LAST:event_editarNombreMouseExited
+    private void editarDescripcionMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editarDescripcionMouseEntered
+        editarDescripcion.setFont(new java.awt.Font("OCR A Extended", 1, 12));
+    }//GEN-LAST:event_editarDescripcionMouseEntered
+    private void editarDescripcionMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editarDescripcionMouseExited
+        editarDescripcion.setFont(new java.awt.Font("OCR A Extended", 0, 12));
+    }//GEN-LAST:event_editarDescripcionMouseExited
+    private void editarPrecioMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editarPrecioMouseEntered
+        editarPrecio.setFont(new java.awt.Font("OCR A Extended", 1, 12));
+    }//GEN-LAST:event_editarPrecioMouseEntered
+    private void editarPrecioMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editarPrecioMouseExited
+        editarPrecio.setFont(new java.awt.Font("OCR A Extended", 0, 12));
+    }//GEN-LAST:event_editarPrecioMouseExited
+    private void editarCategoriaMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editarCategoriaMouseEntered
+        editarCategoria.setFont(new java.awt.Font("OCR A Extended", 1, 12));
+    }//GEN-LAST:event_editarCategoriaMouseEntered
+    private void editarCategoriaMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editarCategoriaMouseExited
+        editarCategoria.setFont(new java.awt.Font("OCR A Extended", 0, 12));
+    }//GEN-LAST:event_editarCategoriaMouseExited
+    private void editarEstadoMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editarEstadoMouseEntered
+        editarEstado.setFont(new java.awt.Font("OCR A Extended", 1, 12));
+    }//GEN-LAST:event_editarEstadoMouseEntered
+    private void editarEstadoMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editarEstadoMouseExited
+        editarEstado.setFont(new java.awt.Font("OCR A Extended", 0, 12));
+    }//GEN-LAST:event_editarEstadoMouseExited
+    private void editarFotoMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editarFotoMouseEntered
+        editarFoto.setFont(new java.awt.Font("OCR A Extended", 1, 12));
+    }//GEN-LAST:event_editarFotoMouseEntered
+    private void editarFotoMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editarFotoMouseExited
+        editarFoto.setFont(new java.awt.Font("OCR A Extended", 0, 12));
+    }//GEN-LAST:event_editarFotoMouseExited
+
+    private void editarNombreMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editarNombreMouseClicked
+        if (fieldNombre.isEditable()) {
+            fieldNombre.setEditable(false);
+
+            if (fieldNombre.getText().equals("")) {
+                JOptionPane.showMessageDialog(this, "El nombre del producto no puede estar vacio.\nNo se guardaron los cambios", "Error de formato", JOptionPane.ERROR_MESSAGE);
+            } else {
+                producto.setTitulo(fieldNombre.getText());
+            }
+
+            fieldNombre.setText(producto.getTitulo());
+            editarNombre.setText("editar");
+        } else {
+            fieldNombre.setEditable(true);
+            editarNombre.setText("guardar");
+        }
+    }//GEN-LAST:event_editarNombreMouseClicked
+
+    private void editarDescripcionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editarDescripcionMouseClicked
+        if (fieldDescripcion.isEditable()) {
+            fieldDescripcion.setEditable(false);
+
+            producto.setDescripcion(fieldDescripcion.getText());
+
+            editarDescripcion.setText("editar");
+        } else {
+            fieldDescripcion.setEditable(true);
+            editarDescripcion.setText("guardar");
+        }
+    }//GEN-LAST:event_editarDescripcionMouseClicked
+
+    private void editarPrecioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editarPrecioMouseClicked
+        if (fieldPrecio.isEditable()) {
+            fieldPrecio.setEditable(false);
+
+            if (checkPrecio(fieldPrecio.getText())) {
+                JOptionPane.showMessageDialog(this, "El nombre del producto no puede estar vacio.\nNo se guardaron los cambios", "Error de formato", JOptionPane.ERROR_MESSAGE);
+            } else {
+                producto.setPrecio(getPrecio(fieldPrecio.getText()));
+            }
+
+            fieldPrecio.setText(("" + producto.getPrecio()).replace('.', ','));
+            editarPrecio.setText("editar");
+        } else {
+            fieldPrecio.setEditable(true);
+            editarPrecio.setText("guardar");
+        }
+    }//GEN-LAST:event_editarPrecioMouseClicked
+
+    private void editarCategoriaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editarCategoriaMouseClicked
+        if (categoriaBox.isEditable()) {
+            categoriaBox.setEditable(false);
+
+            producto.setCategoria(getCategoria(categoriaBox.getSelectedIndex()));
+
+            editarCategoria.setText("editar");
+        } else {
+            categoriaBox.setEditable(true);
+            editarCategoria.setText("guardar");
+        }
+    }//GEN-LAST:event_editarCategoriaMouseClicked
+
+    private void editarEstadoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editarEstadoMouseClicked
+        if (estadoBox.isEditable()) {
+            estadoBox.setEditable(false);
+
+            producto.setEstado(getEstado(estadoBox.getSelectedIndex()));
+
+            editarEstado.setText("editar");
+        } else {
+            estadoBox.setEditable(true);
+            editarEstado.setText("guardar");
+        }
+    }//GEN-LAST:event_editarEstadoMouseClicked
+
+    private void editarFotoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editarFotoMouseClicked
+        if (imagenEditable) {
+            imagenEditable = false;
+
+            producto.setFoto(newImageAddress);
+
+            FileSystem fileSys = FileSystems.getDefault();
+
+            // Eliminamos la imagen vieja
+            try {
+                Files.delete(fileSys.getPath(imageAddress));
+            } catch (IOException ex) {
+            }
+
+            // Cambiamos por la imagen nueva
+            imageAddress = newImageAddress;
+
+            // Copiamos la nueva imagen a un directorio propio para evitar problemas si esta es borrada o cambiada de directorio
+            File image = new File(imageAddress);
+            String newAddress = "./resources/imagenes/" + randomSequence() + "_" + image.getName();
+            try {
+                Files.copy(fileSys.getPath(imageAddress), fileSys.getPath(newAddress), REPLACE_EXISTING);
+                this.imageAddress = newAddress;
+            } catch (IOException ex) {
+            }
+
+            editarFoto.setText("editar");
+        } else {
+            imagenEditable = true;
+            editarFoto.setText("guardar");
+        }
+    }//GEN-LAST:event_editarFotoMouseClicked
+
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+        menu.setEnabled(true);
+        miProd.setProducto(this.producto);
+    }//GEN-LAST:event_formWindowClosing
 
     private static String randomSequence() {
         String str = "";
@@ -427,7 +633,7 @@ public class MenuEditarProducto extends javax.swing.JFrame {
 
         return str;
     }
-    
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel banner;
     private javax.swing.JButton botonConfirmar;

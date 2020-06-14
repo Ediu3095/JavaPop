@@ -319,7 +319,6 @@ public class MenuNuevoProducto extends javax.swing.JFrame {
     private void iconoMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_iconoMouseEntered
         this.foto.setBackground(new Color(51, 153, 255));
     }//GEN-LAST:event_iconoMouseEntered
-
     private void iconoMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_iconoMouseExited
         this.foto.setBackground(new Color(240, 240, 240));
     }//GEN-LAST:event_iconoMouseExited

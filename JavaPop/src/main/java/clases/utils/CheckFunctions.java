@@ -304,6 +304,13 @@ public class CheckFunctions {
         }
         return -1;
     }
+    
+    public static boolean checkPrecio(String prc) {
+        Pattern pattern = Pattern.compile("[0-9]{1,}+[,]+[0-9]{2}");
+        Matcher matcher_;
+        matcher_ = pattern.matcher(prc);
+        return matcher_.matches();
+    }
 
     /**
  * <p>

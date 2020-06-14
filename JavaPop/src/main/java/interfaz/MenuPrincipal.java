@@ -711,15 +711,35 @@ public class MenuPrincipal extends javax.swing.JFrame {
         misProductosDisplay.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         miProductoMin1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        miProductoMin1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                miProductoMin1MouseClicked(evt);
+            }
+        });
         misProductosDisplay.add(miProductoMin1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 842, -1));
 
         miProductoMin4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        miProductoMin4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                miProductoMin4MouseClicked(evt);
+            }
+        });
         misProductosDisplay.add(miProductoMin4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 135, 842, -1));
 
         miProductoMin2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        miProductoMin2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                miProductoMin2MouseClicked(evt);
+            }
+        });
         misProductosDisplay.add(miProductoMin2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 45, 842, -1));
 
         miProductoMin3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        miProductoMin3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                miProductoMin3MouseClicked(evt);
+            }
+        });
         misProductosDisplay.add(miProductoMin3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 90, 842, -1));
 
         fotoSinProductos.setFont(new java.awt.Font("OCR A Extended", 0, 12)); // NOI18N
@@ -1409,6 +1429,22 @@ public class MenuPrincipal extends javax.swing.JFrame {
             editarDni.setText("guardar");
         }
     }//GEN-LAST:event_editarDniMouseClicked
+
+    private void miProductoMin1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_miProductoMin1MouseClicked
+        new MenuEditarProducto(this, miProductoMin1);
+    }//GEN-LAST:event_miProductoMin1MouseClicked
+
+    private void miProductoMin2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_miProductoMin2MouseClicked
+        new MenuEditarProducto(this, miProductoMin2);
+    }//GEN-LAST:event_miProductoMin2MouseClicked
+
+    private void miProductoMin3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_miProductoMin3MouseClicked
+        new MenuEditarProducto(this, miProductoMin3);
+    }//GEN-LAST:event_miProductoMin3MouseClicked
+
+    private void miProductoMin4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_miProductoMin4MouseClicked
+        new MenuEditarProducto(this, miProductoMin4);
+    }//GEN-LAST:event_miProductoMin4MouseClicked
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Logo;

@@ -13,7 +13,7 @@ import clases.Producto;
  */
 public class MiProductoMin extends javax.swing.JPanel {
 
-    private Producto producto;
+    public Producto producto;
     
     /**
      * Creates new form MiProductoMin
@@ -46,6 +46,8 @@ public class MiProductoMin extends javax.swing.JPanel {
         jSeparator1 = new javax.swing.JSeparator();
         jSeparator2 = new javax.swing.JSeparator();
         jSeparator3 = new javax.swing.JSeparator();
+
+        setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         tituloLabel.setFont(new java.awt.Font("OCR A Extended", 0, 12)); // NOI18N
         tituloLabel.setText("Titulo");
