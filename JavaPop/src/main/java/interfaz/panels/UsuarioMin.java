@@ -93,7 +93,9 @@ public class UsuarioMin extends javax.swing.JPanel {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -103,6 +105,6 @@ public class UsuarioMin extends javax.swing.JPanel {
     private javax.swing.JLabel etiquetaDNI;
     private javax.swing.JLabel etiquetaNombre;
     private javax.swing.JLabel etiquetaTipo;
-    private javax.swing.JPanel jPanel4;
+    public javax.swing.JPanel jPanel4;
     // End of variables declaration//GEN-END:variables
 }

@@ -51,16 +51,16 @@ public class MenuAdmin extends javax.swing.JFrame {
      */
     public MenuAdmin() {
         initComponents();
-        
+
         // setup icon
         ImageIcon img = new ImageIcon(".\\resources\\logo\\IconoJavaPop2.png");
         super.setIconImage(img.getImage());
-        
+
         // Guardamos el CardLayout como atributo de la clase para acceder facilmente
         comboBoxFuncion.setSelectedItem("");
         this.camposCL = (CardLayout) this.jPanel1.getLayout();
         camposCL.show(jPanel1, "Bienvenida");
-        
+
         super.setVisible(true);
     }
 
@@ -87,67 +87,62 @@ public class MenuAdmin extends javax.swing.JFrame {
         filler2 = new javax.swing.Box.Filler(new java.awt.Dimension(80, 100), new java.awt.Dimension(60, 100), new java.awt.Dimension(80, 100));
         filler3 = new javax.swing.Box.Filler(new java.awt.Dimension(80, 100), new java.awt.Dimension(60, 100), new java.awt.Dimension(80, 100));
         jPanel1 = new javax.swing.JPanel();
-        panelEditarUsuarios = new javax.swing.JPanel();
-        nameEditLabel = new javax.swing.JLabel();
-        emailEditLabel = new javax.swing.JLabel();
-        passwordEditLabel = new javax.swing.JLabel();
-        dniEditLabel = new javax.swing.JLabel();
-        pcEditLabel = new javax.swing.JLabel();
-        ccEditLabel = new javax.swing.JLabel();
+        panelEditarUsuario = new javax.swing.JPanel();
+        nombreUsuarioEditLabel = new javax.swing.JLabel();
+        correoUsuarioEditLabel = new javax.swing.JLabel();
+        claveUsuarioEditLabel = new javax.swing.JLabel();
+        dniUsuarioEditLabel = new javax.swing.JLabel();
+        pcUsuarioEditLabel = new javax.swing.JLabel();
+        ccUsuarioEditLabel = new javax.swing.JLabel();
         nameEditField = new javax.swing.JTextField();
-        jLabel3 = new javax.swing.JLabel();
         emailEditField = new javax.swing.JTextField();
-        jLabel5 = new javax.swing.JLabel();
+        passwordEditField = new javax.swing.JTextField();
         dniEditField = new javax.swing.JFormattedTextField();
         pcEditField = new javax.swing.JFormattedTextField();
         ccEditField = new javax.swing.JFormattedTextField();
+        jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
-        passwordEditField = new javax.swing.JTextField();
-        guardarButton = new javax.swing.JButton();
-        atrasButton = new javax.swing.JButton();
+        panelBienvenida = new javax.swing.JPanel();
         panelUsuarios = new javax.swing.JPanel();
-        usuarioMin1 = new interfaz.panels.UsuarioMin();
-        usuarioMin3 = new interfaz.panels.UsuarioMin();
-        jPanel4 = new javax.swing.JPanel();
+        usuarioMin1 = new javax.swing.JPanel();
+        etiquetaDNI1 = new javax.swing.JLabel();
+        etiquetaNombre1 = new javax.swing.JLabel();
+        etiquetaCorreo1 = new javax.swing.JLabel();
+        etiquetaTipo = new javax.swing.JLabel();
+        usuarioEditPanel1 = new javax.swing.JPanel();
         userEditLabel1 = new javax.swing.JLabel();
-        jPanel5 = new javax.swing.JPanel();
-        userEditLabel3 = new javax.swing.JLabel();
         usuarioMin2 = new interfaz.panels.UsuarioMin();
-        jPanel10 = new javax.swing.JPanel();
+        usuarioEditPanel2 = new javax.swing.JPanel();
         userEditLabel2 = new javax.swing.JLabel();
+        usuarioMin3 = new interfaz.panels.UsuarioMin();
+        usuarioEditPanel3 = new javax.swing.JPanel();
+        userEditLabel3 = new javax.swing.JLabel();
         usuarioMin4 = new interfaz.panels.UsuarioMin();
-        jPanel11 = new javax.swing.JPanel();
+        usuarioEditPanel4 = new javax.swing.JPanel();
         userEditLabel4 = new javax.swing.JLabel();
         usuarioMin5 = new interfaz.panels.UsuarioMin();
-        jPanel12 = new javax.swing.JPanel();
+        usuarioEditPanel5 = new javax.swing.JPanel();
         userEditLabel5 = new javax.swing.JLabel();
         usuarioMin6 = new interfaz.panels.UsuarioMin();
-        jPanel13 = new javax.swing.JPanel();
+        usuarioEditPanel6 = new javax.swing.JPanel();
         userEditLabel6 = new javax.swing.JLabel();
         usuarioMin7 = new interfaz.panels.UsuarioMin();
-        jPanel14 = new javax.swing.JPanel();
+        usuarioEditPanel7 = new javax.swing.JPanel();
         userEditLabel7 = new javax.swing.JLabel();
         usuarioMin8 = new interfaz.panels.UsuarioMin();
-        jPanel15 = new javax.swing.JPanel();
+        usuarioEditPanel8 = new javax.swing.JPanel();
         userEditLabel8 = new javax.swing.JLabel();
+        repagUsuarioButton = new javax.swing.JButton();
+        avpagUsuarioButton = new javax.swing.JButton();
         panelViewVentas = new javax.swing.JPanel();
         productoMax1 = new interfaz.panels.ProductoMax();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        panelVentas = new javax.swing.JPanel();
-        ventaMin1 = new interfaz.panels.VentaMin();
-        ventaMin2 = new interfaz.panels.VentaMin();
-        ventaMin3 = new interfaz.panels.VentaMin();
-        ventaMin4 = new interfaz.panels.VentaMin();
-        ventaMin5 = new interfaz.panels.VentaMin();
-        ventaMin6 = new interfaz.panels.VentaMin();
-        ventaMin7 = new interfaz.panels.VentaMin();
-        ventaMin8 = new interfaz.panels.VentaMin();
-        panelBienvenida = new javax.swing.JPanel();
         panelProductos = new javax.swing.JPanel();
         productoMin1 = new interfaz.panels.ProductoMin();
         productoMin2 = new interfaz.panels.ProductoMin();
@@ -303,81 +298,81 @@ public class MenuAdmin extends javax.swing.JFrame {
 
         jPanel1.setLayout(new java.awt.CardLayout());
 
-        nameEditLabel.setText("Editar");
-        nameEditLabel.addMouseListener(new java.awt.event.MouseAdapter() {
+        nombreUsuarioEditLabel.setText("Editar");
+        nombreUsuarioEditLabel.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                nameEditLabelMouseClicked(evt);
+                nombreUsuarioEditLabelMouseClicked(evt);
             }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                nameEditLabelMouseEntered(evt);
+                nombreUsuarioEditLabelMouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                nameEditLabelMouseExited(evt);
+                nombreUsuarioEditLabelMouseExited(evt);
             }
         });
 
-        emailEditLabel.setText("Editar");
-        emailEditLabel.addMouseListener(new java.awt.event.MouseAdapter() {
+        correoUsuarioEditLabel.setText("Editar");
+        correoUsuarioEditLabel.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                emailEditLabelMouseClicked(evt);
+                correoUsuarioEditLabelMouseClicked(evt);
             }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                emailEditLabelMouseEntered(evt);
+                correoUsuarioEditLabelMouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                emailEditLabelMouseExited(evt);
+                correoUsuarioEditLabelMouseExited(evt);
             }
         });
 
-        passwordEditLabel.setText("Editar");
-        passwordEditLabel.addMouseListener(new java.awt.event.MouseAdapter() {
+        claveUsuarioEditLabel.setText("Editar");
+        claveUsuarioEditLabel.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                passwordEditLabelMouseClicked(evt);
+                claveUsuarioEditLabelMouseClicked(evt);
             }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                passwordEditLabelMouseEntered(evt);
+                claveUsuarioEditLabelMouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                passwordEditLabelMouseExited(evt);
+                claveUsuarioEditLabelMouseExited(evt);
             }
         });
 
-        dniEditLabel.setText("Editar");
-        dniEditLabel.addMouseListener(new java.awt.event.MouseAdapter() {
+        dniUsuarioEditLabel.setText("Editar");
+        dniUsuarioEditLabel.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                dniEditLabelMouseClicked(evt);
+                dniUsuarioEditLabelMouseClicked(evt);
             }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                dniEditLabelMouseEntered(evt);
+                dniUsuarioEditLabelMouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                dniEditLabelMouseExited(evt);
+                dniUsuarioEditLabelMouseExited(evt);
             }
         });
 
-        pcEditLabel.setText("Editar");
-        pcEditLabel.addMouseListener(new java.awt.event.MouseAdapter() {
+        pcUsuarioEditLabel.setText("Editar");
+        pcUsuarioEditLabel.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                pcEditLabelMouseClicked(evt);
+                pcUsuarioEditLabelMouseClicked(evt);
             }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                pcEditLabelMouseEntered(evt);
+                pcUsuarioEditLabelMouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                pcEditLabelMouseExited(evt);
+                pcUsuarioEditLabelMouseExited(evt);
             }
         });
 
-        ccEditLabel.setText("Editar");
-        ccEditLabel.addMouseListener(new java.awt.event.MouseAdapter() {
+        ccUsuarioEditLabel.setText("Editar");
+        ccUsuarioEditLabel.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                ccEditLabelMouseClicked(evt);
+                ccUsuarioEditLabelMouseClicked(evt);
             }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                ccEditLabelMouseEntered(evt);
+                ccUsuarioEditLabelMouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                ccEditLabelMouseExited(evt);
+                ccUsuarioEditLabelMouseExited(evt);
             }
         });
 
@@ -391,9 +386,6 @@ public class MenuAdmin extends javax.swing.JFrame {
             }
         });
 
-        jLabel3.setFont(new java.awt.Font("OCR A Extended", 0, 11)); // NOI18N
-        jLabel3.setText("Nombre:");
-
         emailEditField.setEditable(false);
         emailEditField.setFont(new java.awt.Font("OCR A Extended", 2, 11)); // NOI18N
         emailEditField.setForeground(new java.awt.Color(153, 153, 153));
@@ -404,8 +396,10 @@ public class MenuAdmin extends javax.swing.JFrame {
             }
         });
 
-        jLabel5.setFont(new java.awt.Font("OCR A Extended", 0, 11)); // NOI18N
-        jLabel5.setText("Correo:");
+        passwordEditField.setEditable(false);
+        passwordEditField.setFont(new java.awt.Font("OCR A Extended", 2, 11)); // NOI18N
+        passwordEditField.setForeground(new java.awt.Color(153, 153, 153));
+        passwordEditField.setText("Clave");
 
         dniEditField.setEditable(false);
         dniEditField.setForeground(new java.awt.Color(153, 153, 153));
@@ -437,150 +431,188 @@ public class MenuAdmin extends javax.swing.JFrame {
             }
         });
 
+        jLabel5.setFont(new java.awt.Font("OCR A Extended", 0, 11)); // NOI18N
+        jLabel5.setText("Tarjeta de crédito:"); // NOI18N
+
         jLabel6.setFont(new java.awt.Font("OCR A Extended", 0, 11)); // NOI18N
-        jLabel6.setText("Clave:");
+        jLabel6.setText("Código postal:");
 
         jLabel7.setFont(new java.awt.Font("OCR A Extended", 0, 11)); // NOI18N
         jLabel7.setText("Dni:");
 
+        jLabel3.setFont(new java.awt.Font("OCR A Extended", 0, 11)); // NOI18N
+        jLabel3.setText("Clave:");
+
         jLabel8.setFont(new java.awt.Font("OCR A Extended", 0, 11)); // NOI18N
-        jLabel8.setText("Tarjeta de crédito:"); // NOI18N
+        jLabel8.setText("Correo:");
 
         jLabel9.setFont(new java.awt.Font("OCR A Extended", 0, 11)); // NOI18N
-        jLabel9.setText("Código postal:");
+        jLabel9.setText("Nombre:");
 
-        passwordEditField.setEditable(false);
-        passwordEditField.setFont(new java.awt.Font("OCR A Extended", 2, 11)); // NOI18N
-        passwordEditField.setForeground(new java.awt.Color(153, 153, 153));
-        passwordEditField.setText("Clave");
-
-        guardarButton.setText("Guardar");
-
-        atrasButton.setText("Atrás");
-        atrasButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                atrasButtonActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout panelEditarUsuariosLayout = new javax.swing.GroupLayout(panelEditarUsuarios);
-        panelEditarUsuarios.setLayout(panelEditarUsuariosLayout);
-        panelEditarUsuariosLayout.setHorizontalGroup(
-            panelEditarUsuariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelEditarUsuariosLayout.createSequentialGroup()
-                .addContainerGap(179, Short.MAX_VALUE)
-                .addGroup(panelEditarUsuariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(panelEditarUsuariosLayout.createSequentialGroup()
+        javax.swing.GroupLayout panelEditarUsuarioLayout = new javax.swing.GroupLayout(panelEditarUsuario);
+        panelEditarUsuario.setLayout(panelEditarUsuarioLayout);
+        panelEditarUsuarioLayout.setHorizontalGroup(
+            panelEditarUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelEditarUsuarioLayout.createSequentialGroup()
+                .addGap(189, 189, 189)
+                .addGroup(panelEditarUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelEditarUsuarioLayout.createSequentialGroup()
                         .addGap(80, 80, 80)
-                        .addComponent(jLabel3)
+                        .addComponent(jLabel9)
                         .addGap(11, 11, 11)
                         .addComponent(nameEditField, javax.swing.GroupLayout.PREFERRED_SIZE, 396, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(panelEditarUsuariosLayout.createSequentialGroup()
+                    .addGroup(panelEditarUsuarioLayout.createSequentialGroup()
                         .addGap(80, 80, 80)
-                        .addComponent(jLabel5)
+                        .addComponent(jLabel8)
                         .addGap(11, 11, 11)
                         .addComponent(emailEditField, javax.swing.GroupLayout.PREFERRED_SIZE, 396, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(panelEditarUsuariosLayout.createSequentialGroup()
+                    .addGroup(panelEditarUsuarioLayout.createSequentialGroup()
                         .addGap(90, 90, 90)
-                        .addComponent(jLabel6)
+                        .addComponent(jLabel3)
                         .addGap(8, 8, 8)
                         .addComponent(passwordEditField, javax.swing.GroupLayout.PREFERRED_SIZE, 396, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(panelEditarUsuariosLayout.createSequentialGroup()
+                    .addGroup(panelEditarUsuarioLayout.createSequentialGroup()
                         .addGap(100, 100, 100)
                         .addComponent(jLabel7)
                         .addGap(12, 12, 12)
                         .addComponent(dniEditField, javax.swing.GroupLayout.PREFERRED_SIZE, 396, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(panelEditarUsuariosLayout.createSequentialGroup()
+                    .addGroup(panelEditarUsuarioLayout.createSequentialGroup()
                         .addGap(30, 30, 30)
-                        .addComponent(jLabel9)
+                        .addComponent(jLabel6)
                         .addGap(12, 12, 12)
                         .addComponent(pcEditField, javax.swing.GroupLayout.PREFERRED_SIZE, 396, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(panelEditarUsuariosLayout.createSequentialGroup()
-                        .addComponent(jLabel8)
+                    .addGroup(panelEditarUsuarioLayout.createSequentialGroup()
+                        .addComponent(jLabel5)
                         .addGap(7, 7, 7)
                         .addComponent(ccEditField, javax.swing.GroupLayout.PREFERRED_SIZE, 396, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(panelEditarUsuariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(ccEditLabel)
-                    .addComponent(pcEditLabel)
-                    .addComponent(dniEditLabel)
-                    .addComponent(passwordEditLabel)
-                    .addComponent(emailEditLabel)
-                    .addComponent(nameEditLabel))
-                .addGap(149, 149, 149))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelEditarUsuariosLayout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(atrasButton)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(guardarButton))
+                .addGroup(panelEditarUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(nombreUsuarioEditLabel)
+                    .addComponent(claveUsuarioEditLabel)
+                    .addComponent(dniUsuarioEditLabel)
+                    .addComponent(pcUsuarioEditLabel)
+                    .addComponent(ccUsuarioEditLabel)
+                    .addComponent(correoUsuarioEditLabel))
+                .addContainerGap(139, Short.MAX_VALUE))
         );
-        panelEditarUsuariosLayout.setVerticalGroup(
-            panelEditarUsuariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelEditarUsuariosLayout.createSequentialGroup()
-                .addGroup(panelEditarUsuariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(panelEditarUsuariosLayout.createSequentialGroup()
-                        .addGap(150, 150, 150)
-                        .addComponent(nameEditLabel)
-                        .addGap(32, 32, 32)
-                        .addComponent(emailEditLabel)
-                        .addGap(37, 37, 37)
-                        .addComponent(passwordEditLabel)
-                        .addGap(41, 41, 41)
-                        .addComponent(dniEditLabel)
-                        .addGap(33, 33, 33)
-                        .addComponent(pcEditLabel)
-                        .addGap(38, 38, 38)
-                        .addComponent(ccEditLabel))
-                    .addGroup(panelEditarUsuariosLayout.createSequentialGroup()
-                        .addGap(141, 141, 141)
-                        .addGroup(panelEditarUsuariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(panelEditarUsuariosLayout.createSequentialGroup()
+        panelEditarUsuarioLayout.setVerticalGroup(
+            panelEditarUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelEditarUsuarioLayout.createSequentialGroup()
+                .addGroup(panelEditarUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelEditarUsuarioLayout.createSequentialGroup()
+                        .addGap(133, 133, 133)
+                        .addComponent(nombreUsuarioEditLabel)
+                        .addGap(34, 34, 34)
+                        .addComponent(correoUsuarioEditLabel)
+                        .addGap(35, 35, 35)
+                        .addComponent(claveUsuarioEditLabel)
+                        .addGap(39, 39, 39)
+                        .addComponent(dniUsuarioEditLabel)
+                        .addGap(35, 35, 35)
+                        .addComponent(pcUsuarioEditLabel)
+                        .addGap(36, 36, 36)
+                        .addComponent(ccUsuarioEditLabel))
+                    .addGroup(panelEditarUsuarioLayout.createSequentialGroup()
+                        .addGap(122, 122, 122)
+                        .addGroup(panelEditarUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(panelEditarUsuarioLayout.createSequentialGroup()
                                 .addGap(10, 10, 10)
-                                .addComponent(jLabel3))
+                                .addComponent(jLabel9))
                             .addComponent(nameEditField, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(15, 15, 15)
-                        .addGroup(panelEditarUsuariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(panelEditarUsuariosLayout.createSequentialGroup()
+                        .addGroup(panelEditarUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(panelEditarUsuarioLayout.createSequentialGroup()
                                 .addGap(10, 10, 10)
-                                .addComponent(jLabel5))
+                                .addComponent(jLabel8))
                             .addComponent(emailEditField, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(15, 15, 15)
-                        .addGroup(panelEditarUsuariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(panelEditarUsuariosLayout.createSequentialGroup()
+                        .addGroup(panelEditarUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(panelEditarUsuarioLayout.createSequentialGroup()
                                 .addGap(10, 10, 10)
-                                .addComponent(jLabel6))
+                                .addComponent(jLabel3))
                             .addComponent(passwordEditField, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(15, 15, 15)
-                        .addGroup(panelEditarUsuariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(panelEditarUsuariosLayout.createSequentialGroup()
+                        .addGroup(panelEditarUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(panelEditarUsuarioLayout.createSequentialGroup()
                                 .addGap(10, 10, 10)
                                 .addComponent(jLabel7))
                             .addComponent(dniEditField, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(15, 15, 15)
-                        .addGroup(panelEditarUsuariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(panelEditarUsuariosLayout.createSequentialGroup()
+                        .addGroup(panelEditarUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(panelEditarUsuarioLayout.createSequentialGroup()
                                 .addGap(10, 10, 10)
-                                .addComponent(jLabel9))
+                                .addComponent(jLabel6))
                             .addComponent(pcEditField, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(15, 15, 15)
-                        .addGroup(panelEditarUsuariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(panelEditarUsuariosLayout.createSequentialGroup()
+                        .addGroup(panelEditarUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(panelEditarUsuarioLayout.createSequentialGroup()
                                 .addGap(10, 10, 10)
-                                .addComponent(jLabel8))
+                                .addComponent(jLabel5))
                             .addComponent(ccEditField, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 637, Short.MAX_VALUE)
-                .addGroup(panelEditarUsuariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(guardarButton)
-                    .addComponent(atrasButton)))
+                .addContainerGap(185, Short.MAX_VALUE))
         );
 
-        jPanel1.add(panelEditarUsuarios, "EditarUsuario");
+        jPanel1.add(panelEditarUsuario, "card7");
+
+        javax.swing.GroupLayout panelBienvenidaLayout = new javax.swing.GroupLayout(panelBienvenida);
+        panelBienvenida.setLayout(panelBienvenidaLayout);
+        panelBienvenidaLayout.setHorizontalGroup(
+            panelBienvenidaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 902, Short.MAX_VALUE)
+        );
+        panelBienvenidaLayout.setVerticalGroup(
+            panelBienvenidaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 592, Short.MAX_VALUE)
+        );
+
+        jPanel1.add(panelBienvenida, "Bienvenida\n");
 
         panelUsuarios.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        panelUsuarios.add(usuarioMin1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 650, -1));
-        panelUsuarios.add(usuarioMin3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 140, 650, -1));
 
-        jPanel4.setBackground(new java.awt.Color(204, 204, 204));
+        usuarioMin1.setBackground(new java.awt.Color(204, 204, 204));
+
+        etiquetaDNI1.setFont(new java.awt.Font("OCR A Extended", 0, 12)); // NOI18N
+        etiquetaDNI1.setText("ID");
+
+        etiquetaNombre1.setFont(new java.awt.Font("OCR A Extended", 0, 12)); // NOI18N
+        etiquetaNombre1.setText("Name");
+
+        etiquetaCorreo1.setFont(new java.awt.Font("OCR A Extended", 0, 12)); // NOI18N
+        etiquetaCorreo1.setText("Email");
+
+        etiquetaTipo.setFont(new java.awt.Font("OCR A Extended", 0, 12)); // NOI18N
+        etiquetaTipo.setText("Type");
+
+        javax.swing.GroupLayout usuarioMin1Layout = new javax.swing.GroupLayout(usuarioMin1);
+        usuarioMin1.setLayout(usuarioMin1Layout);
+        usuarioMin1Layout.setHorizontalGroup(
+            usuarioMin1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(usuarioMin1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(etiquetaDNI1)
+                .addGap(105, 105, 105)
+                .addComponent(etiquetaNombre1)
+                .addGap(125, 125, 125)
+                .addComponent(etiquetaCorreo1)
+                .addGap(212, 212, 212)
+                .addComponent(etiquetaTipo)
+                .addContainerGap(93, Short.MAX_VALUE))
+        );
+        usuarioMin1Layout.setVerticalGroup(
+            usuarioMin1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(usuarioMin1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(usuarioMin1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(etiquetaDNI1, javax.swing.GroupLayout.DEFAULT_SIZE, 28, Short.MAX_VALUE)
+                    .addComponent(etiquetaNombre1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(etiquetaCorreo1)
+                    .addComponent(etiquetaTipo))
+                .addContainerGap())
+        );
+
+        panelUsuarios.add(usuarioMin1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 650, -1));
+
+        usuarioEditPanel1.setBackground(new java.awt.Color(204, 204, 204));
 
         userEditLabel1.setFont(new java.awt.Font("OCR A Extended", 0, 12)); // NOI18N
         userEditLabel1.setText("Edit");
@@ -596,62 +628,27 @@ public class MenuAdmin extends javax.swing.JFrame {
             }
         });
 
-        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
-        jPanel4.setLayout(jPanel4Layout);
-        jPanel4Layout.setHorizontalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+        javax.swing.GroupLayout usuarioEditPanel1Layout = new javax.swing.GroupLayout(usuarioEditPanel1);
+        usuarioEditPanel1.setLayout(usuarioEditPanel1Layout);
+        usuarioEditPanel1Layout.setHorizontalGroup(
+            usuarioEditPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, usuarioEditPanel1Layout.createSequentialGroup()
                 .addContainerGap(114, Short.MAX_VALUE)
                 .addComponent(userEditLabel1)
                 .addGap(88, 88, 88))
         );
-        jPanel4Layout.setVerticalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel4Layout.createSequentialGroup()
+        usuarioEditPanel1Layout.setVerticalGroup(
+            usuarioEditPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(usuarioEditPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(userEditLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 28, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
-        panelUsuarios.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 0, 230, 50));
-
-        jPanel5.setBackground(new java.awt.Color(204, 204, 204));
-
-        userEditLabel3.setFont(new java.awt.Font("OCR A Extended", 0, 12)); // NOI18N
-        userEditLabel3.setText("Edit");
-        userEditLabel3.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                userEditLabel3MouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                userEditLabel3MouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                userEditLabel3MouseExited(evt);
-            }
-        });
-
-        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
-        jPanel5.setLayout(jPanel5Layout);
-        jPanel5Layout.setHorizontalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
-                .addContainerGap(116, Short.MAX_VALUE)
-                .addComponent(userEditLabel3)
-                .addGap(90, 90, 90))
-        );
-        jPanel5Layout.setVerticalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel5Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(userEditLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, 28, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-
-        panelUsuarios.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 140, 234, 50));
+        panelUsuarios.add(usuarioEditPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 0, 230, 50));
         panelUsuarios.add(usuarioMin2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 70, 650, -1));
 
-        jPanel10.setBackground(new java.awt.Color(204, 204, 204));
+        usuarioEditPanel2.setBackground(new java.awt.Color(204, 204, 204));
 
         userEditLabel2.setFont(new java.awt.Font("OCR A Extended", 0, 12)); // NOI18N
         userEditLabel2.setText("Edit");
@@ -667,27 +664,63 @@ public class MenuAdmin extends javax.swing.JFrame {
             }
         });
 
-        javax.swing.GroupLayout jPanel10Layout = new javax.swing.GroupLayout(jPanel10);
-        jPanel10.setLayout(jPanel10Layout);
-        jPanel10Layout.setHorizontalGroup(
-            jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel10Layout.createSequentialGroup()
+        javax.swing.GroupLayout usuarioEditPanel2Layout = new javax.swing.GroupLayout(usuarioEditPanel2);
+        usuarioEditPanel2.setLayout(usuarioEditPanel2Layout);
+        usuarioEditPanel2Layout.setHorizontalGroup(
+            usuarioEditPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, usuarioEditPanel2Layout.createSequentialGroup()
                 .addContainerGap(116, Short.MAX_VALUE)
                 .addComponent(userEditLabel2)
                 .addGap(86, 86, 86))
         );
-        jPanel10Layout.setVerticalGroup(
-            jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel10Layout.createSequentialGroup()
+        usuarioEditPanel2Layout.setVerticalGroup(
+            usuarioEditPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, usuarioEditPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(userEditLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 28, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
-        panelUsuarios.add(jPanel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 70, 230, 50));
+        panelUsuarios.add(usuarioEditPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 70, 230, 50));
+        panelUsuarios.add(usuarioMin3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 140, 650, -1));
+
+        usuarioEditPanel3.setBackground(new java.awt.Color(204, 204, 204));
+
+        userEditLabel3.setFont(new java.awt.Font("OCR A Extended", 0, 12)); // NOI18N
+        userEditLabel3.setText("Edit");
+        userEditLabel3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                userEditLabel3MouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                userEditLabel3MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                userEditLabel3MouseExited(evt);
+            }
+        });
+
+        javax.swing.GroupLayout usuarioEditPanel3Layout = new javax.swing.GroupLayout(usuarioEditPanel3);
+        usuarioEditPanel3.setLayout(usuarioEditPanel3Layout);
+        usuarioEditPanel3Layout.setHorizontalGroup(
+            usuarioEditPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, usuarioEditPanel3Layout.createSequentialGroup()
+                .addContainerGap(116, Short.MAX_VALUE)
+                .addComponent(userEditLabel3)
+                .addGap(90, 90, 90))
+        );
+        usuarioEditPanel3Layout.setVerticalGroup(
+            usuarioEditPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(usuarioEditPanel3Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(userEditLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, 28, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+
+        panelUsuarios.add(usuarioEditPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 140, 234, 50));
         panelUsuarios.add(usuarioMin4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 210, 650, -1));
 
-        jPanel11.setBackground(new java.awt.Color(204, 204, 204));
+        usuarioEditPanel4.setBackground(new java.awt.Color(204, 204, 204));
 
         userEditLabel4.setFont(new java.awt.Font("OCR A Extended", 0, 12)); // NOI18N
         userEditLabel4.setText("Edit");
@@ -703,27 +736,27 @@ public class MenuAdmin extends javax.swing.JFrame {
             }
         });
 
-        javax.swing.GroupLayout jPanel11Layout = new javax.swing.GroupLayout(jPanel11);
-        jPanel11.setLayout(jPanel11Layout);
-        jPanel11Layout.setHorizontalGroup(
-            jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel11Layout.createSequentialGroup()
+        javax.swing.GroupLayout usuarioEditPanel4Layout = new javax.swing.GroupLayout(usuarioEditPanel4);
+        usuarioEditPanel4.setLayout(usuarioEditPanel4Layout);
+        usuarioEditPanel4Layout.setHorizontalGroup(
+            usuarioEditPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, usuarioEditPanel4Layout.createSequentialGroup()
                 .addContainerGap(118, Short.MAX_VALUE)
                 .addComponent(userEditLabel4)
                 .addGap(88, 88, 88))
         );
-        jPanel11Layout.setVerticalGroup(
-            jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel11Layout.createSequentialGroup()
+        usuarioEditPanel4Layout.setVerticalGroup(
+            usuarioEditPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(usuarioEditPanel4Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(userEditLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, 28, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
-        panelUsuarios.add(jPanel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 210, 234, 50));
+        panelUsuarios.add(usuarioEditPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 210, 234, 50));
         panelUsuarios.add(usuarioMin5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 280, 650, -1));
 
-        jPanel12.setBackground(new java.awt.Color(204, 204, 204));
+        usuarioEditPanel5.setBackground(new java.awt.Color(204, 204, 204));
 
         userEditLabel5.setFont(new java.awt.Font("OCR A Extended", 0, 12)); // NOI18N
         userEditLabel5.setText("Edit");
@@ -739,27 +772,27 @@ public class MenuAdmin extends javax.swing.JFrame {
             }
         });
 
-        javax.swing.GroupLayout jPanel12Layout = new javax.swing.GroupLayout(jPanel12);
-        jPanel12.setLayout(jPanel12Layout);
-        jPanel12Layout.setHorizontalGroup(
-            jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel12Layout.createSequentialGroup()
+        javax.swing.GroupLayout usuarioEditPanel5Layout = new javax.swing.GroupLayout(usuarioEditPanel5);
+        usuarioEditPanel5.setLayout(usuarioEditPanel5Layout);
+        usuarioEditPanel5Layout.setHorizontalGroup(
+            usuarioEditPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, usuarioEditPanel5Layout.createSequentialGroup()
                 .addContainerGap(118, Short.MAX_VALUE)
                 .addComponent(userEditLabel5)
                 .addGap(88, 88, 88))
         );
-        jPanel12Layout.setVerticalGroup(
-            jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel12Layout.createSequentialGroup()
+        usuarioEditPanel5Layout.setVerticalGroup(
+            usuarioEditPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(usuarioEditPanel5Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(userEditLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, 28, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
-        panelUsuarios.add(jPanel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 280, 234, 50));
+        panelUsuarios.add(usuarioEditPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 280, 234, 50));
         panelUsuarios.add(usuarioMin6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 350, 650, -1));
 
-        jPanel13.setBackground(new java.awt.Color(204, 204, 204));
+        usuarioEditPanel6.setBackground(new java.awt.Color(204, 204, 204));
 
         userEditLabel6.setFont(new java.awt.Font("OCR A Extended", 0, 12)); // NOI18N
         userEditLabel6.setText("Edit");
@@ -775,27 +808,27 @@ public class MenuAdmin extends javax.swing.JFrame {
             }
         });
 
-        javax.swing.GroupLayout jPanel13Layout = new javax.swing.GroupLayout(jPanel13);
-        jPanel13.setLayout(jPanel13Layout);
-        jPanel13Layout.setHorizontalGroup(
-            jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel13Layout.createSequentialGroup()
+        javax.swing.GroupLayout usuarioEditPanel6Layout = new javax.swing.GroupLayout(usuarioEditPanel6);
+        usuarioEditPanel6.setLayout(usuarioEditPanel6Layout);
+        usuarioEditPanel6Layout.setHorizontalGroup(
+            usuarioEditPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, usuarioEditPanel6Layout.createSequentialGroup()
                 .addContainerGap(118, Short.MAX_VALUE)
                 .addComponent(userEditLabel6)
                 .addGap(88, 88, 88))
         );
-        jPanel13Layout.setVerticalGroup(
-            jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel13Layout.createSequentialGroup()
+        usuarioEditPanel6Layout.setVerticalGroup(
+            usuarioEditPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(usuarioEditPanel6Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(userEditLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, 28, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
-        panelUsuarios.add(jPanel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 350, 234, 50));
+        panelUsuarios.add(usuarioEditPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 350, 234, 50));
         panelUsuarios.add(usuarioMin7, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 420, 650, -1));
 
-        jPanel14.setBackground(new java.awt.Color(204, 204, 204));
+        usuarioEditPanel7.setBackground(new java.awt.Color(204, 204, 204));
 
         userEditLabel7.setFont(new java.awt.Font("OCR A Extended", 0, 12)); // NOI18N
         userEditLabel7.setText("Edit");
@@ -811,27 +844,27 @@ public class MenuAdmin extends javax.swing.JFrame {
             }
         });
 
-        javax.swing.GroupLayout jPanel14Layout = new javax.swing.GroupLayout(jPanel14);
-        jPanel14.setLayout(jPanel14Layout);
-        jPanel14Layout.setHorizontalGroup(
-            jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel14Layout.createSequentialGroup()
+        javax.swing.GroupLayout usuarioEditPanel7Layout = new javax.swing.GroupLayout(usuarioEditPanel7);
+        usuarioEditPanel7.setLayout(usuarioEditPanel7Layout);
+        usuarioEditPanel7Layout.setHorizontalGroup(
+            usuarioEditPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, usuarioEditPanel7Layout.createSequentialGroup()
                 .addContainerGap(119, Short.MAX_VALUE)
                 .addComponent(userEditLabel7)
                 .addGap(87, 87, 87))
         );
-        jPanel14Layout.setVerticalGroup(
-            jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel14Layout.createSequentialGroup()
+        usuarioEditPanel7Layout.setVerticalGroup(
+            usuarioEditPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(usuarioEditPanel7Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(userEditLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, 28, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
-        panelUsuarios.add(jPanel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 420, 234, 50));
+        panelUsuarios.add(usuarioEditPanel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 420, 234, 50));
         panelUsuarios.add(usuarioMin8, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 490, 650, -1));
 
-        jPanel15.setBackground(new java.awt.Color(204, 204, 204));
+        usuarioEditPanel8.setBackground(new java.awt.Color(204, 204, 204));
 
         userEditLabel8.setFont(new java.awt.Font("OCR A Extended", 0, 12)); // NOI18N
         userEditLabel8.setText("Edit");
@@ -847,24 +880,42 @@ public class MenuAdmin extends javax.swing.JFrame {
             }
         });
 
-        javax.swing.GroupLayout jPanel15Layout = new javax.swing.GroupLayout(jPanel15);
-        jPanel15.setLayout(jPanel15Layout);
-        jPanel15Layout.setHorizontalGroup(
-            jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel15Layout.createSequentialGroup()
+        javax.swing.GroupLayout usuarioEditPanel8Layout = new javax.swing.GroupLayout(usuarioEditPanel8);
+        usuarioEditPanel8.setLayout(usuarioEditPanel8Layout);
+        usuarioEditPanel8Layout.setHorizontalGroup(
+            usuarioEditPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, usuarioEditPanel8Layout.createSequentialGroup()
                 .addContainerGap(119, Short.MAX_VALUE)
                 .addComponent(userEditLabel8)
                 .addGap(87, 87, 87))
         );
-        jPanel15Layout.setVerticalGroup(
-            jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel15Layout.createSequentialGroup()
+        usuarioEditPanel8Layout.setVerticalGroup(
+            usuarioEditPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(usuarioEditPanel8Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(userEditLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, 28, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
-        panelUsuarios.add(jPanel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 490, 234, 50));
+        panelUsuarios.add(usuarioEditPanel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 490, 234, 50));
+
+        repagUsuarioButton.setText("Atrás");
+        repagUsuarioButton.setMaximumSize(new java.awt.Dimension(77, 23));
+        repagUsuarioButton.setMinimumSize(new java.awt.Dimension(77, 23));
+        repagUsuarioButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                repagUsuarioButtonActionPerformed(evt);
+            }
+        });
+        panelUsuarios.add(repagUsuarioButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(729, 560, 70, -1));
+
+        avpagUsuarioButton.setText("Siguiente");
+        avpagUsuarioButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                avpagUsuarioButtonActionPerformed(evt);
+            }
+        });
+        panelUsuarios.add(avpagUsuarioButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 560, -1, -1));
 
         jPanel1.add(panelUsuarios, "Usuarios");
 
@@ -912,55 +963,6 @@ public class MenuAdmin extends javax.swing.JFrame {
         );
 
         jPanel1.add(panelViewVentas, "EditarVentas");
-
-        javax.swing.GroupLayout panelVentasLayout = new javax.swing.GroupLayout(panelVentas);
-        panelVentas.setLayout(panelVentasLayout);
-        panelVentasLayout.setHorizontalGroup(
-            panelVentasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(ventaMin8, javax.swing.GroupLayout.DEFAULT_SIZE, 902, Short.MAX_VALUE)
-            .addComponent(ventaMin7, javax.swing.GroupLayout.DEFAULT_SIZE, 902, Short.MAX_VALUE)
-            .addComponent(ventaMin6, javax.swing.GroupLayout.DEFAULT_SIZE, 902, Short.MAX_VALUE)
-            .addComponent(ventaMin5, javax.swing.GroupLayout.DEFAULT_SIZE, 902, Short.MAX_VALUE)
-            .addComponent(ventaMin4, javax.swing.GroupLayout.DEFAULT_SIZE, 902, Short.MAX_VALUE)
-            .addComponent(ventaMin3, javax.swing.GroupLayout.DEFAULT_SIZE, 902, Short.MAX_VALUE)
-            .addComponent(ventaMin2, javax.swing.GroupLayout.DEFAULT_SIZE, 902, Short.MAX_VALUE)
-            .addComponent(ventaMin1, javax.swing.GroupLayout.DEFAULT_SIZE, 902, Short.MAX_VALUE)
-        );
-        panelVentasLayout.setVerticalGroup(
-            panelVentasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelVentasLayout.createSequentialGroup()
-                .addComponent(ventaMin1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(ventaMin2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(ventaMin3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(ventaMin4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(ventaMin5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(ventaMin6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(ventaMin7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(ventaMin8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-
-        jPanel1.add(panelVentas, "Ventas\n");
-
-        javax.swing.GroupLayout panelBienvenidaLayout = new javax.swing.GroupLayout(panelBienvenida);
-        panelBienvenida.setLayout(panelBienvenidaLayout);
-        panelBienvenidaLayout.setHorizontalGroup(
-            panelBienvenidaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 902, Short.MAX_VALUE)
-        );
-        panelBienvenidaLayout.setVerticalGroup(
-            panelBienvenidaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1086, Short.MAX_VALUE)
-        );
-
-        jPanel1.add(panelBienvenida, "Bienvenida\n");
 
         rePag.setText("<<");
         rePag.addActionListener(new java.awt.event.ActionListener() {
@@ -1242,7 +1244,7 @@ public class MenuAdmin extends javax.swing.JFrame {
                         .addComponent(foto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(urgencia)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 587, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 93, Short.MAX_VALUE)
                 .addGroup(panelEditarProductosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(botonSubir)
                     .addComponent(botonCancelar))
@@ -1260,12 +1262,9 @@ public class MenuAdmin extends javax.swing.JFrame {
                 .addComponent(filler3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(filler5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGap(26, 26, 26))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
+                    .addComponent(filler5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(filler2, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -1275,13 +1274,12 @@ public class MenuAdmin extends javax.swing.JFrame {
                 .addComponent(banner, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(filler2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(filler3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(filler5, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap())
-                    .addComponent(filler2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(filler5, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         pack();
@@ -1369,136 +1367,14 @@ public class MenuAdmin extends javax.swing.JFrame {
         // TODO add your handling code here:       
     }//GEN-LAST:event_comboBoxFuncionActionPerformed
 
-    private void nameEditLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_nameEditLabelMouseClicked
-        if (nameEditLabel.getText() == "Editar") {
-            nameEditField.setEditable(true);
-            nameEditLabel.setText("Confirmar");
-        } else if (nameEditLabel.getText() == "Confirmar") {
-            nameEditField.setEditable(false);
-            nameEditLabel.setText("Editar");
-        }
-    }//GEN-LAST:event_nameEditLabelMouseClicked
-
-    private void nameEditLabelMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_nameEditLabelMouseEntered
-        nameEditLabel.setFont(new java.awt.Font("OCR A Extended", 1, 12));
-    }//GEN-LAST:event_nameEditLabelMouseEntered
-
-    private void nameEditLabelMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_nameEditLabelMouseExited
-        nameEditLabel.setFont(new java.awt.Font("OCR A Extended", 0, 12));
-    }//GEN-LAST:event_nameEditLabelMouseExited
-
-    private void emailEditLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_emailEditLabelMouseClicked
-        if (emailEditLabel.getText() == "Editar") {
-            emailEditField.setEditable(true);
-            emailEditLabel.setText("Confirmar");
-        } else if (emailEditLabel.getText() == "Confirmar") {
-            emailEditField.setEditable(false);
-            emailEditLabel.setText("Editar");
-        }
-    }//GEN-LAST:event_emailEditLabelMouseClicked
-
-    private void emailEditLabelMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_emailEditLabelMouseEntered
-        emailEditLabel.setFont(new java.awt.Font("OCR A Extended", 1, 12));
-    }//GEN-LAST:event_emailEditLabelMouseEntered
-
-    private void emailEditLabelMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_emailEditLabelMouseExited
-        emailEditLabel.setFont(new java.awt.Font("OCR A Extended", 0, 12));
-    }//GEN-LAST:event_emailEditLabelMouseExited
-
-    private void passwordEditLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_passwordEditLabelMouseClicked
-        if (passwordEditLabel.getText() == "Editar") {
-            passwordEditField.setEditable(true);
-            passwordEditLabel.setText("Confirmar");
-        } else if (passwordEditLabel.getText() == "Confirmar") {
-            passwordEditField.setEditable(false);
-            passwordEditLabel.setText("Editar");
-        }
-    }//GEN-LAST:event_passwordEditLabelMouseClicked
-
-    private void passwordEditLabelMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_passwordEditLabelMouseEntered
-        passwordEditLabel.setFont(new java.awt.Font("OCR A Extended", 1, 12));
-    }//GEN-LAST:event_passwordEditLabelMouseEntered
-
-    private void passwordEditLabelMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_passwordEditLabelMouseExited
-        passwordEditLabel.setFont(new java.awt.Font("OCR A Extended", 0, 12));
-    }//GEN-LAST:event_passwordEditLabelMouseExited
-
-    private void dniEditLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_dniEditLabelMouseClicked
-        if (dniEditLabel.getText() == "Editar") {
-            dniEditField.setEditable(true);
-            dniEditLabel.setText("Confirmar");
-        } else if (dniEditLabel.getText() == "Confirmar") {
-            dniEditField.setEditable(false);
-            dniEditLabel.setText("Editar");
-        }
-    }//GEN-LAST:event_dniEditLabelMouseClicked
-
-    private void dniEditLabelMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_dniEditLabelMouseEntered
-        dniEditLabel.setFont(new java.awt.Font("OCR A Extended", 1, 12));
-    }//GEN-LAST:event_dniEditLabelMouseEntered
-
-    private void dniEditLabelMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_dniEditLabelMouseExited
-        dniEditLabel.setFont(new java.awt.Font("OCR A Extended", 0, 12));
-    }//GEN-LAST:event_dniEditLabelMouseExited
-
-    private void pcEditLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pcEditLabelMouseClicked
-        if (pcEditLabel.getText() == "Editar") {
-            pcEditField.setEditable(true);
-            pcEditLabel.setText("Confirmar");
-        } else if (pcEditLabel.getText() == "Confirmar") {
-            pcEditField.setEditable(false);
-            pcEditLabel.setText("Editar");
-        }
-    }//GEN-LAST:event_pcEditLabelMouseClicked
-
-    private void pcEditLabelMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pcEditLabelMouseEntered
-        pcEditLabel.setFont(new java.awt.Font("OCR A Extended", 1, 12));
-    }//GEN-LAST:event_pcEditLabelMouseEntered
-
-    private void pcEditLabelMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pcEditLabelMouseExited
-        pcEditLabel.setFont(new java.awt.Font("OCR A Extended", 0, 12));
-    }//GEN-LAST:event_pcEditLabelMouseExited
-
-    private void ccEditLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ccEditLabelMouseClicked
-        if (ccEditLabel.getText() == "Editar") {
-            ccEditField.setEditable(true);
-            ccEditLabel.setText("Confirmar");
-        } else if (ccEditLabel.getText() == "Confirmar") {
-            ccEditField.setEditable(false);
-            ccEditLabel.setText("Editar");
-        }
-    }//GEN-LAST:event_ccEditLabelMouseClicked
-
-    private void ccEditLabelMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ccEditLabelMouseEntered
-        ccEditLabel.setFont(new java.awt.Font("OCR A Extended", 1, 12));
-    }//GEN-LAST:event_ccEditLabelMouseEntered
-
-    private void ccEditLabelMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ccEditLabelMouseExited
-        ccEditLabel.setFont(new java.awt.Font("OCR A Extended", 0, 12));
-    }//GEN-LAST:event_ccEditLabelMouseExited
-
-    private void nameEditFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nameEditFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_nameEditFieldActionPerformed
-
-    private void emailEditFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_emailEditFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_emailEditFieldActionPerformed
-
-    private void dniEditFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dniEditFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_dniEditFieldActionPerformed
-
-    private void pcEditFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pcEditFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_pcEditFieldActionPerformed
-
-    private void ccEditFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ccEditFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_ccEditFieldActionPerformed
-
     private void userEditLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_userEditLabel1MouseClicked
         camposCL.show(jPanel1, "Usuario");
+        emailEditField.setText(user.correo);
+        passwordEditField.setText(user.clave);
+        nameEditField.setText(user.getNombre());
+        pcEditField.setText("" + user.getCCPP());
+        ccEditField.setText(user.getTTCC());
+        dniEditField.setText(user.getDni());
     }//GEN-LAST:event_userEditLabel1MouseClicked
 
     private void userEditLabel1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_userEditLabel1MouseEntered
@@ -1591,10 +1467,6 @@ public class MenuAdmin extends javax.swing.JFrame {
     private void userEditLabel8MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_userEditLabel8MouseExited
     }//GEN-LAST:event_userEditLabel8MouseExited
 
-    private void atrasButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_atrasButtonActionPerformed
-        camposCL.show(jPanel1, "Usuarios");
-    }//GEN-LAST:event_atrasButtonActionPerformed
-
     private void botonCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCancelarActionPerformed
         new MenuPrincipal(this.user);
         this.dispose();
@@ -1645,6 +1517,20 @@ public class MenuAdmin extends javax.swing.JFrame {
             this.dispose();
         }
     }//GEN-LAST:event_botonSubirActionPerformed
+    private void lockUnlockBotonesUsuarios() {
+        if (posicionMin - 8 < 0) {
+            rePag.setEnabled(false);
+        } else {
+            rePag.setEnabled(true);
+        }
+
+        if (posicionMin + 8 >= clientDefinitivo.size()) {
+            avPag.setEnabled(false);
+        } else {
+            avPag.setEnabled(true);
+        }
+    }
+
 
     private void iconoMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_iconoMouseExited
         this.foto.setBackground(new Color(240, 240, 240));
@@ -1707,7 +1593,7 @@ public class MenuAdmin extends javax.swing.JFrame {
     }//GEN-LAST:event_descripcionEditLabelMouseExited
 
     private void precioEditLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_precioEditLabelMouseClicked
-        
+
         if (precioEditLabel.getText() == "Editar") {
             fieldPrecio.setEditable(true);
             precioEditLabel.setText("Confirmar");
@@ -1729,14 +1615,264 @@ public class MenuAdmin extends javax.swing.JFrame {
         int panel = comboBoxFuncion.getSelectedIndex();
         if (panel == 0) {
             camposCL.show(jPanel1, "Usuarios");
+            
+            etiquetaCorreo1.setText(user.correo);
+            etiquetaNombre1.setText(user.getNombre());
+            etiquetaDNI1.setText(user.getDni());
+            
+            usuarioMin2.etiquetaDNI.setText(user.getDni());
+            usuarioMin2.etiquetaNombre.setText(user.getNombre());
+            usuarioMin2.etiquetaCorreo.setText(user.getCorreo());
+            
         } else if (panel == 1) {
-        System.out.println("Display Productos1");
+            System.out.println("Display Productos1");
             camposCL.show(jPanel1, "Productos");
         } else if (panel == 2) {
             camposCL.show(jPanel1, "Ventas");
         }
         System.out.println("Display Productos2");
     }//GEN-LAST:event_comboBoxFuncionItemStateChanged
+
+    private void nombreUsuarioEditLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_nombreUsuarioEditLabelMouseClicked
+        if (nameEditField.isEditable()) {
+
+            nameEditField.setEditable(false);
+            nameEditField.setText(user.getNombre());
+            nombreUsuarioEditLabel.setText("Editar");
+        } else {
+            // Este campo pasa a ser editable
+            nameEditField.setEditable(true);
+
+            // Se cambia el texto de este "boton"
+            nombreUsuarioEditLabel.setText("Guardar");
+        }
+    }//GEN-LAST:event_nombreUsuarioEditLabelMouseClicked
+
+    private void nombreUsuarioEditLabelMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_nombreUsuarioEditLabelMouseEntered
+        nombreUsuarioEditLabel.setFont(new java.awt.Font("OCR A Extended", 1, 12));
+    }//GEN-LAST:event_nombreUsuarioEditLabelMouseEntered
+
+    private void nombreUsuarioEditLabelMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_nombreUsuarioEditLabelMouseExited
+        nombreUsuarioEditLabel.setFont(new java.awt.Font("OCR A Extended", 0, 12));
+    }//GEN-LAST:event_nombreUsuarioEditLabelMouseExited
+
+    private void correoUsuarioEditLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_correoUsuarioEditLabelMouseClicked
+        if (emailEditField.isEditable()) {
+
+            emailEditField.setEditable(false);
+
+            if (checkCorreo(emailEditField.getText())) {
+                user.setCorreo(emailEditField.getText());
+            } else {
+                JOptionPane.showMessageDialog(this, "El formato del correo es incorrecto.\nNo se guardaron los cambios.", "Error de formato", JOptionPane.ERROR_MESSAGE);
+            }
+
+            emailEditField.setText(user.getCorreo());
+            correoUsuarioEditLabel.setText("Editar");
+        } else {
+            // Este campo pasa a ser editable
+            emailEditField.setEditable(true);
+
+            // Se cambia el texto de este "boton"
+            correoUsuarioEditLabel.setText("Guardar");
+        }
+    }//GEN-LAST:event_correoUsuarioEditLabelMouseClicked
+
+    private void correoUsuarioEditLabelMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_correoUsuarioEditLabelMouseEntered
+        correoUsuarioEditLabel.setFont(new java.awt.Font("OCR A Extended", 1, 12));
+    }//GEN-LAST:event_correoUsuarioEditLabelMouseEntered
+
+    private void correoUsuarioEditLabelMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_correoUsuarioEditLabelMouseExited
+        correoUsuarioEditLabel.setFont(new java.awt.Font("OCR A Extended", 0, 12));
+    }//GEN-LAST:event_correoUsuarioEditLabelMouseExited
+
+    private void claveUsuarioEditLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_claveUsuarioEditLabelMouseClicked
+        if (passwordEditField.isEditable()) {
+
+            passwordEditField.setEditable(false);
+
+            if (checkClave(passwordEditField.getText())) {
+                user.setClave(passwordEditField.getText());
+            } else {
+                JOptionPane.showMessageDialog(this, "El formato de la contraseña es incorrecto.\nNo se guardaron los cambios.", "Error de formato", JOptionPane.ERROR_MESSAGE);
+            }
+
+            passwordEditField.setText(user.getClave());
+            claveUsuarioEditLabel.setText("Editar");
+        } else {
+            // Este campo pasa a ser editable
+            passwordEditField.setEditable(true);
+
+            // Se cambia el texto de este "boton"
+            claveUsuarioEditLabel.setText("Guardar");
+        }
+    }//GEN-LAST:event_claveUsuarioEditLabelMouseClicked
+
+    private void claveUsuarioEditLabelMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_claveUsuarioEditLabelMouseEntered
+        claveUsuarioEditLabel.setFont(new java.awt.Font("OCR A Extended", 1, 12));
+    }//GEN-LAST:event_claveUsuarioEditLabelMouseEntered
+
+    private void claveUsuarioEditLabelMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_claveUsuarioEditLabelMouseExited
+        claveUsuarioEditLabel.setFont(new java.awt.Font("OCR A Extended", 0, 12));
+    }//GEN-LAST:event_claveUsuarioEditLabelMouseExited
+
+    private void dniUsuarioEditLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_dniUsuarioEditLabelMouseClicked
+        if (dniEditField.isEditable()) {
+
+            dniEditField.setEditable(false);
+
+            if (checkDni(dniEditField.getText())) {
+                user.setDni(dniEditField.getText());
+            } else {
+                JOptionPane.showMessageDialog(this, "El formato del dni es incorrecto.\nNo se guardaron los cambios.", "Error de formato", JOptionPane.ERROR_MESSAGE);
+            }
+
+            dniEditField.setText(user.getDni());
+            dniUsuarioEditLabel.setText("Editar");
+        } else {
+            // Este campo pasa a ser editable
+            dniEditField.setEditable(true);
+
+            // Se cambia el texto de este "boton"
+            dniUsuarioEditLabel.setText("Guardar");
+        }
+    }//GEN-LAST:event_dniUsuarioEditLabelMouseClicked
+
+    private void dniUsuarioEditLabelMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_dniUsuarioEditLabelMouseEntered
+        dniUsuarioEditLabel.setFont(new java.awt.Font("OCR A Extended", 1, 12));
+    }//GEN-LAST:event_dniUsuarioEditLabelMouseEntered
+
+    private void dniUsuarioEditLabelMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_dniUsuarioEditLabelMouseExited
+        dniUsuarioEditLabel.setFont(new java.awt.Font("OCR A Extended", 0, 12));
+    }//GEN-LAST:event_dniUsuarioEditLabelMouseExited
+
+    private void pcUsuarioEditLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pcUsuarioEditLabelMouseClicked
+        if (pcEditField.isEditable()) {
+
+            pcEditField.setEditable(false);
+
+            if (checkCodigoPostal(pcEditField.getText())) {
+                user.setCCPP(Integer.parseInt(pcEditField.getText()));
+            } else {
+                JOptionPane.showMessageDialog(this, "El formato del codigo postal es incorrecto.\nNo se guardaron los cambios.", "Error de formato", JOptionPane.ERROR_MESSAGE);
+            }
+
+            pcEditField.setText(String.valueOf(user.getCCPP()));
+            pcUsuarioEditLabel.setText("Editar");
+        } else {
+            // Este campo pasa a ser editable
+            pcEditField.setEditable(true);
+
+            // Se cambia el texto de este "boton"
+            pcUsuarioEditLabel.setText("Guardar");
+        }
+    }//GEN-LAST:event_pcUsuarioEditLabelMouseClicked
+
+    private void pcUsuarioEditLabelMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pcUsuarioEditLabelMouseEntered
+        pcUsuarioEditLabel.setFont(new java.awt.Font("OCR A Extended", 1, 12));
+    }//GEN-LAST:event_pcUsuarioEditLabelMouseEntered
+
+    private void pcUsuarioEditLabelMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pcUsuarioEditLabelMouseExited
+        pcUsuarioEditLabel.setFont(new java.awt.Font("OCR A Extended", 0, 12));
+    }//GEN-LAST:event_pcUsuarioEditLabelMouseExited
+
+    private void ccUsuarioEditLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ccUsuarioEditLabelMouseClicked
+        if (ccEditField.isEditable()) {
+
+            ccEditField.setEditable(false);
+
+            if (checkTarjetaCredito(ccEditField.getText())) {
+                user.setTTCC(ccEditField.getText());
+            } else {
+                JOptionPane.showMessageDialog(this, "El formato de la tarjeta de crédito es incorrecto.\nNo se guardaron los cambios.", "Error de formato", JOptionPane.ERROR_MESSAGE);
+            }
+
+            ccEditField.setText(user.getTTCC());
+            ccUsuarioEditLabel.setText("Editar");
+        } else {
+            // Este campo pasa a ser editable
+            ccEditField.setEditable(true);
+
+            // Se cambia el texto de este "boton"
+            ccUsuarioEditLabel.setText("Guardar");
+        }
+    }//GEN-LAST:event_ccUsuarioEditLabelMouseClicked
+
+    private void ccUsuarioEditLabelMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ccUsuarioEditLabelMouseEntered
+        ccUsuarioEditLabel.setFont(new java.awt.Font("OCR A Extended", 1, 12));
+    }//GEN-LAST:event_ccUsuarioEditLabelMouseEntered
+
+    private void ccUsuarioEditLabelMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ccUsuarioEditLabelMouseExited
+        ccUsuarioEditLabel.setFont(new java.awt.Font("OCR A Extended", 0, 12));
+    }//GEN-LAST:event_ccUsuarioEditLabelMouseExited
+
+    private void nameEditFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nameEditFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_nameEditFieldActionPerformed
+
+    private void emailEditFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_emailEditFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_emailEditFieldActionPerformed
+
+    private void dniEditFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dniEditFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_dniEditFieldActionPerformed
+
+    private void pcEditFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pcEditFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_pcEditFieldActionPerformed
+
+    private void ccEditFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ccEditFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ccEditFieldActionPerformed
+
+    private void avpagUsuarioButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_avpagUsuarioButtonActionPerformed
+        usuarioMin1.setVisible(false);
+        usuarioEditPanel1.setVisible(false);
+        usuarioMin2.setVisible(false);
+        usuarioEditPanel2.setVisible(false);
+        usuarioMin3.setVisible(false);
+        usuarioEditPanel3.setVisible(false);
+        usuarioMin4.setVisible(false);
+        usuarioEditPanel4.setVisible(false);
+        usuarioMin5.setVisible(false);
+        usuarioEditPanel5.setVisible(false);
+        usuarioMin6.setVisible(false);
+        usuarioEditPanel6.setVisible(false);
+        usuarioMin7.setVisible(false);
+        usuarioEditPanel7.setVisible(false);
+        usuarioMin8.setVisible(false);
+        usuarioEditPanel8.setVisible(false);
+
+        posicionMin += 8;
+
+        lockUnlockBotonesUsuarios();
+    }//GEN-LAST:event_avpagUsuarioButtonActionPerformed
+
+    private void repagUsuarioButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_repagUsuarioButtonActionPerformed
+        usuarioMin1.setVisible(false);
+        usuarioEditPanel1.setVisible(false);
+        usuarioMin2.setVisible(false);
+        usuarioEditPanel2.setVisible(false);
+        usuarioMin3.setVisible(false);
+        usuarioEditPanel3.setVisible(false);
+        usuarioMin4.setVisible(false);
+        usuarioEditPanel4.setVisible(false);
+        usuarioMin5.setVisible(false);
+        usuarioEditPanel5.setVisible(false);
+        usuarioMin6.setVisible(false);
+        usuarioEditPanel6.setVisible(false);
+        usuarioMin7.setVisible(false);
+        usuarioEditPanel7.setVisible(false);
+        usuarioMin8.setVisible(false);
+        usuarioEditPanel8.setVisible(false);
+
+        posicionMin -= 8;
+
+        displayUsuarios();
+
+        lockUnlockBotonesUsuarios();
+    }//GEN-LAST:event_repagUsuarioButtonActionPerformed
 
     private void lockUnlockBotonesComprar() {
         if (posicionMin - 10 < 0) {
@@ -1835,9 +1971,9 @@ public class MenuAdmin extends javax.swing.JFrame {
         }
     }
 
-    private void displayUsuarios(int n) {
-        for (int i = n; i <= n + 8; i++) {
-            posicionMax = posicionMin + i - 1;
+    private void displayUsuarios() {
+        for (int i = posicionMin; i < posicionMin + 8; i++) {
+            posicionMax = i;
             if (posicionMax < clientDefinitivo.size()) {
             } else {
                 posicionMax--;
@@ -1850,34 +1986,42 @@ public class MenuAdmin extends javax.swing.JFrame {
                 case 0:
                     usuarioMin1.setCliente(clientDefinitivo.get(i));
                     usuarioMin1.setVisible(true);
+                    usuarioEditPanel1.setVisible(true);
                     break;
                 case 1:
                     usuarioMin2.setCliente(clientDefinitivo.get(i));
                     usuarioMin2.setVisible(true);
+                    usuarioEditPanel2.setVisible(true);
                     break;
                 case 2:
                     usuarioMin3.setCliente(clientDefinitivo.get(i));
                     usuarioMin3.setVisible(true);
+                    usuarioEditPanel3.setVisible(true);
                     break;
                 case 3:
                     usuarioMin4.setCliente(clientDefinitivo.get(i));
                     usuarioMin4.setVisible(true);
+                    usuarioEditPanel4.setVisible(true);
                     break;
                 case 4:
                     usuarioMin5.setCliente(clientDefinitivo.get(i));
                     usuarioMin5.setVisible(true);
+                    usuarioEditPanel5.setVisible(true);
                     break;
                 case 5:
                     usuarioMin6.setCliente(clientDefinitivo.get(i));
                     usuarioMin6.setVisible(true);
+                    usuarioEditPanel6.setVisible(true);
                     break;
                 case 6:
                     usuarioMin7.setCliente(clientDefinitivo.get(i));
                     usuarioMin7.setVisible(true);
+                    usuarioEditPanel7.setVisible(true);
                     break;
                 case 7:
                     usuarioMin8.setCliente(clientDefinitivo.get(i));
                     usuarioMin8.setVisible(true);
+                    usuarioEditPanel8.setVisible(true);
                     break;
             }
         }
@@ -1887,32 +2031,46 @@ public class MenuAdmin extends javax.swing.JFrame {
             switch (i % 8) {
                 case 0:
                     usuarioMin1.setVisible(false);
+                    usuarioEditPanel1.setVisible(false);
                     break;
                 case 1:
                     usuarioMin2.setVisible(false);
+                    usuarioEditPanel2.setVisible(false);
                     break;
                 case 2:
                     usuarioMin3.setVisible(false);
+                    usuarioEditPanel3.setVisible(false);
                     break;
                 case 3:
                     usuarioMin4.setVisible(false);
+                    usuarioEditPanel4.setVisible(false);
                     break;
                 case 4:
                     usuarioMin5.setVisible(false);
+                    usuarioEditPanel5.setVisible(false);
                     break;
                 case 5:
                     usuarioMin6.setVisible(false);
+                    usuarioEditPanel6.setVisible(false);
                     break;
                 case 6:
                     usuarioMin7.setVisible(false);
+                    usuarioEditPanel7.setVisible(false);
                     break;
                 case 7:
                     usuarioMin8.setVisible(false);
+                    usuarioEditPanel8.setVisible(false);
                     break;
                 default:
                     break;
             }
         }
+    }
+    public void setCliente(Cliente client){
+        this.cliente = client;
+        this.etiquetaDNI1.setText (client.getDni());
+        this.etiquetaNombre1.setText (client.getNombre());
+        this.etiquetaCorreo1.setText (client.getCorreo());    
     }
 
     private static String randomSequence() {
@@ -1932,25 +2090,30 @@ public class MenuAdmin extends javax.swing.JFrame {
     private javax.swing.JLabel Categoria;
     private javax.swing.JLabel Funcion;
     private javax.swing.JLabel Logo;
-    private javax.swing.JButton atrasButton;
     private javax.swing.JButton avPag;
+    private javax.swing.JButton avpagUsuarioButton;
     private javax.swing.JPanel banner;
     private javax.swing.JButton botonCancelar;
     private javax.swing.JButton botonSubir;
     private javax.swing.JButton busquedaButton;
     private javax.swing.JComboBox<String> categoriaBox;
     private javax.swing.JFormattedTextField ccEditField;
-    private javax.swing.JLabel ccEditLabel;
+    private javax.swing.JLabel ccUsuarioEditLabel;
     private javax.swing.JTextField claveBusqueda;
+    private javax.swing.JLabel claveUsuarioEditLabel;
     private javax.swing.JComboBox<String> comboBoxCategoria;
     private javax.swing.JComboBox<String> comboBoxFuncion;
+    private javax.swing.JLabel correoUsuarioEditLabel;
     private javax.swing.JLabel descripcionEditLabel;
     private javax.swing.JFormattedTextField dniEditField;
-    private javax.swing.JLabel dniEditLabel;
-    private javax.swing.JTextField emailEditField;
-    private javax.swing.JLabel emailEditLabel;
+    private javax.swing.JLabel dniUsuarioEditLabel;
+    public javax.swing.JTextField emailEditField;
     private javax.swing.JComboBox<String> estadoBox;
+    private javax.swing.JLabel etiquetaCorreo1;
+    private javax.swing.JLabel etiquetaDNI1;
+    private javax.swing.JLabel etiquetaNombre1;
     private javax.swing.JLabel etiquetaPagina;
+    private javax.swing.JLabel etiquetaTipo;
     private javax.swing.JTextArea fieldDescripcion;
     private javax.swing.JTextField fieldNombre;
     private javax.swing.JTextField fieldPrecio;
@@ -1960,7 +2123,6 @@ public class MenuAdmin extends javax.swing.JFrame {
     private javax.swing.Box.Filler filler5;
     private javax.swing.Box.Filler filler8;
     private javax.swing.JPanel foto;
-    private javax.swing.JButton guardarButton;
     private javax.swing.JLabel icono;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel11;
@@ -1978,29 +2140,19 @@ public class MenuAdmin extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel10;
-    private javax.swing.JPanel jPanel11;
-    private javax.swing.JPanel jPanel12;
-    private javax.swing.JPanel jPanel13;
-    private javax.swing.JPanel jPanel14;
-    private javax.swing.JPanel jPanel15;
-    private javax.swing.JPanel jPanel4;
-    private javax.swing.JPanel jPanel5;
     private javax.swing.JScrollPane jScrollPane1;
     public javax.swing.JTextField nameEditField;
-    private javax.swing.JLabel nameEditLabel;
     private javax.swing.JLabel nombreEditLabel;
+    private javax.swing.JLabel nombreUsuarioEditLabel;
     private javax.swing.JPanel panelBienvenida;
     private javax.swing.JPanel panelEditarProductos;
-    private javax.swing.JPanel panelEditarUsuarios;
+    private javax.swing.JPanel panelEditarUsuario;
     private javax.swing.JPanel panelProductos;
     private javax.swing.JPanel panelUsuarios;
-    private javax.swing.JPanel panelVentas;
     private javax.swing.JPanel panelViewVentas;
     private javax.swing.JTextField passwordEditField;
-    private javax.swing.JLabel passwordEditLabel;
     private javax.swing.JFormattedTextField pcEditField;
-    private javax.swing.JLabel pcEditLabel;
+    private javax.swing.JLabel pcUsuarioEditLabel;
     private javax.swing.JLabel precioEditLabel;
     private interfaz.panels.ProductoMax productoMax1;
     private interfaz.panels.ProductoMin productoMin1;
@@ -2012,6 +2164,7 @@ public class MenuAdmin extends javax.swing.JFrame {
     private interfaz.panels.ProductoMin productoMin7;
     private interfaz.panels.ProductoMin productoMin8;
     private javax.swing.JButton rePag;
+    private javax.swing.JButton repagUsuarioButton;
     private javax.swing.JCheckBox urgencia;
     private javax.swing.JLabel userEditLabel1;
     private javax.swing.JLabel userEditLabel2;
@@ -2021,7 +2174,15 @@ public class MenuAdmin extends javax.swing.JFrame {
     private javax.swing.JLabel userEditLabel6;
     private javax.swing.JLabel userEditLabel7;
     private javax.swing.JLabel userEditLabel8;
-    private interfaz.panels.UsuarioMin usuarioMin1;
+    private javax.swing.JPanel usuarioEditPanel1;
+    private javax.swing.JPanel usuarioEditPanel2;
+    private javax.swing.JPanel usuarioEditPanel3;
+    private javax.swing.JPanel usuarioEditPanel4;
+    private javax.swing.JPanel usuarioEditPanel5;
+    private javax.swing.JPanel usuarioEditPanel6;
+    private javax.swing.JPanel usuarioEditPanel7;
+    private javax.swing.JPanel usuarioEditPanel8;
+    private javax.swing.JPanel usuarioMin1;
     private interfaz.panels.UsuarioMin usuarioMin2;
     private interfaz.panels.UsuarioMin usuarioMin3;
     private interfaz.panels.UsuarioMin usuarioMin4;
@@ -2029,13 +2190,5 @@ public class MenuAdmin extends javax.swing.JFrame {
     private interfaz.panels.UsuarioMin usuarioMin6;
     private interfaz.panels.UsuarioMin usuarioMin7;
     private interfaz.panels.UsuarioMin usuarioMin8;
-    private interfaz.panels.VentaMin ventaMin1;
-    private interfaz.panels.VentaMin ventaMin2;
-    private interfaz.panels.VentaMin ventaMin3;
-    private interfaz.panels.VentaMin ventaMin4;
-    private interfaz.panels.VentaMin ventaMin5;
-    private interfaz.panels.VentaMin ventaMin6;
-    private interfaz.panels.VentaMin ventaMin7;
-    private interfaz.panels.VentaMin ventaMin8;
     // End of variables declaration//GEN-END:variables
 }

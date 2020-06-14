@@ -51,11 +51,11 @@ public class UsuarioMax extends javax.swing.JPanel {
                 nameEditFieldActionPerformed(evt);
             }
         });
-        add(nameEditField, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 130, 396, 35));
+        add(nameEditField, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 10, 396, 35));
 
         jLabel1.setFont(new java.awt.Font("OCR A Extended", 0, 11)); // NOI18N
         jLabel1.setText("Nombre:");
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 140, -1, -1));
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 20, -1, -1));
 
         emailEditField.setEditable(false);
         emailEditField.setFont(new java.awt.Font("OCR A Extended", 2, 11)); // NOI18N
@@ -66,11 +66,11 @@ public class UsuarioMax extends javax.swing.JPanel {
                 emailEditFieldActionPerformed(evt);
             }
         });
-        add(emailEditField, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 180, 396, 35));
+        add(emailEditField, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 60, 396, 35));
 
         jLabel2.setFont(new java.awt.Font("OCR A Extended", 0, 11)); // NOI18N
         jLabel2.setText("Correo:");
-        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 190, -1, -1));
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 70, -1, -1));
 
         dniEditField.setEditable(false);
         dniEditField.setForeground(new java.awt.Color(153, 153, 153));
@@ -81,7 +81,7 @@ public class UsuarioMax extends javax.swing.JPanel {
                 dniEditFieldActionPerformed(evt);
             }
         });
-        add(dniEditField, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 280, 396, 35));
+        add(dniEditField, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 160, 396, 35));
 
         pcEditField.setEditable(false);
         pcEditField.setForeground(new java.awt.Color(153, 153, 153));
@@ -92,7 +92,7 @@ public class UsuarioMax extends javax.swing.JPanel {
                 pcEditFieldActionPerformed(evt);
             }
         });
-        add(pcEditField, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 330, 396, 35));
+        add(pcEditField, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 210, 396, 35));
 
         ccEditField.setEditable(false);
         ccEditField.setForeground(new java.awt.Color(153, 153, 153));
@@ -103,29 +103,29 @@ public class UsuarioMax extends javax.swing.JPanel {
                 ccEditFieldActionPerformed(evt);
             }
         });
-        add(ccEditField, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 380, 396, 35));
+        add(ccEditField, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 260, 396, 35));
 
         jLabel3.setFont(new java.awt.Font("OCR A Extended", 0, 11)); // NOI18N
         jLabel3.setText("Clave:");
-        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 240, -1, -1));
+        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 120, -1, -1));
 
         jLabel4.setFont(new java.awt.Font("OCR A Extended", 0, 11)); // NOI18N
         jLabel4.setText("Dni:");
-        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 290, -1, -1));
+        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 170, -1, -1));
 
         jLabel5.setFont(new java.awt.Font("OCR A Extended", 0, 11)); // NOI18N
         jLabel5.setText("Tarjeta de crédito:"); // NOI18N
-        add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 390, -1, -1));
+        add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 270, -1, -1));
 
         jLabel6.setFont(new java.awt.Font("OCR A Extended", 0, 11)); // NOI18N
         jLabel6.setText("Código postal:");
-        add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 340, -1, -1));
+        add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 220, -1, -1));
 
         passwordEditField.setEditable(false);
         passwordEditField.setFont(new java.awt.Font("OCR A Extended", 2, 11)); // NOI18N
         passwordEditField.setForeground(new java.awt.Color(153, 153, 153));
         passwordEditField.setText("Clave");
-        add(passwordEditField, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 230, 396, 35));
+        add(passwordEditField, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 110, 396, 35));
     }// </editor-fold>//GEN-END:initComponents
 
     private void emailEditFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_emailEditFieldActionPerformed
@@ -152,7 +152,7 @@ public class UsuarioMax extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JFormattedTextField ccEditField;
     private javax.swing.JFormattedTextField dniEditField;
-    private javax.swing.JTextField emailEditField;
+    public javax.swing.JTextField emailEditField;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
