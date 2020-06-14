@@ -264,6 +264,7 @@
             </Property>
           </Properties>
           <Events>
+            <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="comboBoxFuncionItemStateChanged"/>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="comboBoxFuncionActionPerformed"/>
           </Events>
           <AuxValues>
@@ -335,7 +336,7 @@
         <Container class="javax.swing.JPanel" name="panelEditarUsuarios">
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignCardLayout" value="org.netbeans.modules.form.compat2.layouts.DesignCardLayout$CardConstraintsDescription">
-              <CardConstraints cardName="..."/>
+              <CardConstraints cardName="EditarUsuario"/>
             </Constraint>
           </Constraints>
 
@@ -1148,7 +1149,7 @@
         <Container class="javax.swing.JPanel" name="panelViewVentas">
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignCardLayout" value="org.netbeans.modules.form.compat2.layouts.DesignCardLayout$CardConstraintsDescription">
-              <CardConstraints cardName=",,,"/>
+              <CardConstraints cardName="EditarVentas"/>
             </Constraint>
           </Constraints>
 
@@ -1293,7 +1294,7 @@
         <Container class="javax.swing.JPanel" name="panelBienvenida">
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignCardLayout" value="org.netbeans.modules.form.compat2.layouts.DesignCardLayout$CardConstraintsDescription">
-              <CardConstraints cardName="card2"/>
+              <CardConstraints cardName="Bienvenida&#xa;"/>
             </Constraint>
           </Constraints>
 
@@ -1425,7 +1426,7 @@
         <Container class="javax.swing.JPanel" name="panelEditarProductos">
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignCardLayout" value="org.netbeans.modules.form.compat2.layouts.DesignCardLayout$CardConstraintsDescription">
-              <CardConstraints cardName="card8"/>
+              <CardConstraints cardName="EditarProductos"/>
             </Constraint>
           </Constraints>
 

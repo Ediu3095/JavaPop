@@ -57,7 +57,9 @@ public class MenuAdmin extends javax.swing.JFrame {
         super.setIconImage(img.getImage());
         
         // Guardamos el CardLayout como atributo de la clase para acceder facilmente
+        comboBoxFuncion.setSelectedItem("");
         this.camposCL = (CardLayout) this.jPanel1.getLayout();
+        camposCL.show(jPanel1, "Bienvenida");
         
         super.setVisible(true);
     }
@@ -228,6 +230,11 @@ public class MenuAdmin extends javax.swing.JFrame {
 
         comboBoxFuncion.setFont(new java.awt.Font("OCR A Extended", 0, 12)); // NOI18N
         comboBoxFuncion.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Consultar usuario", "Consultar producto", "Consultar ventas" }));
+        comboBoxFuncion.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                comboBoxFuncionItemStateChanged(evt);
+            }
+        });
         comboBoxFuncion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 comboBoxFuncionActionPerformed(evt);
@@ -567,7 +574,7 @@ public class MenuAdmin extends javax.swing.JFrame {
                     .addComponent(atrasButton)))
         );
 
-        jPanel1.add(panelEditarUsuarios, "...");
+        jPanel1.add(panelEditarUsuarios, "EditarUsuario");
 
         panelUsuarios.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
         panelUsuarios.add(usuarioMin1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 650, -1));
@@ -904,7 +911,7 @@ public class MenuAdmin extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jPanel1.add(panelViewVentas, ",,,");
+        jPanel1.add(panelViewVentas, "EditarVentas");
 
         javax.swing.GroupLayout panelVentasLayout = new javax.swing.GroupLayout(panelVentas);
         panelVentas.setLayout(panelVentasLayout);
@@ -953,7 +960,7 @@ public class MenuAdmin extends javax.swing.JFrame {
             .addGap(0, 1086, Short.MAX_VALUE)
         );
 
-        jPanel1.add(panelBienvenida, "card2");
+        jPanel1.add(panelBienvenida, "Bienvenida\n");
 
         rePag.setText("<<");
         rePag.addActionListener(new java.awt.event.ActionListener() {
@@ -1242,7 +1249,7 @@ public class MenuAdmin extends javax.swing.JFrame {
                 .addGap(48, 48, 48))
         );
 
-        jPanel1.add(panelEditarProductos, "card8");
+        jPanel1.add(panelEditarProductos, "EditarProductos");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -1359,14 +1366,7 @@ public class MenuAdmin extends javax.swing.JFrame {
     }//GEN-LAST:event_comboBoxCategoriaActionPerformed
 
     private void comboBoxFuncionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboBoxFuncionActionPerformed
-        // TODO add your handling code here:
-        if (comboBoxFuncion.getSelectedItem().toString() == "Consultar usuario") {
-            camposCL.show(jPanel1, "Usuarios");
-        } else if (comboBoxFuncion.getSelectedItem().toString() == "Consultar producto") {
-            camposCL.show(jPanel1, "Productos");
-        } else if (comboBoxFuncion.getSelectedItem().toString() == "Consultar ventas") {
-            camposCL.show(jPanel1, "Ventas");
-        }
+        // TODO add your handling code here:       
     }//GEN-LAST:event_comboBoxFuncionActionPerformed
 
     private void nameEditLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_nameEditLabelMouseClicked
@@ -1724,6 +1724,19 @@ public class MenuAdmin extends javax.swing.JFrame {
     private void precioEditLabelMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_precioEditLabelMouseExited
         precioEditLabel.setFont(new java.awt.Font("OCR A Extended", 0, 12));
     }//GEN-LAST:event_precioEditLabelMouseExited
+
+    private void comboBoxFuncionItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_comboBoxFuncionItemStateChanged
+        int panel = comboBoxFuncion.getSelectedIndex();
+        if (panel == 0) {
+            camposCL.show(jPanel1, "Usuarios");
+        } else if (panel == 1) {
+        System.out.println("Display Productos1");
+            camposCL.show(jPanel1, "Productos");
+        } else if (panel == 2) {
+            camposCL.show(jPanel1, "Ventas");
+        }
+        System.out.println("Display Productos2");
+    }//GEN-LAST:event_comboBoxFuncionItemStateChanged
 
     private void lockUnlockBotonesComprar() {
         if (posicionMin - 10 < 0) {
