@@ -901,10 +901,10 @@
             </Component>
             <Component class="javax.swing.JTextField" name="correoField">
               <Properties>
-                <Property name="editable" type="boolean" value="false"/>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="OCR A Extended" size="12" style="0"/>
                 </Property>
+                <Property name="enabled" type="boolean" value="false"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="claveLabel">
@@ -939,11 +939,11 @@
             </Component>
             <Component class="javax.swing.JPasswordField" name="claveField">
               <Properties>
-                <Property name="editable" type="boolean" value="false"/>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="OCR A Extended" size="12" style="0"/>
                 </Property>
                 <Property name="echoChar" type="char" value="*"/>
+                <Property name="enabled" type="boolean" value="false"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="nombreLabel">
@@ -978,10 +978,10 @@
             </Component>
             <Component class="javax.swing.JTextField" name="nombreField">
               <Properties>
-                <Property name="editable" type="boolean" value="false"/>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="OCR A Extended" size="12" style="0"/>
                 </Property>
+                <Property name="enabled" type="boolean" value="false"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="ccppLabel">
@@ -1016,10 +1016,10 @@
             </Component>
             <Component class="javax.swing.JFormattedTextField" name="ccppField">
               <Properties>
-                <Property name="editable" type="boolean" value="false"/>
                 <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.editors.AbstractFormatterFactoryEditor" preCode="try {" postCode="} catch (java.text.ParseException ex) {&#xa;ex.printStackTrace();&#xa;}">
                   <Format format="#####" subtype="-1" type="5"/>
                 </Property>
+                <Property name="enabled" type="boolean" value="false"/>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="OCR A Extended" size="12" style="0"/>
                 </Property>
@@ -1057,10 +1057,10 @@
             </Component>
             <Component class="javax.swing.JFormattedTextField" name="ccField">
               <Properties>
-                <Property name="editable" type="boolean" value="false"/>
                 <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.editors.AbstractFormatterFactoryEditor" preCode="try {" postCode="} catch (java.text.ParseException ex) {&#xa;ex.printStackTrace();&#xa;}">
                   <Format format="####-####-####-####" subtype="-1" type="5"/>
                 </Property>
+                <Property name="enabled" type="boolean" value="false"/>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="OCR A Extended" size="12" style="0"/>
                 </Property>
@@ -1098,10 +1098,10 @@
             </Component>
             <Component class="javax.swing.JFormattedTextField" name="dniField">
               <Properties>
-                <Property name="editable" type="boolean" value="false"/>
                 <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.editors.AbstractFormatterFactoryEditor" preCode="try {" postCode="} catch (java.text.ParseException ex) {&#xa;ex.printStackTrace();&#xa;}">
                   <Format format="########?" subtype="-1" type="5"/>
                 </Property>
+                <Property name="enabled" type="boolean" value="false"/>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="OCR A Extended" size="12" style="0"/>
                 </Property>
@@ -1246,12 +1246,12 @@
                   <SubComponents>
                     <Component class="javax.swing.JTextArea" name="descripcionField">
                       <Properties>
-                        <Property name="editable" type="boolean" value="false"/>
                         <Property name="columns" type="int" value="20"/>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="OCR A Extended" size="12" style="0"/>
                         </Property>
                         <Property name="rows" type="int" value="5"/>
+                        <Property name="enabled" type="boolean" value="false"/>
                       </Properties>
                     </Component>
                   </SubComponents>
@@ -1288,10 +1288,10 @@
                 </Component>
                 <Component class="javax.swing.JFormattedTextField" name="horarioField">
                   <Properties>
-                    <Property name="editable" type="boolean" value="false"/>
                     <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.editors.AbstractFormatterFactoryEditor" preCode="try {" postCode="} catch (java.text.ParseException ex) {&#xa;ex.printStackTrace();&#xa;}">
                       <Format format="##:## - ##:##" subtype="-1" type="5"/>
                     </Property>
+                    <Property name="enabled" type="boolean" value="false"/>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="OCR A Extended" size="12" style="0"/>
                     </Property>
@@ -1329,10 +1329,10 @@
                 </Component>
                 <Component class="javax.swing.JFormattedTextField" name="telefonoField">
                   <Properties>
-                    <Property name="editable" type="boolean" value="false"/>
                     <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.editors.AbstractFormatterFactoryEditor" preCode="try {" postCode="} catch (java.text.ParseException ex) {&#xa;ex.printStackTrace();&#xa;}">
                       <Format format="### ### ###" subtype="-1" type="5"/>
                     </Property>
+                    <Property name="enabled" type="boolean" value="false"/>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="OCR A Extended" size="12" style="0"/>
                     </Property>
@@ -1370,10 +1370,10 @@
                 </Component>
                 <Component class="javax.swing.JTextField" name="webField">
                   <Properties>
-                    <Property name="editable" type="boolean" value="false"/>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="OCR A Extended" size="12" style="0"/>
                     </Property>
+                    <Property name="enabled" type="boolean" value="false"/>
                   </Properties>
                 </Component>
               </SubComponents>
@@ -1502,7 +1502,7 @@
                 <Component class="javax.swing.JLabel" name="textoSinProductos2">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                      <Font name="OCR A Extended" size="12" style="0"/>
+                      <Font name="OCR A Extended" size="14" style="0"/>
                     </Property>
                     <Property name="horizontalAlignment" type="int" value="0"/>
                     <Property name="verticalAlignment" type="int" value="1"/>
@@ -1536,7 +1536,7 @@
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="OCR A Extended" size="12" style="0"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="Mis notificaciones"/>
+                <Property name="text" type="java.lang.String" value="Mis ventas"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton3ActionPerformed"/>

@@ -97,7 +97,7 @@ public class MenuVentas extends javax.swing.JFrame {
                 textoSinVentas2.setText("");
                 break;
             case 0: // Hay que mostrar 0 productos
-                fotoSinVentas.setIcon(new ImageIcon(".\\resources\\logo\\sleepy.gif"));
+                fotoSinVentas.setIcon(new ImageIcon(".\\resources\\logo\\insomnia.gif"));
                 textoSinVentas1.setText("¡Ups!");
                 textoSinVentas2.setText("Parece que no tienes ninguna venta");
                 break;
@@ -147,7 +147,7 @@ public class MenuVentas extends javax.swing.JFrame {
         textoSinVentas2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("Javapop - Mis notificaciones");
+        setTitle("Javapop - Mis ventas");
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowClosed(java.awt.event.WindowEvent evt) {
                 formWindowClosed(evt);
@@ -302,7 +302,7 @@ public class MenuVentas extends javax.swing.JFrame {
         textoSinVentas1.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
         jPanel1.add(textoSinVentas1, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 0, 460, 160));
 
-        textoSinVentas2.setFont(new java.awt.Font("OCR A Extended", 0, 18)); // NOI18N
+        textoSinVentas2.setFont(new java.awt.Font("OCR A Extended", 0, 14)); // NOI18N
         textoSinVentas2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         textoSinVentas2.setText("jLabel8");
         textoSinVentas2.setVerticalAlignment(javax.swing.SwingConstants.TOP);

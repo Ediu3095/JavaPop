@@ -10,6 +10,7 @@ import static clases.utils.Colecciones.usuarios;
 import static clases.utils.CheckFunctions.*;
 import clases.utils.IOCustomLib;
 import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -190,6 +191,8 @@ public class RegisterScreen extends javax.swing.JFrame {
                 Cliente user = new Cliente(correo, clave, dni, name, Integer.parseInt(ccpp), ttcc);
                 usuarios.add(user);
                 IOCustomLib.guardarClientes(usuarios);
+                
+                JOptionPane.showMessageDialog(this, "¡El registro se realizo con éxito!\nPor favor, inicie sesión.", "Registro exitoso", JOptionPane.INFORMATION_MESSAGE);
                 // vv Abrir menu usuario con ese user vv
                 new LoginScreen();
                 this.dispose();
