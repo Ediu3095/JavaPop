@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package interfaz;
 
 import static clases.utils.Colecciones.*;
@@ -12,26 +7,21 @@ import clases.utils.IOCustomLib;
 import javax.swing.ImageIcon;
 import java.awt.CardLayout;
 import java.util.ArrayList;
-import java.util.Random;
-import javax.swing.Icon;
-import javax.swing.JOptionPane;
-import javax.swing.filechooser.FileNameExtensionFilter;
 
 /**
  *
- * @author luism
+ * @author Eduardo Ruiz Sabajanes
  */
 public class MenuAdmin extends javax.swing.JFrame {
 
     private CardLayout camposCL;
-    private Cliente user;
-    private ArrayList<Producto> prodDefinitivo;
+    
     public int posicionMin;
     private int posicionMax;
-    private ArrayList<Cliente> clientDefinitivo;
-    private FileNameExtensionFilter filter = new FileNameExtensionFilter("Archivo de imagen (*.jpg, *.jpeg, *.png, *.gif)", "jpg", "png", "jpeg", "gif");
-    private String imageAddress;
-    private MenuPrincipal menu;
+    
+    private ArrayList<Cliente> usuariosFiltrado;
+    private ArrayList<Producto> productosFiltrado;
+    private ArrayList<Venta> ventasFiltrado;
 
     /**
      * Creates new form MenuPrincipal1
@@ -42,13 +32,18 @@ public class MenuAdmin extends javax.swing.JFrame {
         // setup icon
         ImageIcon img = new ImageIcon(".\\resources\\logo\\IconoJavaPop2.png");
         super.setIconImage(img.getImage());
-        //this.clienteDefinitivo = ;
-
+        
+        // listas que mostraremos
+        usuariosFiltrado = new ArrayList(0);
+        productosFiltrado = new ArrayList(0);
+        ventasFiltrado = new ArrayList(0);
+        
         // Guardamos el CardLayout como atributo de la clase para acceder facilmente
         this.camposCL = (CardLayout) this.jPanel1.getLayout();
 
         camposCL.show(jPanel1, "cardUsuarios");
-        this.displayUsuarios();
+        displayUsuarios();
+        lockUnlockBotonesUsuarios();
 
         super.setVisible(true);
     }
@@ -84,6 +79,9 @@ public class MenuAdmin extends javax.swing.JFrame {
         usuarioMin6 = new interfaz.panels.UsuarioMin();
         usuarioMin7 = new interfaz.panels.UsuarioMin();
         usuarioMin8 = new interfaz.panels.UsuarioMin();
+        rePagUsuarios = new javax.swing.JButton();
+        etiquetaPagina1 = new javax.swing.JLabel();
+        avPagUsuarios = new javax.swing.JButton();
         panelProductos = new javax.swing.JPanel();
         productoMin1 = new interfaz.panels.ProductoMin();
         productoMin2 = new interfaz.panels.ProductoMin();
@@ -93,9 +91,9 @@ public class MenuAdmin extends javax.swing.JFrame {
         productoMin6 = new interfaz.panels.ProductoMin();
         productoMin7 = new interfaz.panels.ProductoMin();
         productoMin8 = new interfaz.panels.ProductoMin();
-        rePag = new javax.swing.JButton();
+        rePagProductos = new javax.swing.JButton();
         etiquetaPagina = new javax.swing.JLabel();
-        avPag = new javax.swing.JButton();
+        avPagProductos = new javax.swing.JButton();
         panelVentas = new javax.swing.JPanel();
         ventaMin1 = new interfaz.panels.VentaMin();
         ventaMin2 = new interfaz.panels.VentaMin();
@@ -105,6 +103,9 @@ public class MenuAdmin extends javax.swing.JFrame {
         ventaMin6 = new interfaz.panels.VentaMin();
         ventaMin7 = new interfaz.panels.VentaMin();
         ventaMin8 = new interfaz.panels.VentaMin();
+        rePagVentas = new javax.swing.JButton();
+        etiquetaPagina2 = new javax.swing.JLabel();
+        avPagVentas = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("JavaPop - Menú de desarrolador\n");
@@ -208,6 +209,14 @@ public class MenuAdmin extends javax.swing.JFrame {
 
         jPanel1.setLayout(new java.awt.CardLayout());
 
+        rePagUsuarios.setText("<<");
+
+        etiquetaPagina1.setFont(new java.awt.Font("OCR A Extended", 0, 12)); // NOI18N
+        etiquetaPagina1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        etiquetaPagina1.setText("Página 0 de 100");
+
+        avPagUsuarios.setText(">>");
+
         javax.swing.GroupLayout panelUsuariosLayout = new javax.swing.GroupLayout(panelUsuarios);
         panelUsuarios.setLayout(panelUsuariosLayout);
         panelUsuariosLayout.setHorizontalGroup(
@@ -222,6 +231,14 @@ public class MenuAdmin extends javax.swing.JFrame {
             .addComponent(usuarioMin7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(usuarioMin8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(usuarioMin5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelUsuariosLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(rePagUsuarios, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0)
+                .addComponent(etiquetaPagina1, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0)
+                .addComponent(avPagUsuarios, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
         panelUsuariosLayout.setVerticalGroup(
             panelUsuariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -241,7 +258,12 @@ public class MenuAdmin extends javax.swing.JFrame {
                 .addComponent(usuarioMin7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(21, 21, 21)
                 .addComponent(usuarioMin8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 50, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 16, Short.MAX_VALUE)
+                .addGroup(panelUsuariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(rePagUsuarios)
+                    .addComponent(etiquetaPagina1, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(avPagUsuarios))
+                .addContainerGap())
         );
 
         jPanel1.add(panelUsuarios, "cardUsuarios");
@@ -320,14 +342,14 @@ public class MenuAdmin extends javax.swing.JFrame {
         panelProductos.add(productoMin8);
         productoMin8.setBounds(660, 280, 204, 270);
 
-        rePag.setText("<<");
-        rePag.addActionListener(new java.awt.event.ActionListener() {
+        rePagProductos.setText("<<");
+        rePagProductos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                rePagActionPerformed(evt);
+                rePagProductosActionPerformed(evt);
             }
         });
-        panelProductos.add(rePag);
-        rePag.setBounds(610, 560, 50, 23);
+        panelProductos.add(rePagProductos);
+        rePagProductos.setBounds(610, 560, 50, 23);
 
         etiquetaPagina.setFont(new java.awt.Font("OCR A Extended", 0, 12)); // NOI18N
         etiquetaPagina.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -335,16 +357,24 @@ public class MenuAdmin extends javax.swing.JFrame {
         panelProductos.add(etiquetaPagina);
         etiquetaPagina.setBounds(660, 560, 150, 20);
 
-        avPag.setText(">>");
-        avPag.addActionListener(new java.awt.event.ActionListener() {
+        avPagProductos.setText(">>");
+        avPagProductos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                avPagActionPerformed(evt);
+                avPagProductosActionPerformed(evt);
             }
         });
-        panelProductos.add(avPag);
-        avPag.setBounds(810, 560, 50, 23);
+        panelProductos.add(avPagProductos);
+        avPagProductos.setBounds(810, 560, 50, 23);
 
         jPanel1.add(panelProductos, "cardProductos");
+
+        rePagVentas.setText("<<");
+
+        etiquetaPagina2.setFont(new java.awt.Font("OCR A Extended", 0, 12)); // NOI18N
+        etiquetaPagina2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        etiquetaPagina2.setText("Página 0 de 100");
+
+        avPagVentas.setText(">>");
 
         javax.swing.GroupLayout panelVentasLayout = new javax.swing.GroupLayout(panelVentas);
         panelVentas.setLayout(panelVentasLayout);
@@ -358,6 +388,14 @@ public class MenuAdmin extends javax.swing.JFrame {
             .addComponent(ventaMin6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(ventaMin7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(ventaMin8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelVentasLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(rePagVentas, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0)
+                .addComponent(etiquetaPagina2, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0)
+                .addComponent(avPagVentas, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
         panelVentasLayout.setVerticalGroup(
             panelVentasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -376,7 +414,13 @@ public class MenuAdmin extends javax.swing.JFrame {
                 .addGap(20, 20, 20)
                 .addComponent(ventaMin7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(20, 20, 20)
-                .addComponent(ventaMin8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(ventaMin8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 15, Short.MAX_VALUE)
+                .addGroup(panelVentasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(rePagVentas)
+                    .addComponent(etiquetaPagina2, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(avPagVentas))
+                .addContainerGap())
         );
 
         jPanel1.add(panelVentas, "cardVentas");
@@ -415,30 +459,73 @@ public class MenuAdmin extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void busquedaButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_busquedaButtonActionPerformed
-        
+        int panel = comboBoxFuncion.getSelectedIndex();
+        switch (panel) {
+            case 0:
+                usuariosFiltrado.clear();
+                
+                for (int i = 0; i < usuarios.size(); i++) {
+                    if (usuarios.get(i).getCorreo().equals(claveBusqueda.getText())) {
+                        usuariosFiltrado.add(usuarios.get(i));
+                    }
+                }
+                
+                posicionMin = 0;
+                
+                displayUsuarios();
+                lockUnlockBotonesUsuarios();
+                break;
+            case 1:
+                productosFiltrado.clear();
+                
+                
+                
+                posicionMin = 0;
+                
+                displayProductos();
+                lockUnlockBotonesProductos();
+                break;
+            case 2:
+                usuariosFiltrado.clear();
+                
+                for (int i = 0; i < usuarios.size(); i++) {
+                    if (usuarios.get(i).getCorreo().equals(claveBusqueda.getText())) {
+                        usuariosFiltrado.add(usuarios.get(i));
+                    }
+                }
+                
+                posicionMin = 0;
+                
+                displayVentas();
+                lockUnlockBotonesVentas();
+                break;
+        }
     }//GEN-LAST:event_busquedaButtonActionPerformed
 
     private void comboBoxFuncionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboBoxFuncionActionPerformed
         int panel = comboBoxFuncion.getSelectedIndex();
-        if (panel == 0) {
-            camposCL.show(jPanel1, "cardUsuarios");
-            displayUsuarios();
-            
-        } else if (panel == 1) {
-            camposCL.show(jPanel1, "cardProductos");
-            displayProductos();
-            
-        } else if (panel == 2) {
-            camposCL.show(jPanel1, "cardVentas");
-            displayVentas();
+        switch (panel) {
+            case 0:
+                camposCL.show(jPanel1, "cardUsuarios");
+                usuariosFiltrado = usuarios;
+                displayUsuarios();
+                lockUnlockBotonesUsuarios();
+                break;
+            case 1:
+                camposCL.show(jPanel1, "cardProductos");
+                productosFiltrado = productos;
+                displayProductos();
+                lockUnlockBotonesProductos();
+                break;
+            case 2:
+                camposCL.show(jPanel1, "cardVentas");
+                ventasFiltrado = ventas;
+                displayVentas();
+                lockUnlockBotonesVentas();
+                break;
         }
     }//GEN-LAST:event_comboBoxFuncionActionPerformed
     
-    public Icon icono(String path, int width, int heigth) {
-        Icon img = new ImageIcon(new ImageIcon(getClass().getResource(path)).getImage().getScaledInstance(width, heigth, java.awt.Image.SCALE_DEFAULT));
-        return img;
-    }
-
     private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
         IOCustomLib.guardarClientes(usuarios);
         IOCustomLib.guardarProductos(productos);
@@ -469,7 +556,8 @@ public class MenuAdmin extends javax.swing.JFrame {
     private void productoMin8MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_productoMin8MouseClicked
         new MenuAdminProducto(this, productoMin8);
     }//GEN-LAST:event_productoMin8MouseClicked
-    private void rePagActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rePagActionPerformed
+
+    private void rePagProductosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rePagProductosActionPerformed
         // Hacemos los displays de los productos invisibles
         productoMin1.setVisible(false);
         productoMin2.setVisible(false);
@@ -490,9 +578,10 @@ public class MenuAdmin extends javax.swing.JFrame {
         lockUnlockBotonesProductos();
 
         // Cambia el texto de la etiqueta que indica en que página estamos
-        etiquetaPagina.setText("Página " + (posicionMin / 8 + 1) + " de " + (productos.size() / 8 + 1));
-    }//GEN-LAST:event_rePagActionPerformed
-    private void avPagActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_avPagActionPerformed
+        etiquetaPagina.setText("Página " + (posicionMin / 8 + 1) + " de " + (productosFiltrado.size() / 8 + 1));
+    }//GEN-LAST:event_rePagProductosActionPerformed
+
+    private void avPagProductosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_avPagProductosActionPerformed
         // Hacemos los displays de los productos invisibles
         productoMin1.setVisible(false);
         productoMin2.setVisible(false);
@@ -513,15 +602,15 @@ public class MenuAdmin extends javax.swing.JFrame {
         lockUnlockBotonesProductos();
 
         // Cambia el texto de la etiqueta que indica en que página estamos
-        etiquetaPagina.setText("Página " + (posicionMin / 8 + 1) + " de " + (productos.size() / 8 + 1));
-    }//GEN-LAST:event_avPagActionPerformed
+        etiquetaPagina.setText("Página " + (posicionMin / 8 + 1) + " de " + (productosFiltrado.size() / 8 + 1));
+    }//GEN-LAST:event_avPagProductosActionPerformed
 
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
         IOCustomLib.guardarClientes(usuarios);
         IOCustomLib.guardarProductos(productos);
         IOCustomLib.guardarVentas(ventas);
     }//GEN-LAST:event_formWindowClosing
-
+    
     public final void displayUsuarios() {
         // escondemos todos los usuarios
         usuarioMin1.setVisible(false);
@@ -533,9 +622,10 @@ public class MenuAdmin extends javax.swing.JFrame {
         usuarioMin7.setVisible(false);
         usuarioMin8.setVisible(false);
         
+        // Actualizamos posicionMax
         for (int i = posicionMin; i < posicionMin + 8; i++) {
             posicionMax = i;
-            if (posicionMax < usuarios.size()) {
+            if (posicionMax < usuariosFiltrado.size()) {
             } else {
                 posicionMax--;
                 break;
@@ -546,28 +636,28 @@ public class MenuAdmin extends javax.swing.JFrame {
         switch (posicionMax + 1 - posicionMin) {
             case 8: // Hay que mostrar 8 usuarios
                 usuarioMin8.setVisible(true);
-                usuarioMin8.setCliente(usuarios.get(posicionMin + 7));
+                usuarioMin8.setCliente(usuariosFiltrado.get(posicionMin + 7));
             case 7: // Hay que mostrar 7 usuarios
                 usuarioMin7.setVisible(true);
-                usuarioMin7.setCliente(usuarios.get(posicionMin + 6));
+                usuarioMin7.setCliente(usuariosFiltrado.get(posicionMin + 6));
             case 6: // Hay que mostrar 6 usuarios
                 usuarioMin6.setVisible(true);
-                usuarioMin6.setCliente(usuarios.get(posicionMin + 5));
+                usuarioMin6.setCliente(usuariosFiltrado.get(posicionMin + 5));
             case 5: // Hay que mostrar 5 usuarios
                 usuarioMin5.setVisible(true);
-                usuarioMin5.setCliente(usuarios.get(posicionMin + 4));
+                usuarioMin5.setCliente(usuariosFiltrado.get(posicionMin + 4));
             case 4: // Hay que mostrar 4 usuarios
                 usuarioMin4.setVisible(true);
-                usuarioMin4.setCliente(usuarios.get(posicionMin + 3));
+                usuarioMin4.setCliente(usuariosFiltrado.get(posicionMin + 3));
             case 3: // Hay que mostrar 3 usuarios
                 usuarioMin3.setVisible(true);
-                usuarioMin3.setCliente(usuarios.get(posicionMin + 2));
+                usuarioMin3.setCliente(usuariosFiltrado.get(posicionMin + 2));
             case 2: // Hay que mostrar 2 usuarios
                 usuarioMin2.setVisible(true);
-                usuarioMin2.setCliente(usuarios.get(posicionMin + 1));
+                usuarioMin2.setCliente(usuariosFiltrado.get(posicionMin + 1));
             case 1: // Hay que mostrar 1 usuarios
                 usuarioMin1.setVisible(true);
-                usuarioMin1.setCliente(usuarios.get(posicionMin));
+                usuarioMin1.setCliente(usuariosFiltrado.get(posicionMin));
                 //icon.setIcon(new ImageIcon(""));
                 //errorLabel1.setText("");
                 //errorLabel2.setText("");
@@ -579,19 +669,21 @@ public class MenuAdmin extends javax.swing.JFrame {
                 //errorLabel2.setText("Parece que no se ha encontrado ningún producto");
                 break;
         }
+        
+        etiquetaPagina.setText("Página " + (posicionMin / 8 + 1) + " de " + (usuariosFiltrado.size() / 8 + 1));
     }
     
     public final void lockUnlockBotonesUsuarios() {
         if (posicionMin - 8 < 0) {
-            rePag.setEnabled(false);
+            rePagUsuarios.setEnabled(false);
         } else {
-            rePag.setEnabled(true);
+            rePagUsuarios.setEnabled(true);
         }
 
-        if (posicionMin + 8 >= clientDefinitivo.size()) {
-            avPag.setEnabled(false);
+        if (posicionMin + 8 >= usuariosFiltrado.size()) {
+            avPagUsuarios.setEnabled(false);
         } else {
-            avPag.setEnabled(true);
+            avPagUsuarios.setEnabled(true);
         }
     } // Hay que cambiarlo
     
@@ -609,8 +701,8 @@ public class MenuAdmin extends javax.swing.JFrame {
         // actualizamos posicionMax
         for (int i = posicionMin; i <= posicionMin + 8; i++) {
             posicionMax = i;
-            if (posicionMax < productos.size()) {
-                //System.out.println((i) + ".- " + prodDefinitivo.get(posicionMax).getTitulo());
+            if (posicionMax < productosFiltrado.size()) {
+                //System.out.println((i) + ".- " + productosFiltrado.get(posicionMax).getTitulo());
             } else {
                 posicionMax--;
                 break;
@@ -621,28 +713,28 @@ public class MenuAdmin extends javax.swing.JFrame {
         switch (posicionMax + 1 - posicionMin) {
             case 8: // Hay que mostrar 8 productos
                 productoMin8.setVisible(true);
-                productoMin8.setProducto(productos.get(posicionMin + 7));
+                productoMin8.setProducto(productosFiltrado.get(posicionMin + 7));
             case 7: // Hay que mostrar 7 productos
                 productoMin7.setVisible(true);
-                productoMin7.setProducto(productos.get(posicionMin + 6));
+                productoMin7.setProducto(productosFiltrado.get(posicionMin + 6));
             case 6: // Hay que mostrar 6 productos
                 productoMin6.setVisible(true);
-                productoMin6.setProducto(productos.get(posicionMin + 5));
+                productoMin6.setProducto(productosFiltrado.get(posicionMin + 5));
             case 5: // Hay que mostrar 5 productos
                 productoMin5.setVisible(true);
-                productoMin5.setProducto(productos.get(posicionMin + 4));
+                productoMin5.setProducto(productosFiltrado.get(posicionMin + 4));
             case 4: // Hay que mostrar 4 productos
                 productoMin4.setVisible(true);
-                productoMin4.setProducto(productos.get(posicionMin + 3));
+                productoMin4.setProducto(productosFiltrado.get(posicionMin + 3));
             case 3: // Hay que mostrar 3 productos
                 productoMin3.setVisible(true);
-                productoMin3.setProducto(productos.get(posicionMin + 2));
+                productoMin3.setProducto(productosFiltrado.get(posicionMin + 2));
             case 2: // Hay que mostrar 2 productos
                 productoMin2.setVisible(true);
-                productoMin2.setProducto(productos.get(posicionMin + 1));
+                productoMin2.setProducto(productosFiltrado.get(posicionMin + 1));
             case 1: // Hay que mostrar 1 productos
                 productoMin1.setVisible(true);
-                productoMin1.setProducto(productos.get(posicionMin));
+                productoMin1.setProducto(productosFiltrado.get(posicionMin));
                 //icon.setIcon(new ImageIcon(""));
                 //errorLabel1.setText("");
                 //errorLabel2.setText("");
@@ -654,19 +746,20 @@ public class MenuAdmin extends javax.swing.JFrame {
                 //errorLabel2.setText("Parece que no se ha encontrado ningún producto");
                 break;
         }
+        etiquetaPagina.setText("Página " + (posicionMin / 8 + 1) + " de " + (productosFiltrado.size() / 8 + 1));
     }
     
     public final void lockUnlockBotonesProductos() {
-        if (posicionMin - 10 < 0) {
-            rePag.setEnabled(false);
+        if (posicionMin - 8 < 0) {
+            rePagProductos.setEnabled(false);
         } else {
-            rePag.setEnabled(true);
+            rePagProductos.setEnabled(true);
         }
 
-        if (posicionMin + 10 >= prodDefinitivo.size()) {
-            avPag.setEnabled(false);
+        if (posicionMin + 8 >= productosFiltrado.size()) {
+            avPagProductos.setEnabled(false);
         } else {
-            avPag.setEnabled(true);
+            avPagProductos.setEnabled(true);
         }
     } // Hay que cambiarlo
 
@@ -684,7 +777,7 @@ public class MenuAdmin extends javax.swing.JFrame {
         // actualizamos posicionMax
         for (int i = posicionMin; i < posicionMin + 8; i++) {
             posicionMax = i;
-            if (posicionMax < ventas.size()) {
+            if (posicionMax < ventasFiltrado.size()) {
             } else {
                 posicionMax--;
                 break;
@@ -695,28 +788,28 @@ public class MenuAdmin extends javax.swing.JFrame {
         switch (posicionMax + 1 - posicionMin) {
             case 8: // Hay que mostrar 8 ventas
                 ventaMin8.setVisible(true);
-                ventaMin8.setVenta(ventas.get(posicionMin + 7));
+                ventaMin8.setVenta(ventasFiltrado.get(posicionMin + 7));
             case 7: // Hay que mostrar 7 ventas
                 ventaMin7.setVisible(true);
-                ventaMin7.setVenta(ventas.get(posicionMin + 6));
+                ventaMin7.setVenta(ventasFiltrado.get(posicionMin + 6));
             case 6: // Hay que mostrar 6 ventas
                 ventaMin6.setVisible(true);
-                ventaMin6.setVenta(ventas.get(posicionMin + 5));
+                ventaMin6.setVenta(ventasFiltrado.get(posicionMin + 5));
             case 5: // Hay que mostrar 5 ventas
                 ventaMin5.setVisible(true);
-                ventaMin5.setVenta(ventas.get(posicionMin + 4));
+                ventaMin5.setVenta(ventasFiltrado.get(posicionMin + 4));
             case 4: // Hay que mostrar 4 ventas
                 ventaMin4.setVisible(true);
-                ventaMin4.setVenta(ventas.get(posicionMin + 3));
+                ventaMin4.setVenta(ventasFiltrado.get(posicionMin + 3));
             case 3: // Hay que mostrar 3 ventas
                 ventaMin3.setVisible(true);
-                ventaMin3.setVenta(ventas.get(posicionMin + 2));
+                ventaMin3.setVenta(ventasFiltrado.get(posicionMin + 2));
             case 2: // Hay que mostrar 2 ventas
                 ventaMin2.setVisible(true);
-                ventaMin2.setVenta(ventas.get(posicionMin + 1));
+                ventaMin2.setVenta(ventasFiltrado.get(posicionMin + 1));
             case 1: // Hay que mostrar 1 ventas
                 ventaMin1.setVisible(true);
-                ventaMin1.setVenta(ventas.get(posicionMin));
+                ventaMin1.setVenta(ventasFiltrado.get(posicionMin));
                 //icon.setIcon(new ImageIcon(""));
                 //errorLabel1.setText("");
                 //errorLabel2.setText("");
@@ -731,16 +824,16 @@ public class MenuAdmin extends javax.swing.JFrame {
     }
     
     public final void lockUnlockBotonesVentas() {
-        if (posicionMin - 10 < 0) {
-            rePag.setEnabled(false);
+        if (posicionMin - 8 < 0) {
+            rePagVentas.setEnabled(false);
         } else {
-            rePag.setEnabled(true);
+            rePagVentas.setEnabled(true);
         }
 
-        if (posicionMin + 10 >= prodDefinitivo.size()) {
-            avPag.setEnabled(false);
+        if (posicionMin + 8 >= ventasFiltrado.size()) {
+            avPagVentas.setEnabled(false);
         } else {
-            avPag.setEnabled(true);
+            avPagVentas.setEnabled(true);
         }
     } // Hay que cambiarlo
 
@@ -748,7 +841,9 @@ public class MenuAdmin extends javax.swing.JFrame {
     private javax.swing.JLabel Buscar;
     private javax.swing.JLabel Funcion;
     private javax.swing.JLabel Logo;
-    private javax.swing.JButton avPag;
+    private javax.swing.JButton avPagProductos;
+    private javax.swing.JButton avPagUsuarios;
+    private javax.swing.JButton avPagVentas;
     private javax.swing.JPanel banner;
     private javax.swing.JButton busquedaButton;
     private javax.swing.JLabel categoriaBannerLabel;
@@ -756,6 +851,8 @@ public class MenuAdmin extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> comboBoxCategoria;
     private javax.swing.JComboBox<String> comboBoxFuncion;
     private javax.swing.JLabel etiquetaPagina;
+    private javax.swing.JLabel etiquetaPagina1;
+    private javax.swing.JLabel etiquetaPagina2;
     private javax.swing.Box.Filler filler2;
     private javax.swing.Box.Filler filler3;
     private javax.swing.Box.Filler filler5;
@@ -771,7 +868,9 @@ public class MenuAdmin extends javax.swing.JFrame {
     public interfaz.panels.ProductoMin productoMin6;
     public interfaz.panels.ProductoMin productoMin7;
     public interfaz.panels.ProductoMin productoMin8;
-    private javax.swing.JButton rePag;
+    private javax.swing.JButton rePagProductos;
+    private javax.swing.JButton rePagUsuarios;
+    private javax.swing.JButton rePagVentas;
     private interfaz.panels.UsuarioMin usuarioMin1;
     private interfaz.panels.UsuarioMin usuarioMin2;
     private interfaz.panels.UsuarioMin usuarioMin3;

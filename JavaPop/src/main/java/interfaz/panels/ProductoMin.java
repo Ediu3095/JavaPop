@@ -27,7 +27,7 @@ public class ProductoMin extends javax.swing.JPanel {
     public void setProducto(Producto prod) {
         this.producto = prod;
         this.etiquetaTitulo.setText(prod.getTitulo());
-        this.etiquetaPrecio.setText("" + prod.getPrecio());
+        this.etiquetaPrecio.setText(prod.getPrecio() + " €");
         this.imagen.setIcon(new ImageIcon(new ImageIcon(prod.getFoto()).getImage().getScaledInstance(180, 180,  java.awt.Image.SCALE_DEFAULT)));
     }
 

@@ -52,6 +52,5 @@ public class Main {
         
         new LoginScreen();
         ls.dispose();
-        
     }
 }

@@ -328,6 +328,13 @@ public class MenuAdminProducto extends javax.swing.JFrame {
             usuarios.add(this.user);
         } else {
             new File(this.producto.getFoto()).delete();
+            usuarios.remove(this.user);
+            for (int i = 0; i < this.user.getVentasNuevas().size(); i++) {
+                if (this.user.getVentasNuevas().get(i).getProducto().equals(this.productoOriginal) || this.user.getVentasNuevas().get(i).getProducto().equals(this.producto)) {
+                    this.user.getVentasNuevas().remove(i);
+                }
+            }
+            usuarios.add(this.user);
         }
 
         menu.productoMin1.setVisible(false);
@@ -337,13 +344,13 @@ public class MenuAdminProducto extends javax.swing.JFrame {
         menu.productoMin5.setVisible(false);
         menu.productoMin6.setVisible(false);
         menu.productoMin7.setVisible(false);
-        menu.productoMin8.setVisible(false);       
+        menu.productoMin8.setVisible(false);
         menu.posicionMin = 0;
 
         menu.displayProductos();
 
-        //menu.lockUnlockBotonesMisProductos();
-        
+        menu.lockUnlockBotonesProductos();
+
         menu.toFront();
     }//GEN-LAST:event_formWindowClosed
     

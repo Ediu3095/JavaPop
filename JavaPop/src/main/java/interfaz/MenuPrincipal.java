@@ -337,7 +337,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
             }
         });
         panelCompra.add(productoMin3);
-        productoMin3.setBounds(450, 10, 204, 270);
+        productoMin3.setBounds(460, 10, 204, 270);
 
         productoMin4.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         productoMin4.setFont(new java.awt.Font("OCR A Extended", 0, 12)); // NOI18N
@@ -347,7 +347,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
             }
         });
         panelCompra.add(productoMin4);
-        productoMin4.setBounds(660, 10, 204, 270);
+        productoMin4.setBounds(670, 10, 204, 270);
 
         productoMin5.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         productoMin5.setFont(new java.awt.Font("OCR A Extended", 0, 12)); // NOI18N
@@ -377,7 +377,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
             }
         });
         panelCompra.add(productoMin7);
-        productoMin7.setBounds(450, 280, 204, 270);
+        productoMin7.setBounds(460, 280, 204, 270);
 
         productoMin8.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         productoMin8.setFont(new java.awt.Font("OCR A Extended", 0, 12)); // NOI18N
@@ -387,7 +387,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
             }
         });
         panelCompra.add(productoMin8);
-        productoMin8.setBounds(660, 280, 204, 270);
+        productoMin8.setBounds(670, 280, 204, 270);
 
         rePag.setText("<<");
         rePag.addActionListener(new java.awt.event.ActionListener() {
@@ -396,13 +396,13 @@ public class MenuPrincipal extends javax.swing.JFrame {
             }
         });
         panelCompra.add(rePag);
-        rePag.setBounds(610, 560, 50, 23);
+        rePag.setBounds(620, 560, 50, 23);
 
         etiquetaPagina.setFont(new java.awt.Font("OCR A Extended", 0, 12)); // NOI18N
         etiquetaPagina.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         etiquetaPagina.setText("Página 0 de 100");
         panelCompra.add(etiquetaPagina);
-        etiquetaPagina.setBounds(660, 560, 150, 20);
+        etiquetaPagina.setBounds(670, 560, 150, 20);
 
         avPag.setText(">>");
         avPag.addActionListener(new java.awt.event.ActionListener() {
@@ -411,7 +411,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
             }
         });
         panelCompra.add(avPag);
-        avPag.setBounds(810, 560, 50, 23);
+        avPag.setBounds(820, 560, 50, 23);
 
         icon.setFont(new java.awt.Font("OCR A Extended", 0, 18)); // NOI18N
         icon.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
