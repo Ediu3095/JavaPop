@@ -26,6 +26,7 @@ import static java.nio.file.StandardCopyOption.REPLACE_EXISTING;
 import java.util.ArrayList;
 import static java.util.Locale.filter;
 import java.util.Random;
+import javax.swing.Icon;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.filechooser.FileNameExtensionFilter;
@@ -199,6 +200,9 @@ public class MenuAdmin extends javax.swing.JFrame {
         nombreEditLabel = new javax.swing.JLabel();
         descripcionEditLabel = new javax.swing.JLabel();
         precioEditLabel = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
+        paginaUsuarioLabel = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("JavaPop - Menú de desarrolador\n");
@@ -333,7 +337,7 @@ public class MenuAdmin extends javax.swing.JFrame {
         usuarioEditPanel9.setBackground(new java.awt.Color(204, 204, 204));
 
         ventaEditLabel5.setFont(new java.awt.Font("OCR A Extended", 0, 12)); // NOI18N
-        ventaEditLabel5.setText("Edit");
+        ventaEditLabel5.setText("Eliminar");
         ventaEditLabel5.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 ventaEditLabel5MouseClicked(evt);
@@ -351,9 +355,9 @@ public class MenuAdmin extends javax.swing.JFrame {
         usuarioEditPanel9Layout.setHorizontalGroup(
             usuarioEditPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, usuarioEditPanel9Layout.createSequentialGroup()
-                .addContainerGap(126, Short.MAX_VALUE)
+                .addContainerGap(130, Short.MAX_VALUE)
                 .addComponent(ventaEditLabel5)
-                .addGap(106, 106, 106))
+                .addGap(74, 74, 74))
         );
         usuarioEditPanel9Layout.setVerticalGroup(
             usuarioEditPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -368,7 +372,7 @@ public class MenuAdmin extends javax.swing.JFrame {
         usuarioEditPanel10.setBackground(new java.awt.Color(204, 204, 204));
 
         ventaEditLabel7.setFont(new java.awt.Font("OCR A Extended", 0, 12)); // NOI18N
-        ventaEditLabel7.setText("Edit");
+        ventaEditLabel7.setText("Eliminar");
         ventaEditLabel7.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 ventaEditLabel7MouseClicked(evt);
@@ -388,7 +392,7 @@ public class MenuAdmin extends javax.swing.JFrame {
             .addGroup(usuarioEditPanel10Layout.createSequentialGroup()
                 .addGap(96, 96, 96)
                 .addComponent(ventaEditLabel7)
-                .addContainerGap(106, Short.MAX_VALUE))
+                .addContainerGap(78, Short.MAX_VALUE))
         );
         usuarioEditPanel10Layout.setVerticalGroup(
             usuarioEditPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -403,7 +407,7 @@ public class MenuAdmin extends javax.swing.JFrame {
         usuarioEditPanel11.setBackground(new java.awt.Color(204, 204, 204));
 
         ventaEditLabel8.setFont(new java.awt.Font("OCR A Extended", 0, 12)); // NOI18N
-        ventaEditLabel8.setText("Edit");
+        ventaEditLabel8.setText("Eliminar");
         ventaEditLabel8.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 ventaEditLabel8MouseClicked(evt);
@@ -423,7 +427,7 @@ public class MenuAdmin extends javax.swing.JFrame {
             .addGroup(usuarioEditPanel11Layout.createSequentialGroup()
                 .addGap(98, 98, 98)
                 .addComponent(ventaEditLabel8)
-                .addContainerGap(104, Short.MAX_VALUE))
+                .addContainerGap(76, Short.MAX_VALUE))
         );
         usuarioEditPanel11Layout.setVerticalGroup(
             usuarioEditPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -438,7 +442,7 @@ public class MenuAdmin extends javax.swing.JFrame {
         usuarioEditPanel12.setBackground(new java.awt.Color(204, 204, 204));
 
         ventaEditLabel6.setFont(new java.awt.Font("OCR A Extended", 0, 12)); // NOI18N
-        ventaEditLabel6.setText("Edit");
+        ventaEditLabel6.setText("Eliminar");
         ventaEditLabel6.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 ventaEditLabel6MouseClicked(evt);
@@ -455,10 +459,10 @@ public class MenuAdmin extends javax.swing.JFrame {
         usuarioEditPanel12.setLayout(usuarioEditPanel12Layout);
         usuarioEditPanel12Layout.setHorizontalGroup(
             usuarioEditPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(usuarioEditPanel12Layout.createSequentialGroup()
-                .addGap(96, 96, 96)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, usuarioEditPanel12Layout.createSequentialGroup()
+                .addContainerGap(98, Short.MAX_VALUE)
                 .addComponent(ventaEditLabel6)
-                .addContainerGap(106, Short.MAX_VALUE))
+                .addGap(76, 76, 76))
         );
         usuarioEditPanel12Layout.setVerticalGroup(
             usuarioEditPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -473,7 +477,7 @@ public class MenuAdmin extends javax.swing.JFrame {
         usuarioEditPanel13.setBackground(new java.awt.Color(204, 204, 204));
 
         ventaEditLabel4.setFont(new java.awt.Font("OCR A Extended", 0, 12)); // NOI18N
-        ventaEditLabel4.setText("Edit");
+        ventaEditLabel4.setText("Eliminar");
         ventaEditLabel4.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 ventaEditLabel4MouseClicked(evt);
@@ -493,7 +497,7 @@ public class MenuAdmin extends javax.swing.JFrame {
             .addGroup(usuarioEditPanel13Layout.createSequentialGroup()
                 .addGap(98, 98, 98)
                 .addComponent(ventaEditLabel4)
-                .addContainerGap(104, Short.MAX_VALUE))
+                .addContainerGap(76, Short.MAX_VALUE))
         );
         usuarioEditPanel13Layout.setVerticalGroup(
             usuarioEditPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -508,7 +512,7 @@ public class MenuAdmin extends javax.swing.JFrame {
         usuarioEditPanel14.setBackground(new java.awt.Color(204, 204, 204));
 
         ventaEditLabel3.setFont(new java.awt.Font("OCR A Extended", 0, 12)); // NOI18N
-        ventaEditLabel3.setText("Edit");
+        ventaEditLabel3.setText("Eliminar");
         ventaEditLabel3.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 ventaEditLabel3MouseClicked(evt);
@@ -528,7 +532,7 @@ public class MenuAdmin extends javax.swing.JFrame {
             .addGroup(usuarioEditPanel14Layout.createSequentialGroup()
                 .addGap(99, 99, 99)
                 .addComponent(ventaEditLabel3)
-                .addContainerGap(103, Short.MAX_VALUE))
+                .addContainerGap(75, Short.MAX_VALUE))
         );
         usuarioEditPanel14Layout.setVerticalGroup(
             usuarioEditPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -543,7 +547,7 @@ public class MenuAdmin extends javax.swing.JFrame {
         usuarioEditPanel15.setBackground(new java.awt.Color(204, 204, 204));
 
         ventaEditLabel2.setFont(new java.awt.Font("OCR A Extended", 0, 12)); // NOI18N
-        ventaEditLabel2.setText("Edit");
+        ventaEditLabel2.setText("Eliminar");
         ventaEditLabel2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 ventaEditLabel2MouseClicked(evt);
@@ -563,7 +567,7 @@ public class MenuAdmin extends javax.swing.JFrame {
             .addGroup(usuarioEditPanel15Layout.createSequentialGroup()
                 .addGap(99, 99, 99)
                 .addComponent(ventaEditLabel2)
-                .addContainerGap(103, Short.MAX_VALUE))
+                .addContainerGap(75, Short.MAX_VALUE))
         );
         usuarioEditPanel15Layout.setVerticalGroup(
             usuarioEditPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -578,7 +582,7 @@ public class MenuAdmin extends javax.swing.JFrame {
         usuarioEditPanel16.setBackground(new java.awt.Color(204, 204, 204));
 
         ventaEditLabel1.setFont(new java.awt.Font("OCR A Extended", 0, 12)); // NOI18N
-        ventaEditLabel1.setText("Edit");
+        ventaEditLabel1.setText("Eliminar");
         ventaEditLabel1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 ventaEditLabel1MouseClicked(evt);
@@ -598,7 +602,7 @@ public class MenuAdmin extends javax.swing.JFrame {
             .addGroup(usuarioEditPanel16Layout.createSequentialGroup()
                 .addGap(101, 101, 101)
                 .addComponent(ventaEditLabel1)
-                .addContainerGap(101, Short.MAX_VALUE))
+                .addContainerGap(73, Short.MAX_VALUE))
         );
         usuarioEditPanel16Layout.setVerticalGroup(
             usuarioEditPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1523,6 +1527,22 @@ public class MenuAdmin extends javax.swing.JFrame {
 
         jPanel1.add(panelEditarProductos, "EditarProductos");
 
+        jButton1.setText("Siguiente");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
+        jButton2.setText("Anterior");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+
+        paginaUsuarioLabel.setText("0");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -1533,7 +1553,14 @@ public class MenuAdmin extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(filler5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jButton2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(paginaUsuarioLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 6, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButton1)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(filler2, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
@@ -1543,12 +1570,18 @@ public class MenuAdmin extends javax.swing.JFrame {
                 .addComponent(banner, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(filler3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(filler3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 605, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 540, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(filler5, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(filler2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jButton2)
+                            .addComponent(jButton1)
+                            .addComponent(paginaUsuarioLabel))
+                        .addGap(26, 26, 26))
+                    .addComponent(filler2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 35, Short.MAX_VALUE)
+                .addComponent(filler5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         pack();
@@ -1635,19 +1668,21 @@ public class MenuAdmin extends javax.swing.JFrame {
     private void comboBoxFuncionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboBoxFuncionActionPerformed
         int panel = comboBoxFuncion.getSelectedIndex();
         if (panel == 0) {
+            
             panelUsuarios.setVisible(true);
             panelProductos.setVisible(false);
             panelVentas.setVisible(false);
-            //camposCL.show(jPanel1, "cardUsuarios");
             
+            usuarioMin1.setVisible(true);
             usuarioMin1.etiquetaCorreo.setText(user.correo);
             usuarioMin1.etiquetaNombre.setText(user.getNombre());
             usuarioMin1.etiquetaDNI.setText(user.getDni());
-            
+
+            usuarioMin2.setVisible(true);
             usuarioMin2.etiquetaDNI.setText(user.getDni());
             usuarioMin2.etiquetaNombre.setText(user.getNombre());
             usuarioMin2.etiquetaCorreo.setText(user.getCorreo());
-            
+
         } else if (panel == 1) {
             panelProductos.setVisible(true);
             panelUsuarios.setVisible(false);
@@ -1660,7 +1695,7 @@ public class MenuAdmin extends javax.swing.JFrame {
             panelProductos.setVisible(false);
             //camposCL.show(jPanel1, "Ventas");
         }
-        System.out.println("Display Productos2");      
+        System.out.println("Display Productos2");
     }//GEN-LAST:event_comboBoxFuncionActionPerformed
 
     private void userEditLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_userEditLabel1MouseClicked
@@ -1928,7 +1963,7 @@ public class MenuAdmin extends javax.swing.JFrame {
             camposCL.show(jPanel1, "Ventas");
         }
         System.out.println("Display Productos2");
-        */
+         */
     }//GEN-LAST:event_comboBoxFuncionItemStateChanged
 
     private void nombreUsuarioEditLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_nombreUsuarioEditLabelMouseClicked
@@ -2264,9 +2299,16 @@ public class MenuAdmin extends javax.swing.JFrame {
     }//GEN-LAST:event_ventaEditLabel2MouseExited
 
     private void ventaEditLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ventaEditLabel1MouseClicked
-        panelUsuarios.setVisible(false);
+        Object[] options = {"Cancelar", "Eliminar"};
+        JOptionPane.showOptionDialog(null, "¿Estás seguro que deseas eliminar este registro de venta?", "Aviso", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, icono(".\\resources\\logo\\IconoJavaPop2.png", 40, 40), options, options[0]);
+        //panelVentas.setVisible(false);
         panelEditarProductos.setVisible(true);
     }//GEN-LAST:event_ventaEditLabel1MouseClicked
+
+    public Icon icono(String path, int width, int heigth) {
+        Icon img = new ImageIcon(new ImageIcon(getClass().getResource(path)).getImage().getScaledInstance(width, heigth, java.awt.Image.SCALE_SMOOTH));
+        return img;
+    }
 
     private void ventaEditLabel1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ventaEditLabel1MouseEntered
         ventaEditLabel1.setFont(new java.awt.Font("OCR A Extended", 1, 12));
@@ -2275,6 +2317,14 @@ public class MenuAdmin extends javax.swing.JFrame {
     private void ventaEditLabel1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ventaEditLabel1MouseExited
         ventaEditLabel1.setFont(new java.awt.Font("OCR A Extended", 1, 12));
     }//GEN-LAST:event_ventaEditLabel1MouseExited
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     private void lockUnlockBotonesComprar() {
         if (posicionMin - 10 < 0) {
@@ -2373,6 +2423,14 @@ public class MenuAdmin extends javax.swing.JFrame {
         }
     }
 
+    
+    
+    private void displayUsuarios1() {
+        
+    }
+    
+    
+    
     private void displayUsuarios() {
         for (int i = posicionMin; i < posicionMin + 8; i++) {
             posicionMax = i;
@@ -2468,6 +2526,7 @@ public class MenuAdmin extends javax.swing.JFrame {
             }
         }
     }
+
     /*
     public void setCliente(Cliente client){
         this.cliente = client;
@@ -2475,8 +2534,8 @@ public class MenuAdmin extends javax.swing.JFrame {
         this.etiquetaNombre.setText (client.getNombre());
         this.etiquetaCorreo.setText (client.getCorreo());    
     }
-    */
-    
+     */
+
     private static String randomSequence() {
         String str = "";
         Random rnd = new Random();
@@ -2524,6 +2583,8 @@ public class MenuAdmin extends javax.swing.JFrame {
     private javax.swing.Box.Filler filler8;
     private javax.swing.JPanel foto;
     private javax.swing.JLabel icono;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
@@ -2544,6 +2605,7 @@ public class MenuAdmin extends javax.swing.JFrame {
     public javax.swing.JTextField nameEditField;
     private javax.swing.JLabel nombreEditLabel;
     private javax.swing.JLabel nombreUsuarioEditLabel;
+    private javax.swing.JLabel paginaUsuarioLabel;
     private javax.swing.JPanel panelBienvenida;
     private javax.swing.JPanel panelEditarProductos;
     private javax.swing.JPanel panelEditarUsuario;
