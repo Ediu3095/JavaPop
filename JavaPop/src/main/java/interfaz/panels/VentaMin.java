@@ -27,8 +27,7 @@ public class VentaMin extends javax.swing.JPanel {
         this.venta = venta;
         this.etiquetaVendedor.setText(venta.getProducto().getVendedor().getNombre());
         this.etiquetaComprador.setText(venta.getComprador().getNombre());
-        this.etiquetaFecha.setText(venta.getProducto().getFechaPublicacion().toString());
- 
+        this.etiquetaFecha.setText(venta.getFechaVenta().getDayOfMonth() + "/" + venta.getFechaVenta().getMonthValue() + "/" + venta.getFechaVenta().getYear());
     }
     
     /**
@@ -41,50 +40,64 @@ public class VentaMin extends javax.swing.JPanel {
     private void initComponents() {
 
         jPanel4 = new javax.swing.JPanel();
-        etiquetaProducto = new javax.swing.JLabel();
-        etiquetaVendedor = new javax.swing.JLabel();
+        tituloLabel = new javax.swing.JLabel();
         etiquetaComprador = new javax.swing.JLabel();
         etiquetaFecha = new javax.swing.JLabel();
+        jSeparator2 = new javax.swing.JSeparator();
+        jSeparator3 = new javax.swing.JSeparator();
+        jSeparator1 = new javax.swing.JSeparator();
+        etiquetaVendedor = new javax.swing.JLabel();
 
         jPanel4.setBackground(new java.awt.Color(204, 204, 204));
 
-        etiquetaProducto.setFont(new java.awt.Font("OCR A Extended", 0, 12)); // NOI18N
-        etiquetaProducto.setText("Producto");
-
-        etiquetaVendedor.setFont(new java.awt.Font("OCR A Extended", 0, 12)); // NOI18N
-        etiquetaVendedor.setText("Seller");
+        tituloLabel.setFont(new java.awt.Font("OCR A Extended", 0, 12)); // NOI18N
+        tituloLabel.setText("Titulo");
 
         etiquetaComprador.setFont(new java.awt.Font("OCR A Extended", 0, 12)); // NOI18N
-        etiquetaComprador.setText("Buyer");
+        etiquetaComprador.setText("Comprador");
 
         etiquetaFecha.setFont(new java.awt.Font("OCR A Extended", 0, 12)); // NOI18N
-        etiquetaFecha.setText("Date");
+        etiquetaFecha.setText("Fecha venta");
+        etiquetaFecha.setMaximumSize(new java.awt.Dimension(500, 50));
+        etiquetaFecha.setMinimumSize(new java.awt.Dimension(0, 50));
+
+        jSeparator2.setOrientation(javax.swing.SwingConstants.VERTICAL);
+
+        jSeparator3.setOrientation(javax.swing.SwingConstants.VERTICAL);
+
+        jSeparator1.setOrientation(javax.swing.SwingConstants.VERTICAL);
+
+        etiquetaVendedor.setFont(new java.awt.Font("OCR A Extended", 0, 12)); // NOI18N
+        etiquetaVendedor.setText("Vendedor");
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(etiquetaProducto)
-                .addGap(105, 105, 105)
-                .addComponent(etiquetaVendedor)
-                .addGap(125, 125, 125)
-                .addComponent(etiquetaComprador)
-                .addGap(212, 212, 212)
-                .addComponent(etiquetaFecha)
-                .addContainerGap(217, Short.MAX_VALUE))
+                .addComponent(tituloLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 2, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(etiquetaVendedor, javax.swing.GroupLayout.PREFERRED_SIZE, 246, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 2, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(etiquetaComprador, javax.swing.GroupLayout.PREFERRED_SIZE, 244, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(etiquetaFecha, javax.swing.GroupLayout.DEFAULT_SIZE, 210, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel4Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(etiquetaProducto, javax.swing.GroupLayout.DEFAULT_SIZE, 28, Short.MAX_VALUE)
-                    .addComponent(etiquetaVendedor, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(etiquetaComprador)
-                    .addComponent(etiquetaFecha))
-                .addContainerGap())
+            .addComponent(tituloLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jSeparator3, javax.swing.GroupLayout.Alignment.TRAILING)
+            .addComponent(jSeparator2, javax.swing.GroupLayout.Alignment.TRAILING)
+            .addComponent(etiquetaVendedor, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jSeparator1, javax.swing.GroupLayout.Alignment.TRAILING)
+            .addComponent(etiquetaFecha, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE)
+            .addComponent(etiquetaComprador, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -103,8 +116,11 @@ public class VentaMin extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel etiquetaComprador;
     private javax.swing.JLabel etiquetaFecha;
-    private javax.swing.JLabel etiquetaProducto;
     private javax.swing.JLabel etiquetaVendedor;
     private javax.swing.JPanel jPanel4;
+    private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JSeparator jSeparator2;
+    private javax.swing.JSeparator jSeparator3;
+    private javax.swing.JLabel tituloLabel;
     // End of variables declaration//GEN-END:variables
 }

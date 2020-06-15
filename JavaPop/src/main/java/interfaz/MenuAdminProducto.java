@@ -30,29 +30,33 @@ public class MenuAdminProducto extends javax.swing.JFrame {
 
     /**
      * Creates new form MenuAdminProducto
+     * @param menu
+     * @param container
      */
     public MenuAdminProducto(MenuAdmin menu, ProductoMin container) {        
         initComponents();    
         
         this.producto = container.producto;
-        fieldNombre.setText(this.producto.getTitulo());
-        fieldDescripcion.setText(this.producto.getDescripcion());
-        fieldPrecio.setText("" + this.producto.getPrecio());
-        categoriaBox.setSelectedIndex(indexOfCategoria(this.producto.getCategoria()));
-        estadoBox.setSelectedIndex(indexOfEstado(this.producto.getEstado()));
-        urgencia.setSelected(this.producto.isUrgente());
-        icono.setIcon(new ImageIcon(new ImageIcon(this.producto.getFoto()).getImage().getScaledInstance(248, 248, Image.SCALE_DEFAULT)));
-        
         
         usuarios.remove(this.producto.getVendedor());        
         this.producto.getVendedor().getProductos().remove(this.producto);
         usuarios.add(this.producto.getVendedor());
         productos.remove(this.producto);
         
+        fieldNombre.setText(this.producto.getTitulo());
+        fieldDescripcion.setText(this.producto.getDescripcion());
+        fieldPrecio.setText("" + this.producto.getPrecio());
+        categoriaBox.setSelectedIndex(indexOfCategoria(this.producto.getCategoria()));
+        estadoBox.setSelectedIndex(indexOfEstado(this.producto.getEstado()));
+        urgencia.setSelected(this.producto.isUrgente());
+        imageAddress = this.producto.getFoto();
+        icono.setIcon(new ImageIcon(new ImageIcon(imageAddress).getImage().getScaledInstance(248, 248, Image.SCALE_DEFAULT)));
+        
         this.borrar = false;
         
         this.menu = menu;
         this.menu.setEnabled(false);
+        
         super.setVisible(true);
     }
 

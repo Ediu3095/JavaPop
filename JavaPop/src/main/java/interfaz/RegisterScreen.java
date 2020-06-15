@@ -44,7 +44,7 @@ public class RegisterScreen extends javax.swing.JFrame {
         Logo = new javax.swing.JLabel();
         filler1 = new javax.swing.Box.Filler(new java.awt.Dimension(40, 160), new java.awt.Dimension(40, 160), new java.awt.Dimension(40, 160));
         filler2 = new javax.swing.Box.Filler(new java.awt.Dimension(40, 160), new java.awt.Dimension(40, 160), new java.awt.Dimension(40, 160));
-        registerFields = new interfaz.panels.registerFields();
+        registerFields = new interfaz.panels.RegisterFields();
         jLabel1 = new javax.swing.JLabel();
         loginButton = new javax.swing.JLabel();
 
@@ -221,6 +221,6 @@ public class RegisterScreen extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel loginButton;
     private javax.swing.JButton registerButton;
-    private interfaz.panels.registerFields registerFields;
+    private interfaz.panels.RegisterFields registerFields;
     // End of variables declaration//GEN-END:variables
 }

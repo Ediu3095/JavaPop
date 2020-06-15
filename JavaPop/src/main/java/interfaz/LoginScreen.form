@@ -119,7 +119,7 @@
         </Component>
       </SubComponents>
     </Container>
-    <Component class="interfaz.panels.loginFields" name="loginFields">
+    <Component class="interfaz.panels.LoginFields" name="loginFields">
     </Component>
     <Component class="javax.swing.JButton" name="loginButton">
       <Properties>

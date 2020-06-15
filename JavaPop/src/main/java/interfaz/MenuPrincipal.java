@@ -287,7 +287,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(panelBienvenidaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 897, Short.MAX_VALUE)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 890, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelBienvenidaLayout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(jButton4)))
@@ -317,7 +317,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
             }
         });
         panelCompra.add(productoMin1);
-        productoMin1.setBounds(10, 11, 204, 270);
+        productoMin1.setBounds(40, 10, 204, 270);
 
         productoMin2.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         productoMin2.setFont(new java.awt.Font("OCR A Extended", 0, 12)); // NOI18N
@@ -327,7 +327,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
             }
         });
         panelCompra.add(productoMin2);
-        productoMin2.setBounds(216, 11, 204, 270);
+        productoMin2.setBounds(250, 10, 204, 270);
 
         productoMin3.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         productoMin3.setFont(new java.awt.Font("OCR A Extended", 0, 12)); // NOI18N
@@ -337,7 +337,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
             }
         });
         panelCompra.add(productoMin3);
-        productoMin3.setBounds(422, 11, 204, 270);
+        productoMin3.setBounds(450, 10, 204, 270);
 
         productoMin4.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         productoMin4.setFont(new java.awt.Font("OCR A Extended", 0, 12)); // NOI18N
@@ -347,7 +347,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
             }
         });
         panelCompra.add(productoMin4);
-        productoMin4.setBounds(628, 11, 204, 270);
+        productoMin4.setBounds(660, 10, 204, 270);
 
         productoMin5.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         productoMin5.setFont(new java.awt.Font("OCR A Extended", 0, 12)); // NOI18N
@@ -357,7 +357,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
             }
         });
         panelCompra.add(productoMin5);
-        productoMin5.setBounds(10, 283, 204, 270);
+        productoMin5.setBounds(40, 280, 204, 270);
 
         productoMin6.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         productoMin6.setFont(new java.awt.Font("OCR A Extended", 0, 12)); // NOI18N
@@ -367,7 +367,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
             }
         });
         panelCompra.add(productoMin6);
-        productoMin6.setBounds(216, 283, 204, 270);
+        productoMin6.setBounds(250, 280, 204, 270);
 
         productoMin7.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         productoMin7.setFont(new java.awt.Font("OCR A Extended", 0, 12)); // NOI18N
@@ -377,7 +377,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
             }
         });
         panelCompra.add(productoMin7);
-        productoMin7.setBounds(422, 283, 204, 270);
+        productoMin7.setBounds(450, 280, 204, 270);
 
         productoMin8.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         productoMin8.setFont(new java.awt.Font("OCR A Extended", 0, 12)); // NOI18N
@@ -387,7 +387,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
             }
         });
         panelCompra.add(productoMin8);
-        productoMin8.setBounds(628, 283, 204, 270);
+        productoMin8.setBounds(660, 280, 204, 270);
 
         rePag.setText("<<");
         rePag.addActionListener(new java.awt.event.ActionListener() {
@@ -396,13 +396,13 @@ public class MenuPrincipal extends javax.swing.JFrame {
             }
         });
         panelCompra.add(rePag);
-        rePag.setBounds(580, 560, 50, 23);
+        rePag.setBounds(610, 560, 50, 23);
 
         etiquetaPagina.setFont(new java.awt.Font("OCR A Extended", 0, 12)); // NOI18N
         etiquetaPagina.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         etiquetaPagina.setText("Página 0 de 100");
         panelCompra.add(etiquetaPagina);
-        etiquetaPagina.setBounds(630, 560, 150, 20);
+        etiquetaPagina.setBounds(660, 560, 150, 20);
 
         avPag.setText(">>");
         avPag.addActionListener(new java.awt.event.ActionListener() {
@@ -411,7 +411,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
             }
         });
         panelCompra.add(avPag);
-        avPag.setBounds(780, 560, 50, 23);
+        avPag.setBounds(810, 560, 50, 23);
 
         icon.setFont(new java.awt.Font("OCR A Extended", 0, 18)); // NOI18N
         icon.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -434,20 +434,20 @@ public class MenuPrincipal extends javax.swing.JFrame {
         );
 
         panelCompra.add(imagen);
-        imagen.setBounds(10, 10, 410, 540);
+        imagen.setBounds(40, 10, 410, 540);
 
         errorLabel1.setFont(new java.awt.Font("OCR A Extended", 0, 36)); // NOI18N
         errorLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         errorLabel1.setText("¡Vaya!");
         errorLabel1.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
         panelCompra.add(errorLabel1);
-        errorLabel1.setBounds(424, 14, 410, 270);
+        errorLabel1.setBounds(450, 10, 410, 270);
 
         errorLabel2.setFont(new java.awt.Font("OCR A Extended", 0, 14)); // NOI18N
         errorLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         errorLabel2.setVerticalAlignment(javax.swing.SwingConstants.TOP);
         panelCompra.add(errorLabel2);
-        errorLabel2.setBounds(424, 290, 410, 260);
+        errorLabel2.setBounds(450, 290, 410, 260);
 
         jPanel1.add(panelCompra, "Compra");
 
@@ -474,7 +474,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
             .addGroup(panelComprarProductoLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(panelComprarProductoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(productoMax1, javax.swing.GroupLayout.DEFAULT_SIZE, 897, Short.MAX_VALUE)
+                    .addComponent(productoMax1, javax.swing.GroupLayout.DEFAULT_SIZE, 890, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelComprarProductoLayout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -948,7 +948,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
                     .addGroup(panelPerfilLayout.createSequentialGroup()
                         .addComponent(productosLabel)
                         .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(misProductosDisplay, javax.swing.GroupLayout.DEFAULT_SIZE, 897, Short.MAX_VALUE))
+                    .addComponent(misProductosDisplay, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         panelPerfilLayout.setVerticalGroup(

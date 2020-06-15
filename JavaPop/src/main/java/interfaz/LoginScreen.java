@@ -44,7 +44,7 @@ public class LoginScreen extends javax.swing.JFrame {
 
         banner = new javax.swing.JPanel();
         logo = new javax.swing.JLabel();
-        loginFields = new interfaz.panels.loginFields();
+        loginFields = new interfaz.panels.LoginFields();
         loginButton = new javax.swing.JButton();
         filler1 = new javax.swing.Box.Filler(new java.awt.Dimension(80, 160), new java.awt.Dimension(40, 160), new java.awt.Dimension(80, 160));
         filler2 = new javax.swing.Box.Filler(new java.awt.Dimension(80, 160), new java.awt.Dimension(40, 160), new java.awt.Dimension(80, 160));
@@ -215,7 +215,7 @@ public class LoginScreen extends javax.swing.JFrame {
     private javax.swing.Box.Filler filler2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JButton loginButton;
-    private interfaz.panels.loginFields loginFields;
+    private interfaz.panels.LoginFields loginFields;
     private javax.swing.JLabel logo;
     private javax.swing.JLabel registerButton;
     // End of variables declaration//GEN-END:variables
