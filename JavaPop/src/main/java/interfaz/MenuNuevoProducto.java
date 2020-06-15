@@ -362,6 +362,8 @@ public class MenuNuevoProducto extends javax.swing.JFrame {
 
     private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
         menu.setEnabled(true);
+        menu.displayMisProductos();
+        menu.lockUnlockBotonesMisProductos();
         menu.toFront();
     }//GEN-LAST:event_formWindowClosed
 

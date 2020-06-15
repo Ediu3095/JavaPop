@@ -47,6 +47,8 @@ public class MiVentaMin extends javax.swing.JPanel {
         jSeparator1 = new javax.swing.JSeparator();
         precioLabel = new javax.swing.JLabel();
 
+        setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+
         tituloLabel.setFont(new java.awt.Font("OCR A Extended", 0, 12)); // NOI18N
         tituloLabel.setText("Titulo");
 

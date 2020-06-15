@@ -31,6 +31,9 @@ public class MenuVentas extends javax.swing.JFrame {
     public MenuVentas(MenuPrincipal menu) {
         initComponents();
         
+        // setup icon
+        super.setIconImage(new ImageIcon(".\\resources\\logo\\IconoJavaPop2.png").getImage());
+        
         menu.setEnabled(false);
         
         this.menu = menu;
@@ -144,6 +147,7 @@ public class MenuVentas extends javax.swing.JFrame {
         textoSinVentas2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Javapop - Mis notificaciones");
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowClosed(java.awt.event.WindowEvent evt) {
                 formWindowClosed(evt);
@@ -192,6 +196,7 @@ public class MenuVentas extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("OCR A Extended", 0, 12)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(51, 153, 255));
         jLabel1.setText("confirmar");
+        jLabel1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jLabel1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabel1MouseClicked(evt);
@@ -211,6 +216,7 @@ public class MenuVentas extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("OCR A Extended", 0, 12)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(51, 153, 255));
         jLabel2.setText("confirmar");
+        jLabel2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jLabel2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabel2MouseClicked(evt);
@@ -230,6 +236,7 @@ public class MenuVentas extends javax.swing.JFrame {
         jLabel3.setFont(new java.awt.Font("OCR A Extended", 0, 12)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(51, 153, 255));
         jLabel3.setText("confirmar");
+        jLabel3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jLabel3.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabel3MouseClicked(evt);
@@ -249,6 +256,7 @@ public class MenuVentas extends javax.swing.JFrame {
         jLabel4.setFont(new java.awt.Font("OCR A Extended", 0, 12)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(51, 153, 255));
         jLabel4.setText("confirmar");
+        jLabel4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jLabel4.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabel4MouseClicked(evt);
@@ -268,6 +276,7 @@ public class MenuVentas extends javax.swing.JFrame {
         jLabel5.setFont(new java.awt.Font("OCR A Extended", 0, 12)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(51, 153, 255));
         jLabel5.setText("confirmar");
+        jLabel5.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jLabel5.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabel5MouseClicked(evt);
@@ -374,9 +383,17 @@ public class MenuVentas extends javax.swing.JFrame {
             usuarios.add(p.getVendedor());
             productos.remove(p);
             new File(p.getFoto()).delete();
+            
+            for (int j = 0; j < miVentaMin1.venta.getProducto().getVendedor().getVentasNuevas().size(); j++) {
+                if (miVentaMin1.venta.getProducto().getVendedor().getVentasNuevas().get(j).getProducto().equals(miVentaMin1.venta.getProducto())) {
+                    miVentaMin1.venta.getProducto().getVendedor().getVentasNuevas().remove(j);
+                    j--;
+                }
+            }
+            
+            ventas.add(miVentaMin1.venta);
         } else {
             miVentaMin1.venta.getProducto().getVendedor().getVentasNuevas().remove(miVentaMin1.venta);
-            ventas.remove(miVentaMin1.venta);
         }
         
         displayMisVentas();
@@ -394,9 +411,9 @@ public class MenuVentas extends javax.swing.JFrame {
             usuarios.add(p.getVendedor());
             productos.remove(p);
             new File(p.getFoto()).delete();
+            ventas.add(miVentaMin2.venta);
         } else {
             miVentaMin2.venta.getProducto().getVendedor().getVentasNuevas().remove(miVentaMin2.venta);
-            ventas.remove(miVentaMin2.venta);
         }
         
         displayMisVentas();
@@ -414,9 +431,9 @@ public class MenuVentas extends javax.swing.JFrame {
             usuarios.add(p.getVendedor());
             productos.remove(p);
             new File(p.getFoto()).delete();
+            ventas.add(miVentaMin3.venta);
         } else {
             miVentaMin3.venta.getProducto().getVendedor().getVentasNuevas().remove(miVentaMin3.venta);
-            ventas.remove(miVentaMin3.venta);
         }
         
         displayMisVentas();
@@ -434,9 +451,9 @@ public class MenuVentas extends javax.swing.JFrame {
             usuarios.add(p.getVendedor());
             productos.remove(p);
             new File(p.getFoto()).delete();
+            ventas.add(miVentaMin4.venta);
         } else {
             miVentaMin4.venta.getProducto().getVendedor().getVentasNuevas().remove(miVentaMin4.venta);
-            ventas.remove(miVentaMin4.venta);
         }
         
         displayMisVentas();
@@ -454,9 +471,9 @@ public class MenuVentas extends javax.swing.JFrame {
             usuarios.add(p.getVendedor());
             productos.remove(p);
             new File(p.getFoto()).delete();
+            ventas.add(miVentaMin5.venta);
         } else {
             miVentaMin5.venta.getProducto().getVendedor().getVentasNuevas().remove(miVentaMin5.venta);
-            ventas.remove(miVentaMin5.venta);
         }
         
         displayMisVentas();
@@ -479,6 +496,14 @@ public class MenuVentas extends javax.swing.JFrame {
 
     private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
         menu.setEnabled(true);
+        
+        menu.miProductoMin1.setVisible(false);
+        menu.miProductoMin2.setVisible(false);
+        menu.miProductoMin3.setVisible(false);
+        menu.miProductoMin4.setVisible(false);
+        
+        menu.displayMisProductos();
+        menu.lockUnlockBotonesMisProductos();
         menu.toFront();
     }//GEN-LAST:event_formWindowClosed
 
