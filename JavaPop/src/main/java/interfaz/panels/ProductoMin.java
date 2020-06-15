@@ -15,7 +15,7 @@ import javax.swing.ImageIcon;
  */
 public class ProductoMin extends javax.swing.JPanel {
     
-    private Producto producto;
+    public Producto producto;
 
     /**
      * Creates new form ProductoMin
@@ -46,6 +46,8 @@ public class ProductoMin extends javax.swing.JPanel {
         imagen = new javax.swing.JLabel();
         etiquetaTitulo = new javax.swing.JLabel();
         etiquetaPrecio = new javax.swing.JLabel();
+
+        setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         panelImagen.setBackground(new java.awt.Color(0, 0, 0));
 

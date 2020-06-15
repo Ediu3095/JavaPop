@@ -26,7 +26,7 @@ public class MiProductoMin extends javax.swing.JPanel {
         producto = prod;
         this.tituloLabel.setText(prod.getTitulo());
         this.precioLabel.setText(prod.getPrecio() + " €");
-        this.fechaPublicacionLabel.setText(prod.getFechaPublicacion().getYear() + "/" + prod.getFechaPublicacion().getMonth() + "/" + prod.getFechaPublicacion().getDayOfMonth());
+        this.fechaPublicacionLabel.setText(prod.getFechaPublicacion().getDayOfMonth() + "/" + prod.getFechaPublicacion().getMonthValue() + "/" + prod.getFechaPublicacion().getYear());
         this.jCheckBox1.setSelected(prod.isUrgente());
     }
     

@@ -5,7 +5,7 @@
  */
 package interfaz;
 
-import java.awt.Image;
+
 import javax.swing.ImageIcon;
 
 /**
@@ -25,10 +25,7 @@ public class LoadingScreen extends javax.swing.JFrame {
         super.setIconImage(img.getImage());
         
         // load loading screen image
-        ImageIcon icon = new ImageIcon(".\\resources\\logo\\LoadingJavaPop.png");
-        Image img2 = icon.getImage();
-        Image newimg = img2.getScaledInstance(600, 600,  java.awt.Image.SCALE_SMOOTH);
-        jLabel1.setIcon(new ImageIcon(newimg));
+        jLabel1.setIcon(new ImageIcon(new ImageIcon(".\\resources\\logo\\LoadingJavaPop.png").getImage().getScaledInstance(600, 600,  java.awt.Image.SCALE_SMOOTH)));
         
         super.setVisible(true);
     }

@@ -259,6 +259,13 @@ public class CheckFunctions {
         }
     }
 
+    public static boolean checkWeb(String web) {
+        Pattern pattern = Pattern.compile("^((((https?|ftps?|gopher|telnet|nntp)://)|(mailto:|news:))"
+                + "(%[0-9A-Fa-f]{2}|[-()_.!~*';/?:@&=+$, A-Za-z0-9])+)" + "([).!';/?:, ][[:blank:]])?$");
+        Matcher matcher_ = pattern.matcher(web);
+        return matcher_.matches();
+    }
+
     /**
      * <p>
      * Se pide un precio a través de la consola y se comprueba que tenga el
@@ -304,7 +311,7 @@ public class CheckFunctions {
         }
         return -1;
     }
-    
+
     public static boolean checkPrecio(String prc) {
         Pattern pattern = Pattern.compile("[0-9]{1,}+[,]+[0-9]{0,2}");
         Matcher matcher_;
@@ -313,19 +320,19 @@ public class CheckFunctions {
     }
 
     /**
- * <p>
- * Pide un string que se debe corresponder con el path de una foto, en el caso
- * de que la foto exista, la copia en <b>./resources/imagenes</b>
- * para poder acceder a ella más tarde aunque se borre la original y finalmente
- * crea un objeto Icon de la imagen copiada y lo devuelve.</p>
- *
- * @param str_ un string que mostrar en la consola para indicar que se está
- * pidiendo una entrada.
- *
- * @return un objeto de la clase <b>Icon</b>.
- *
- * @author Eduardo Ruiz Sabajanes
- */
+     * <p>
+     * Pide un string que se debe corresponder con el path de una foto, en el
+     * caso de que la foto exista, la copia en <b>./resources/imagenes</b>
+     * para poder acceder a ella más tarde aunque se borre la original y
+     * finalmente crea un objeto Icon de la imagen copiada y lo devuelve.</p>
+     *
+     * @param str_ un string que mostrar en la consola para indicar que se está
+     * pidiendo una entrada.
+     *
+     * @return un objeto de la clase <b>Icon</b>.
+     *
+     * @author Eduardo Ruiz Sabajanes
+     */
     public String getImage(String str_) {
         boolean run = true;
         File imgFolder = new File("./resources/imagenes/");
@@ -396,7 +403,7 @@ public class CheckFunctions {
         }
         return estado;
     }
-    
+
     /**
      * <p>
      * Devuelve el estado correspondiente a un número del 1 al 5 segun el orden
@@ -432,26 +439,28 @@ public class CheckFunctions {
 
     public static int indexOfEstado(Estado est) {
         int index = 0;
-        if (null != est) switch (est) {
-            case Nuevo:
-                index = 0;
-                break;
-            case Como_nuevo:
-                index = 1;
-                break;
-            case Bueno:
-                index = 2;
-                break;
-            case Aceptable:
-                index = 3;
-                break;
-            case Regular:
-                index = 4;
-                break;
+        if (null != est) {
+            switch (est) {
+                case Nuevo:
+                    index = 0;
+                    break;
+                case Como_nuevo:
+                    index = 1;
+                    break;
+                case Bueno:
+                    index = 2;
+                    break;
+                case Aceptable:
+                    index = 3;
+                    break;
+                case Regular:
+                    index = 4;
+                    break;
+            }
         }
         return index;
     }
-    
+
     /**
      * <p>
      * Pide un numero del 1 al 6 que se corresponda con alguna de las categorías
@@ -499,7 +508,7 @@ public class CheckFunctions {
 
     /**
      * <p>
-     * Devuelve la categoría correspondiente a un número del 1 al 6 segun el 
+     * Devuelve la categoría correspondiente a un número del 1 al 6 segun el
      * orden en el que aparecen en el enum Categoria.</p>
      *
      * @param index el numero correspondiente a la categoria
@@ -532,28 +541,30 @@ public class CheckFunctions {
         }
         return categoria;
     }
-    
+
     public static int indexOfCategoria(Categoria cat) {
         int index = 0;
-        if (null != cat) switch (cat) {
-            case Moda_y_accesorios:
-                index = 0;
-                break;
-            case Tv_audio_y_foto:
-                index = 1;
-                break;
-            case Moviles_y_telefonia:
-                index = 2;
-                break;
-            case Informatica_y_electronica:
-                index = 3;
-                break;
-            case Consolas_y_videojuegos:
-                index = 4;
-                break;
-            case Deporte_y_ocio:
-                index = 5;
-                break;
+        if (null != cat) {
+            switch (cat) {
+                case Moda_y_accesorios:
+                    index = 0;
+                    break;
+                case Tv_audio_y_foto:
+                    index = 1;
+                    break;
+                case Moviles_y_telefonia:
+                    index = 2;
+                    break;
+                case Informatica_y_electronica:
+                    index = 3;
+                    break;
+                case Consolas_y_videojuegos:
+                    index = 4;
+                    break;
+                case Deporte_y_ocio:
+                    index = 5;
+                    break;
+            }
         }
         return index;
     }

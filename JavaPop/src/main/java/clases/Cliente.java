@@ -29,6 +29,9 @@ public class Cliente extends Usuario implements Serializable {
         this.ttcc = p.ttcc;
         this.productos = p.productos;
         this.ventasNuevas = p.ventasNuevas;
+        for (Producto producto: this.productos) {
+            producto.setVendedor(this);
+        }
     }
 
     public Cliente(String correo, String clave, String dni, String nombre, int ccpp, String ttcc) {

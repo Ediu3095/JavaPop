@@ -47,6 +47,19 @@ public final class Profesional extends Cliente implements Serializable {
             producto.setVendedor(this);
         }
     }
+    
+    public Profesional(Cliente c, String descripcion, String horario, String telefono, String web) {
+        super(c.correo, c.clave, c.dni, c.nombre, c.ccpp, c.ttcc);
+        this.descripcion = descripcion;
+        this.horario = horario;
+        this.telefono = telefono;
+        this.web = web;
+        this.pagoPro = LocalDateTime.now().plusMonths(1);
+        this.productos = c.productos;
+        for (Producto producto: this.productos){
+            producto.setVendedor(this);
+        }
+    }
 
     public String getDescripcion() {
         return this.descripcion;

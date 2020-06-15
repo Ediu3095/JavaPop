@@ -37,10 +37,9 @@ public class MenuEditarProducto extends javax.swing.JFrame {
     private String imageAddress;
     private String newImageAddress;
     private boolean imagenEditable;
-    private final Producto producto;
+    private Producto producto;
     private final MenuPrincipal menu;
-    private final MiProductoMin miProd;
-    private final boolean borrar;
+    private boolean borrar;
 
     /**
      * Creates new form MenuEditarProducto
@@ -57,12 +56,15 @@ public class MenuEditarProducto extends javax.swing.JFrame {
         // Iniciamos imagenEditable para poder utilizarla posteriormente
         this.imagenEditable = false;
 
-        // Nos guardamos el producto y su contenedor
+        // Nos guardamos el producto
         this.producto = container.producto;
+        
+        // Eliminamos el producto del usuario y de los productos globales
         menu.user.getProductos().remove(this.producto);
         productos.remove(this.producto);
+        
+        // Guardamos un booleano para decidir si volvemos a subir los productos o no
         this.borrar = false;
-        this.miProd = container;
 
         // Displayeamos los datos editables del producto
         fieldNombre.setText(producto.getTitulo());
@@ -487,6 +489,7 @@ public class MenuEditarProducto extends javax.swing.JFrame {
     }//GEN-LAST:event_iconoMouseExited
 
     private void botonConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonConfirmarActionPerformed
+        this.borrar = false;
         this.dispose();
     }//GEN-LAST:event_botonConfirmarActionPerformed
 
@@ -640,25 +643,31 @@ public class MenuEditarProducto extends javax.swing.JFrame {
     }//GEN-LAST:event_urgenciaStateChanged
 
     private void botonBajaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonBajaActionPerformed
+        this.borrar = true;
         this.dispose();
     }//GEN-LAST:event_botonBajaActionPerformed
 
     private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
+        menu.setEnabled(true);
+        
         if (!borrar) {
             menu.user.introducirProducto(this.producto);
             productos.add(this.producto);
+        } else {
+            new File(this.producto.getFoto()).delete();
         }
 
         menu.miProductoMin1.setVisible(false);
         menu.miProductoMin2.setVisible(false);
         menu.miProductoMin3.setVisible(false);
         menu.miProductoMin4.setVisible(false);
+        menu.posicionMin = 0;
 
         menu.displayMisProductos();
 
         menu.lockUnlockBotonesMisProductos();
-
-        menu.setEnabled(true);
+        
+        menu.toFront();
     }//GEN-LAST:event_formWindowClosed
 
     private static String randomSequence() {
