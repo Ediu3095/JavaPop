@@ -122,7 +122,7 @@ public class Searching {
 
         for (int i = 0; i < tWords.length; i++) {
             for (int j = 0; j < kWords.length; j++) {
-                if (tWords[i].equals(kWords[j])) {
+                if (tWords[i].toLowerCase().equals(kWords[j].toLowerCase())) {
                     prod.setMatchDeg(prod.getMatchDeg() + 1);
                 }
             }
@@ -178,7 +178,7 @@ public class Searching {
             updateTags(user, prodDefinitivo.get(i), keyWords);
         }
         
-        if (!kW.equals("")){
+        if (!kW.equals("")) {
             for (int i = 0; i<prodDefinitivo.size(); i++){
                 if (prodDefinitivo.get(i).getMatchDeg() == 0){
                     prodDefinitivo.remove(i);

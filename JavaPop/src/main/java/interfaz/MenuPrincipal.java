@@ -146,6 +146,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         textoSinProductos2 = new javax.swing.JLabel();
         prevPage = new javax.swing.JButton();
         nextPage = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("JavaPop - Menú principal ");
@@ -879,6 +880,14 @@ public class MenuPrincipal extends javax.swing.JFrame {
             }
         });
 
+        jButton3.setFont(new java.awt.Font("OCR A Extended", 0, 12)); // NOI18N
+        jButton3.setText("Mis notificaciones");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout panelPerfilLayout = new javax.swing.GroupLayout(panelPerfil);
         panelPerfil.setLayout(panelPerfilLayout);
         panelPerfilLayout.setHorizontalGroup(
@@ -917,13 +926,15 @@ public class MenuPrincipal extends javax.swing.JFrame {
                             .addComponent(toggleLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 370, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelPerfilLayout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jButton3)
+                        .addGap(18, 18, 18)
                         .addComponent(prevPage)
                         .addGap(18, 18, 18)
                         .addComponent(nextPage))
                     .addGroup(panelPerfilLayout.createSequentialGroup()
                         .addComponent(productosLabel)
                         .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(misProductosDisplay, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(misProductosDisplay, javax.swing.GroupLayout.DEFAULT_SIZE, 897, Short.MAX_VALUE))
                 .addContainerGap())
         );
         panelPerfilLayout.setVerticalGroup(
@@ -980,7 +991,8 @@ public class MenuPrincipal extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(panelPerfilLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(nextPage)
-                    .addComponent(prevPage)))
+                    .addComponent(prevPage)
+                    .addComponent(jButton3)))
         );
 
         jPanel1.add(panelPerfil, "Perfil");
@@ -1420,6 +1432,12 @@ public class MenuPrincipal extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(this, "El formato del correo es incorrecto.\nNo se guardaron los cambios.", "Error de formato", JOptionPane.ERROR_MESSAGE);
             }
 
+            for (Producto prod : user.getProductos()) {
+                productos.remove(prod);
+                prod.setVendedor(user);
+                productos.add(prod);
+            }
+
             // Cambia los textos a sus estados finales
             correoField.setText(user.getCorreo());
             editarCorreo.setText("editar");
@@ -1446,6 +1464,12 @@ public class MenuPrincipal extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(this, "El formato de la contraseña es incorrecto.\nEsta solamente puede contener letras y números.\nNo se guardaron los cambios.", "Error de formato", JOptionPane.ERROR_MESSAGE);
             }
 
+            for (Producto prod : user.getProductos()) {
+                productos.remove(prod);
+                prod.setVendedor(user);
+                productos.add(prod);
+            }
+
             // Cambia los textos a sus estados finales
             claveField.setText(user.getClave());
             editarClave.setText("editar");
@@ -1465,6 +1489,12 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
             // Se actualiza el nombre del usuario
             user.setNombre(nombreField.getText());
+
+            for (Producto prod : user.getProductos()) {
+                productos.remove(prod);
+                prod.setVendedor(user);
+                productos.add(prod);
+            }
 
             // Cambia los textos a sus estados finales
             nombreField.setText(user.getNombre());
@@ -1490,6 +1520,12 @@ public class MenuPrincipal extends javax.swing.JFrame {
             } else {
                 // Si no lo es, avisa al usuario
                 JOptionPane.showMessageDialog(this, "El formato del codigo postal es incorrecto.\nNo se guardaron los cambios.", "Error de formato", JOptionPane.ERROR_MESSAGE);
+            }
+
+            for (Producto prod : user.getProductos()) {
+                productos.remove(prod);
+                prod.setVendedor(user);
+                productos.add(prod);
             }
 
             // Cambia los textos a sus estados finales
@@ -1518,6 +1554,12 @@ public class MenuPrincipal extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(this, "El formato de la tarjeta de crédito es incorrecto.\nNo se guardaron los cambios.", "Error de formato", JOptionPane.ERROR_MESSAGE);
             }
 
+            for (Producto prod : user.getProductos()) {
+                productos.remove(prod);
+                prod.setVendedor(user);
+                productos.add(prod);
+            }
+
             // Cambia los textos a sus estados finales
             ccField.setText("" + user.getTTCC());
             editarCc.setText("editar");
@@ -1542,6 +1584,12 @@ public class MenuPrincipal extends javax.swing.JFrame {
             } else {
                 // Si no lo es, avisa al usuario
                 JOptionPane.showMessageDialog(this, "El formato del DNI es incorrecto.\nNo se guardaron los cambios.", "Error de formato", JOptionPane.ERROR_MESSAGE);
+            }
+
+            for (Producto prod : user.getProductos()) {
+                productos.remove(prod);
+                prod.setVendedor(user);
+                productos.add(prod);
             }
 
             // Cambia los textos a sus estados finales
@@ -1580,16 +1628,13 @@ public class MenuPrincipal extends javax.swing.JFrame {
         int i = JOptionPane.showConfirmDialog(this, "¿Seguro que desea efectuar la compra?");
         if (i == JOptionPane.YES_OPTION) {
             camposCL.show(jPanel1, "Bienvenida");
-            
+
             Producto p = productoMax1.producto;
+            Venta v = new Venta(this.user, p);
             usuarios.remove(p.getVendedor());
-            p.getVendedor().sacarProducto(p);
+            p.getVendedor().getVentasNuevas().add(v);
             usuarios.add(p.getVendedor());
-            productos.remove(p);
-            new File(p.getFoto()).delete();
-            
-            user.cobrar(p.getPrecio());
-            p.getVendedor().ingresar(p.getPrecio());
+            ventas.add(v);
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -1676,6 +1721,11 @@ public class MenuPrincipal extends javax.swing.JFrame {
             if (descripcionField.isEditable()) {
                 descripcionField.setEditable(false);
                 ((Profesional) user).setDescripcion(descripcionField.getText());
+                for (Producto prod : user.getProductos()) {
+                    productos.remove(prod);
+                    prod.setVendedor(user);
+                    productos.add(prod);
+                }
                 editarDescripcion.setText("editar");
             } else {
                 descripcionField.setEditable(true);
@@ -1689,6 +1739,11 @@ public class MenuPrincipal extends javax.swing.JFrame {
             if (horarioField.isEditable()) {
                 horarioField.setEditable(false);
                 ((Profesional) user).setHorario(horarioField.getText());
+                for (Producto prod : user.getProductos()) {
+                    productos.remove(prod);
+                    prod.setVendedor(user);
+                    productos.add(prod);
+                }
                 editarHorario.setText("editar");
             } else {
                 horarioField.setEditable(true);
@@ -1702,6 +1757,11 @@ public class MenuPrincipal extends javax.swing.JFrame {
             if (telefonoField.isEditable()) {
                 telefonoField.setEditable(false);
                 ((Profesional) user).setTelefono(telefonoField.getText());
+                for (Producto prod : user.getProductos()) {
+                    productos.remove(prod);
+                    prod.setVendedor(user);
+                    productos.add(prod);
+                }
                 editarTelefono.setText("editar");
             } else {
                 telefonoField.setEditable(true);
@@ -1724,6 +1784,12 @@ public class MenuPrincipal extends javax.swing.JFrame {
                     JOptionPane.showMessageDialog(this, "El formato de la página web es incorrecto.\nNo se guardaron los cambios.", "Error de formato", JOptionPane.ERROR_MESSAGE);
                 }
 
+                for (Producto prod : user.getProductos()) {
+                    productos.remove(prod);
+                    prod.setVendedor(user);
+                    productos.add(prod);
+                }
+
                 editarWeb.setText("editar");
             } else {
                 webField.setEditable(true);
@@ -1731,6 +1797,10 @@ public class MenuPrincipal extends javax.swing.JFrame {
             }
         }
     }//GEN-LAST:event_editarWebMouseClicked
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        new MenuVentas(this);
+    }//GEN-LAST:event_jButton3ActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Logo;
@@ -1780,6 +1850,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private javax.swing.JPanel imagen;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
