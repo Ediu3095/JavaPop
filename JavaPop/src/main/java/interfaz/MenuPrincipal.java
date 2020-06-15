@@ -152,8 +152,8 @@ public class MenuPrincipal extends javax.swing.JFrame {
         setTitle("JavaPop - Menú principal ");
         setResizable(false);
         addWindowListener(new java.awt.event.WindowAdapter() {
-            public void windowClosing(java.awt.event.WindowEvent evt) {
-                formWindowClosing(evt);
+            public void windowClosed(java.awt.event.WindowEvent evt) {
+                formWindowClosed(evt);
             }
         });
 
@@ -1222,12 +1222,6 @@ public class MenuPrincipal extends javax.swing.JFrame {
         new MenuNuevoProducto(this);
     }//GEN-LAST:event_botonSubirActionPerformed
 
-    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
-        IOCustomLib.guardarClientes(usuarios);
-        IOCustomLib.guardarProductos(productos);
-        IOCustomLib.guardarVentas(ventas);
-    }//GEN-LAST:event_formWindowClosing
-
     private void LogoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LogoMouseClicked
         camposCL.show(jPanel1, "Bienvenida");
     }//GEN-LAST:event_LogoMouseClicked
@@ -1821,6 +1815,12 @@ public class MenuPrincipal extends javax.swing.JFrame {
         this.dispose();
         new LoginScreen();
     }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
+        IOCustomLib.guardarClientes(usuarios);
+        IOCustomLib.guardarProductos(productos);
+        IOCustomLib.guardarVentas(ventas);
+    }//GEN-LAST:event_formWindowClosed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Logo;

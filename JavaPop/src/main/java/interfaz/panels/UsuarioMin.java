@@ -56,7 +56,7 @@ public class UsuarioMin extends javax.swing.JPanel {
         etiquetaCorreo.setText("Email");
 
         etiquetaTipo.setFont(new java.awt.Font("OCR A Extended", 0, 12)); // NOI18N
-        etiquetaTipo.setText("Type");
+        etiquetaTipo.setText("Filler");
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -71,7 +71,7 @@ public class UsuarioMin extends javax.swing.JPanel {
                 .addComponent(etiquetaCorreo)
                 .addGap(212, 212, 212)
                 .addComponent(etiquetaTipo)
-                .addContainerGap(273, Short.MAX_VALUE))
+                .addContainerGap(259, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -101,9 +101,9 @@ public class UsuarioMin extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    public javax.swing.JLabel etiquetaCorreo;
-    public javax.swing.JLabel etiquetaDNI;
-    public javax.swing.JLabel etiquetaNombre;
+    private javax.swing.JLabel etiquetaCorreo;
+    private javax.swing.JLabel etiquetaDNI;
+    private javax.swing.JLabel etiquetaNombre;
     private javax.swing.JLabel etiquetaTipo;
     public javax.swing.JPanel jPanel4;
     // End of variables declaration//GEN-END:variables
