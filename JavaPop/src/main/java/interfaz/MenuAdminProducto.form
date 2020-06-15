@@ -287,10 +287,6 @@
               <Connection code="new ImageIcon(&quot;.\\resources\\logo\\uploadIcon.png&quot;)" type="code"/>
             </Property>
           </Properties>
-          <Events>
-            <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="iconoMouseEntered"/>
-            <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="iconoMouseExited"/>
-          </Events>
         </Component>
       </SubComponents>
     </Container>

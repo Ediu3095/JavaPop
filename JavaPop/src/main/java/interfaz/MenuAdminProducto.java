@@ -5,16 +5,13 @@
  */
 package interfaz;
 
-import clases.Producto;
-import static clases.utils.CheckFunctions.indexOfCategoria;
-import static clases.utils.CheckFunctions.indexOfEstado;
-import static clases.utils.Colecciones.productos;
-import static clases.utils.Colecciones.usuarios;
-import interfaz.panels.MiProductoMin;
+import clases.*;
 import interfaz.panels.ProductoMin;
-import java.awt.Color;
-import java.awt.Image;
+import static clases.utils.Colecciones.*;
+import static clases.utils.CheckFunctions.*;
+
 import java.io.File;
+import java.awt.Image;
 import javax.swing.ImageIcon;
 
 /**
@@ -24,8 +21,10 @@ import javax.swing.ImageIcon;
 public class MenuAdminProducto extends javax.swing.JFrame {
     
     private boolean borrar;
-    private String imageAddress;
+    private final String imageAddress;
+    private final Cliente user;
     private Producto producto;
+    private final Producto productoOriginal;
     private final MenuAdmin menu;
 
     /**
@@ -37,11 +36,18 @@ public class MenuAdminProducto extends javax.swing.JFrame {
         initComponents();    
         
         this.producto = container.producto;
+        this.productoOriginal = container.producto;
+        this.user = this.producto.getVendedor();
         
-        usuarios.remove(this.producto.getVendedor());        
-        this.producto.getVendedor().getProductos().remove(this.producto);
-        usuarios.add(this.producto.getVendedor());
+        // Eliminamos el producto de los productos globales
         productos.remove(this.producto);
+        
+        // Eliminamos el producto de los productos del usuario
+        usuarios.remove(this.user);
+        System.out.println("\n\n\n\nLista 1:\n" + this.user.getProductos());
+        this.user.getProductos().remove(this.producto);
+        System.out.println("\n\n\n\nLista 2:\n" + this.user.getProductos());
+        usuarios.add(this.user);
         
         fieldNombre.setText(this.producto.getTitulo());
         fieldDescripcion.setText(this.producto.getDescripcion());
@@ -131,14 +137,6 @@ public class MenuAdminProducto extends javax.swing.JFrame {
 
         icono.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         icono.setIcon(new ImageIcon(".\\resources\\logo\\uploadIcon.png"));
-        icono.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                iconoMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                iconoMouseExited(evt);
-            }
-        });
 
         javax.swing.GroupLayout fotoLayout = new javax.swing.GroupLayout(foto);
         foto.setLayout(fotoLayout);
@@ -305,14 +303,6 @@ public class MenuAdminProducto extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void iconoMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_iconoMouseEntered
-        this.foto.setBackground(new Color(51, 153, 255));
-    }//GEN-LAST:event_iconoMouseEntered
-
-    private void iconoMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_iconoMouseExited
-        this.foto.setBackground(new Color(240, 240, 240));
-    }//GEN-LAST:event_iconoMouseExited
-
     private void botonConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonConfirmarActionPerformed
         this.borrar = false;
         this.dispose();
@@ -327,9 +317,15 @@ public class MenuAdminProducto extends javax.swing.JFrame {
         menu.setEnabled(true);
         
         if (!borrar) {
-            
-            this.producto.getVendedor().introducirProducto(this.producto);
+            user.introducirProducto(this.producto);
             productos.add(this.producto);
+            usuarios.remove(this.user);
+            for (int i = 0; i < this.user.getVentasNuevas().size(); i++) {
+                if (this.user.getVentasNuevas().get(i).getProducto().equals(this.productoOriginal) || this.user.getVentasNuevas().get(i).getProducto().equals(this.producto)) {
+                    this.user.getVentasNuevas().get(i).setProducto(this.producto);
+                }
+            }
+            usuarios.add(this.user);
         } else {
             new File(this.producto.getFoto()).delete();
         }

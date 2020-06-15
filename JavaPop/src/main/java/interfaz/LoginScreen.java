@@ -44,12 +44,12 @@ public class LoginScreen extends javax.swing.JFrame {
 
         banner = new javax.swing.JPanel();
         logo = new javax.swing.JLabel();
-        loginFields = new interfaz.panels.LoginFields();
         loginButton = new javax.swing.JButton();
         filler1 = new javax.swing.Box.Filler(new java.awt.Dimension(80, 160), new java.awt.Dimension(40, 160), new java.awt.Dimension(80, 160));
         filler2 = new javax.swing.Box.Filler(new java.awt.Dimension(80, 160), new java.awt.Dimension(40, 160), new java.awt.Dimension(80, 160));
         jLabel1 = new javax.swing.JLabel();
         registerButton = new javax.swing.JLabel();
+        loginFields = new interfaz.panels.LoginField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("JavaPop - Inicio de sesión");
@@ -114,16 +114,16 @@ public class LoginScreen extends javax.swing.JFrame {
                 .addComponent(filler2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(loginFields, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(loginButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                    .addGroup(layout.createSequentialGroup()
                         .addGap(72, 72, 72)
                         .addComponent(jLabel1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(registerButton)))
-                .addGap(18, 18, 18)
+                        .addComponent(registerButton))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(loginFields, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(loginButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                .addGap(18, 18, Short.MAX_VALUE)
                 .addComponent(filler1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
             .addComponent(banner, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
@@ -215,7 +215,7 @@ public class LoginScreen extends javax.swing.JFrame {
     private javax.swing.Box.Filler filler2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JButton loginButton;
-    private interfaz.panels.LoginFields loginFields;
+    private interfaz.panels.LoginField loginFields;
     private javax.swing.JLabel logo;
     private javax.swing.JLabel registerButton;
     // End of variables declaration//GEN-END:variables

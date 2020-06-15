@@ -4,6 +4,7 @@ import clases.utils.CheckFunctions;
 import java.io.Serializable;
 import java.util.ArrayList;
 import clases.enumeradores.*;
+import java.util.Objects;
 
 /**
  *
@@ -308,4 +309,55 @@ public class Cliente extends Usuario implements Serializable {
             }
         }
     }
+
+    @Override
+    public int hashCode() {
+        int hash = 5;
+        hash = 23 * hash + Objects.hashCode(this.productos);
+        hash = 23 * hash + Objects.hashCode(this.ventasNuevas);
+        hash = 23 * hash + Objects.hashCode(this.comprasConfirmadas);
+        hash = 23 * hash + Objects.hashCode(this.dni);
+        hash = 23 * hash + Objects.hashCode(this.nombre);
+        hash = 23 * hash + this.ccpp;
+        hash = 23 * hash + Objects.hashCode(this.ttcc);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Cliente other = (Cliente) obj;
+        if (this.ccpp != other.ccpp) {
+            return false;
+        }
+        if (!Objects.equals(this.dni, other.dni)) {
+            return false;
+        }
+        if (!Objects.equals(this.nombre, other.nombre)) {
+            return false;
+        }
+        if (!Objects.equals(this.ttcc, other.ttcc)) {
+            return false;
+        }
+        if (!Objects.equals(this.productos, other.productos)) {
+            return false;
+        }
+        if (!Objects.equals(this.ventasNuevas, other.ventasNuevas)) {
+            return false;
+        }
+        if (!Objects.equals(this.comprasConfirmadas, other.comprasConfirmadas)) {
+            return false;
+        }
+        return true;
+    }
+
+    
 }

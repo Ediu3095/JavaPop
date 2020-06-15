@@ -3,6 +3,7 @@ package clases;
 import clases.utils.CheckFunctions;
 import java.io.Serializable;
 import java.time.LocalDateTime;
+import java.util.Objects;
 
 /**
  *
@@ -107,4 +108,47 @@ public final class Profesional extends Cliente implements Serializable {
                 + "Web=" + web;
 
     }
+
+    @Override
+    public int hashCode() {
+        int hash = 5;
+        hash = 97 * hash + Objects.hashCode(this.descripcion);
+        hash = 97 * hash + Objects.hashCode(this.horario);
+        hash = 97 * hash + Objects.hashCode(this.telefono);
+        hash = 97 * hash + Objects.hashCode(this.web);
+        hash = 97 * hash + Objects.hashCode(this.pagoPro);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Profesional other = (Profesional) obj;
+        if (!Objects.equals(this.descripcion, other.descripcion)) {
+            return false;
+        }
+        if (!Objects.equals(this.horario, other.horario)) {
+            return false;
+        }
+        if (!Objects.equals(this.telefono, other.telefono)) {
+            return false;
+        }
+        if (!Objects.equals(this.web, other.web)) {
+            return false;
+        }
+        if (!Objects.equals(this.pagoPro, other.pagoPro)) {
+            return false;
+        }
+        return true;
+    }
+    
+    
 }

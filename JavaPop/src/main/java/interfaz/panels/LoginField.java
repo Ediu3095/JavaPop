@@ -14,12 +14,12 @@ import javax.swing.JTextField;
  *
  * @author TheElctrMsc_Gaming
  */
-public class LoginFields extends javax.swing.JPanel {
+public class LoginField extends javax.swing.JPanel {
 
     /**
      * Creates new form loginCard
      */
-    public LoginFields() {
+    public LoginField() {
         initComponents();
         emailErrorLabel.setText("");
         passwordErrorLabel.setText("");
@@ -68,6 +68,7 @@ public class LoginFields extends javax.swing.JPanel {
         add(passwordLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 70, -1, 20));
 
         passwordField1.setFont(new java.awt.Font("OCR A Extended", 0, 12)); // NOI18N
+        passwordField1.setEchoChar('*');
         add(passwordField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 70, 260, -1));
 
         passwordErrorLabel.setFont(new java.awt.Font("OCR A Extended", 0, 12)); // NOI18N

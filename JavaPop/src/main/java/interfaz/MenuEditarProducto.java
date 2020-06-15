@@ -37,7 +37,7 @@ public class MenuEditarProducto extends javax.swing.JFrame {
     private String newImageAddress;
     private boolean imagenEditable;
     private Producto producto;
-    private Producto productoOriginal;
+    private Producto productoOriginal; // Lo creo para guardar una instancia del producto original pero no se si es necesario
     private final MenuPrincipal menu;
     private boolean borrar;
 

@@ -30,8 +30,8 @@
               <Component id="filler1" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                  <Component id="registerFields" max="32767" attributes="0"/>
                   <Component id="registerButton" max="32767" attributes="0"/>
+                  <Component id="registerFields" max="32767" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Component id="filler2" min="-2" max="-2" attributes="0"/>
@@ -52,14 +52,13 @@
               <Component id="banner" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="103" alignment="0" groupAlignment="0" max="-2" attributes="0">
+                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
                       <Component id="filler1" pref="341" max="32767" attributes="0"/>
                       <Component id="filler2" max="32767" attributes="0"/>
                   </Group>
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
+                  <Group type="102" attributes="0">
                       <Component id="registerFields" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
                       <Component id="registerButton" min="-2" pref="33" max="-2" attributes="0"/>
                   </Group>
               </Group>
@@ -157,8 +156,6 @@
         <AuxValue name="classDetails" type="java.lang.String" value="Box.Filler.RigidArea"/>
       </AuxValues>
     </Component>
-    <Component class="interfaz.panels.RegisterFields" name="registerFields">
-    </Component>
     <Component class="javax.swing.JLabel" name="jLabel1">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
@@ -185,6 +182,8 @@
         <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="loginButtonMouseEntered"/>
         <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="loginButtonMouseExited"/>
       </Events>
+    </Component>
+    <Component class="interfaz.panels.RegisterField" name="registerFields">
     </Component>
   </SubComponents>
 </Form>

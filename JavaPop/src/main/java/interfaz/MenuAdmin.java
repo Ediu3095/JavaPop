@@ -47,7 +47,8 @@ public class MenuAdmin extends javax.swing.JFrame {
         // Guardamos el CardLayout como atributo de la clase para acceder facilmente
         this.camposCL = (CardLayout) this.jPanel1.getLayout();
 
-        camposCL.show(jPanel1, "cardBienvenida");
+        camposCL.show(jPanel1, "cardUsuarios");
+        this.displayUsuarios();
 
         super.setVisible(true);
     }
@@ -111,6 +112,9 @@ public class MenuAdmin extends javax.swing.JFrame {
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowClosed(java.awt.event.WindowEvent evt) {
                 formWindowClosed(evt);
+            }
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                formWindowClosing(evt);
             }
         });
 
@@ -512,7 +516,86 @@ public class MenuAdmin extends javax.swing.JFrame {
         etiquetaPagina.setText("Página " + (posicionMin / 8 + 1) + " de " + (productos.size() / 8 + 1));
     }//GEN-LAST:event_avPagActionPerformed
 
-    public void displayProductos() {
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+        IOCustomLib.guardarClientes(usuarios);
+        IOCustomLib.guardarProductos(productos);
+        IOCustomLib.guardarVentas(ventas);
+    }//GEN-LAST:event_formWindowClosing
+
+    public final void displayUsuarios() {
+        // escondemos todos los usuarios
+        usuarioMin1.setVisible(false);
+        usuarioMin2.setVisible(false);
+        usuarioMin3.setVisible(false);
+        usuarioMin4.setVisible(false);
+        usuarioMin5.setVisible(false);
+        usuarioMin6.setVisible(false);
+        usuarioMin7.setVisible(false);
+        usuarioMin8.setVisible(false);
+        
+        for (int i = posicionMin; i < posicionMin + 8; i++) {
+            posicionMax = i;
+            if (posicionMax < usuarios.size()) {
+            } else {
+                posicionMax--;
+                break;
+            }
+        }
+
+        // mostramos los usuarios corresponcientes
+        switch (posicionMax + 1 - posicionMin) {
+            case 8: // Hay que mostrar 8 usuarios
+                usuarioMin8.setVisible(true);
+                usuarioMin8.setCliente(usuarios.get(posicionMin + 7));
+            case 7: // Hay que mostrar 7 usuarios
+                usuarioMin7.setVisible(true);
+                usuarioMin7.setCliente(usuarios.get(posicionMin + 6));
+            case 6: // Hay que mostrar 6 usuarios
+                usuarioMin6.setVisible(true);
+                usuarioMin6.setCliente(usuarios.get(posicionMin + 5));
+            case 5: // Hay que mostrar 5 usuarios
+                usuarioMin5.setVisible(true);
+                usuarioMin5.setCliente(usuarios.get(posicionMin + 4));
+            case 4: // Hay que mostrar 4 usuarios
+                usuarioMin4.setVisible(true);
+                usuarioMin4.setCliente(usuarios.get(posicionMin + 3));
+            case 3: // Hay que mostrar 3 usuarios
+                usuarioMin3.setVisible(true);
+                usuarioMin3.setCliente(usuarios.get(posicionMin + 2));
+            case 2: // Hay que mostrar 2 usuarios
+                usuarioMin2.setVisible(true);
+                usuarioMin2.setCliente(usuarios.get(posicionMin + 1));
+            case 1: // Hay que mostrar 1 usuarios
+                usuarioMin1.setVisible(true);
+                usuarioMin1.setCliente(usuarios.get(posicionMin));
+                //icon.setIcon(new ImageIcon(""));
+                //errorLabel1.setText("");
+                //errorLabel2.setText("");
+                break;
+            case 0: // Hay que mostrar 0 usuarios
+                //Random rnd = new Random();
+                //icon.setIcon(new ImageIcon(".\\resources\\logo\\notFound" + rnd.nextInt(5) + ".gif"));
+                //errorLabel1.setText("¡Vaya!");
+                //errorLabel2.setText("Parece que no se ha encontrado ningún producto");
+                break;
+        }
+    }
+    
+    public final void lockUnlockBotonesUsuarios() {
+        if (posicionMin - 8 < 0) {
+            rePag.setEnabled(false);
+        } else {
+            rePag.setEnabled(true);
+        }
+
+        if (posicionMin + 8 >= clientDefinitivo.size()) {
+            avPag.setEnabled(false);
+        } else {
+            avPag.setEnabled(true);
+        }
+    } // Hay que cambiarlo
+    
+    public final void displayProductos() {
         // escondemos todos los productos
         productoMin1.setVisible(false);
         productoMin2.setVisible(false);
@@ -573,7 +656,7 @@ public class MenuAdmin extends javax.swing.JFrame {
         }
     }
     
-    public void lockUnlockBotonesProductos() {
+    public final void lockUnlockBotonesProductos() {
         if (posicionMin - 10 < 0) {
             rePag.setEnabled(false);
         } else {
@@ -587,7 +670,7 @@ public class MenuAdmin extends javax.swing.JFrame {
         }
     } // Hay que cambiarlo
 
-    private void displayVentas() {
+    public final void displayVentas() {
         // escondemos todas las ventas
         ventaMin1.setVisible(false);
         ventaMin2.setVisible(false);
@@ -647,7 +730,7 @@ public class MenuAdmin extends javax.swing.JFrame {
         }
     }
     
-    private void lockUnlockBotonesVentas() {
+    public final void lockUnlockBotonesVentas() {
         if (posicionMin - 10 < 0) {
             rePag.setEnabled(false);
         } else {
@@ -655,79 +738,6 @@ public class MenuAdmin extends javax.swing.JFrame {
         }
 
         if (posicionMin + 10 >= prodDefinitivo.size()) {
-            avPag.setEnabled(false);
-        } else {
-            avPag.setEnabled(true);
-        }
-    } // Hay que cambiarlo
-
-    public void displayUsuarios() {
-        // escondemos todos los usuarios
-        usuarioMin1.setVisible(false);
-        usuarioMin2.setVisible(false);
-        usuarioMin3.setVisible(false);
-        usuarioMin4.setVisible(false);
-        usuarioMin5.setVisible(false);
-        usuarioMin6.setVisible(false);
-        usuarioMin7.setVisible(false);
-        usuarioMin8.setVisible(false);
-        
-        for (int i = posicionMin; i < posicionMin + 8; i++) {
-            posicionMax = i;
-            if (posicionMax < usuarios.size()) {
-            } else {
-                posicionMax--;
-                break;
-            }
-        }
-
-        // mostramos los usuarios corresponcientes
-        switch (posicionMax + 1 - posicionMin) {
-            case 8: // Hay que mostrar 8 usuarios
-                usuarioMin8.setVisible(true);
-                usuarioMin8.setCliente(usuarios.get(posicionMin + 7));
-            case 7: // Hay que mostrar 7 usuarios
-                usuarioMin7.setVisible(true);
-                usuarioMin7.setCliente(usuarios.get(posicionMin + 6));
-            case 6: // Hay que mostrar 6 usuarios
-                usuarioMin6.setVisible(true);
-                usuarioMin6.setCliente(usuarios.get(posicionMin + 5));
-            case 5: // Hay que mostrar 5 usuarios
-                usuarioMin5.setVisible(true);
-                usuarioMin5.setCliente(usuarios.get(posicionMin + 4));
-            case 4: // Hay que mostrar 4 usuarios
-                usuarioMin4.setVisible(true);
-                usuarioMin4.setCliente(usuarios.get(posicionMin + 3));
-            case 3: // Hay que mostrar 3 usuarios
-                usuarioMin3.setVisible(true);
-                usuarioMin3.setCliente(usuarios.get(posicionMin + 2));
-            case 2: // Hay que mostrar 2 usuarios
-                usuarioMin2.setVisible(true);
-                usuarioMin2.setCliente(usuarios.get(posicionMin + 1));
-            case 1: // Hay que mostrar 1 usuarios
-                usuarioMin1.setVisible(true);
-                usuarioMin1.setCliente(usuarios.get(posicionMin));
-                //icon.setIcon(new ImageIcon(""));
-                //errorLabel1.setText("");
-                //errorLabel2.setText("");
-                break;
-            case 0: // Hay que mostrar 0 usuarios
-                //Random rnd = new Random();
-                //icon.setIcon(new ImageIcon(".\\resources\\logo\\notFound" + rnd.nextInt(5) + ".gif"));
-                //errorLabel1.setText("¡Vaya!");
-                //errorLabel2.setText("Parece que no se ha encontrado ningún producto");
-                break;
-        }
-    }
-    
-    public void lockUnlockBotonesUsuarios() {
-        if (posicionMin - 8 < 0) {
-            rePag.setEnabled(false);
-        } else {
-            rePag.setEnabled(true);
-        }
-
-        if (posicionMin + 8 >= clientDefinitivo.size()) {
             avPag.setEnabled(false);
         } else {
             avPag.setEnabled(true);
