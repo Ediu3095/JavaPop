@@ -225,8 +225,8 @@ public class MenuEditarProducto extends javax.swing.JFrame {
             }
         });
 
-        fieldNombre.setEditable(false);
         fieldNombre.setFont(new java.awt.Font("OCR A Extended", 0, 12)); // NOI18N
+        fieldNombre.setEnabled(false);
 
         descripcionLabel.setFont(new java.awt.Font("OCR A Extended", 0, 12)); // NOI18N
         descripcionLabel.setText("Descripción:");
@@ -249,11 +249,11 @@ public class MenuEditarProducto extends javax.swing.JFrame {
 
         jScrollPane1.setFont(new java.awt.Font("OCR A Extended", 0, 12)); // NOI18N
 
-        fieldDescripcion.setEditable(false);
         fieldDescripcion.setColumns(20);
         fieldDescripcion.setFont(new java.awt.Font("OCR A Extended", 0, 12)); // NOI18N
         fieldDescripcion.setRows(5);
         fieldDescripcion.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        fieldDescripcion.setEnabled(false);
         jScrollPane1.setViewportView(fieldDescripcion);
 
         precioLabel.setFont(new java.awt.Font("OCR A Extended", 0, 12)); // NOI18N
@@ -275,8 +275,8 @@ public class MenuEditarProducto extends javax.swing.JFrame {
             }
         });
 
-        fieldPrecio.setEditable(false);
         fieldPrecio.setFont(new java.awt.Font("OCR A Extended", 0, 12)); // NOI18N
+        fieldPrecio.setEnabled(false);
 
         categoriaLabel.setFont(new java.awt.Font("OCR A Extended", 0, 12)); // NOI18N
         categoriaLabel.setText("Categoría:");
@@ -297,8 +297,10 @@ public class MenuEditarProducto extends javax.swing.JFrame {
             }
         });
 
+        categoriaBox.setEditable(true);
         categoriaBox.setFont(new java.awt.Font("OCR A Extended", 0, 12)); // NOI18N
         categoriaBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Moda y acesorios", "Tv, audio y foto", "Moviles y telefónica", "Informática y electrónica", "Consolas y videojuegos", "Deporte y ocio" }));
+        categoriaBox.setEnabled(false);
 
         estadoLabel.setFont(new java.awt.Font("OCR A Extended", 0, 12)); // NOI18N
         estadoLabel.setText("Estado:");
@@ -319,8 +321,10 @@ public class MenuEditarProducto extends javax.swing.JFrame {
             }
         });
 
+        estadoBox.setEditable(true);
         estadoBox.setFont(new java.awt.Font("OCR A Extended", 0, 12)); // NOI18N
         estadoBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Nuevo", "Como nuevo", "Bueno", "Aceptable", "Regular" }));
+        estadoBox.setEnabled(false);
 
         urgencia.setFont(new java.awt.Font("OCR A Extended", 0, 12)); // NOI18N
         urgencia.setText("Urgente (Cuesta 5€)");
@@ -531,8 +535,8 @@ public class MenuEditarProducto extends javax.swing.JFrame {
     }//GEN-LAST:event_editarFotoMouseExited
 
     private void editarNombreMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editarNombreMouseClicked
-        if (fieldNombre.isEditable()) {
-            fieldNombre.setEditable(false);
+        if (fieldNombre.isEnabled()) {
+            fieldNombre.setEnabled(false);
 
             if (fieldNombre.getText().equals("")) {
                 JOptionPane.showMessageDialog(this, "El nombre del producto no puede estar vacio.\nNo se guardaron los cambios", "Error de formato", JOptionPane.ERROR_MESSAGE);
@@ -543,27 +547,27 @@ public class MenuEditarProducto extends javax.swing.JFrame {
             fieldNombre.setText(producto.getTitulo());
             editarNombre.setText("editar");
         } else {
-            fieldNombre.setEditable(true);
+            fieldNombre.setEnabled(true);
             editarNombre.setText("guardar");
         }
     }//GEN-LAST:event_editarNombreMouseClicked
 
     private void editarDescripcionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editarDescripcionMouseClicked
-        if (fieldDescripcion.isEditable()) {
-            fieldDescripcion.setEditable(false);
+        if (fieldDescripcion.isEnabled()) {
+            fieldDescripcion.setEnabled(false);
 
             producto.setDescripcion(fieldDescripcion.getText());
 
             editarDescripcion.setText("editar");
         } else {
-            fieldDescripcion.setEditable(true);
+            fieldDescripcion.setEnabled(true);
             editarDescripcion.setText("guardar");
         }
     }//GEN-LAST:event_editarDescripcionMouseClicked
 
     private void editarPrecioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editarPrecioMouseClicked
-        if (fieldPrecio.isEditable()) {
-            fieldPrecio.setEditable(false);
+        if (fieldPrecio.isEnabled()) {
+            fieldPrecio.setEnabled(false);
 
             if (checkPrecio(fieldPrecio.getText())) {
                 producto.setPrecio(getPrecio(fieldPrecio.getText()));
@@ -574,33 +578,33 @@ public class MenuEditarProducto extends javax.swing.JFrame {
             fieldPrecio.setText(("" + producto.getPrecio()).replace('.', ','));
             editarPrecio.setText("editar");
         } else {
-            fieldPrecio.setEditable(true);
+            fieldPrecio.setEnabled(true);
             editarPrecio.setText("guardar");
         }
     }//GEN-LAST:event_editarPrecioMouseClicked
 
     private void editarCategoriaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editarCategoriaMouseClicked
-        if (categoriaBox.isEditable()) {
-            categoriaBox.setEditable(false);
+        if (categoriaBox.isEnabled()) {
+            categoriaBox.setEnabled(false);
 
             producto.setCategoria(getCategoria(categoriaBox.getSelectedIndex()));
 
             editarCategoria.setText("editar");
         } else {
-            categoriaBox.setEditable(true);
+            categoriaBox.setEnabled(true);
             editarCategoria.setText("guardar");
         }
     }//GEN-LAST:event_editarCategoriaMouseClicked
 
     private void editarEstadoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editarEstadoMouseClicked
-        if (estadoBox.isEditable()) {
-            estadoBox.setEditable(false);
+        if (estadoBox.isEnabled()) {
+            estadoBox.setEnabled(false);
 
             producto.setEstado(getEstado(estadoBox.getSelectedIndex()));
 
             editarEstado.setText("editar");
         } else {
-            estadoBox.setEditable(true);
+            estadoBox.setEnabled(true);
             editarEstado.setText("guardar");
         }
     }//GEN-LAST:event_editarEstadoMouseClicked
