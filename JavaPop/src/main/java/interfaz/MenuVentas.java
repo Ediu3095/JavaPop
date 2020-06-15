@@ -411,6 +411,14 @@ public class MenuVentas extends javax.swing.JFrame {
             usuarios.add(p.getVendedor());
             productos.remove(p);
             new File(p.getFoto()).delete();
+            
+            for (int j = 0; j < miVentaMin2.venta.getProducto().getVendedor().getVentasNuevas().size(); j++) {
+                if (miVentaMin2.venta.getProducto().getVendedor().getVentasNuevas().get(j).getProducto().equals(miVentaMin2.venta.getProducto())) {
+                    miVentaMin2.venta.getProducto().getVendedor().getVentasNuevas().remove(j);
+                    j--;
+                }
+            }
+            
             ventas.add(miVentaMin2.venta);
         } else {
             miVentaMin2.venta.getProducto().getVendedor().getVentasNuevas().remove(miVentaMin2.venta);
@@ -431,6 +439,14 @@ public class MenuVentas extends javax.swing.JFrame {
             usuarios.add(p.getVendedor());
             productos.remove(p);
             new File(p.getFoto()).delete();
+            
+            for (int j = 0; j < miVentaMin3.venta.getProducto().getVendedor().getVentasNuevas().size(); j++) {
+                if (miVentaMin3.venta.getProducto().getVendedor().getVentasNuevas().get(j).getProducto().equals(miVentaMin3.venta.getProducto())) {
+                    miVentaMin3.venta.getProducto().getVendedor().getVentasNuevas().remove(j);
+                    j--;
+                }
+            }
+            
             ventas.add(miVentaMin3.venta);
         } else {
             miVentaMin3.venta.getProducto().getVendedor().getVentasNuevas().remove(miVentaMin3.venta);
@@ -451,6 +467,14 @@ public class MenuVentas extends javax.swing.JFrame {
             usuarios.add(p.getVendedor());
             productos.remove(p);
             new File(p.getFoto()).delete();
+            
+            for (int j = 0; j < miVentaMin4.venta.getProducto().getVendedor().getVentasNuevas().size(); j++) {
+                if (miVentaMin4.venta.getProducto().getVendedor().getVentasNuevas().get(j).getProducto().equals(miVentaMin4.venta.getProducto())) {
+                    miVentaMin4.venta.getProducto().getVendedor().getVentasNuevas().remove(j);
+                    j--;
+                }
+            }
+            
             ventas.add(miVentaMin4.venta);
         } else {
             miVentaMin4.venta.getProducto().getVendedor().getVentasNuevas().remove(miVentaMin4.venta);
@@ -471,6 +495,14 @@ public class MenuVentas extends javax.swing.JFrame {
             usuarios.add(p.getVendedor());
             productos.remove(p);
             new File(p.getFoto()).delete();
+            
+            for (int j = 0; j < miVentaMin5.venta.getProducto().getVendedor().getVentasNuevas().size(); j++) {
+                if (miVentaMin5.venta.getProducto().getVendedor().getVentasNuevas().get(j).getProducto().equals(miVentaMin5.venta.getProducto())) {
+                    miVentaMin5.venta.getProducto().getVendedor().getVentasNuevas().remove(j);
+                    j--;
+                }
+            }
+            
             ventas.add(miVentaMin5.venta);
         } else {
             miVentaMin5.venta.getProducto().getVendedor().getVentasNuevas().remove(miVentaMin5.venta);

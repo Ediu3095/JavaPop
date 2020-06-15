@@ -34,6 +34,10 @@ public class Venta implements Serializable {
     public Producto getProducto() {
         return producto;
     }
+    
+    public void setProducto(Producto prod) {
+        this.producto = prod;
+    }
 
     public LocalDateTime getFechaVenta() {
         return fechaVenta;

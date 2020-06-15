@@ -21,7 +21,6 @@ import static java.nio.file.StandardCopyOption.REPLACE_EXISTING;
 
 import java.awt.Color;
 import java.awt.Image;
-import javax.swing.JFrame;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.JFileChooser;
@@ -38,6 +37,7 @@ public class MenuEditarProducto extends javax.swing.JFrame {
     private String newImageAddress;
     private boolean imagenEditable;
     private Producto producto;
+    private Producto productoOriginal;
     private final MenuPrincipal menu;
     private boolean borrar;
 
@@ -58,11 +58,12 @@ public class MenuEditarProducto extends javax.swing.JFrame {
 
         // Nos guardamos el producto
         this.producto = container.producto;
-        
+        this.productoOriginal = container.producto;
+
         // Eliminamos el producto del usuario y de los productos globales
         menu.user.getProductos().remove(this.producto);
         productos.remove(this.producto);
-        
+
         // Guardamos un booleano para decidir si volvemos a subir los productos o no
         this.borrar = false;
 
@@ -653,12 +654,27 @@ public class MenuEditarProducto extends javax.swing.JFrame {
 
     private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
         menu.setEnabled(true);
-        
+
         if (!borrar) {
             menu.user.introducirProducto(this.producto);
             productos.add(this.producto);
+            usuarios.remove(this.menu.user);
+            for (int i = 0; i < this.menu.user.getVentasNuevas().size(); i++) {
+                if (this.menu.user.getVentasNuevas().get(i).getProducto().equals(this.productoOriginal) || this.menu.user.getVentasNuevas().get(i).getProducto().equals(this.producto)) {
+                    this.menu.user.getVentasNuevas().get(i).setProducto(this.producto);
+                }
+            }
+            usuarios.add(this.menu.user);
         } else {
             new File(this.producto.getFoto()).delete();
+            usuarios.remove(this.menu.user);
+            for (int i = 0; i < this.menu.user.getVentasNuevas().size(); i++) {
+                if (this.menu.user.getVentasNuevas().get(i).getProducto().equals(this.productoOriginal) || this.menu.user.getVentasNuevas().get(i).getProducto().equals(this.producto)) {
+                    this.menu.user.getVentasNuevas().remove(i);
+                    i--;
+                }
+            }
+            usuarios.add(this.menu.user);
         }
 
         menu.miProductoMin1.setVisible(false);
@@ -670,7 +686,7 @@ public class MenuEditarProducto extends javax.swing.JFrame {
         menu.displayMisProductos();
 
         menu.lockUnlockBotonesMisProductos();
-        
+
         menu.toFront();
     }//GEN-LAST:event_formWindowClosed
 
