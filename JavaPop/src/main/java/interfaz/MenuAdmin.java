@@ -54,6 +54,7 @@ public class MenuAdmin extends javax.swing.JFrame {
         posicionMin = 0;
         posicionMax = 0;
 
+        // actualizamos la página
         displayUsuarios();
         lockUnlockBotonesUsuarios();
 
@@ -656,7 +657,7 @@ public class MenuAdmin extends javax.swing.JFrame {
     private void comboBoxFuncionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboBoxFuncionActionPerformed
         int panel = comboBoxFuncion.getSelectedIndex();
         switch (panel) {
-            case 0:
+            case 0: // cambiamos al visualizar usuarios
                 usuariosFiltrado.clear();
 
                 camposCL.show(jPanel1, "cardUsuarios");
@@ -666,10 +667,11 @@ public class MenuAdmin extends javax.swing.JFrame {
 
                 posicionMin = 0;
 
+                // actualizamos la página
                 displayUsuarios();
                 lockUnlockBotonesUsuarios();
                 break;
-            case 1:
+            case 1: // cambiamos al visualizar productos
                 productosFiltrado.clear();
 
                 camposCL.show(jPanel1, "cardProductos");
@@ -679,10 +681,11 @@ public class MenuAdmin extends javax.swing.JFrame {
 
                 posicionMin = 0;
 
+                // actualizamos la página
                 displayProductos();
                 lockUnlockBotonesProductos();
                 break;
-            case 2:
+            case 2: // cambiamos al visualizar ventas
                 ventasFiltrado.clear();
 
                 camposCL.show(jPanel1, "cardVentas");
@@ -692,6 +695,7 @@ public class MenuAdmin extends javax.swing.JFrame {
 
                 posicionMin = 0;
 
+                // actualizamos la página
                 displayVentas();
                 lockUnlockBotonesVentas();
                 break;
@@ -706,7 +710,7 @@ public class MenuAdmin extends javax.swing.JFrame {
      *
      * @param evt Evento recogido.
      *
-     * @author Luis Miguel Sobrino Zamora
+     * @author Eduardo Ruiz Sabajanes
      *
      */
     private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
@@ -715,7 +719,7 @@ public class MenuAdmin extends javax.swing.JFrame {
         IOCustomLib.guardarVentas(ventas);
     }//GEN-LAST:event_formWindowClosed
 
-    //Abrimos el producto para ver más características o eliminarlo
+    //<editor-fold defaultstate="collapsed" desc=" Manejo de clicks en los productoMin ">
     private void productoMin1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_productoMin1MouseClicked
         new MenuAdminProducto(this, productoMin1);
     }//GEN-LAST:event_productoMin1MouseClicked
@@ -740,7 +744,9 @@ public class MenuAdmin extends javax.swing.JFrame {
     private void productoMin8MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_productoMin8MouseClicked
         new MenuAdminProducto(this, productoMin8);
     }//GEN-LAST:event_productoMin8MouseClicked
+    //</editor-fold>
 
+    //<editor-fold defaultstate="collapsed" desc=" Botones pasar pagina del visualizar productos ">
     /**
      * <p>
      * Esta función permite al administrador retroceder de página en el menú de
@@ -764,8 +770,6 @@ public class MenuAdmin extends javax.swing.JFrame {
 
         // Activa o desactiva los botones para cambiar páginas de productos, según sea necesario
         lockUnlockBotonesProductos();
-
-        // Cambia el texto de la etiqueta que indica en que página estamos
     }//GEN-LAST:event_rePagProductosActionPerformed
 
     /**
@@ -791,16 +795,27 @@ public class MenuAdmin extends javax.swing.JFrame {
 
         // Activa o desactiva los botones para cambiar páginas de productos, según sea necesario
         lockUnlockBotonesProductos();
-
-        // Cambia el texto de la etiqueta que indica en que página estamos
     }//GEN-LAST:event_avPagProductosActionPerformed
+    //</editor-fold>
 
+    /**
+     * <p>
+     * Esta función sirve para guardar todos los cambios realizados en
+     * productos, usuarios o ventas realizados por el administrador al cerrar la
+     * ventana. </p>
+     *
+     * @param evt Evento recogido.
+     *
+     * @author Eduardo Ruiz Sabajanes
+     *
+     */
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
         IOCustomLib.guardarClientes(usuarios);
         IOCustomLib.guardarProductos(productos);
         IOCustomLib.guardarVentas(ventas);
     }//GEN-LAST:event_formWindowClosing
 
+    //<editor-fold defaultstate="collapsed" desc=" Botones pasar pagina del visualizar usuarios ">
     /**
      * <p>
      * Esta función permite al administrador retroceder de página en el menú de
@@ -824,8 +839,6 @@ public class MenuAdmin extends javax.swing.JFrame {
 
         // Activa o desactiva los botones para cambiar páginas de productos, según sea necesario
         lockUnlockBotonesUsuarios();
-
-        // Cambia el texto de la etiqueta que indica en que página estamos
     }//GEN-LAST:event_rePagUsuariosActionPerformed
 
     /**
@@ -851,10 +864,10 @@ public class MenuAdmin extends javax.swing.JFrame {
 
         // Activa o desactiva los botones para cambiar páginas de productos, según sea necesario
         lockUnlockBotonesUsuarios();
-
-        // Cambia el texto de la etiqueta que indica en que página estamos
     }//GEN-LAST:event_avPagUsuariosActionPerformed
+    //</editor-fold>
 
+    //<editor-fold defaultstate="collapsed" desc=" Botones pasar pagina del visualizar ventas ">
     /**
      * <p>
      * Esta función permite al administrador retroceder de página en el menú de
@@ -878,8 +891,6 @@ public class MenuAdmin extends javax.swing.JFrame {
 
         // Activa o desactiva los botones para cambiar páginas de productos, según sea necesario
         lockUnlockBotonesVentas();
-
-        // Cambia el texto de la etiqueta que indica en que página estamos
     }//GEN-LAST:event_rePagVentasActionPerformed
 
     /**
@@ -905,43 +916,37 @@ public class MenuAdmin extends javax.swing.JFrame {
 
         // Activa o desactiva los botones para cambiar páginas de productos, según sea necesario
         lockUnlockBotonesVentas();
-
-        // Cambia el texto de la etiqueta que indica en que página estamos
     }//GEN-LAST:event_avPagVentasActionPerformed
+    //</editor-fold>
 
-    //Para acceder al usuario cuando clicamos sobre la casilla correspondiente
+    //<editor-fold defaultstate="collapsed" desc=" Manejo de clicks en los usuarioMin ">
     private void usuarioMin1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_usuarioMin1MouseClicked
         new MenuAdminCliente(this, usuarioMin1.cliente);
     }//GEN-LAST:event_usuarioMin1MouseClicked
-
     private void usuarioMin2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_usuarioMin2MouseClicked
         new MenuAdminCliente(this, usuarioMin2.cliente);
     }//GEN-LAST:event_usuarioMin2MouseClicked
-
     private void usuarioMin3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_usuarioMin3MouseClicked
         new MenuAdminCliente(this, usuarioMin3.cliente);
     }//GEN-LAST:event_usuarioMin3MouseClicked
-
     private void usuarioMin4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_usuarioMin4MouseClicked
         new MenuAdminCliente(this, usuarioMin4.cliente);
     }//GEN-LAST:event_usuarioMin4MouseClicked
-
     private void usuarioMin5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_usuarioMin5MouseClicked
         new MenuAdminCliente(this, usuarioMin5.cliente);
     }//GEN-LAST:event_usuarioMin5MouseClicked
-
     private void usuarioMin6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_usuarioMin6MouseClicked
         new MenuAdminCliente(this, usuarioMin6.cliente);
     }//GEN-LAST:event_usuarioMin6MouseClicked
-
     private void usuarioMin7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_usuarioMin7MouseClicked
         new MenuAdminCliente(this, usuarioMin7.cliente);
     }//GEN-LAST:event_usuarioMin7MouseClicked
-
     private void usuarioMin8MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_usuarioMin8MouseClicked
         new MenuAdminCliente(this, usuarioMin8.cliente);
     }//GEN-LAST:event_usuarioMin8MouseClicked
+    //</editor-fold>
 
+    //<editor-fold defaultstate="collapsed" desc=" Actualización del visualizar usuarios ">
     /**
      * <p>
      * Esta función recoge cuantos usuarios va a haber en la nueva página,
@@ -1048,7 +1053,9 @@ public class MenuAdmin extends javax.swing.JFrame {
             avPagUsuarios.setEnabled(true);
         }
     }
+    //</editor-fold>
 
+    //<editor-fold defaultstate="collapsed" desc=" Actualización del visualizar productos ">
     /**
      * <p>
      * Esta función recoge cuantos productos va a haber en la nueva página,
@@ -1156,7 +1163,9 @@ public class MenuAdmin extends javax.swing.JFrame {
             avPagProductos.setEnabled(true);
         }
     }
+    //</editor-fold>
 
+    //<editor-fold defaultstate="collapsed" desc=" Actualización del visualizar ventas ">
     /**
      * <p>
      * Esta función recoge cuantas ventas va a haber en la nueva página,
@@ -1263,6 +1272,7 @@ public class MenuAdmin extends javax.swing.JFrame {
             avPagVentas.setEnabled(true);
         }
     }
+    //</editor-fold>
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Buscar;

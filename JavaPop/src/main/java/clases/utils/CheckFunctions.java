@@ -15,6 +15,7 @@ import static java.nio.file.StandardCopyOption.REPLACE_EXISTING;
 /**
  *
  * @author Eduardo Ruiz Sabajanes
+ * @author Luis Miguel Sobrino Zamora
  */
 public class CheckFunctions {
 
@@ -31,7 +32,7 @@ public class CheckFunctions {
      * Recibe un String y lo compara con un pattern para comprobar que tenga
      * formato de correo electronico.</p>
      *
-     * @param str_ el string del que se va a comprobar el formato.
+     * @param correo el string del que se va a comprobar el formato.
      *
      * @return verdadero si el string tiene formato de correo y false si no lo
      * tiene.
@@ -97,7 +98,7 @@ public class CheckFunctions {
      * Recibe un string y comprueba que solo tenga numeros y sea de longitud
      * cinco. </p>
      *
-     * @param str_ el string que va a ser comprobado.
+     * @param ccpp el string que va a ser comprobado.
      *
      * @return verdadero si cumple el formato y falso si no lo hace.
      *
@@ -116,7 +117,7 @@ public class CheckFunctions {
      * Recibe un string y comprueba en cuatro modulos de cuatro caracteres cada
      * uno que cumple el formato de tarjeta de credito (todo numeros). </p>
      *
-     * @param str_ el string que va a ser comprobado.
+     * @param ttcc el string que va a ser comprobado.
      *
      * @return verdadero si cumple el formato y falso si no lo hace.
      *
@@ -132,6 +133,205 @@ public class CheckFunctions {
 
     /**
      * <p>
+     * Recibe un string y comprueba que tenga formato de url de una página
+     * web.</p>
+     *
+     * @param web el string que va a ser comprobado.
+     *
+     * @return verdadero si cumple el formato y falso si no lo hace.
+     *
+     * @author Eduardo Ruiz Sabajanes
+     */
+    public static boolean checkWeb(String web) {
+        Pattern pattern = Pattern.compile("^((((https?|ftps?|gopher|telnet|nntp)://)|(mailto:|news:))"
+                + "(%[0-9A-Fa-f]{2}|[-()_.!~*';/?:@&=+$, A-Za-z0-9])+)" + "([).!';/?:, ][[:blank:]])?$");
+        Matcher matcher_ = pattern.matcher(web);
+        return matcher_.matches();
+    }
+
+    /**
+     * <p>
+     * Se recibe un precio como parametro y se comprueba que tenga el formato
+     * correcto.</p>
+     *
+     * @param prc el string que va a ser comprobado.
+     *
+     * @return verdadero si cumple el formato y falso si no lo hace.
+     *
+     * @author Eduardo Ruiz Sabajanes
+     */
+    public static boolean checkPrecio(String prc) {
+        Pattern pattern = Pattern.compile("[0-9]{1,}+[,]+[0-9]{0,2}");
+        Matcher matcher_;
+        matcher_ = pattern.matcher(prc);
+        return matcher_.matches();
+    }
+
+    /**
+     * <p>
+     * Se recibe un precio como parametro y se comprueba que tenga el formato
+     * correcto.</p>
+     *
+     * @param prc el String que transformar en precio.
+     *
+     * @return el precio válido. Devuelve -1 si el formato es incorrecto.
+     *
+     * @author Eduardo Ruiz Sabajanes
+     */
+    public static double getPrecio(String prc) {
+        Pattern pattern = Pattern.compile("[0-9]{1,}+[,]+[0-9]{0,2}");
+        Matcher matcher_;
+        matcher_ = pattern.matcher(prc);
+        if (matcher_.matches()) {
+            return Double.parseDouble(prc.replace(',', '.'));
+        }
+        return -1;
+    }
+
+    /**
+     * <p>
+     * Devuelve el estado correspondiente a un número del 1 al 5 segun el orden
+     * en el que aparecen en el enum Estado.</p>
+     *
+     * @param index el numero correspondiente al estado.
+     *
+     * @return una categoría del enum Estado.
+     *
+     * @author Eduardo Ruiz Sabajanes
+     */
+    public static Estado getEstado(int index) {
+        Estado estado = Estado.Bueno;
+        switch (index) {
+            case 0:
+                estado = Estado.Nuevo;
+                break;
+            case 1:
+                estado = Estado.Como_nuevo;
+                break;
+            case 2:
+                estado = Estado.Bueno;
+                break;
+            case 3:
+                estado = Estado.Aceptable;
+                break;
+            case 4:
+                estado = Estado.Regular;
+                break;
+        }
+        return estado;
+    }
+
+    /**
+     * <p>
+     * Devuelve la categoría correspondiente a un número del 1 al 6 segun el
+     * orden en el que aparecen en el enum Categoria.</p>
+     *
+     * @param index el numero correspondiente a la categoria
+     *
+     * @return una categoría del enum Categoria.
+     *
+     * @author Eduardo Ruiz Sabajanes
+     */
+    public static Categoria getCategoria(int index) {
+        Categoria categoria = Categoria.Moda_y_accesorios;
+        switch (index) {
+            case 0:
+                categoria = Categoria.Moda_y_accesorios;
+                break;
+            case 1:
+                categoria = Categoria.Tv_audio_y_foto;
+                break;
+            case 2:
+                categoria = Categoria.Moviles_y_telefonia;
+                break;
+            case 3:
+                categoria = Categoria.Informatica_y_electronica;
+                break;
+            case 4:
+                categoria = Categoria.Consolas_y_videojuegos;
+                break;
+            case 5:
+                categoria = Categoria.Deporte_y_ocio;
+                break;
+        }
+        return categoria;
+    }
+
+    /**
+     * <p>
+     * Devuelve el número del 1 al 5 que se corresponde con un estado según el
+     * orden en el que aparecen en el enum Estado.</p>
+     *
+     * @param est el estado del que queremos el index
+     *
+     * @return una categoría del enum Estado.
+     *
+     * @author Eduardo Ruiz Sabajanes
+     */
+    public static int indexOfEstado(Estado est) {
+        int index = 0;
+        if (null != est) {
+            switch (est) {
+                case Nuevo:
+                    index = 0;
+                    break;
+                case Como_nuevo:
+                    index = 1;
+                    break;
+                case Bueno:
+                    index = 2;
+                    break;
+                case Aceptable:
+                    index = 3;
+                    break;
+                case Regular:
+                    index = 4;
+                    break;
+            }
+        }
+        return index;
+    }
+
+    /**
+     * <p>
+     * Devuelve el número del 1 al 6 que se corresponde con una categoría según
+     * el orden en el que aparecen en el enum Estado.</p>
+     *
+     * @param cat la categoría de la que queremos el index
+     *
+     * @return una categoría del enum Estado.
+     *
+     * @author Eduardo Ruiz Sabajanes
+     */
+    public static int indexOfCategoria(Categoria cat) {
+        int index = 0;
+        if (null != cat) {
+            switch (cat) {
+                case Moda_y_accesorios:
+                    index = 0;
+                    break;
+                case Tv_audio_y_foto:
+                    index = 1;
+                    break;
+                case Moviles_y_telefonia:
+                    index = 2;
+                    break;
+                case Informatica_y_electronica:
+                    index = 3;
+                    break;
+                case Consolas_y_videojuegos:
+                    index = 4;
+                    break;
+                case Deporte_y_ocio:
+                    index = 5;
+                    break;
+            }
+        }
+        return index;
+    }
+
+    /**
+     * <p>
      * Se pide un dni a traves de la consola y se comprueba que tenga formato de
      * dni y que la letra sea la correspondiente a el número.</p>
      *
@@ -142,7 +342,11 @@ public class CheckFunctions {
      * condiciones.
      *
      * @author Eduardo Ruiz Sabajanes
+     *
+     * @deprecated Esta función solo sirve para la versión en consola de
+     * Javapop.
      */
+    @Deprecated
     public String getDNI(String str_) {
         char[] upper = "TRWAGMYFPDXBNJZSQVHLCKE".toCharArray();
         Pattern pattern = Pattern.compile("[0-9]{7,8}[A-Z]");
@@ -174,7 +378,11 @@ public class CheckFunctions {
      * cumplido las condiciones.
      *
      * @author Eduardo Ruiz Sabajanes
+     *
+     * @deprecated Esta función solo sirve para la versión en consola de
+     * Javapop.
      */
+    @Deprecated
     public int getCodigoPostal(String str_) {
         Pattern pattern = Pattern.compile("[0-9]{5}");
         Matcher matcher_;
@@ -200,7 +408,11 @@ public class CheckFunctions {
      * credito que haya cumplido las condiciones.
      *
      * @author Eduardo Ruiz Sabajanes
+     *
+     * @deprecated Esta función solo sirve para la versión en consola de
+     * Javapop.
      */
+    @Deprecated
     public String getTarjetaCredito(String str_) {
         Pattern pattern = Pattern.compile("[0-9]{16}");
         Matcher matcher_;
@@ -225,7 +437,11 @@ public class CheckFunctions {
      * @return el string introducido por consola como numero de teléfono válido.
      *
      * @author Eduardo Ruiz Sabajanes
+     *
+     * @deprecated Esta función solo sirve para la versión en consola de
+     * Javapop.
      */
+    @Deprecated
     public String getTelefono(String str_) {
         Pattern pattern = Pattern.compile("[0-9]{4,}");
         Matcher matcher_;
@@ -250,7 +466,11 @@ public class CheckFunctions {
      * @return el string introducido por consola como horario válido.
      *
      * @author Eduardo Ruiz Sabajanes
+     *
+     * @deprecated Esta función solo sirve para la versión en consola de
+     * Javapop.
      */
+    @Deprecated
     public String getHorario(String str_) {
         Pattern pattern = Pattern.compile("[0-9]{2}+:+[0-9]{2}-[0-9]{2}+:+[0-9]{2}");
         Matcher matcher_;
@@ -280,7 +500,11 @@ public class CheckFunctions {
      * @return el string introducido por consola como pagina web válida.
      *
      * @author Eduardo Ruiz Sabajanes
+     *
+     * @deprecated Esta función solo sirve para la versión en consola de
+     * Javapop.
      */
+    @Deprecated
     public String getWeb(String str_) {
         Pattern pattern = Pattern.compile("^((((https?|ftps?|gopher|telnet|nntp)://)|(mailto:|news:))"
                 + "(%[0-9A-Fa-f]{2}|[-()_.!~*';/?:@&=+$, A-Za-z0-9])+)" + "([).!';/?:, ][[:blank:]])?$");
@@ -295,13 +519,6 @@ public class CheckFunctions {
         }
     }
 
-    public static boolean checkWeb(String web) {
-        Pattern pattern = Pattern.compile("^((((https?|ftps?|gopher|telnet|nntp)://)|(mailto:|news:))"
-                + "(%[0-9A-Fa-f]{2}|[-()_.!~*';/?:@&=+$, A-Za-z0-9])+)" + "([).!';/?:, ][[:blank:]])?$");
-        Matcher matcher_ = pattern.matcher(web);
-        return matcher_.matches();
-    }
-
     /**
      * <p>
      * Se pide un precio a través de la consola y se comprueba que tenga el
@@ -313,7 +530,11 @@ public class CheckFunctions {
      * @return el double introducido por consola como precio válido.
      *
      * @author Eduardo Ruiz Sabajanes
+     *
+     * @deprecated Esta función solo sirve para la versión en consola de
+     * Javapop.
      */
+    @Deprecated
     public double getPrecioConsole(String str_) {
         Pattern pattern = Pattern.compile("[0-9]{1,}+.+[0-9]{0,2}");
         Matcher matcher_;
@@ -329,34 +550,6 @@ public class CheckFunctions {
 
     /**
      * <p>
-     * Se pide un precio a través de la consola y se comprueba que tenga el
-     * formato correcto.</p>
-     *
-     * @param str_ el String que transformar en precio.
-     *
-     * @return el precio válido. Devuelve -1 si el formato es incorrecto.
-     *
-     * @author Eduardo Ruiz Sabajanes
-     */
-    public static double getPrecio(String prc) {
-        Pattern pattern = Pattern.compile("[0-9]{1,}+[,]+[0-9]{0,2}");
-        Matcher matcher_;
-        matcher_ = pattern.matcher(prc);
-        if (matcher_.matches()) {
-            return Double.parseDouble(prc.replace(',', '.'));
-        }
-        return -1;
-    }
-
-    public static boolean checkPrecio(String prc) {
-        Pattern pattern = Pattern.compile("[0-9]{1,}+[,]+[0-9]{0,2}");
-        Matcher matcher_;
-        matcher_ = pattern.matcher(prc);
-        return matcher_.matches();
-    }
-
-    /**
-     * <p>
      * Pide un string que se debe corresponder con el path de una foto, en el
      * caso de que la foto exista, la copia en <b>./resources/imagenes</b>
      * para poder acceder a ella más tarde aunque se borre la original y
@@ -368,7 +561,11 @@ public class CheckFunctions {
      * @return un objeto de la clase <b>Icon</b>.
      *
      * @author Eduardo Ruiz Sabajanes
+     *
+     * @deprecated Esta función solo sirve para la versión en consola de
+     * Javapop.
      */
+    @Deprecated
     public String getImage(String str_) {
         boolean run = true;
         File imgFolder = new File("./resources/imagenes/");
@@ -410,7 +607,11 @@ public class CheckFunctions {
      * @return un estado del enum Estado.
      *
      * @author Eduardo Ruiz Sabajanes
+     *
+     * @deprecated Esta función solo sirve para la versión en consola de
+     * Javapop.
      */
+    @Deprecated
     public Estado getEstado(String str_) {
         Estado estado = Estado.Bueno;
         System.out.println("Introduzca el estado del producto:\n"
@@ -442,63 +643,6 @@ public class CheckFunctions {
 
     /**
      * <p>
-     * Devuelve el estado correspondiente a un número del 1 al 5 segun el orden
-     * en el que aparecen en el enum Estado.</p>
-     *
-     * @param index el numero correspondiente al estado.
-     *
-     * @return una categoría del enum Estado.
-     *
-     * @author Eduardo Ruiz Sabajanes
-     */
-    public static Estado getEstado(int index) {
-        Estado estado = Estado.Bueno;
-        switch (index) {
-            case 0:
-                estado = Estado.Nuevo;
-                break;
-            case 1:
-                estado = Estado.Como_nuevo;
-                break;
-            case 2:
-                estado = Estado.Bueno;
-                break;
-            case 3:
-                estado = Estado.Aceptable;
-                break;
-            case 4:
-                estado = Estado.Regular;
-                break;
-        }
-        return estado;
-    }
-
-    public static int indexOfEstado(Estado est) {
-        int index = 0;
-        if (null != est) {
-            switch (est) {
-                case Nuevo:
-                    index = 0;
-                    break;
-                case Como_nuevo:
-                    index = 1;
-                    break;
-                case Bueno:
-                    index = 2;
-                    break;
-                case Aceptable:
-                    index = 3;
-                    break;
-                case Regular:
-                    index = 4;
-                    break;
-            }
-        }
-        return index;
-    }
-
-    /**
-     * <p>
      * Pide un numero del 1 al 6 que se corresponda con alguna de las categorías
      * enumeradas previamente en la consola.</p>
      *
@@ -508,7 +652,11 @@ public class CheckFunctions {
      * @return una categoría del enum Categoria.
      *
      * @author Eduardo Ruiz Sabajanes
+     *
+     * @deprecated Esta función solo sirve para la versión en consola de
+     * Javapop.
      */
+    @Deprecated
     public Categoria getCategoria(String str_) {
         Categoria categoria = Categoria.Moda_y_accesorios;
         System.out.println("Introduzca la categoría del producto:\n"
@@ -544,69 +692,6 @@ public class CheckFunctions {
 
     /**
      * <p>
-     * Devuelve la categoría correspondiente a un número del 1 al 6 segun el
-     * orden en el que aparecen en el enum Categoria.</p>
-     *
-     * @param index el numero correspondiente a la categoria
-     *
-     * @return una categoría del enum Categoria.
-     *
-     * @author Eduardo Ruiz Sabajanes
-     */
-    public static Categoria getCategoria(int index) {
-        Categoria categoria = Categoria.Moda_y_accesorios;
-        switch (index) {
-            case 0:
-                categoria = Categoria.Moda_y_accesorios;
-                break;
-            case 1:
-                categoria = Categoria.Tv_audio_y_foto;
-                break;
-            case 2:
-                categoria = Categoria.Moviles_y_telefonia;
-                break;
-            case 3:
-                categoria = Categoria.Informatica_y_electronica;
-                break;
-            case 4:
-                categoria = Categoria.Consolas_y_videojuegos;
-                break;
-            case 5:
-                categoria = Categoria.Deporte_y_ocio;
-                break;
-        }
-        return categoria;
-    }
-
-    public static int indexOfCategoria(Categoria cat) {
-        int index = 0;
-        if (null != cat) {
-            switch (cat) {
-                case Moda_y_accesorios:
-                    index = 0;
-                    break;
-                case Tv_audio_y_foto:
-                    index = 1;
-                    break;
-                case Moviles_y_telefonia:
-                    index = 2;
-                    break;
-                case Informatica_y_electronica:
-                    index = 3;
-                    break;
-                case Consolas_y_videojuegos:
-                    index = 4;
-                    break;
-                case Deporte_y_ocio:
-                    index = 5;
-                    break;
-            }
-        }
-        return index;
-    }
-
-    /**
-     * <p>
      * Pide por consola un número entero hasta que este sea introducido.</p>
      *
      * @param str un string que mostrar en la consola para indicar que se está
@@ -615,7 +700,11 @@ public class CheckFunctions {
      * @return el número entero introducido por consola.
      *
      * @author Eduardo Ruiz Sabajanes
+     * 
+     * @deprecated Esta función solo sirve para la versión en consola de
+     * Javapop.
      */
+    @Deprecated
     public int getInt(String str) {
         boolean run = true;
         int num = 0;
@@ -644,7 +733,11 @@ public class CheckFunctions {
      * @return el número entero introducido por consola.
      *
      * @author Eduardo Ruiz Sabajanes
+     * 
+     * @deprecated Esta función solo sirve para la versión en consola de
+     * Javapop.
      */
+    @Deprecated
     public int getInt(String str, int low, int high) {
         boolean run = true;
         int num = 0;
@@ -673,7 +766,11 @@ public class CheckFunctions {
      * @return el número decimal introducido por consola.
      *
      * @author Eduardo Ruiz Sabajanes
+     * 
+     * @deprecated Esta función solo sirve para la versión en consola de
+     * Javapop.
      */
+    @Deprecated
     public double getDouble(String str) {
         boolean run = true;
         double num = 0;
@@ -702,7 +799,11 @@ public class CheckFunctions {
      * @return el número decimal introducido por consola.
      *
      * @author Eduardo Ruiz Sabajanes
+     * 
+     * @deprecated Esta función solo sirve para la versión en consola de
+     * Javapop.
      */
+    @Deprecated
     public double getDouble(String str, double low, double high) {
         boolean run = true;
         double num = 0;
@@ -731,7 +832,11 @@ public class CheckFunctions {
      * @return el string de texto introducido por la consola.
      *
      * @author Eduardo Ruiz Sabajanes
+     * 
+     * @deprecated Esta función solo sirve para la versión en consola de
+     * Javapop.
      */
+    @Deprecated
     public String getString(String str_) {
         boolean run = true;
         String str = "";
@@ -758,7 +863,11 @@ public class CheckFunctions {
      * @return el string de texto introducido por la consola.
      *
      * @author Eduardo Ruiz Sabajanes
+     * 
+     * @deprecated Esta función solo sirve para la versión en consola de
+     * Javapop.
      */
+    @Deprecated
     public String getString(String str_, int length_) {
         boolean run = true;
         String str = "";

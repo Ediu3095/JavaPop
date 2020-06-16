@@ -17,11 +17,20 @@ public class UsuarioMin extends javax.swing.JPanel {
         initComponents();
     }
 
-    public void setCliente(Cliente client){
-        this.cliente = client;
-        this.etiquetaDNI.setText (client.getDni());
-        this.etiquetaNombre.setText (client.getNombre());
-        this.etiquetaCorreo.setText (client.getCorreo());    
+    /**
+     * <p>
+     * Añade un usuario a este contenedor y modifica los labels con los datos
+     * de este.</p>
+     *
+     * @param user usuario que vamos a guardar
+     * 
+     * @author Eduardo Ruiz Sabajanes
+     */
+    public void setCliente(Cliente user){
+        this.cliente = user;
+        this.etiquetaDNI.setText (user.getDni());
+        this.etiquetaNombre.setText (user.getNombre());
+        this.etiquetaCorreo.setText (user.getCorreo());    
     }
     
     

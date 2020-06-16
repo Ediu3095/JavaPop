@@ -128,7 +128,27 @@ public class Searching {
             }
         }
     }
-    
+
+    /**
+     * <p>
+     * Actualiza el grado de coincidencia (o matchDeg) de un producto con
+     * respecto a un array de palabras clave y establece su lejanía en 0.</p>
+     *
+     * <p>
+     * El grado de coincidencia guarda el número de palabras que coinciden entre
+     * las palabras clave y el título del producto.</p>
+     *
+     * <p>
+     * La lejanía es el valor absoluto de la diferencia entre el codigo postal
+     * del vendedor y el codigo postal del comprador.</p>
+     *
+     * @param prod producto del que vamos a actualizar los parametros utilizados
+     * en la busqueda
+     * @param kWords palabras clave con respecto a las cuales se actualiza el
+     * grado de coincidencia
+     *
+     * @author Eduardo Ruiz Sabajanes
+     */
     public static void updateTags(Producto prod, String[] kWords) {
         String[] tWords = prod.getTitulo().split(" ");
 
@@ -162,7 +182,11 @@ public class Searching {
      * @param read un objeto para pedir entradas por consola al usuario
      *
      * @author Eduardo Ruiz Sabajanes
+     * 
+     * @deprecated Esta función solo sirve para la versión en consola de
+     * Javapop.
      */
+    @Deprecated
     public static void comprar(Cliente user, ArrayList<Producto> productos, CheckFunctions read) {
         ArrayList<Producto> prodDefinitivo = new ArrayList();
         Producto producto = new Producto();
@@ -192,16 +216,16 @@ public class Searching {
         for (int i = 0; i < prodDefinitivo.size(); i++) {
             updateTags(user, prodDefinitivo.get(i), keyWords);
         }
-        
+
         if (!kW.equals("")) {
-            for (int i = 0; i<prodDefinitivo.size(); i++){
-                if (prodDefinitivo.get(i).getMatchDeg() == 0){
+            for (int i = 0; i < prodDefinitivo.size(); i++) {
+                if (prodDefinitivo.get(i).getMatchDeg() == 0) {
                     prodDefinitivo.remove(i);
                     i--;
                 }
             }
         }
-        
+
         // Se organizan los productos
         sort(prodDefinitivo, 0, prodDefinitivo.size() - 1);
 

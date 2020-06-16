@@ -1,22 +1,22 @@
 package interfaz;
 
 import clases.*;
-import clases.enumeradores.Categoria;
-import clases.enumeradores.Estado;
+import clases.enumeradores.*;
 import static clases.utils.Colecciones.*;
 import static clases.utils.CheckFunctions.*;
-import java.awt.Color;
-import java.awt.Image;
+
+import java.util.Random;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.FileSystem;
 import java.nio.file.FileSystems;
 import java.nio.file.Files;
 import static java.nio.file.StandardCopyOption.REPLACE_EXISTING;
-import java.util.Random;
+import java.awt.Color;
+import java.awt.Image;
 import javax.swing.ImageIcon;
-import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
+import javax.swing.JFileChooser;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
 /**
@@ -311,12 +311,14 @@ public class MenuNuevoProducto extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_iconoMouseClicked
 
+    // <editor-fold defaultstate="collapsed" desc=" Efectos visuales imagen ">
     private void iconoMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_iconoMouseEntered
         this.foto.setBackground(new Color(51, 153, 255));
     }//GEN-LAST:event_iconoMouseEntered
     private void iconoMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_iconoMouseExited
         this.foto.setBackground(new Color(240, 240, 240));
     }//GEN-LAST:event_iconoMouseExited
+    // </editor-fold>
 
     private void botonSubirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonSubirActionPerformed
         String titulo = fieldNombre.getText();

@@ -24,7 +24,7 @@ public class MenuAdminCliente extends javax.swing.JFrame {
      * hasta que esta se cierre. </p>
      *
      * @param menu Menu del administrador del que venimos.
-     * @param container cliente que hemos seleccionado.
+     * @param user cliente que hemos seleccionado.
      *
      * @author Eduardo Ruiz Sabajanes
      *
@@ -44,16 +44,16 @@ public class MenuAdminCliente extends javax.swing.JFrame {
         ccField.setText(user.getTTCC());
         dniField.setText(user.getDni());
 
-        //Si el cliente es profesional...
-        if (user instanceof Profesional) {
+        
+        if (user instanceof Profesional) { //Si el cliente es profesional...
             togglePro.setSelected(true);
             variablesPro.setEnabled(true);
             descripcionField.setText(((Profesional) user).getDescripcion());
             horarioField.setText(((Profesional) user).getHorario());
             telefonoField.setText(((Profesional) user).getTelefono());
             webField.setText(((Profesional) user).getWeb());
-            //Si no lo es...
-        } else {
+            
+        } else { //Si no lo es...
             togglePro.setSelected(false);
             variablesPro.setEnabled(false);
             descripcionField.setText("");
@@ -101,8 +101,8 @@ public class MenuAdminCliente extends javax.swing.JFrame {
         telefonoField = new javax.swing.JFormattedTextField();
         webLabel = new javax.swing.JLabel();
         webField = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        botonBaja = new javax.swing.JButton();
+        botonVolver = new javax.swing.JButton();
         togglePro = new javax.swing.JCheckBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -268,19 +268,19 @@ public class MenuAdminCliente extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        jButton1.setFont(new java.awt.Font("OCR A Extended", 0, 12)); // NOI18N
-        jButton1.setText("Dar de Baja");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        botonBaja.setFont(new java.awt.Font("OCR A Extended", 0, 12)); // NOI18N
+        botonBaja.setText("Dar de Baja");
+        botonBaja.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                botonBajaActionPerformed(evt);
             }
         });
 
-        jButton2.setFont(new java.awt.Font("OCR A Extended", 0, 12)); // NOI18N
-        jButton2.setText("Volver");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        botonVolver.setFont(new java.awt.Font("OCR A Extended", 0, 12)); // NOI18N
+        botonVolver.setText("Volver");
+        botonVolver.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                botonVolverActionPerformed(evt);
             }
         });
 
@@ -315,9 +315,9 @@ public class MenuAdminCliente extends javax.swing.JFrame {
                     .addGroup(panelPerfilLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                         .addComponent(variablesPro, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelPerfilLayout.createSequentialGroup()
-                            .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(botonVolver, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addGap(18, 18, 18)
-                            .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(botonBaja, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addComponent(togglePro))
                 .addContainerGap())
         );
@@ -355,8 +355,8 @@ public class MenuAdminCliente extends javax.swing.JFrame {
                 .addComponent(dniField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(panelPerfilLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton2)
-                    .addComponent(jButton1))
+                    .addComponent(botonVolver)
+                    .addComponent(botonBaja))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -433,19 +433,23 @@ public class MenuAdminCliente extends javax.swing.JFrame {
         menu.toFront();
 
     }//GEN-LAST:event_formWindowClosed
-    //Botón para volver atrás
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    
+    // <editor-fold defaultstate="collapsed" desc=" Acciones de los botones ">
+    private void botonVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonVolverActionPerformed
         this.borrar = false;
         this.dispose();
-    }//GEN-LAST:event_jButton2ActionPerformed
-    //Botón para dar de baja al usuario
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_botonVolverActionPerformed
+    
+    private void botonBajaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonBajaActionPerformed
         this.borrar = true;
         this.dispose();
-    }//GEN-LAST:event_jButton1ActionPerformed
-
+    }//GEN-LAST:event_botonBajaActionPerformed
+    // </editor-fold>
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel banner;
+    private javax.swing.JButton botonBaja;
+    private javax.swing.JButton botonVolver;
     private javax.swing.JFormattedTextField ccField;
     private javax.swing.JLabel ccLabel;
     private javax.swing.JFormattedTextField ccppField;
@@ -462,8 +466,6 @@ public class MenuAdminCliente extends javax.swing.JFrame {
     private javax.swing.JLabel editarNombre;
     private javax.swing.JFormattedTextField horarioField;
     private javax.swing.JLabel horarioLabel;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JLabel logo;
     private javax.swing.JTextField nombreField;
     private javax.swing.JPanel panelPerfil;

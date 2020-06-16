@@ -22,6 +22,7 @@ public class MenuVentas extends javax.swing.JFrame {
 
     /**
      * Creates new form MenuVentas
+     * @param menu menu del que se viene
      */
     public MenuVentas(MenuPrincipal menu) {
         initComponents();
@@ -41,6 +42,7 @@ public class MenuVentas extends javax.swing.JFrame {
         super.setVisible(true);
     }
 
+    // <editor-fold defaultstate="collapsed" desc=" actualizar página mis ventas ">
     /**
      * <p>
      * Esta función recoge cuantas ventas va a haber en la nueva página,
@@ -131,17 +133,18 @@ public class MenuVentas extends javax.swing.JFrame {
      */
     public final void lockUnlockBotonesMisVentas() {
         if (posicionMin - 5 < 0) {
-            jButton2.setEnabled(false);
+            retrocederPagina.setEnabled(false);
         } else {
-            jButton2.setEnabled(true);
+            retrocederPagina.setEnabled(true);
         }
 
         if (posicionMin + 5 >= menu.user.getVentasNuevas().size()) {
-            jButton1.setEnabled(false);
+            pasarPagina.setEnabled(false);
         } else {
-            jButton1.setEnabled(true);
+            pasarPagina.setEnabled(true);
         }
     }
+    // </editor-fold>
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -154,8 +157,8 @@ public class MenuVentas extends javax.swing.JFrame {
 
         banner = new javax.swing.JPanel();
         Logo = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        pasarPagina = new javax.swing.JButton();
+        retrocederPagina = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         miVentaMin1 = new interfaz.panels.MiVentaMin();
@@ -200,19 +203,19 @@ public class MenuVentas extends javax.swing.JFrame {
             .addComponent(Logo, javax.swing.GroupLayout.DEFAULT_SIZE, 79, Short.MAX_VALUE)
         );
 
-        jButton1.setFont(new java.awt.Font("OCR A Extended", 0, 12)); // NOI18N
-        jButton1.setText(">>");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        pasarPagina.setFont(new java.awt.Font("OCR A Extended", 0, 12)); // NOI18N
+        pasarPagina.setText(">>");
+        pasarPagina.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                pasarPaginaActionPerformed(evt);
             }
         });
 
-        jButton2.setFont(new java.awt.Font("OCR A Extended", 0, 12)); // NOI18N
-        jButton2.setText("<<");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        retrocederPagina.setFont(new java.awt.Font("OCR A Extended", 0, 12)); // NOI18N
+        retrocederPagina.setText("<<");
+        retrocederPagina.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                retrocederPaginaActionPerformed(evt);
             }
         });
 
@@ -344,9 +347,9 @@ public class MenuVentas extends javax.swing.JFrame {
                 .addGap(0, 11, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton2)
+                .addComponent(retrocederPagina)
                 .addGap(18, 18, 18)
-                .addComponent(jButton1)
+                .addComponent(pasarPagina)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -357,15 +360,16 @@ public class MenuVentas extends javax.swing.JFrame {
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2))
+                    .addComponent(pasarPagina)
+                    .addComponent(retrocederPagina))
                 .addContainerGap())
         );
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-    //Cambiamos de color las etiquetas de editar cuando pase el cursor por encima
+
+    // <editor-fold defaultstate="collapsed" desc=" efectos visuales labels ">
     private void jLabel1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseEntered
         jLabel1.setFont(new java.awt.Font("OCR A Extended", 1, 12));
     }//GEN-LAST:event_jLabel1MouseEntered
@@ -396,7 +400,9 @@ public class MenuVentas extends javax.swing.JFrame {
     private void jLabel5MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel5MouseExited
         jLabel5.setFont(new java.awt.Font("OCR A Extended", 0, 12));
     }//GEN-LAST:event_jLabel5MouseExited
-
+    // </editor-fold>
+    
+    // <editor-fold defaultstate="collapsed" desc=" eventos click en labels "confirmar" ">
     /**
      * <p>
      * Esta función crea una ventana emergente para confirmar la venta del
@@ -409,7 +415,6 @@ public class MenuVentas extends javax.swing.JFrame {
      * @param evt Evento recogido.
      *
      * @author Eduardo Ruiz Sabajanes
-     *
      */
     private void jLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseClicked
         int i = JOptionPane.showConfirmDialog(this, "¿Desea confirmar la venta de " + miVentaMin1.venta.getProducto().getTitulo() + "?");
@@ -451,7 +456,6 @@ public class MenuVentas extends javax.swing.JFrame {
      * @param evt Evento recogido.
      *
      * @author Eduardo Ruiz Sabajanes
-     *
      */
     private void jLabel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseClicked
         int i = JOptionPane.showConfirmDialog(this, "¿Desea confirmar la venta de " + miVentaMin2.venta.getProducto().getTitulo() + "?");
@@ -493,7 +497,6 @@ public class MenuVentas extends javax.swing.JFrame {
      * @param evt Evento recogido.
      *
      * @author Eduardo Ruiz Sabajanes
-     *
      */
     private void jLabel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseClicked
         int i = JOptionPane.showConfirmDialog(this, "¿Desea confirmar la venta de " + miVentaMin3.venta.getProducto().getTitulo() + "?");
@@ -535,7 +538,6 @@ public class MenuVentas extends javax.swing.JFrame {
      * @param evt Evento recogido.
      *
      * @author Eduardo Ruiz Sabajanes
-     *
      */
     private void jLabel4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel4MouseClicked
         int i = JOptionPane.showConfirmDialog(this, "¿Desea confirmar la venta de " + miVentaMin4.venta.getProducto().getTitulo() + "?");
@@ -577,7 +579,6 @@ public class MenuVentas extends javax.swing.JFrame {
      * @param evt Evento recogido.
      *
      * @author Eduardo Ruiz Sabajanes
-     *
      */
     private void jLabel5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel5MouseClicked
         int i = JOptionPane.showConfirmDialog(this, "¿Desea confirmar la venta de " + miVentaMin5.venta.getProducto().getTitulo() + "?");
@@ -606,7 +607,8 @@ public class MenuVentas extends javax.swing.JFrame {
         displayMisVentas();
         lockUnlockBotonesMisVentas();
     }//GEN-LAST:event_jLabel5MouseClicked
-
+    // </editor-fold>
+    
     /**
      * <p>
      * Esta función permite al vendedor avanzar de página en el menú de sus
@@ -619,14 +621,13 @@ public class MenuVentas extends javax.swing.JFrame {
      * @param evt Evento recogido.
      *
      * @author Eduardo Ruiz Sabajanes
-     *
      */
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void pasarPaginaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pasarPaginaActionPerformed
         posicionMin += 5;
 
         displayMisVentas();
         lockUnlockBotonesMisVentas();
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_pasarPaginaActionPerformed
 
     /**
      * <p>
@@ -640,15 +641,13 @@ public class MenuVentas extends javax.swing.JFrame {
      * @param evt Evento recogido.
      *
      * @author Eduardo Ruiz Sabajanes
-     *
      */
-
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void retrocederPaginaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_retrocederPaginaActionPerformed
         posicionMin -= 5;
 
         displayMisVentas();
         lockUnlockBotonesMisVentas();
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_retrocederPaginaActionPerformed
 
     private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
         //Reactivamos la ventana.
@@ -672,8 +671,6 @@ public class MenuVentas extends javax.swing.JFrame {
     private javax.swing.JLabel Logo;
     private javax.swing.JPanel banner;
     private javax.swing.JLabel fotoSinVentas;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -685,6 +682,8 @@ public class MenuVentas extends javax.swing.JFrame {
     private interfaz.panels.MiVentaMin miVentaMin3;
     private interfaz.panels.MiVentaMin miVentaMin4;
     private interfaz.panels.MiVentaMin miVentaMin5;
+    private javax.swing.JButton pasarPagina;
+    private javax.swing.JButton retrocederPagina;
     private javax.swing.JLabel textoSinVentas1;
     private javax.swing.JLabel textoSinVentas2;
     // End of variables declaration//GEN-END:variables

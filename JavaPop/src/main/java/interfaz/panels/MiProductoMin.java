@@ -9,7 +9,7 @@ import clases.Producto;
 public class MiProductoMin extends javax.swing.JPanel {
 
     public Producto producto;
-    
+
     /**
      * Creates new form MiProductoMin
      */
@@ -17,6 +17,15 @@ public class MiProductoMin extends javax.swing.JPanel {
         initComponents();
     }
 
+    /**
+     * <p>
+     * Añade un producto a este contenedor y modifica los labels con los datos
+     * de este.</p>
+     *
+     * @param prod producto que vamos a guardar
+     * 
+     * @author Eduardo Ruiz Sabajanes
+     */
     public void setProducto(Producto prod) {
         producto = prod;
         this.tituloLabel.setText(prod.getTitulo());
@@ -24,7 +33,7 @@ public class MiProductoMin extends javax.swing.JPanel {
         this.fechaPublicacionLabel.setText(prod.getFechaPublicacion().getDayOfMonth() + "/" + prod.getFechaPublicacion().getMonthValue() + "/" + prod.getFechaPublicacion().getYear());
         this.jCheckBox1.setSelected(prod.isUrgente());
     }
-    
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always

@@ -36,18 +36,19 @@ public class MenuEditarProducto extends javax.swing.JFrame {
     private final MenuPrincipal menu;
     private boolean borrar;
 
-    /* <p>
-     * Esta funcion genera otra ventana donde el usuario podrá comprobar más datos del
-     * producto, editarlo o eliminarlo si así lo desea. </p>
+    /**
+     * <p>
+     * Esta funcion genera otra ventana donde el usuario podrá comprobar más
+     * datos del producto, editarlo o eliminarlo si así lo desea. </p>
      *
      * <p>
-     * Se creará una ventana emergente y se bloqueará el acceso a la anterior hasta que esta se cierre. </p>
-     * 
-     * @param menu Menu del usuario del que venimos. 
+     * Se creará una ventana emergente y se bloqueará el acceso a la anterior
+     * hasta que esta se cierre. </p>
+     *
+     * @param menu Menu del usuario del que venimos.
      * @param container Producto que hemos elegido.
      *
      * @author Eduardo Ruiz Sabajanes
-     *
      */
     public MenuEditarProducto(MenuPrincipal menu, MiProductoMin container) {
         initComponents();
@@ -476,7 +477,6 @@ public class MenuEditarProducto extends javax.swing.JFrame {
      * @param evt Evento recogido.
      *
      * @author Eduardo Ruiz Sabajanes
-     *
      */
     private void iconoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_iconoMouseClicked
         if (imagenEditable) {
@@ -495,20 +495,22 @@ public class MenuEditarProducto extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_iconoMouseClicked
 
+    // <editor-fold defaultstate="collapsed" desc=" Efectos visuales imagen ">
     private void iconoMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_iconoMouseEntered
         this.foto.setBackground(new Color(51, 153, 255));
     }//GEN-LAST:event_iconoMouseEntered
-
     private void iconoMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_iconoMouseExited
         this.foto.setBackground(new Color(240, 240, 240));
     }//GEN-LAST:event_iconoMouseExited
+    // </editor-fold>
+
 
     private void botonConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonConfirmarActionPerformed
         this.borrar = false;
         this.dispose();
     }//GEN-LAST:event_botonConfirmarActionPerformed
 
-    //Cambiamos los colores de las etiques editar para remarcar cuando el cursor pase por encima
+    // <editor-fold defaultstate="collapsed" desc=" Efectos visuales de los label ">
     private void editarNombreMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editarNombreMouseEntered
         editarNombre.setFont(new java.awt.Font("OCR A Extended", 1, 12));
     }//GEN-LAST:event_editarNombreMouseEntered
@@ -545,7 +547,9 @@ public class MenuEditarProducto extends javax.swing.JFrame {
     private void editarFotoMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editarFotoMouseExited
         editarFoto.setFont(new java.awt.Font("OCR A Extended", 0, 12));
     }//GEN-LAST:event_editarFotoMouseExited
+    // </editor-fold>
 
+    // <editor-fold defaultstate="collapsed" desc=" Acciones de los label ">
     /**
      * <p>
      * Esta funcion nos permite activar o desactivar la posibilidad de editar el
@@ -738,7 +742,8 @@ public class MenuEditarProducto extends javax.swing.JFrame {
             editarFoto.setText("guardar");
         }
     }//GEN-LAST:event_editarFotoMouseClicked
-
+    // </editor-fold>
+    
     private void botonBajaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonBajaActionPerformed
         this.borrar = true;
         this.dispose();
@@ -802,8 +807,8 @@ public class MenuEditarProducto extends javax.swing.JFrame {
 
     /**
      * <p>
-     * Despliega una ventana de confirmación para preguntar si el usuario desea o no que el producto 
-     * sea urgente. </p>
+     * Despliega una ventana de confirmación para preguntar si el usuario desea
+     * o no que el producto sea urgente. </p>
      *
      * @param evt Evento recogido.
      *

@@ -6,7 +6,9 @@ import clases.Venta;
 import java.util.ArrayList;
 
 /**
- *
+ *<p> Clase que almacena las colecciones de datos que utiliza javapop para hacer
+ * el seguimiento de los usuarios, productos y ventas.</p>
+ * 
  * @author Eduardo Ruiz Sabajanes
  */
 public class Colecciones {

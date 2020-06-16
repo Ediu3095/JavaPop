@@ -10,8 +10,6 @@ import javax.swing.JOptionPane;
 /**
  *
  * @author Eduardo Ruiz Sabajanes
- * @author Luis Miguel Sobrino Zamora
- * 
  */
 
 public class RegisterScreen extends javax.swing.JFrame {
@@ -202,13 +200,14 @@ public class RegisterScreen extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_loginButtonMouseClicked
 
+    // <editor-fold defaultstate="collapsed" desc=" efectos visuales label login ">
     private void loginButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_loginButtonMouseEntered
         loginButton.setFont(new java.awt.Font("OCR A Extended", 1, 12));
     }//GEN-LAST:event_loginButtonMouseEntered
-
     private void loginButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_loginButtonMouseExited
         loginButton.setFont(new java.awt.Font("OCR A Extended", 0, 12));
     }//GEN-LAST:event_loginButtonMouseExited
+    // </editor-fold>
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Logo;

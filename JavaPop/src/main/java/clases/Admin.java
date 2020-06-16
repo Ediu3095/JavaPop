@@ -30,11 +30,13 @@ public class Admin extends Usuario implements Serializable {
      * sustituirá por el antiguo que poseía el cliente</p>
      *
      * @param usuarios Es la lista de usuarios en la que se hace la edición.
-     * @param read Es un objeto que se utiliza para pedir los inputs
+     * @param read Es un objeto que se utiliza para pedir los inputs.
      *
      * @author Luis Miguel Sobrino Zamora
      * 
+     * @deprecated Esta función solo sirve para la versión en consola de Javapop.
      */
+    @Deprecated
     public static void ConsultarUsuario(ArrayList<Cliente> usuarios, CheckFunctions read) {
         boolean run_ = true;
         Cliente usuario = new Cliente();
@@ -211,7 +213,9 @@ public class Admin extends Usuario implements Serializable {
      *
      * @author Luis Miguel Sobrino Zamora
      *
+     * @deprecated Esta función solo sirve para la versión en consola de Javapop.
      */
+    @Deprecated
     public static void ConsultarProducto(ArrayList<Producto> productos, CheckFunctions read) {
         ArrayList<Producto> arr = new ArrayList();
         Producto producto = new Producto();
@@ -318,7 +322,9 @@ public class Admin extends Usuario implements Serializable {
      *
      * @author Luis Miguel Sobrino Zamora
      *
+     * @deprecated Esta función solo sirve para la versión en consola de Javapop.
      */
+    @Deprecated
     public static void ConsultarVentas(ArrayList<Venta> ventas, CheckFunctions read) {
         ArrayList<Venta> arr = new ArrayList();
         boolean run_ = true;

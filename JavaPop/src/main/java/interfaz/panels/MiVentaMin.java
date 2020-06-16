@@ -17,6 +17,15 @@ public class MiVentaMin extends javax.swing.JPanel {
         initComponents();
     }
     
+    /**
+     * <p>
+     * Añade una venta a este contenedor y modifica los labels con los datos
+     * de esta.</p>
+     *
+     * @param v venta que vamos a guardar
+     * 
+     * @author Eduardo Ruiz Sabajanes
+     */
     public void setVenta(Venta v) {
         venta = v;
         tituloLabel.setText(v.getProducto().getTitulo());

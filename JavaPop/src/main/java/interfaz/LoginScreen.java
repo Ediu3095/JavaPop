@@ -1,9 +1,7 @@
 package interfaz;
 
-import clases.Cliente;
 import static clases.utils.Colecciones.usuarios;
 import static clases.utils.CheckFunctions.*;
-import java.awt.CardLayout;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
@@ -12,8 +10,6 @@ import javax.swing.JOptionPane;
  * @author Eduardo Ruiz Sabajanes
  */
 public class LoginScreen extends javax.swing.JFrame {
-
-    private CardLayout itemCL;
 
     /**
      * Creates new form LogReg
@@ -190,20 +186,21 @@ public class LoginScreen extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "No existe un usuario con el correo indicado, o la contraseña es incorrecta.\nPor favor revise los credenciales e intentelo de nuevo.", "Credenciales no válidos", JOptionPane.INFORMATION_MESSAGE);
         }
     }//GEN-LAST:event_loginButtonActionPerformed
-
+   
     private void registerButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_registerButtonMouseClicked
         new RegisterScreen();
         this.dispose();
     }//GEN-LAST:event_registerButtonMouseClicked
 
+    //<editor-fold defaultstate="collapsed" desc=" Looks of the register labelButton ">
     private void registerButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_registerButtonMouseEntered
         registerButton.setFont(new java.awt.Font("OCR A Extended", 1, 12));
     }//GEN-LAST:event_registerButtonMouseEntered
-
     private void registerButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_registerButtonMouseExited
         registerButton.setFont(new java.awt.Font("OCR A Extended", 0, 12));
     }//GEN-LAST:event_registerButtonMouseExited
-
+    //</editor-fold>
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel banner;
     private javax.swing.Box.Filler filler1;

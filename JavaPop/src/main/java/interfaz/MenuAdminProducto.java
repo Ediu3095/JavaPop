@@ -324,18 +324,18 @@ public class MenuAdminProducto extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    //Botón para volver atrás por lo que no se elimina el producto
+    // <editor-fold defaultstate="collapsed" desc=" Acciones de los botones ">
     private void botonConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonConfirmarActionPerformed
         this.borrar = false;
         this.dispose();
     }//GEN-LAST:event_botonConfirmarActionPerformed
 
-    //Botón para dar de baja un producto
     private void botonBajaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonBajaActionPerformed
         this.borrar = true;
         this.dispose();
     }//GEN-LAST:event_botonBajaActionPerformed
-
+    // </editor-fold>
+    
     /**
      * <p>
      * Esta función comprueba si se ha borrado o no el producto de la ventana
@@ -391,7 +391,6 @@ public class MenuAdminProducto extends javax.swing.JFrame {
         //Colocamos la ventana en el centro.
         menu.toFront();
     }//GEN-LAST:event_formWindowClosed
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel banner;

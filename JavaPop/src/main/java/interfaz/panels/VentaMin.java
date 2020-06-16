@@ -9,22 +9,30 @@ import clases.Venta;
 public class VentaMin extends javax.swing.JPanel {
 
     private Venta venta;
+
     /**
      * Creates new form NewJPanel
      */
     public VentaMin() {
         initComponents();
     }
-    
-    
 
+    /**
+     * <p>
+     * Añade una venta a este contenedor y modifica los labels con los datos de
+     * esta.</p>
+     *
+     * @param v venta que vamos a guardar
+     *
+     * @author Eduardo Ruiz Sabajanes
+     */
     public void setVenta(Venta venta) {
         this.venta = venta;
         this.etiquetaVendedor.setText(venta.getProducto().getVendedor().getNombre());
         this.etiquetaComprador.setText(venta.getComprador().getNombre());
         this.etiquetaFecha.setText(venta.getFechaVenta().getDayOfMonth() + "/" + venta.getFechaVenta().getMonthValue() + "/" + venta.getFechaVenta().getYear());
     }
-    
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -106,7 +114,6 @@ public class VentaMin extends javax.swing.JPanel {
             .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
     }// </editor-fold>//GEN-END:initComponents
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel etiquetaComprador;

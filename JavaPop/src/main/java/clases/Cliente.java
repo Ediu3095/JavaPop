@@ -122,7 +122,10 @@ public class Cliente extends Usuario implements Serializable {
      * @param productos Lista global de productos
      *
      * @author Eduardo Ruiz Sabajanes
+     * 
+     * @deprecated Esta función solo sirve para la versión en consola de Javapop.
      */
+    @Deprecated
     public static void altaProducto(Cliente user, CheckFunctions read, ArrayList<Producto> productos) {
         System.out.println("Introduzca un título del producto(qwerty para volver atras):");
         String titulo = read.getString(">> ");
@@ -230,7 +233,9 @@ public class Cliente extends Usuario implements Serializable {
      *
      * @author Luis Miguel Sobrino Zamora
      *
+     * @deprecated Esta función solo sirve para la versión en consola de Javapop.
      */
+    @Deprecated
     public static void editarProducto(Cliente c, ArrayList<Producto> productosGlobal, CheckFunctions read) {
         ArrayList<Producto> productos = c.getProductos();
         ArrayList<Producto> arr = new ArrayList();

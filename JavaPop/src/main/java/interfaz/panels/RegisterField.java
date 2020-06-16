@@ -128,11 +128,6 @@ public class RegisterField extends javax.swing.JPanel {
             ex.printStackTrace();
         }
         ccField.setFont(new java.awt.Font("OCR A Extended", 0, 12)); // NOI18N
-        ccField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ccFieldActionPerformed(evt);
-            }
-        });
         add(ccField, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 220, 230, -1));
 
         idLabel.setFont(new java.awt.Font("OCR A Extended", 0, 12)); // NOI18N
@@ -153,10 +148,6 @@ public class RegisterField extends javax.swing.JPanel {
         idField.setFont(new java.awt.Font("OCR A Extended", 0, 12)); // NOI18N
         add(idField, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 270, 230, -1));
     }// </editor-fold>//GEN-END:initComponents
-
-    private void ccFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ccFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_ccFieldActionPerformed
 
     public String getEmail() {
         return emailField.getText();

@@ -38,7 +38,10 @@ public class MainOld {
      *
      * @author Eduardo Ruiz Sabajanes
      * @author Luis Miguel Sobrino Zamora
+     * 
+     * @deprecated Esta función solo sirve para la versión en consola de Javapop.
      */
+    @Deprecated
     public static ArrayList register(ArrayList<Cliente> usuarios, CheckFunctions read) {
 
         ArrayList arr = new ArrayList();
@@ -135,7 +138,10 @@ public class MainOld {
      *
      * @author Eduardo Ruiz Sabajanes
      * @author Luis Miguel Sobrino Zamora
+     * 
+     * @deprecated Esta función solo sirve para la versión en consola de Javapop.
      */
+    @Deprecated
     private static ArrayList login(ArrayList<Cliente> usuarios, CheckFunctions read) {
         ArrayList arr = new ArrayList(2);
         arr.add(false);
@@ -188,7 +194,13 @@ public class MainOld {
         return arr;
     }
 
-    public static void old_main(String[] args) {
+    
+    /**
+     * <p> Este es el metodo main de la versión</p>
+     * @deprecated Esta función solo sirve para la versión en consola de Javapop.
+     */
+    @Deprecated
+    public static void oldMain(String[] args) {
 
         // Comienzo del programa: Recuperamos la informacion guardada en los ficheros
         ArrayList<Cliente> usuarios = IOCustomLib.leerClientes();

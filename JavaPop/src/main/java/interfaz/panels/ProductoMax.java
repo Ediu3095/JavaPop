@@ -18,6 +18,15 @@ public class ProductoMax extends javax.swing.JPanel {
         initComponents();
     }
     
+    /**
+     * <p>
+     * Añade un producto a este contenedor y modifica los labels con los datos
+     * de este.</p>
+     *
+     * @param prod producto que vamos a guardar
+     * 
+     * @author Eduardo Ruiz Sabajanes
+     */
     public void setProducto(Producto prod) {
         this.producto = prod;
         titulo.setText(prod.getTitulo());

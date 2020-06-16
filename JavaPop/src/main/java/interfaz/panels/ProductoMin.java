@@ -19,14 +19,21 @@ public class ProductoMin extends javax.swing.JPanel {
         initComponents();
     }
 
+    /**
+     * <p>
+     * Añade un producto a este contenedor y modifica los labels con los datos
+     * de este.</p>
+     *
+     * @param prod producto que vamos a guardar
+     * 
+     * @author Eduardo Ruiz Sabajanes
+     */
     public void setProducto(Producto prod) {
         this.producto = prod;
         this.etiquetaTitulo.setText(prod.getTitulo());
         this.etiquetaPrecio.setText(prod.getPrecio() + " €");
         this.imagen.setIcon(new ImageIcon(new ImageIcon(prod.getFoto()).getImage().getScaledInstance(180, 180,  java.awt.Image.SCALE_DEFAULT)));
     }
-
-    
     
     /**
      * This method is called from within the constructor to initialize the form.
@@ -87,7 +94,6 @@ public class ProductoMin extends javax.swing.JPanel {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel etiquetaPrecio;

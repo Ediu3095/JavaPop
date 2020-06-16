@@ -74,7 +74,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         panelBienvenida = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jButton4 = new javax.swing.JButton();
+        botonCerrarSesion = new javax.swing.JButton();
         panelCompra = new javax.swing.JPanel();
         productoMin1 = new interfaz.panels.ProductoMin();
         productoMin2 = new interfaz.panels.ProductoMin();
@@ -141,7 +141,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         textoSinProductos2 = new javax.swing.JLabel();
         prevPage = new javax.swing.JButton();
         nextPage = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        botonMisVentas = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("JavaPop - Menú principal ");
@@ -269,11 +269,11 @@ public class MenuPrincipal extends javax.swing.JFrame {
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setIcon(new ImageIcon(".\\resources\\logo\\animat-shopping-cart-color.gif"));
 
-        jButton4.setFont(new java.awt.Font("OCR A Extended", 0, 12)); // NOI18N
-        jButton4.setText("Cerrar sesión");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
+        botonCerrarSesion.setFont(new java.awt.Font("OCR A Extended", 0, 12)); // NOI18N
+        botonCerrarSesion.setText("Cerrar sesión");
+        botonCerrarSesion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+                botonCerrarSesionActionPerformed(evt);
             }
         });
 
@@ -288,7 +288,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
                     .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 890, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelBienvenidaLayout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jButton4)))
+                        .addComponent(botonCerrarSesion)))
                 .addContainerGap())
         );
         panelBienvenidaLayout.setVerticalGroup(
@@ -299,7 +299,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 466, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton4)
+                .addComponent(botonCerrarSesion)
                 .addContainerGap())
         );
 
@@ -892,11 +892,11 @@ public class MenuPrincipal extends javax.swing.JFrame {
             }
         });
 
-        jButton3.setFont(new java.awt.Font("OCR A Extended", 0, 12)); // NOI18N
-        jButton3.setText("Mis ventas");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        botonMisVentas.setFont(new java.awt.Font("OCR A Extended", 0, 12)); // NOI18N
+        botonMisVentas.setText("Mis ventas");
+        botonMisVentas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                botonMisVentasActionPerformed(evt);
             }
         });
 
@@ -938,7 +938,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
                             .addComponent(toggleLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 370, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelPerfilLayout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jButton3)
+                        .addComponent(botonMisVentas)
                         .addGap(18, 18, 18)
                         .addComponent(prevPage)
                         .addGap(18, 18, 18)
@@ -1004,7 +1004,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
                 .addGroup(panelPerfilLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(nextPage)
                     .addComponent(prevPage)
-                    .addComponent(jButton3)))
+                    .addComponent(botonMisVentas)))
         );
 
         jPanel1.add(panelPerfil, "Perfil");
@@ -1041,6 +1041,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
+    // <editor-fold defaultstate="collapsed" desc=" Actualizar página menú busqueda ">
     private void busquedaButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_busquedaButtonActionPerformed
         camposCL.show(jPanel1, "Compra");
 
@@ -1166,7 +1167,8 @@ public class MenuPrincipal extends javax.swing.JFrame {
             avPag.setEnabled(true);
         }
     }
-
+    
+    // <editor-fold defaultstate="collapsed" desc=" Pasar página menú busqueda ">
     private void rePagActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rePagActionPerformed
         // Disminuimos la posicion mínima
         posicionMin -= 8;
@@ -1196,11 +1198,14 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private void botonSubirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonSubirActionPerformed
         new MenuNuevoProducto(this);
     }//GEN-LAST:event_botonSubirActionPerformed
-
+    // </editor-fold>    
+    // </editor-fold>
+    
     private void LogoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LogoMouseClicked
         camposCL.show(jPanel1, "Bienvenida");
     }//GEN-LAST:event_LogoMouseClicked
 
+    // <editor-fold defaultstate="collapsed" desc=" Actualizar página mi perfil ">
     private void botonPerfilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonPerfilActionPerformed
         camposCL.show(jPanel1, "Perfil");
 
@@ -1297,6 +1302,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         }
     }
 
+    // <editor-fold defaultstate="collapsed" desc=" efectos visuales labels ">
     private void editarDescripcionMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editarDescripcionMouseEntered
         if (variablesPro.isEnabled()) {
             editarDescripcion.setFont(new java.awt.Font("OCR A Extended", 1, 12));
@@ -1373,7 +1379,9 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private void editarDniMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editarDniMouseExited
         editarDni.setFont(new java.awt.Font("OCR A Extended", 0, 12));
     }//GEN-LAST:event_editarDniMouseExited
-
+    // </editor-fold>
+    
+    // <editor-fold defaultstate="collapsed" desc=" pasar pagina mis productos ">
     private void nextPageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nextPageActionPerformed
         // Aumentamos la posicion mínima
         posicionMin += 4;
@@ -1395,7 +1403,9 @@ public class MenuPrincipal extends javax.swing.JFrame {
         // Activa o desactiva los botones para cambiar páginas de productos, según sea necesario
         lockUnlockBotonesMisProductos();
     }//GEN-LAST:event_prevPageActionPerformed
-
+    // </editor-fold>
+    
+    // <editor-fold defaultstate="collapsed" desc=" eventos editar datos usuario ">
     private void editarCorreoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editarCorreoMouseClicked
         if (correoField.isEnabled()) {
             // Este campo deja de ser editable
@@ -1581,7 +1591,8 @@ public class MenuPrincipal extends javax.swing.JFrame {
             editarDni.setText("guardar");
         }
     }//GEN-LAST:event_editarDniMouseClicked
-
+    // </editor-fold>
+    
     private void miProductoMin1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_miProductoMin1MouseClicked
         new MenuEditarProducto(this, miProductoMin1);
         this.setEnabled(false);
@@ -1601,7 +1612,9 @@ public class MenuPrincipal extends javax.swing.JFrame {
         new MenuEditarProducto(this, miProductoMin4);
         this.setEnabled(false);
     }//GEN-LAST:event_miProductoMin4MouseClicked
-
+    // </editor-fold>
+    
+    // <editor-fold defaultstate="collapsed" desc=" botones menú comprar ">
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         int i = JOptionPane.showConfirmDialog(this, "¿Seguro que desea efectuar la compra?");
         if (i == JOptionPane.YES_OPTION) {
@@ -1620,7 +1633,9 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         camposCL.show(jPanel1, "Compra");
     }//GEN-LAST:event_jButton2ActionPerformed
-
+    // </editor-fold>
+    
+    // <editor-fold defaultstate="collapsed" desc=" acciones selecionar producto ">
     private void productoMin1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_productoMin1MouseClicked
         camposCL.show(jPanel1, "Producto");
         productoMax1.setProducto(productoMin1.producto);
@@ -1660,7 +1675,9 @@ public class MenuPrincipal extends javax.swing.JFrame {
         camposCL.show(jPanel1, "Producto");
         productoMax1.setProducto(productoMin8.producto);
     }//GEN-LAST:event_productoMin8MouseClicked
+    // </editor-fold>
 
+    // <editor-fold defaultstate="collapsed" desc=" eventos editar datos usuario pro ">
     private void toggleProActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_toggleProActionPerformed
         if (togglePro.isSelected()) {
             int i = JOptionPane.showConfirmDialog(this, "¿Seguro que desea hacerse pro?\nLe recordamos que le costará 20€.");
@@ -1776,16 +1793,17 @@ public class MenuPrincipal extends javax.swing.JFrame {
             }
         }
     }//GEN-LAST:event_editarWebMouseClicked
-
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    // </editor-fold>
+    
+    private void botonMisVentasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonMisVentasActionPerformed
         new MenuVentas(this);
-    }//GEN-LAST:event_jButton3ActionPerformed
+    }//GEN-LAST:event_botonMisVentasActionPerformed
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+    private void botonCerrarSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCerrarSesionActionPerformed
         this.dispose();
         new LoginScreen();
-    }//GEN-LAST:event_jButton4ActionPerformed
-
+    }//GEN-LAST:event_botonCerrarSesionActionPerformed
+    
     private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
         IOCustomLib.guardarClientes(usuarios);
         IOCustomLib.guardarProductos(productos);
@@ -1802,6 +1820,8 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel Logo;
     private javax.swing.JButton avPag;
     private javax.swing.JPanel banner;
+    private javax.swing.JButton botonCerrarSesion;
+    private javax.swing.JButton botonMisVentas;
     private javax.swing.JButton botonPerfil;
     private javax.swing.JButton botonSubir;
     private javax.swing.JButton busquedaButton;
@@ -1846,8 +1866,6 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private javax.swing.JPanel imagen;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;

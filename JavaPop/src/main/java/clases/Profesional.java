@@ -31,7 +31,10 @@ public final class Profesional extends Cliente implements Serializable {
      * usuario
      *
      * @author Eduardo Ruiz Sabajanes
+     * 
+     * @deprecated Esta función solo sirve para la versión en consola de Javapop.
      */
+    @Deprecated
     public Profesional(Cliente c, CheckFunctions read) {
         super(c.correo, c.clave, c.dni, c.nombre, c.ccpp, c.ttcc);
         System.out.println("Introduzca una descripción de su cuenta: ");
