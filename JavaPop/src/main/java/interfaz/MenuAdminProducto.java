@@ -39,6 +39,10 @@ public class MenuAdminProducto extends javax.swing.JFrame {
      */
     public MenuAdminProducto(MenuAdmin menu, ProductoMin container) {
         initComponents();
+        
+        // setup icon
+        ImageIcon img = new ImageIcon(".\\resources\\logo\\IconoJavaPop2.png");
+        super.setIconImage(img.getImage());
 
         //Iniciamos los componentes
         this.producto = container.producto;
@@ -112,6 +116,7 @@ public class MenuAdminProducto extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Javapop - Administrar producto");
+        setResizable(false);
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowClosed(java.awt.event.WindowEvent evt) {
                 formWindowClosed(evt);
@@ -239,7 +244,6 @@ public class MenuAdminProducto extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(nombreLabel)
-                            .addComponent(fieldNombre)
                             .addComponent(descripcionLabel)
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 250, Short.MAX_VALUE)
                             .addComponent(fieldPrecio)
@@ -249,6 +253,7 @@ public class MenuAdminProducto extends javax.swing.JFrame {
                             .addComponent(categoriaLabel)
                             .addComponent(estadoLabel)
                             .addComponent(jLabel1)
+                            .addComponent(fieldNombre)
                             .addComponent(jTextField1))
                         .addGap(18, 18, 18)
                         .addComponent(filler4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)

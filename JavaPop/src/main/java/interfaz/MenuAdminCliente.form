@@ -103,8 +103,10 @@
               <Group type="102" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" alignment="0" attributes="0">
-                          <Group type="103" groupAlignment="1" attributes="0">
+                      <Component id="ccField" alignment="0" pref="502" max="32767" attributes="0"/>
+                      <Component id="correoField" alignment="0" max="32767" attributes="0"/>
+                      <Group type="102" attributes="0">
+                          <Group type="103" groupAlignment="0" attributes="0">
                               <Component id="correoLabel" alignment="0" min="-2" max="-2" attributes="0"/>
                               <Component id="ccppLabel" alignment="0" min="-2" max="-2" attributes="0"/>
                               <Component id="claveLabel" alignment="0" min="-2" max="-2" attributes="0"/>
@@ -114,12 +116,10 @@
                           </Group>
                           <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                       </Group>
-                      <Component id="correoField" alignment="0" max="32767" attributes="0"/>
                       <Component id="claveField" alignment="0" max="32767" attributes="0"/>
-                      <Component id="dniField" alignment="0" max="32767" attributes="0"/>
-                      <Component id="ccField" alignment="0" pref="502" max="32767" attributes="0"/>
-                      <Component id="ccppField" alignment="0" max="32767" attributes="0"/>
                       <Component id="nombreField" alignment="1" max="32767" attributes="0"/>
+                      <Component id="ccppField" alignment="0" max="32767" attributes="0"/>
+                      <Component id="dniField" alignment="0" max="32767" attributes="0"/>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
@@ -303,10 +303,8 @@
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="telefonoField" alignment="0" max="32767" attributes="0"/>
-                          <Component id="horarioField" alignment="0" max="32767" attributes="0"/>
                           <Component id="descripciónScroll" alignment="0" pref="350" max="32767" attributes="0"/>
-                          <Component id="webField" alignment="0" max="32767" attributes="0"/>
+                          <Component id="horarioField" alignment="0" max="32767" attributes="0"/>
                           <Group type="102" attributes="0">
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Component id="descripcionLabel" alignment="0" min="-2" max="-2" attributes="0"/>
@@ -316,6 +314,8 @@
                               </Group>
                               <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                           </Group>
+                          <Component id="telefonoField" alignment="0" max="32767" attributes="0"/>
+                          <Component id="webField" alignment="0" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>

@@ -28,6 +28,7 @@ public class VentaMin extends javax.swing.JPanel {
      */
     public void setVenta(Venta venta) {
         this.venta = venta;
+        this.tituloLabel.setText(venta.getProducto().getTitulo());
         this.etiquetaVendedor.setText(venta.getProducto().getVendedor().getNombre());
         this.etiquetaComprador.setText(venta.getComprador().getNombre());
         this.etiquetaFecha.setText(venta.getFechaVenta().getDayOfMonth() + "/" + venta.getFechaVenta().getMonthValue() + "/" + venta.getFechaVenta().getYear());

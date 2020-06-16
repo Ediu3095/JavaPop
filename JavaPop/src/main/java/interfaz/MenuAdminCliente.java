@@ -32,6 +32,10 @@ public class MenuAdminCliente extends javax.swing.JFrame {
     public MenuAdminCliente(MenuAdmin menu, Cliente user) {
         initComponents();
 
+        // setup icon
+        ImageIcon img = new ImageIcon(".\\resources\\logo\\IconoJavaPop2.png");
+        super.setIconImage(img.getImage());
+        
         this.borrar = false;
         this.user = user;
         this.menu = menu;
@@ -233,17 +237,17 @@ public class MenuAdminCliente extends javax.swing.JFrame {
             .addGroup(variablesProLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(variablesProLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(telefonoField)
-                    .addComponent(horarioField)
                     .addComponent(descripciónScroll, javax.swing.GroupLayout.DEFAULT_SIZE, 350, Short.MAX_VALUE)
-                    .addComponent(webField)
+                    .addComponent(horarioField)
                     .addGroup(variablesProLayout.createSequentialGroup()
                         .addGroup(variablesProLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(descripcionLabel)
                             .addComponent(horarioLabel)
                             .addComponent(webLabel)
                             .addComponent(telefonoLabel))
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(telefonoField)
+                    .addComponent(webField))
                 .addContainerGap())
         );
         variablesProLayout.setVerticalGroup(
@@ -295,21 +299,21 @@ public class MenuAdminCliente extends javax.swing.JFrame {
             .addGroup(panelPerfilLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(panelPerfilLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(panelPerfilLayout.createSequentialGroup()
-                        .addGroup(panelPerfilLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(correoLabel, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(ccppLabel, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(claveLabel, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(editarNombre, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(ccLabel, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(dniLabel, javax.swing.GroupLayout.Alignment.LEADING))
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(correoField)
-                    .addComponent(claveField)
-                    .addComponent(dniField)
                     .addComponent(ccField, javax.swing.GroupLayout.DEFAULT_SIZE, 502, Short.MAX_VALUE)
+                    .addComponent(correoField)
+                    .addGroup(panelPerfilLayout.createSequentialGroup()
+                        .addGroup(panelPerfilLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(correoLabel)
+                            .addComponent(ccppLabel)
+                            .addComponent(claveLabel)
+                            .addComponent(editarNombre)
+                            .addComponent(ccLabel)
+                            .addComponent(dniLabel))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(claveField)
+                    .addComponent(nombreField, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(ccppField)
-                    .addComponent(nombreField, javax.swing.GroupLayout.Alignment.TRAILING))
+                    .addComponent(dniField))
                 .addGap(18, 18, 18)
                 .addGroup(panelPerfilLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(panelPerfilLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
