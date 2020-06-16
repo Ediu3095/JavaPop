@@ -14,7 +14,8 @@ import javax.swing.JOptionPane;
 
 /**
  *
- * @author TheElctrMsc_Gaming
+ * @author Luis Miguel Sobrino Zamora
+ * @author Eduardo Ruiz Sabajanes
  */
 public class RegisterScreen extends javax.swing.JFrame {
 

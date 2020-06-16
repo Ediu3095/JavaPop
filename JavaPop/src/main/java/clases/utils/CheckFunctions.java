@@ -62,6 +62,17 @@ public class CheckFunctions {
         return matcher.matches();
     }
 
+    /**
+     * <p>
+     * Recibe un string y comprueba que solo tiene letras y numeros y que 
+     * cumple el formato de dni (8 numeros seguidos de una letra).</p>
+     *
+     * @param str_ el string que se va a comprobar.
+     *
+     * @return verdadero si cumple el formato y falso si no lo hace.
+     *
+     * @author Luis Miguel Sobrino Zamora
+     */
     public static boolean checkDni(String str_) {
         char[] upper = "TRWAGMYFPDXBNJZSQVHLCKE".toCharArray();
         Pattern pattern = Pattern.compile("[0-9]{7,8}[A-Z]");
@@ -80,6 +91,17 @@ public class CheckFunctions {
         return false;
     }
 
+    /**
+     * <p>
+     * Recibe un string y comprueba que solo contenga numeros y 
+     * de longitud 5.</p>
+     *
+     * @param str_ el string va a ser comprobado.
+     *
+     * @return verdadero si cumple el formato y falso si no lo hace.
+     *
+     * @author Luis Miguel Sobrino Zamora
+     */
     public static boolean checkCodigoPostal(String ccpp) {
         Pattern pattern = Pattern.compile("[0-9]{5}");
         Matcher matcher_;
@@ -87,6 +109,17 @@ public class CheckFunctions {
         return matcher_.matches();
     }
 
+    /**
+     * <p>
+     * Recibe un string y comprueba en 4 modulos de 4 caracteres
+     * cada uno que cumple el formato de tarjeta de credito(todo numeros).</p>
+     *
+     * @param str_ el string que se va a comprobar.
+     *
+     * @return verdadero si cumple el formato y falso si no lo hace.
+     *
+     * @author Luis Miguel Sobrino Zamora
+     */
     public static boolean checkTarjetaCredito(String ttcc) {
         Pattern pattern = Pattern.compile("[0-9]{4}[-][0-9]{4}[-][0-9]{4}[-][0-9]{4}");
         Matcher matcher_;

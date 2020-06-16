@@ -17,7 +17,7 @@ import javax.swing.JOptionPane;
 
 /**
  *
- * @author TheElctrMsc_Gaming
+ * @author Eduardo Ruiz Sabajanes
  */
 public class MenuVentas extends javax.swing.JFrame {
     

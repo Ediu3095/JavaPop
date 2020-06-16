@@ -149,12 +149,40 @@ public class Cliente extends Usuario implements Serializable {
         }
     }
 
+    /**
+     * <p>
+     * Esta función comprueba que el producto no se encuentre en la lista 
+     * de productos, sino lo esta lo introduce</p>
+     *
+     * <p>
+     * Cuando un cliente da de alta un producto, este se introduce
+     * en la lista de productos en venta</p>
+     *
+     * @param p Es una instancia de la clase Productos que se pretende introducir a una lista de estos.
+     *
+     * @author Eduardo Ruiz Sabajanes
+     * 
+     */
     public void introducirProducto(Producto p) {
         if (!this.productos.contains(p)) {
             this.productos.add(p);
         }
     }
 
+    /**
+     * <p>
+     * Esta función elimina el producto de la lista de productos, 
+     * recogiendo los posibles errores que puedan surgir.</p>
+     *
+     * <p>
+     * Cuando un cliente o el administrador da de baja un producto, este se 
+     * retira de la lista de productos en venta</p> 
+     *
+     * @param p Es una instancia de la clase Productos que se pretende eliminar de la lista de estos.
+     *
+     * @author Eduardo Ruiz Sabajanes
+     * 
+     */
     public void sacarProducto(Producto p) {
         try {
             this.productos.remove(p);

@@ -9,9 +9,10 @@ import java.awt.CardLayout;
 import java.util.ArrayList;
 
 /**
- *
+ * @author Luis Miguel Sobrino Zamora
  * @author Eduardo Ruiz Sabajanes
  */
+
 public class MenuAdmin extends javax.swing.JFrame {
 
     private CardLayout camposCL;
@@ -113,9 +114,6 @@ public class MenuAdmin extends javax.swing.JFrame {
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowClosed(java.awt.event.WindowEvent evt) {
                 formWindowClosed(evt);
-            }
-            public void windowClosing(java.awt.event.WindowEvent evt) {
-                formWindowClosing(evt);
             }
         });
 
@@ -458,6 +456,21 @@ public class MenuAdmin extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
+    
+    /**
+     * <p>
+     * Esta funcion proporciona al administrador la posibilidad de buscar en todas
+     * sus funciones y en el caso de consultar productos, filtrarlos por categoría. </p>
+     *
+     * <p>
+     *Se solicitará al administrador las palabras clave que desee introducir para
+     * realizar su busqueda, filtrando los resultados por coicidencias. </p>
+     * 
+     * @param evt Evento recogido. 
+     *
+     * @author Eduardo Ruiz Sabajanes
+     * 
+     */
     private void busquedaButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_busquedaButtonActionPerformed
         int panel = comboBoxFuncion.getSelectedIndex();
         switch (panel) {
@@ -469,17 +482,12 @@ public class MenuAdmin extends javax.swing.JFrame {
                         usuariosFiltrado.add(usuarios.get(i));
                     }
                 }
-                
-                posicionMin = 0;
-                
+                posicionMin = 0;              
                 displayUsuarios();
                 lockUnlockBotonesUsuarios();
                 break;
             case 1:
-                productosFiltrado.clear();
-                
-                
-                
+                productosFiltrado.clear();  
                 posicionMin = 0;
                 
                 displayProductos();
@@ -502,6 +510,20 @@ public class MenuAdmin extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_busquedaButtonActionPerformed
 
+    /**
+     * <p>
+     * Esta funcion proporciona al administrador la posibilidad de elegir entre todas
+     * sus funciones. </p>
+     *
+     * <p>
+     * Se desplegará una lista de funciones sobre la cual el administrador deberá elegir 
+     * cual desea efectuar y se cambiará a la pantalla correspondiente </p>
+     * 
+     * @param evt Evento recogido. 
+     *
+     * @author Luis Miguel Sobrino Zamora
+     * 
+     */
     private void comboBoxFuncionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboBoxFuncionActionPerformed
         int panel = comboBoxFuncion.getSelectedIndex();
         switch (panel) {
@@ -525,13 +547,23 @@ public class MenuAdmin extends javax.swing.JFrame {
                 break;
         }
     }//GEN-LAST:event_comboBoxFuncionActionPerformed
-    
+    /**
+     * <p>
+     * Esta funcion sirve para guardar todos los cambios realizados en productos, usuarios o ventas
+     * realizados por el administrador al cerrar la venta. </p>
+     *
+     * @param evt Evento recogido. 
+     *
+     * @author Luis Miguel Sobrino Zamora
+     * 
+     */
     private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
         IOCustomLib.guardarClientes(usuarios);
         IOCustomLib.guardarProductos(productos);
         IOCustomLib.guardarVentas(ventas);
     }//GEN-LAST:event_formWindowClosed
 
+    //Abrimos el producto para ver más caracteristicas o eliminarlo
     private void productoMin1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_productoMin1MouseClicked
         new MenuAdminProducto(this, productoMin1);
     }//GEN-LAST:event_productoMin1MouseClicked
@@ -557,6 +589,19 @@ public class MenuAdmin extends javax.swing.JFrame {
         new MenuAdminProducto(this, productoMin8);
     }//GEN-LAST:event_productoMin8MouseClicked
 
+    /**
+     * <p>
+     * Esta función permite al administrador retroceder de página en el menú de los productos. </p>
+     *
+     * <p>
+     * Se harán invisibles las casillas donde se muestran los productos para cambiarlos por
+     * los 8 anteriores y se actualiza la página</p>
+     * 
+     * @param evt Evento recogido. 
+     *
+     * @author Eduardo Ruiz Sabajanes
+     * 
+     */
     private void rePagProductosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rePagProductosActionPerformed
         // Hacemos los displays de los productos invisibles
         productoMin1.setVisible(false);
@@ -581,6 +626,19 @@ public class MenuAdmin extends javax.swing.JFrame {
         etiquetaPagina.setText("Página " + (posicionMin / 8 + 1) + " de " + (productosFiltrado.size() / 8 + 1));
     }//GEN-LAST:event_rePagProductosActionPerformed
 
+    /**
+     * <p>
+     * Esta función permite al administrador avanzar de página en el menú de los productos. </p>
+     *
+     * <p>
+     * Se harán invisibles las casillas donde se muestran los productos para cambiarlos por
+     * los 8 posteriores y se actualiza la página</p>
+     * 
+     * @param evt Evento recogido. 
+     *
+     * @author Eduardo Ruiz Sabajanes
+     * 
+     */
     private void avPagProductosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_avPagProductosActionPerformed
         // Hacemos los displays de los productos invisibles
         productoMin1.setVisible(false);
@@ -604,13 +662,23 @@ public class MenuAdmin extends javax.swing.JFrame {
         // Cambia el texto de la etiqueta que indica en que página estamos
         etiquetaPagina.setText("Página " + (posicionMin / 8 + 1) + " de " + (productosFiltrado.size() / 8 + 1));
     }//GEN-LAST:event_avPagProductosActionPerformed
-
-    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
-        IOCustomLib.guardarClientes(usuarios);
-        IOCustomLib.guardarProductos(productos);
-        IOCustomLib.guardarVentas(ventas);
-    }//GEN-LAST:event_formWindowClosing
     
+    /**
+     * <p>
+     * Esta funcion recoge cuantos usuarios va a haber en la nueva página, mostrando y ocultando los 
+     * que sean necesarios, así como adjudicando cada usuario a su correspondiente casilla.
+     * </p>
+     *
+     * <p>
+     * Se harán invisibles las casillas donde no haya usuario y se mostrarán y asignarán las que si 
+     * lo tengan.</p>
+     * 
+     * @param evt Evento recogido. 
+     *
+     * @author Eduardo Ruiz Sabajanes
+     * @author Luis Miguel Sobrino Zamora
+     * 
+     */
     public final void displayUsuarios() {
         // escondemos todos los usuarios
         usuarioMin1.setVisible(false);
@@ -672,7 +740,20 @@ public class MenuAdmin extends javax.swing.JFrame {
         
         etiquetaPagina.setText("Página " + (posicionMin / 8 + 1) + " de " + (usuariosFiltrado.size() / 8 + 1));
     }
-    
+    /**
+     * <p>
+     * Esta funcion comprueba si hay más páginas de usuarios, tanto antes como después 
+     * para que, en caso de que no las haya, bloquear los respectivos botones.
+     * </p>
+     *
+     * <p>
+     * Se bloquearán los botones de las direcciones a las que no se pueda acceder. </p>
+     * 
+     * @param evt Evento recogido. 
+     *
+     * @author Eduardo Ruiz Sabajanes
+     * 
+     */
     public final void lockUnlockBotonesUsuarios() {
         if (posicionMin - 8 < 0) {
             rePagUsuarios.setEnabled(false);
@@ -687,6 +768,22 @@ public class MenuAdmin extends javax.swing.JFrame {
         }
     } // Hay que cambiarlo
     
+    /**
+     * <p>
+     * Esta funcion recoge cuantos productos va a haber en la nueva página, mostrando y ocultando los 
+     * que sean necesarios, así como adjudicando cada producto a su correspondiente casilla.
+     * </p>
+     *
+     * <p>
+     * Se harán invisibles las casillas donde no haya producto y se mostrarán y asignarán las que si 
+     * lo tengan.</p>
+     * 
+     * @param evt Evento recogido. 
+     *
+     * @author Eduardo Ruiz Sabajanes
+     * @author Luis Miguel Sobrino Zamora
+     * 
+     */
     public final void displayProductos() {
         // escondemos todos los productos
         productoMin1.setVisible(false);
@@ -749,6 +846,20 @@ public class MenuAdmin extends javax.swing.JFrame {
         etiquetaPagina.setText("Página " + (posicionMin / 8 + 1) + " de " + (productosFiltrado.size() / 8 + 1));
     }
     
+    /**
+     * <p>
+     * Esta funcion comprueba si hay más páginas de productos, tanto antes como después 
+     * para que, en caso de que no las haya, bloquear los respectivos botones.
+     * </p>
+     *
+     * <p>
+     * Se bloquearán los botones de las direcciones a las que no se pueda acceder. </p>
+     * 
+     * @param evt Evento recogido. 
+     *
+     * @author Eduardo Ruiz Sabajanes
+     * 
+     */
     public final void lockUnlockBotonesProductos() {
         if (posicionMin - 8 < 0) {
             rePagProductos.setEnabled(false);
@@ -763,6 +874,22 @@ public class MenuAdmin extends javax.swing.JFrame {
         }
     } // Hay que cambiarlo
 
+    /**
+     * <p>
+     * Esta funcion recoge cuantas ventas va a haber en la nueva página, mostrando y ocultando los 
+     * que sean necesarias, así como adjudicando cada venta a su correspondiente casilla.
+     * </p>
+     *
+     * <p>
+     * Se harán invisibles las casillas donde no haya una venta y se mostrarán y asignarán las que si 
+     * lo tengan.</p>
+     * 
+     * @param evt Evento recogido. 
+     *
+     * @author Eduardo Ruiz Sabajanes
+     * @author Luis Miguel Sobrino Zamora
+     * 
+     */
     public final void displayVentas() {
         // escondemos todas las ventas
         ventaMin1.setVisible(false);
@@ -823,6 +950,20 @@ public class MenuAdmin extends javax.swing.JFrame {
         }
     }
     
+    /**
+     * <p>
+     * Esta funcion comprueba si hay más páginas de ventas, tanto antes como después 
+     * para que, en caso de que no las haya, bloquear los respectivos botones.
+     * </p>
+     *
+     * <p>
+     * Se bloquearán los botones de las direcciones a las que no se pueda acceder. </p>
+     * 
+     * @param evt Evento recogido. 
+     *
+     * @author Eduardo Ruiz Sabajanes
+     * 
+     */
     public final void lockUnlockBotonesVentas() {
         if (posicionMin - 8 < 0) {
             rePagVentas.setEnabled(false);

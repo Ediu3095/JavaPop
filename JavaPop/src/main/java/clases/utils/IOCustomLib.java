@@ -190,7 +190,7 @@ public class IOCustomLib {
      * @return Un <b>ArrayList</b> con todos las ventas almacenadas en el
      * fichero <b>ventas.dat</b>
      *
-     * @author Luis Miguel Sobrino
+     * @author Luis Miguel Sobrino Zamora
      */
     public static ArrayList<Venta> leerVentas() {
         ArrayList<Venta> ventas = new ArrayList();
