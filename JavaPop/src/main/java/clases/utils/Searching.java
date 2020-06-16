@@ -128,6 +128,21 @@ public class Searching {
             }
         }
     }
+    
+    public static void updateTags(Producto prod, String[] kWords) {
+        String[] tWords = prod.getTitulo().split(" ");
+
+        prod.setMatchDeg(0);
+        prod.setLejania(0);
+
+        for (int i = 0; i < tWords.length; i++) {
+            for (int j = 0; j < kWords.length; j++) {
+                if (tWords[i].toLowerCase().equals(kWords[j].toLowerCase())) {
+                    prod.setMatchDeg(prod.getMatchDeg() + 1);
+                }
+            }
+        }
+    }
 
     /**
      * <p>

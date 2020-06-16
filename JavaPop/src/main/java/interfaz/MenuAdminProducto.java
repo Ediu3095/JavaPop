@@ -19,7 +19,7 @@ import javax.swing.ImageIcon;
  * @author luism
  */
 public class MenuAdminProducto extends javax.swing.JFrame {
-    
+
     private boolean borrar;
     private final String imageAddress;
     private final Cliente user;
@@ -29,26 +29,26 @@ public class MenuAdminProducto extends javax.swing.JFrame {
 
     /**
      * Creates new form MenuAdminProducto
+     *
      * @param menu
      * @param container
      */
-    public MenuAdminProducto(MenuAdmin menu, ProductoMin container) {        
-        initComponents();    
-        
+    public MenuAdminProducto(MenuAdmin menu, ProductoMin container) {
+        initComponents();
+
         this.producto = container.producto;
         this.productoOriginal = container.producto;
         this.user = this.producto.getVendedor();
-        
+
         // Eliminamos el producto de los productos globales
         productos.remove(this.producto);
-        
+        menu.productosFiltrado.remove(this.producto);
+
         // Eliminamos el producto de los productos del usuario
         usuarios.remove(this.user);
-        System.out.println("\n\n\n\nLista 1:\n" + this.user.getProductos());
         this.user.getProductos().remove(this.producto);
-        System.out.println("\n\n\n\nLista 2:\n" + this.user.getProductos());
         usuarios.add(this.user);
-        
+
         fieldNombre.setText(this.producto.getTitulo());
         fieldDescripcion.setText(this.producto.getDescripcion());
         fieldPrecio.setText("" + this.producto.getPrecio());
@@ -57,12 +57,13 @@ public class MenuAdminProducto extends javax.swing.JFrame {
         urgencia.setSelected(this.producto.isUrgente());
         imageAddress = this.producto.getFoto();
         icono.setIcon(new ImageIcon(new ImageIcon(imageAddress).getImage().getScaledInstance(248, 248, Image.SCALE_DEFAULT)));
-        
+        jTextField1.setText(this.producto.getVendedor().getCorreo());
+
         this.borrar = false;
-        
+
         this.menu = menu;
         this.menu.setEnabled(false);
-        
+
         super.setVisible(true);
     }
 
@@ -98,6 +99,8 @@ public class MenuAdminProducto extends javax.swing.JFrame {
         urgencia = new javax.swing.JCheckBox();
         botonConfirmar = new javax.swing.JButton();
         botonBaja = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        jTextField1 = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -180,7 +183,6 @@ public class MenuAdminProducto extends javax.swing.JFrame {
         categoriaLabel.setFont(new java.awt.Font("OCR A Extended", 0, 12)); // NOI18N
         categoriaLabel.setText("Categoría:");
 
-        categoriaBox.setEditable(true);
         categoriaBox.setFont(new java.awt.Font("OCR A Extended", 0, 12)); // NOI18N
         categoriaBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Moda y acesorios", "Tv, audio y foto", "Moviles y telefónica", "Informática y electrónica", "Consolas y videojuegos", "Deporte y ocio" }));
         categoriaBox.setEnabled(false);
@@ -188,7 +190,6 @@ public class MenuAdminProducto extends javax.swing.JFrame {
         estadoLabel.setFont(new java.awt.Font("OCR A Extended", 0, 12)); // NOI18N
         estadoLabel.setText("Estado:");
 
-        estadoBox.setEditable(true);
         estadoBox.setFont(new java.awt.Font("OCR A Extended", 0, 12)); // NOI18N
         estadoBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Nuevo", "Como nuevo", "Bueno", "Aceptable", "Regular" }));
         estadoBox.setEnabled(false);
@@ -211,6 +212,11 @@ public class MenuAdminProducto extends javax.swing.JFrame {
             }
         });
 
+        jLabel1.setFont(new java.awt.Font("OCR A Extended", 0, 12)); // NOI18N
+        jLabel1.setText("Vendedor:");
+
+        jTextField1.setEnabled(false);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -223,16 +229,18 @@ public class MenuAdminProducto extends javax.swing.JFrame {
                     .addComponent(filler3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(estadoLabel)
-                            .addComponent(estadoBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(nombreLabel)
                             .addComponent(fieldNombre)
                             .addComponent(descripcionLabel)
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 250, Short.MAX_VALUE)
-                            .addComponent(precioLabel)
                             .addComponent(fieldPrecio)
+                            .addComponent(categoriaBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(estadoBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(precioLabel)
                             .addComponent(categoriaLabel)
-                            .addComponent(categoriaBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(estadoLabel)
+                            .addComponent(jLabel1)
+                            .addComponent(jTextField1))
                         .addGap(18, 18, 18)
                         .addComponent(filler4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
@@ -268,22 +276,26 @@ public class MenuAdminProducto extends javax.swing.JFrame {
                                 .addComponent(nombreLabel)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(fieldNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(descripcionLabel)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(precioLabel)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(fieldPrecio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(categoriaLabel)
-                                .addGap(12, 12, 12)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(categoriaBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(estadoLabel)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(estadoBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jLabel1)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(0, 0, Short.MAX_VALUE))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(fotoLabel)
@@ -315,10 +327,11 @@ public class MenuAdminProducto extends javax.swing.JFrame {
 
     private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
         menu.setEnabled(true);
-        
+
         if (!borrar) {
             user.introducirProducto(this.producto);
             productos.add(this.producto);
+            menu.productosFiltrado.add(this.producto);
             usuarios.remove(this.user);
             for (int i = 0; i < this.user.getVentasNuevas().size(); i++) {
                 if (this.user.getVentasNuevas().get(i).getProducto().equals(this.productoOriginal) || this.user.getVentasNuevas().get(i).getProducto().equals(this.producto)) {
@@ -335,6 +348,7 @@ public class MenuAdminProducto extends javax.swing.JFrame {
                 }
             }
             usuarios.add(this.user);
+            productos.remove(this.producto);
         }
 
         menu.productoMin1.setVisible(false);
@@ -345,15 +359,14 @@ public class MenuAdminProducto extends javax.swing.JFrame {
         menu.productoMin6.setVisible(false);
         menu.productoMin7.setVisible(false);
         menu.productoMin8.setVisible(false);
+
         menu.posicionMin = 0;
-
         menu.displayProductos();
-
         menu.lockUnlockBotonesProductos();
 
         menu.toFront();
     }//GEN-LAST:event_formWindowClosed
-    
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel banner;
@@ -374,7 +387,9 @@ public class MenuAdminProducto extends javax.swing.JFrame {
     private javax.swing.JPanel foto;
     private javax.swing.JLabel fotoLabel;
     private javax.swing.JLabel icono;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTextField jTextField1;
     private javax.swing.JLabel logo;
     private javax.swing.JLabel nombreLabel;
     private javax.swing.JLabel precioLabel;

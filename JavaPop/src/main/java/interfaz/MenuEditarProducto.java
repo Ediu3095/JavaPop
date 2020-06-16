@@ -298,7 +298,6 @@ public class MenuEditarProducto extends javax.swing.JFrame {
             }
         });
 
-        categoriaBox.setEditable(true);
         categoriaBox.setFont(new java.awt.Font("OCR A Extended", 0, 12)); // NOI18N
         categoriaBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Moda y acesorios", "Tv, audio y foto", "Moviles y telefónica", "Informática y electrónica", "Consolas y videojuegos", "Deporte y ocio" }));
         categoriaBox.setEnabled(false);
@@ -322,16 +321,15 @@ public class MenuEditarProducto extends javax.swing.JFrame {
             }
         });
 
-        estadoBox.setEditable(true);
         estadoBox.setFont(new java.awt.Font("OCR A Extended", 0, 12)); // NOI18N
         estadoBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Nuevo", "Como nuevo", "Bueno", "Aceptable", "Regular" }));
         estadoBox.setEnabled(false);
 
         urgencia.setFont(new java.awt.Font("OCR A Extended", 0, 12)); // NOI18N
         urgencia.setText("Urgente (Cuesta 5€)");
-        urgencia.addChangeListener(new javax.swing.event.ChangeListener() {
-            public void stateChanged(javax.swing.event.ChangeEvent evt) {
-                urgenciaStateChanged(evt);
+        urgencia.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                urgenciaActionPerformed(evt);
             }
         });
 
@@ -643,10 +641,6 @@ public class MenuEditarProducto extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_editarFotoMouseClicked
 
-    private void urgenciaStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_urgenciaStateChanged
-        this.producto.toggleUrgente();
-    }//GEN-LAST:event_urgenciaStateChanged
-
     private void botonBajaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonBajaActionPerformed
         this.borrar = true;
         this.dispose();
@@ -689,6 +683,21 @@ public class MenuEditarProducto extends javax.swing.JFrame {
 
         menu.toFront();
     }//GEN-LAST:event_formWindowClosed
+
+    private void urgenciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_urgenciaActionPerformed
+        if (urgencia.isSelected()) {
+            int i = JOptionPane.showConfirmDialog(this, "¿Seguro que quiere hacer el producto urgente?\nEsto le supondra un gasto de 5€.");
+            if (i == JOptionPane.YES_OPTION) {
+                urgencia.setSelected(true);
+                this.producto.toggleUrgente();
+            } else {
+                urgencia.setSelected(false);
+            }
+        } else {
+            urgencia.setSelected(false);
+            this.producto.toggleUrgente();
+        }
+    }//GEN-LAST:event_urgenciaActionPerformed
 
     private static String randomSequence() {
         String str = "";
