@@ -1,3 +1,8 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package interfaz;
 
 import clases.Producto;
@@ -23,7 +28,7 @@ import javax.swing.filechooser.FileNameExtensionFilter;
 
 /**
  *
- * @author Eduardo Ruiz Sabajanes
+ * @author TheElctrMsc_Gaming
  */
 public class MenuEditarProducto extends javax.swing.JFrame {
 
@@ -37,18 +42,10 @@ public class MenuEditarProducto extends javax.swing.JFrame {
     private boolean borrar;
 
     /**
-     * <p>
-     * Esta funcion genera otra ventana donde el usuario podrá comprobar más datos del
-     * producto, editarlo o eliminarlo si así lo desea. </p>
+     * Creates new form MenuEditarProducto
      *
-     * <p>
-     * Se creará una ventana emergente y se bloqueará el acceso a la anterior hasta que esta se cierre. </p>
-     * 
-     * @param menu Menu del usuario del que venimos. 
-     * @param container Producto que hemos elegido.
-     *
-     * @author Eduardo Ruiz Sabajanes
-     * 
+     * @param menu
+     * @param container
      */
     public MenuEditarProducto(MenuPrincipal menu, MiProductoMin container) {
         initComponents();
@@ -471,18 +468,6 @@ public class MenuEditarProducto extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    /**
-     * <p>
-     * Esta funcion nos permite. </p>
-     *
-     * <p>
-     * . </p>
-     * 
-     * @param evt Evento recogido.
-     *
-     * @author Eduardo Ruiz Sabajanes
-     * 
-     */
     private void iconoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_iconoMouseClicked
         if (imagenEditable) {
             JFileChooser fileChooser = new JFileChooser();
@@ -512,7 +497,7 @@ public class MenuEditarProducto extends javax.swing.JFrame {
         this.borrar = false;
         this.dispose();
     }//GEN-LAST:event_botonConfirmarActionPerformed
-    //Cambiamos los colores del editar para remarcar cuando el cursor pase por encima
+
     private void editarNombreMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editarNombreMouseEntered
         editarNombre.setFont(new java.awt.Font("OCR A Extended", 1, 12));
     }//GEN-LAST:event_editarNombreMouseEntered

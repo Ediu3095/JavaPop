@@ -1,3 +1,8 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package interfaz;
 
 import clases.*;
@@ -11,9 +16,8 @@ import javax.swing.ImageIcon;
 
 /**
  *
- * @author Luis Miguel Sobrino Zamora
+ * @author luism
  */
-
 public class MenuAdminProducto extends javax.swing.JFrame {
     
     private boolean borrar;
@@ -24,38 +28,27 @@ public class MenuAdminProducto extends javax.swing.JFrame {
     private final MenuAdmin menu;
 
     /**
-     * <p>
-     * Esta funcion genera otra ventana donde el administrador podrá comprobar más datos del
-     * producto, así como eliminarlo si lo cree necesario. </p>
-     *
-     * <p>
-     * Se creará una ventana emergente y se bloqueará el acceso a la anterior hasta que esta se cierre. </p>
-     * 
-     * @param menu Menu del administrador del que venimos. 
-     * @param container Producto que hemos elegido.
-     *
-     * @author Luis Miguel Sobrino Zamora
-     * 
+     * Creates new form MenuAdminProducto
+     * @param menu
+     * @param container
      */
     public MenuAdminProducto(MenuAdmin menu, ProductoMin container) {        
-        //Inicializamos los componentes
         initComponents();    
         
         this.producto = container.producto;
         this.productoOriginal = container.producto;
         this.user = this.producto.getVendedor();
         
-        // Eliminamos el producto de los productos globales.
+        // Eliminamos el producto de los productos globales
         productos.remove(this.producto);
         
-        // Eliminamos el producto de los productos del usuario.
+        // Eliminamos el producto de los productos del usuario
         usuarios.remove(this.user);
         System.out.println("\n\n\n\nLista 1:\n" + this.user.getProductos());
         this.user.getProductos().remove(this.producto);
         System.out.println("\n\n\n\nLista 2:\n" + this.user.getProductos());
         usuarios.add(this.user);
         
-        //Colocamos en cada casilla los datos del producto que hemos elegido.
         fieldNombre.setText(this.producto.getTitulo());
         fieldDescripcion.setText(this.producto.getDescripcion());
         fieldPrecio.setText("" + this.producto.getPrecio());
@@ -67,11 +60,9 @@ public class MenuAdminProducto extends javax.swing.JFrame {
         
         this.borrar = false;
         
-        //Bloqueamos el uso de la ventana general del administrador
         this.menu = menu;
         this.menu.setEnabled(false);
         
-        //Hacemos visible la ventana emergente
         super.setVisible(true);
     }
 
@@ -312,38 +303,19 @@ public class MenuAdminProducto extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    //Botón para volver atrás por lo que no se elimina el producto
     private void botonConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonConfirmarActionPerformed
         this.borrar = false;
         this.dispose();
     }//GEN-LAST:event_botonConfirmarActionPerformed
-    //Botón para dar de baja un producto
+
     private void botonBajaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonBajaActionPerformed
         this.borrar = true;
         this.dispose();
     }//GEN-LAST:event_botonBajaActionPerformed
 
-    /**
-     * <p>
-     * Esta función comprueba si se ha borrado o no el producto en la ventana emergente, en caso
-     * de que no se haya borrado, lo vuelve a añadir a la lista de productos y al usuario correspondiente,
-     * por otra parte, si el administrador ha decidido eliminarlo, se termina de eliminar la foto del producto y
-     * se vuelve a guardar el usuario sin el producto eliminado. </p>
-     *
-     * <p>
-     * Al finalizar su primera tarea, la función vuelve a desplegar la lista de productos anterior. </p>
-     * 
-     * @param evt Evento recogido. 
-     *
-     * @author Eduardo Ruiz Sabajanes
-     * 
-     */
     private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
-        
-        // Desbloqueamos el uso del menú general del administrador
         menu.setEnabled(true);
         
-        //Si no borramos el objeto...
         if (!borrar) {
             user.introducirProducto(this.producto);
             productos.add(this.producto);
@@ -354,7 +326,6 @@ public class MenuAdminProducto extends javax.swing.JFrame {
                 }
             }
             usuarios.add(this.user);
-        //Si borramos el objeto...
         } else {
             new File(this.producto.getFoto()).delete();
             usuarios.remove(this.user);
@@ -365,8 +336,7 @@ public class MenuAdminProducto extends javax.swing.JFrame {
             }
             usuarios.add(this.user);
         }
-        
-        //Volvemos a mostrar los productos presentes en la página
+
         menu.productoMin1.setVisible(false);
         menu.productoMin2.setVisible(false);
         menu.productoMin3.setVisible(false);
@@ -377,13 +347,10 @@ public class MenuAdminProducto extends javax.swing.JFrame {
         menu.productoMin8.setVisible(false);
         menu.posicionMin = 0;
 
-        //Elegimos que productos mostrar
         menu.displayProductos();
-        
-        //Bloqueamos o desbloqueamos los botones pertinentes.
+
         menu.lockUnlockBotonesProductos();
 
-        //Colocamos la ventana en el centro s
         menu.toFront();
     }//GEN-LAST:event_formWindowClosed
     

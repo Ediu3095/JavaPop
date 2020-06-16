@@ -20,7 +20,7 @@ import javax.swing.JOptionPane;
 
 /**
  *
- * @author Eduardo Ruiz Sabajenes
+ * @author TheElctrMsc_Gaming
  */
 public class MenuPrincipal extends javax.swing.JFrame {
 
