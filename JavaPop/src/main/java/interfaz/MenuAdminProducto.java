@@ -34,7 +34,7 @@ public class MenuAdminProducto extends javax.swing.JFrame {
      * @param menu Menu del administrador del que venimos.
      * @param container Producto que hemos elegido
      *
-     * @Luis Miguel Sobrino Zamora
+     * @author Eduardo Ruiz Sabajanes
      *
      */
     public MenuAdminProducto(MenuAdmin menu, ProductoMin container) {

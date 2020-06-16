@@ -28,7 +28,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
     /**
      * Creates new form MenuPrincipal1
      *
-     * @param user
+     * @param user Usuario que ha iniciado sesión en la aplicación.
      */
     public MenuPrincipal(Cliente user) {
         initComponents();

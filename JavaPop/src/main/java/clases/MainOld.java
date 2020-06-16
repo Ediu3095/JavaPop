@@ -197,6 +197,9 @@ public class MainOld {
     
     /**
      * <p> Este es el metodo main de la versión</p>
+     * 
+     * @param args Argumentos de ejecución
+     * 
      * @deprecated Esta función solo sirve para la versión en consola de Javapop.
      */
     @Deprecated

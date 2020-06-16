@@ -22,7 +22,7 @@ public class VentaMin extends javax.swing.JPanel {
      * Añade una venta a este contenedor y modifica los labels con los datos de
      * esta.</p>
      *
-     * @param v venta que vamos a guardar
+     * @param venta venta que vamos a guardar
      *
      * @author Eduardo Ruiz Sabajanes
      */

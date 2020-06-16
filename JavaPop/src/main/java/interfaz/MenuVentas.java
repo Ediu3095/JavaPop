@@ -53,8 +53,6 @@ public class MenuVentas extends javax.swing.JFrame {
      * Se harán invisibles las casillas donde no haya una venta y se mostrarán y
      * asignarán las que si lo tengan. </p>
      *
-     * @param evt Evento recogido.
-     *
      * @author Eduardo Ruiz Sabajanes
      *
      */
@@ -125,8 +123,6 @@ public class MenuVentas extends javax.swing.JFrame {
      * <p>
      * Se bloquearán los botones de las direcciones a las que no se pueda
      * acceder. </p>
-     *
-     * @param evt Evento recogido.
      *
      * @author Eduardo Ruiz Sabajanes
      *
