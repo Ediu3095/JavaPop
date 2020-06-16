@@ -1,15 +1,10 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package interfaz.panels;
 
 import clases.Cliente;
 
 /**
  *
- * @author luism
+ * @author Luis Miguel Sobrino
  */
 public class UsuarioMin extends javax.swing.JPanel {
 

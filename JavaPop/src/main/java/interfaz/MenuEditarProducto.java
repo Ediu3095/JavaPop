@@ -548,12 +548,12 @@ public class MenuEditarProducto extends javax.swing.JFrame {
 
     /**
      * <p>
-     * Esta funcion nos permite activar o desactivar la posibilidad de editar
-     * el nombre del producto, dependiendo de la posición anterior de esta. </p>
+     * Esta funcion nos permite activar o desactivar la posibilidad de editar el
+     * nombre del producto, dependiendo de la posición anterior de esta. </p>
      *
      * <p>
-     * Permite la entrada de un nuevo nombre por parte del usuario que será comprobado antes
-     * de ser aceptado. </p>
+     * Permite la entrada de un nuevo nombre por parte del usuario que será
+     * comprobado antes de ser aceptado. </p>
      *
      * @param evt Evento recogido.
      *
@@ -580,12 +580,13 @@ public class MenuEditarProducto extends javax.swing.JFrame {
 
     /**
      * <p>
-     * Esta funcion nos permite activar o desactivar la posibilidad de editar
-     * la descripción del producto, dependiendo de la posición anterior de esta. </p>
+     * Esta funcion nos permite activar o desactivar la posibilidad de editar la
+     * descripción del producto, dependiendo de la posición anterior de esta.
+     * </p>
      *
      * <p>
-     * Permite la entrada de una nueva descripción por parte del usuario que será comprobado antes
-     * de ser aceptado. </p>
+     * Permite la entrada de una nueva descripción por parte del usuario que
+     * será comprobado antes de ser aceptado. </p>
      *
      * @param evt Evento recogido.
      *
@@ -607,12 +608,12 @@ public class MenuEditarProducto extends javax.swing.JFrame {
 
     /**
      * <p>
-     * Esta funcion nos permite activar o desactivar la posibilidad de editar
-     * el precio del producto, dependiendo de la posición anterior de esta. </p>
+     * Esta funcion nos permite activar o desactivar la posibilidad de editar el
+     * precio del producto, dependiendo de la posición anterior de esta. </p>
      *
      * <p>
-     * Permite la entrada de un nuevo precio por parte del usuario que será comprobado antes
-     * de ser aceptado. </p>
+     * Permite la entrada de un nuevo precio por parte del usuario que será
+     * comprobado antes de ser aceptado. </p>
      *
      * @param evt Evento recogido.
      *
@@ -639,12 +640,12 @@ public class MenuEditarProducto extends javax.swing.JFrame {
 
     /**
      * <p>
-     * Esta funcion nos permite activar o desactivar la posibilidad de editar
-     * la categoría del producto, dependiendo de la posición anterior de esta. </p>
+     * Esta funcion nos permite activar o desactivar la posibilidad de editar la
+     * categoría del producto, dependiendo de la posición anterior de esta. </p>
      *
      * <p>
-     * Permite la entrada de una nueva categoría por parte del usuario que será comprobado antes
-     * de ser aceptado. </p>
+     * Permite la entrada de una nueva categoría por parte del usuario que será
+     * comprobado antes de ser aceptado. </p>
      *
      * @param evt Evento recogido.
      *
@@ -666,12 +667,12 @@ public class MenuEditarProducto extends javax.swing.JFrame {
 
     /**
      * <p>
-     * Esta funcion nos permite activar o desactivar la posibilidad de editar
-     * el estado del producto, dependiendo de la posición anterior de esta. </p>
+     * Esta funcion nos permite activar o desactivar la posibilidad de editar el
+     * estado del producto, dependiendo de la posición anterior de esta. </p>
      *
      * <p>
-     * Permite la entrada de un nuevo estado por parte del usuario que será comprobado antes
-     * de ser aceptado. </p>
+     * Permite la entrada de un nuevo estado por parte del usuario que será
+     * comprobado antes de ser aceptado. </p>
      *
      * @param evt Evento recogido.
      *
@@ -693,12 +694,12 @@ public class MenuEditarProducto extends javax.swing.JFrame {
 
     /**
      * <p>
-     * Esta funcion nos permite activar o desactivar la posibilidad de editar
-     * la foto del producto, dependiendo de la posición anterior de esta. </p>
+     * Esta funcion nos permite activar o desactivar la posibilidad de editar la
+     * foto del producto, dependiendo de la posición anterior de esta. </p>
      *
      * <p>
-     * Permite la entrada de una nueva foto por parte del usuario que será comprobado antes
-     * de ser aceptado. </p>
+     * Permite la entrada de una nueva foto por parte del usuario que será
+     * comprobado antes de ser aceptado. </p>
      *
      * @param evt Evento recogido.
      *
@@ -743,6 +744,23 @@ public class MenuEditarProducto extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_botonBajaActionPerformed
 
+    /**
+     * <p>
+     * Esta función comprueba si se ha borrado o no el producto de la ventana
+     * emergente, en caso de que no se haya borrado, lo vuelve a añadir a la
+     * lista de productos y al usuario correspondiente, por otra parte, si el
+     * usuario ha decidido eliminarlo, se termina eliminando la foto del
+     * producto y se vuelve a guardar el usuario sin el producto eliminado. </p>
+     *
+     * <p>
+     * Al finalizar su primera tarea, la función vuelve a desplegar la lista de
+     * productos anterior. </p>
+     *
+     * @param evt Evento recogido.
+     *
+     * @author Eduardo Ruiz Sabajanes
+     *
+     */
     private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
         menu.setEnabled(true);
 
@@ -767,13 +785,14 @@ public class MenuEditarProducto extends javax.swing.JFrame {
             }
             usuarios.add(this.menu.user);
         }
-
+        //Vuelve a mostrar los productos
         menu.miProductoMin1.setVisible(false);
         menu.miProductoMin2.setVisible(false);
         menu.miProductoMin3.setVisible(false);
         menu.miProductoMin4.setVisible(false);
         menu.posicionMin = 0;
 
+        //Selecciona que productos que mostrar.
         menu.displayMisProductos();
 
         menu.lockUnlockBotonesMisProductos();
@@ -781,6 +800,16 @@ public class MenuEditarProducto extends javax.swing.JFrame {
         menu.toFront();
     }//GEN-LAST:event_formWindowClosed
 
+    /**
+     * <p>
+     * Despliega una ventana de confirmación para preguntar si el usuario desea o no que el producto 
+     * sea urgente. </p>
+     *
+     * @param evt Evento recogido.
+     *
+     * @author Eduardo Ruiz Sabajanes
+     *
+     */
     private void urgenciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_urgenciaActionPerformed
         if (urgencia.isSelected()) {
             int i = JOptionPane.showConfirmDialog(this, "¿Seguro que quiere hacer el producto urgente?\nEsto le supondra un gasto de 5€.");

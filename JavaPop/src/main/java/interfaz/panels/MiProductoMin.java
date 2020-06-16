@@ -1,15 +1,10 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package interfaz.panels;
 
 import clases.Producto;
 
 /**
  *
- * @author TheElctrMsc_Gaming
+ * @author Eduardo Ruiz Sabajanes
  */
 public class MiProductoMin extends javax.swing.JPanel {
 

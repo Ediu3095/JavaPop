@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package interfaz;
 
 import clases.Producto;
@@ -17,10 +12,10 @@ import javax.swing.JOptionPane;
 
 /**
  *
- * @author TheElctrMsc_Gaming
+ * @author Eduardo Ruiz Sabajanes
  */
 public class MenuVentas extends javax.swing.JFrame {
-    
+
     private MenuPrincipal menu;
     private int posicionMin;
     private int posicionMax;
@@ -30,22 +25,37 @@ public class MenuVentas extends javax.swing.JFrame {
      */
     public MenuVentas(MenuPrincipal menu) {
         initComponents();
-        
+
         // setup icon
         super.setIconImage(new ImageIcon(".\\resources\\logo\\IconoJavaPop2.png").getImage());
-        
+
         menu.setEnabled(false);
-        
+
         this.menu = menu;
         posicionMin = 0;
         posicionMax = 0;
-        
+
         displayMisVentas();
         lockUnlockBotonesMisVentas();
-        
+
         super.setVisible(true);
     }
 
+    /**
+     * <p>
+     * Esta función recoge cuantas ventas va a haber en la nueva página,
+     * mostrando y ocultando las que sean necesarias, así como adjudicando cada
+     * venta a su correspondiente casilla. </p>
+     *
+     * <p>
+     * Se harán invisibles las casillas donde no haya una venta y se mostrarán y
+     * asignarán las que si lo tengan. </p>
+     *
+     * @param evt Evento recogido.
+     *
+     * @author Eduardo Ruiz Sabajanes
+     *
+     */
     public final void displayMisVentas() {
         miVentaMin5.setVisible(false);
         jLabel5.setVisible(false);
@@ -57,7 +67,7 @@ public class MenuVentas extends javax.swing.JFrame {
         jLabel2.setVisible(false);
         miVentaMin1.setVisible(false);
         jLabel1.setVisible(false);
-        
+
         // actualizamos posicionMax (De esta forma sabemos que productos deberemos mostrar)
         ArrayList<Venta> misVentas = menu.user.getVentasNuevas();
         for (int i = posicionMin; i < posicionMin + 5; i++) {
@@ -75,7 +85,7 @@ public class MenuVentas extends javax.swing.JFrame {
                 miVentaMin5.setVisible(true);
                 miVentaMin5.setVenta(misVentas.get(posicionMin + 4));
                 jLabel5.setVisible(true);
-                
+
             case 4: // Hay que mostrar 4 ventas
                 miVentaMin4.setVisible(true);
                 miVentaMin4.setVenta(misVentas.get(posicionMin + 3));
@@ -103,7 +113,22 @@ public class MenuVentas extends javax.swing.JFrame {
                 break;
         }
     }
-    
+
+    /**
+     * <p>
+     * Esta función comprueba si hay más páginas de ventas, tanto antes como
+     * después para que, en caso de que no las haya, bloquear los respectivos
+     * botones. </p>
+     *
+     * <p>
+     * Se bloquearán los botones de las direcciones a las que no se pueda
+     * acceder. </p>
+     *
+     * @param evt Evento recogido.
+     *
+     * @author Eduardo Ruiz Sabajanes
+     *
+     */
     public final void lockUnlockBotonesMisVentas() {
         if (posicionMin - 5 < 0) {
             jButton2.setEnabled(false);
@@ -117,7 +142,7 @@ public class MenuVentas extends javax.swing.JFrame {
             jButton1.setEnabled(true);
         }
     }
-    
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -340,7 +365,7 @@ public class MenuVentas extends javax.swing.JFrame {
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-
+    //Cambiamos de color las etiquetas de editar cuando pase el cursor por encima
     private void jLabel1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseEntered
         jLabel1.setFont(new java.awt.Font("OCR A Extended", 1, 12));
     }//GEN-LAST:event_jLabel1MouseEntered
@@ -372,6 +397,20 @@ public class MenuVentas extends javax.swing.JFrame {
         jLabel5.setFont(new java.awt.Font("OCR A Extended", 0, 12));
     }//GEN-LAST:event_jLabel5MouseExited
 
+    /**
+     * <p>
+     * Esta función crea una ventana emergente para confirmar la venta del
+     * producto colocado en la primera casilla. </p>
+     *
+     * <p>
+     * Si se decide aceptar la venta, se añade a ventas confirmadas, se añaden a
+     * ventas de los usuarios y se elimina el producto
+     *
+     * @param evt Evento recogido.
+     *
+     * @author Eduardo Ruiz Sabajanes
+     *
+     */
     private void jLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseClicked
         int i = JOptionPane.showConfirmDialog(this, "¿Desea confirmar la venta de " + miVentaMin1.venta.getProducto().getTitulo() + "?");
         if (i == JOptionPane.YES_OPTION) {
@@ -383,23 +422,37 @@ public class MenuVentas extends javax.swing.JFrame {
             usuarios.add(p.getVendedor());
             productos.remove(p);
             new File(p.getFoto()).delete();
-            
+
             for (int j = 0; j < miVentaMin1.venta.getProducto().getVendedor().getVentasNuevas().size(); j++) {
                 if (miVentaMin1.venta.getProducto().getVendedor().getVentasNuevas().get(j).getProducto().equals(miVentaMin1.venta.getProducto())) {
                     miVentaMin1.venta.getProducto().getVendedor().getVentasNuevas().remove(j);
                     j--;
                 }
             }
-            
+
             ventas.add(miVentaMin1.venta);
         } else {
             miVentaMin1.venta.getProducto().getVendedor().getVentasNuevas().remove(miVentaMin1.venta);
         }
-        
+
         displayMisVentas();
         lockUnlockBotonesMisVentas();
     }//GEN-LAST:event_jLabel1MouseClicked
 
+    /**
+     * <p>
+     * Esta función crea una ventana emergente para confirmar la venta del
+     * producto colocado en la segunda casilla. </p>
+     *
+     * <p>
+     * Si se decide aceptar la venta, se añade a ventas confirmadas, se añaden a
+     * ventas de los usuarios y se elimina el producto
+     *
+     * @param evt Evento recogido.
+     *
+     * @author Eduardo Ruiz Sabajanes
+     *
+     */
     private void jLabel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseClicked
         int i = JOptionPane.showConfirmDialog(this, "¿Desea confirmar la venta de " + miVentaMin2.venta.getProducto().getTitulo() + "?");
         if (i == JOptionPane.YES_OPTION) {
@@ -411,23 +464,37 @@ public class MenuVentas extends javax.swing.JFrame {
             usuarios.add(p.getVendedor());
             productos.remove(p);
             new File(p.getFoto()).delete();
-            
+
             for (int j = 0; j < miVentaMin2.venta.getProducto().getVendedor().getVentasNuevas().size(); j++) {
                 if (miVentaMin2.venta.getProducto().getVendedor().getVentasNuevas().get(j).getProducto().equals(miVentaMin2.venta.getProducto())) {
                     miVentaMin2.venta.getProducto().getVendedor().getVentasNuevas().remove(j);
                     j--;
                 }
             }
-            
+
             ventas.add(miVentaMin2.venta);
         } else {
             miVentaMin2.venta.getProducto().getVendedor().getVentasNuevas().remove(miVentaMin2.venta);
         }
-        
+
         displayMisVentas();
         lockUnlockBotonesMisVentas();
     }//GEN-LAST:event_jLabel2MouseClicked
 
+    /**
+     * <p>
+     * Esta función crea una ventana emergente para confirmar la venta del
+     * producto colocado en la tercera casilla. </p>
+     *
+     * <p>
+     * Si se decide aceptar la venta, se añade a ventas confirmadas, se añaden a
+     * ventas de los usuarios y se elimina el producto
+     *
+     * @param evt Evento recogido.
+     *
+     * @author Eduardo Ruiz Sabajanes
+     *
+     */
     private void jLabel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseClicked
         int i = JOptionPane.showConfirmDialog(this, "¿Desea confirmar la venta de " + miVentaMin3.venta.getProducto().getTitulo() + "?");
         if (i == JOptionPane.YES_OPTION) {
@@ -439,23 +506,37 @@ public class MenuVentas extends javax.swing.JFrame {
             usuarios.add(p.getVendedor());
             productos.remove(p);
             new File(p.getFoto()).delete();
-            
+
             for (int j = 0; j < miVentaMin3.venta.getProducto().getVendedor().getVentasNuevas().size(); j++) {
                 if (miVentaMin3.venta.getProducto().getVendedor().getVentasNuevas().get(j).getProducto().equals(miVentaMin3.venta.getProducto())) {
                     miVentaMin3.venta.getProducto().getVendedor().getVentasNuevas().remove(j);
                     j--;
                 }
             }
-            
+
             ventas.add(miVentaMin3.venta);
         } else {
             miVentaMin3.venta.getProducto().getVendedor().getVentasNuevas().remove(miVentaMin3.venta);
         }
-        
+
         displayMisVentas();
         lockUnlockBotonesMisVentas();
     }//GEN-LAST:event_jLabel3MouseClicked
 
+    /**
+     * <p>
+     * Esta función crea una ventana emergente para confirmar la venta del
+     * producto colocado en la cuarta casilla. </p>
+     *
+     * <p>
+     * Si se decide aceptar la venta, se añade a ventas confirmadas, se añaden a
+     * ventas de los usuarios y se elimina el producto
+     *
+     * @param evt Evento recogido.
+     *
+     * @author Eduardo Ruiz Sabajanes
+     *
+     */
     private void jLabel4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel4MouseClicked
         int i = JOptionPane.showConfirmDialog(this, "¿Desea confirmar la venta de " + miVentaMin4.venta.getProducto().getTitulo() + "?");
         if (i == JOptionPane.YES_OPTION) {
@@ -467,23 +548,37 @@ public class MenuVentas extends javax.swing.JFrame {
             usuarios.add(p.getVendedor());
             productos.remove(p);
             new File(p.getFoto()).delete();
-            
+
             for (int j = 0; j < miVentaMin4.venta.getProducto().getVendedor().getVentasNuevas().size(); j++) {
                 if (miVentaMin4.venta.getProducto().getVendedor().getVentasNuevas().get(j).getProducto().equals(miVentaMin4.venta.getProducto())) {
                     miVentaMin4.venta.getProducto().getVendedor().getVentasNuevas().remove(j);
                     j--;
                 }
             }
-            
+
             ventas.add(miVentaMin4.venta);
         } else {
             miVentaMin4.venta.getProducto().getVendedor().getVentasNuevas().remove(miVentaMin4.venta);
         }
-        
+
         displayMisVentas();
         lockUnlockBotonesMisVentas();
     }//GEN-LAST:event_jLabel4MouseClicked
 
+    /**
+     * <p>
+     * Esta función crea una ventana emergente para confirmar la venta del
+     * producto colocado en la quinta casilla. </p>
+     *
+     * <p>
+     * Si se decide aceptar la venta, se añade a ventas confirmadas, se añaden a
+     * ventas de los usuarios y se elimina el producto
+     *
+     * @param evt Evento recogido.
+     *
+     * @author Eduardo Ruiz Sabajanes
+     *
+     */
     private void jLabel5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel5MouseClicked
         int i = JOptionPane.showConfirmDialog(this, "¿Desea confirmar la venta de " + miVentaMin5.venta.getProducto().getTitulo() + "?");
         if (i == JOptionPane.YES_OPTION) {
@@ -495,47 +590,81 @@ public class MenuVentas extends javax.swing.JFrame {
             usuarios.add(p.getVendedor());
             productos.remove(p);
             new File(p.getFoto()).delete();
-            
+
             for (int j = 0; j < miVentaMin5.venta.getProducto().getVendedor().getVentasNuevas().size(); j++) {
                 if (miVentaMin5.venta.getProducto().getVendedor().getVentasNuevas().get(j).getProducto().equals(miVentaMin5.venta.getProducto())) {
                     miVentaMin5.venta.getProducto().getVendedor().getVentasNuevas().remove(j);
                     j--;
                 }
             }
-            
+
             ventas.add(miVentaMin5.venta);
         } else {
             miVentaMin5.venta.getProducto().getVendedor().getVentasNuevas().remove(miVentaMin5.venta);
         }
-        
+
         displayMisVentas();
         lockUnlockBotonesMisVentas();
     }//GEN-LAST:event_jLabel5MouseClicked
 
+    /**
+     * <p>
+     * Esta función permite al vendedor avanzar de página en el menú de sus
+     * solicitudes de venta. </p>
+     *
+     * <p>
+     * Se actualiza la pagina para cambiar las ventas por las 5 posteriores.
+     * </p>
+     *
+     * @param evt Evento recogido.
+     *
+     * @author Eduardo Ruiz Sabajanes
+     *
+     */
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         posicionMin += 5;
-        
+
         displayMisVentas();
         lockUnlockBotonesMisVentas();
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    /**
+     * <p>
+     * Esta función permite al vendedor retroceder de página en el menú de sus
+     * solicitudes de venta. </p>
+     *
+     * <p>
+     * Se actualiza la pagina para cambiar las ventas por las 5 posteriores.
+     * </p>
+     *
+     * @param evt Evento recogido.
+     *
+     * @author Eduardo Ruiz Sabajanes
+     *
+     */
+
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         posicionMin -= 5;
-        
+
         displayMisVentas();
         lockUnlockBotonesMisVentas();
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
+        //Reactivamos la ventana.
         menu.setEnabled(true);
         
+        //Ocultamos los productos.
         menu.miProductoMin1.setVisible(false);
         menu.miProductoMin2.setVisible(false);
         menu.miProductoMin3.setVisible(false);
         menu.miProductoMin4.setVisible(false);
-        
+
+        //Volvemos a elegir que productos mostrar.
         menu.displayMisProductos();
+        //Comprobamos si tenemos que bloquear algun botón.
         menu.lockUnlockBotonesMisProductos();
+        //Centramos la ventana.
         menu.toFront();
     }//GEN-LAST:event_formWindowClosed
 
