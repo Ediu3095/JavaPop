@@ -508,7 +508,6 @@
     </Component>
     <Component class="javax.swing.JComboBox" name="categoriaBox">
       <Properties>
-        <Property name="editable" type="boolean" value="true"/>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="OCR A Extended" size="12" style="0"/>
         </Property>
@@ -557,7 +556,6 @@
     </Component>
     <Component class="javax.swing.JComboBox" name="estadoBox">
       <Properties>
-        <Property name="editable" type="boolean" value="true"/>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="OCR A Extended" size="12" style="0"/>
         </Property>
@@ -584,7 +582,7 @@
         <Property name="text" type="java.lang.String" value="Urgente (Cuesta 5&#x20ac;)"/>
       </Properties>
       <Events>
-        <EventHandler event="stateChanged" listener="javax.swing.event.ChangeListener" parameters="javax.swing.event.ChangeEvent" handler="urgenciaStateChanged"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="urgenciaActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JButton" name="botonConfirmar">

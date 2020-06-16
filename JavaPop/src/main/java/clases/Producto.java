@@ -143,6 +143,8 @@ public class Producto implements Serializable {
             this.urgente = true;
             fechaUrgente = LocalDateTime.now();
             this.vendedor.cobrar(5);
+        } else {
+            this.urgente = false;
         }
     }
 

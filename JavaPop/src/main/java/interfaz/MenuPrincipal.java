@@ -155,6 +155,9 @@ public class MenuPrincipal extends javax.swing.JFrame {
             public void windowClosed(java.awt.event.WindowEvent evt) {
                 formWindowClosed(evt);
             }
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                formWindowClosing(evt);
+            }
         });
 
         banner.setBackground(new java.awt.Color(51, 153, 255));
@@ -1046,23 +1049,13 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private void busquedaButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_busquedaButtonActionPerformed
         camposCL.show(jPanel1, "Compra");
 
-        // Hacemos todos los productos invisibles
-        productoMin1.setVisible(false);
-        productoMin2.setVisible(false);
-        productoMin3.setVisible(false);
-        productoMin4.setVisible(false);
-        productoMin5.setVisible(false);
-        productoMin6.setVisible(false);
-        productoMin7.setVisible(false);
-        productoMin8.setVisible(false);
-
         // Limpiamos la lista filtrada de productos
         productosFiltrado.clear();
 
         // Se filtran los productos por categoría
         Categoria cat = getCategoria(comboBoxCategoria.getSelectedIndex());
         for (int i = 0; i < productos.size(); i++) {
-            if (productos.get(i).getCategoria() == cat) {
+            if (productos.get(i).getCategoria().equals(cat)) {
                 if (!productos.get(i).getVendedor().equals(user)) {
                     productosFiltrado.add(productos.get(i));
                 }
@@ -1100,12 +1093,19 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
         // Activa o desactiva los botones para cambiar páginas de productos según sea necesario
         lockUnlockBotonesComprar();
-
-        // Cambia el texto de la etiqueta que indica en que página estamos
-        etiquetaPagina.setText("Página " + (posicionMin / 8 + 1) + " de " + (productosFiltrado.size() / 8 + 1));
     }//GEN-LAST:event_busquedaButtonActionPerformed
 
     private void displayProductos() {
+        // Hacemos todos los productos invisibles
+        productoMin1.setVisible(false);
+        productoMin2.setVisible(false);
+        productoMin3.setVisible(false);
+        productoMin4.setVisible(false);
+        productoMin5.setVisible(false);
+        productoMin6.setVisible(false);
+        productoMin7.setVisible(false);
+        productoMin8.setVisible(false);
+
         // actualizamos posicionMax (De esta forma sabemos que productos deberemos mostrar)
         for (int i = posicionMin; i < posicionMin + 8; i++) {
             posicionMax = i;
@@ -1154,6 +1154,8 @@ public class MenuPrincipal extends javax.swing.JFrame {
                 errorLabel2.setText("Parece que no se ha encontrado ningún producto");
                 break;
         }
+        // Cambia el texto de la etiqueta que indica en que página estamos
+        etiquetaPagina.setText("Página " + (posicionMin / 8 + 1) + " de " + ((productosFiltrado.size() - 1) / 8 + 1));
     }
 
     private void lockUnlockBotonesComprar() {
@@ -1171,16 +1173,6 @@ public class MenuPrincipal extends javax.swing.JFrame {
     }
 
     private void rePagActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rePagActionPerformed
-        // Hacemos los displays de los productos invisibles
-        productoMin1.setVisible(false);
-        productoMin2.setVisible(false);
-        productoMin3.setVisible(false);
-        productoMin4.setVisible(false);
-        productoMin5.setVisible(false);
-        productoMin6.setVisible(false);
-        productoMin7.setVisible(false);
-        productoMin8.setVisible(false);
-
         // Disminuimos la posicion mínima
         posicionMin -= 8;
 
@@ -1191,20 +1183,9 @@ public class MenuPrincipal extends javax.swing.JFrame {
         lockUnlockBotonesComprar();
 
         // Cambia el texto de la etiqueta que indica en que página estamos
-        etiquetaPagina.setText("Página " + (posicionMin / 8 + 1) + " de " + (productosFiltrado.size() / 8 + 1));
     }//GEN-LAST:event_rePagActionPerformed
 
     private void avPagActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_avPagActionPerformed
-        // Hacemos los displays de los productos invisibles
-        productoMin1.setVisible(false);
-        productoMin2.setVisible(false);
-        productoMin3.setVisible(false);
-        productoMin4.setVisible(false);
-        productoMin5.setVisible(false);
-        productoMin6.setVisible(false);
-        productoMin7.setVisible(false);
-        productoMin8.setVisible(false);
-
         // Aumentamos la posicion mínima
         posicionMin += 8;
 
@@ -1215,7 +1196,6 @@ public class MenuPrincipal extends javax.swing.JFrame {
         lockUnlockBotonesComprar();
 
         // Cambia el texto de la etiqueta que indica en que página estamos
-        etiquetaPagina.setText("Página " + (posicionMin / 8 + 1) + " de " + (productosFiltrado.size() / 8 + 1));
     }//GEN-LAST:event_avPagActionPerformed
 
     private void botonSubirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonSubirActionPerformed
@@ -1266,6 +1246,11 @@ public class MenuPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_botonPerfilActionPerformed
 
     public void displayMisProductos() {
+        miProductoMin1.setVisible(false);
+        miProductoMin2.setVisible(false);
+        miProductoMin3.setVisible(false);
+        miProductoMin4.setVisible(false);
+
         // actualizamos posicionMax (De esta forma sabemos que productos deberemos mostrar)
         ArrayList<Producto> misProductos = user.getProductos();
         for (int i = posicionMin; i < posicionMin + 4; i++) {
@@ -1395,11 +1380,6 @@ public class MenuPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_editarDniMouseExited
 
     private void nextPageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nextPageActionPerformed
-        miProductoMin1.setVisible(false);
-        miProductoMin2.setVisible(false);
-        miProductoMin3.setVisible(false);
-        miProductoMin4.setVisible(false);
-
         // Aumentamos la posicion mínima
         posicionMin += 4;
 
@@ -1411,11 +1391,6 @@ public class MenuPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_nextPageActionPerformed
 
     private void prevPageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_prevPageActionPerformed
-        miProductoMin1.setVisible(false);
-        miProductoMin2.setVisible(false);
-        miProductoMin3.setVisible(false);
-        miProductoMin4.setVisible(false);
-
         // Aumentamos la posicion mínima
         posicionMin -= 4;
 
@@ -1642,7 +1617,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
             usuarios.remove(p.getVendedor());
             p.getVendedor().getVentasNuevas().add(v);
             usuarios.add(p.getVendedor());
-            
+
             JOptionPane.showMessageDialog(this, "Su compra se administro con éxito.\nEspere a que el vendedor confirme la transacción.", "Confirmación de compra", JOptionPane.INFORMATION_MESSAGE);
         }
     }//GEN-LAST:event_jButton1ActionPerformed
@@ -1821,6 +1796,12 @@ public class MenuPrincipal extends javax.swing.JFrame {
         IOCustomLib.guardarProductos(productos);
         IOCustomLib.guardarVentas(ventas);
     }//GEN-LAST:event_formWindowClosed
+
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+        IOCustomLib.guardarClientes(usuarios);
+        IOCustomLib.guardarProductos(productos);
+        IOCustomLib.guardarVentas(ventas);
+    }//GEN-LAST:event_formWindowClosing
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Logo;

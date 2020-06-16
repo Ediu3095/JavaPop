@@ -375,6 +375,9 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="&lt;&lt;"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="rePagUsuariosActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="etiquetaPagina1">
               <Properties>
@@ -389,6 +392,9 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="&gt;&gt;"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="avPagUsuariosActionPerformed"/>
+              </Events>
             </Component>
           </SubComponents>
         </Container>
@@ -684,6 +690,9 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="&lt;&lt;"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="rePagVentasActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="etiquetaPagina2">
               <Properties>
@@ -698,6 +707,9 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="&gt;&gt;"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="avPagVentasActionPerformed"/>
+              </Events>
             </Component>
           </SubComponents>
         </Container>
