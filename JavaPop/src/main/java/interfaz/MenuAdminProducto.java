@@ -103,6 +103,7 @@ public class MenuAdminProducto extends javax.swing.JFrame {
         jTextField1 = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Javapop - Administrar producto");
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowClosed(java.awt.event.WindowEvent evt) {
                 formWindowClosed(evt);
@@ -350,15 +351,6 @@ public class MenuAdminProducto extends javax.swing.JFrame {
             usuarios.add(this.user);
             productos.remove(this.producto);
         }
-
-        menu.productoMin1.setVisible(false);
-        menu.productoMin2.setVisible(false);
-        menu.productoMin3.setVisible(false);
-        menu.productoMin4.setVisible(false);
-        menu.productoMin5.setVisible(false);
-        menu.productoMin6.setVisible(false);
-        menu.productoMin7.setVisible(false);
-        menu.productoMin8.setVisible(false);
 
         menu.posicionMin = 0;
         menu.displayProductos();

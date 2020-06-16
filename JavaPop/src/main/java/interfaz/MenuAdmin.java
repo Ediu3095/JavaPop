@@ -22,7 +22,7 @@ public class MenuAdmin extends javax.swing.JFrame {
     public int posicionMin;
     public int posicionMax;
 
-    private ArrayList<Cliente> usuariosFiltrado;
+    public ArrayList<Cliente> usuariosFiltrado;
     public ArrayList<Producto> productosFiltrado;
     private ArrayList<Venta> ventasFiltrado;
 
@@ -219,6 +219,54 @@ public class MenuAdmin extends javax.swing.JFrame {
         );
 
         jPanel1.setLayout(new java.awt.CardLayout());
+
+        usuarioMin1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                usuarioMin1MouseClicked(evt);
+            }
+        });
+
+        usuarioMin2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                usuarioMin2MouseClicked(evt);
+            }
+        });
+
+        usuarioMin3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                usuarioMin3MouseClicked(evt);
+            }
+        });
+
+        usuarioMin4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                usuarioMin4MouseClicked(evt);
+            }
+        });
+
+        usuarioMin5.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                usuarioMin5MouseClicked(evt);
+            }
+        });
+
+        usuarioMin6.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                usuarioMin6MouseClicked(evt);
+            }
+        });
+
+        usuarioMin7.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                usuarioMin7MouseClicked(evt);
+            }
+        });
+
+        usuarioMin8.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                usuarioMin8MouseClicked(evt);
+            }
+        });
 
         rePagUsuarios.setText("<<");
         rePagUsuarios.addActionListener(new java.awt.event.ActionListener() {
@@ -733,6 +781,38 @@ public class MenuAdmin extends javax.swing.JFrame {
         // Cambia el texto de la etiqueta que indica en que página estamos
     }//GEN-LAST:event_avPagVentasActionPerformed
 
+    private void usuarioMin1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_usuarioMin1MouseClicked
+        new MenuAdminCliente(this, usuarioMin1.cliente);
+    }//GEN-LAST:event_usuarioMin1MouseClicked
+
+    private void usuarioMin2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_usuarioMin2MouseClicked
+        new MenuAdminCliente(this, usuarioMin2.cliente);
+    }//GEN-LAST:event_usuarioMin2MouseClicked
+
+    private void usuarioMin3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_usuarioMin3MouseClicked
+        new MenuAdminCliente(this, usuarioMin3.cliente);
+    }//GEN-LAST:event_usuarioMin3MouseClicked
+
+    private void usuarioMin4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_usuarioMin4MouseClicked
+        new MenuAdminCliente(this, usuarioMin4.cliente);
+    }//GEN-LAST:event_usuarioMin4MouseClicked
+
+    private void usuarioMin5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_usuarioMin5MouseClicked
+        new MenuAdminCliente(this, usuarioMin5.cliente);
+    }//GEN-LAST:event_usuarioMin5MouseClicked
+
+    private void usuarioMin6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_usuarioMin6MouseClicked
+        new MenuAdminCliente(this, usuarioMin6.cliente);
+    }//GEN-LAST:event_usuarioMin6MouseClicked
+
+    private void usuarioMin7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_usuarioMin7MouseClicked
+        new MenuAdminCliente(this, usuarioMin7.cliente);
+    }//GEN-LAST:event_usuarioMin7MouseClicked
+
+    private void usuarioMin8MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_usuarioMin8MouseClicked
+        new MenuAdminCliente(this, usuarioMin8.cliente);
+    }//GEN-LAST:event_usuarioMin8MouseClicked
+
     public final void displayUsuarios() {
         // escondemos todos los usuarios
         usuarioMin1.setVisible(false);
@@ -996,14 +1076,14 @@ public class MenuAdmin extends javax.swing.JFrame {
     private javax.swing.JButton rePagProductos;
     private javax.swing.JButton rePagUsuarios;
     private javax.swing.JButton rePagVentas;
-    private interfaz.panels.UsuarioMin usuarioMin1;
-    private interfaz.panels.UsuarioMin usuarioMin2;
-    private interfaz.panels.UsuarioMin usuarioMin3;
-    private interfaz.panels.UsuarioMin usuarioMin4;
-    private interfaz.panels.UsuarioMin usuarioMin5;
-    private interfaz.panels.UsuarioMin usuarioMin6;
-    private interfaz.panels.UsuarioMin usuarioMin7;
-    private interfaz.panels.UsuarioMin usuarioMin8;
+    public interfaz.panels.UsuarioMin usuarioMin1;
+    public interfaz.panels.UsuarioMin usuarioMin2;
+    public interfaz.panels.UsuarioMin usuarioMin3;
+    public interfaz.panels.UsuarioMin usuarioMin4;
+    public interfaz.panels.UsuarioMin usuarioMin5;
+    public interfaz.panels.UsuarioMin usuarioMin6;
+    public interfaz.panels.UsuarioMin usuarioMin7;
+    public interfaz.panels.UsuarioMin usuarioMin8;
     private interfaz.panels.VentaMin ventaMin1;
     private interfaz.panels.VentaMin ventaMin2;
     private interfaz.panels.VentaMin ventaMin3;

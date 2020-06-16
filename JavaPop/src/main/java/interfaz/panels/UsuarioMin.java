@@ -13,7 +13,8 @@ import clases.Cliente;
  */
 public class UsuarioMin extends javax.swing.JPanel {
 
-    private Cliente cliente;
+    public Cliente cliente;
+    
     /**
      * Creates new form NewJPanel
      */
@@ -44,6 +45,8 @@ public class UsuarioMin extends javax.swing.JPanel {
         etiquetaCorreo = new javax.swing.JLabel();
         jSeparator2 = new javax.swing.JSeparator();
         jSeparator3 = new javax.swing.JSeparator();
+
+        setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         jPanel4.setBackground(new java.awt.Color(204, 204, 204));
 
