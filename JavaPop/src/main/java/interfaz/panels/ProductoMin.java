@@ -51,7 +51,7 @@ public class ProductoMin extends javax.swing.JPanel {
 
         setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
-        panelImagen.setBackground(new java.awt.Color(0, 0, 0));
+        panelImagen.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         javax.swing.GroupLayout panelImagenLayout = new javax.swing.GroupLayout(panelImagen);
         panelImagen.setLayout(panelImagenLayout);
