@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package interfaz;
 
 
@@ -10,7 +5,7 @@ import javax.swing.ImageIcon;
 
 /**
  *
- * @author TheElctrMsc_Gaming
+ * @author Eduardo Ruiz Sababajnes
  */
 public class LoadingScreen extends javax.swing.JFrame {
 
@@ -20,11 +15,11 @@ public class LoadingScreen extends javax.swing.JFrame {
     public LoadingScreen() {
         initComponents();
         
-        // setup icon
+        //Mostramos el icono
         ImageIcon img = new ImageIcon(".\\resources\\logo\\IconoJavaPop2.png");
         super.setIconImage(img.getImage());
         
-        // load loading screen image
+        //Cargar la imagen del LoadingScreen
         jLabel1.setIcon(new ImageIcon(new ImageIcon(".\\resources\\logo\\LoadingJavaPop.png").getImage().getScaledInstance(600, 600,  java.awt.Image.SCALE_SMOOTH)));
         
         super.setVisible(true);

@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package interfaz;
 
 import clases.Producto;
@@ -28,7 +23,7 @@ import javax.swing.filechooser.FileNameExtensionFilter;
 
 /**
  *
- * @author TheElctrMsc_Gaming
+ * @author Eduardo Ruiz Sabajanes
  */
 public class MenuEditarProducto extends javax.swing.JFrame {
 
@@ -41,11 +36,18 @@ public class MenuEditarProducto extends javax.swing.JFrame {
     private final MenuPrincipal menu;
     private boolean borrar;
 
-    /**
-     * Creates new form MenuEditarProducto
+    /* <p>
+     * Esta funcion genera otra ventana donde el usuario podrá comprobar más datos del
+     * producto, editarlo o eliminarlo si así lo desea. </p>
      *
-     * @param menu
-     * @param container
+     * <p>
+     * Se creará una ventana emergente y se bloqueará el acceso a la anterior hasta que esta se cierre. </p>
+     * 
+     * @param menu Menu del usuario del que venimos. 
+     * @param container Producto que hemos elegido.
+     *
+     * @author Eduardo Ruiz Sabajanes
+     *
      */
     public MenuEditarProducto(MenuPrincipal menu, MiProductoMin container) {
         initComponents();
@@ -466,6 +468,16 @@ public class MenuEditarProducto extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
+    /**
+     * <p>
+     * Si la imagen es editable, abre un selector de archivos para seleccionar
+     * una nueva imagen. </p>
+     *
+     * @param evt Evento recogido.
+     *
+     * @author Eduardo Ruiz Sabajanes
+     *
+     */
     private void iconoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_iconoMouseClicked
         if (imagenEditable) {
             JFileChooser fileChooser = new JFileChooser();
@@ -496,6 +508,7 @@ public class MenuEditarProducto extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_botonConfirmarActionPerformed
 
+    //Cambiamos los colores de las etiques editar para remarcar cuando el cursor pase por encima
     private void editarNombreMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editarNombreMouseEntered
         editarNombre.setFont(new java.awt.Font("OCR A Extended", 1, 12));
     }//GEN-LAST:event_editarNombreMouseEntered
@@ -533,6 +546,20 @@ public class MenuEditarProducto extends javax.swing.JFrame {
         editarFoto.setFont(new java.awt.Font("OCR A Extended", 0, 12));
     }//GEN-LAST:event_editarFotoMouseExited
 
+    /**
+     * <p>
+     * Esta funcion nos permite activar o desactivar la posibilidad de editar
+     * el nombre del producto, dependiendo de la posición anterior de esta. </p>
+     *
+     * <p>
+     * Permite la entrada de un nuevo nombre por parte del usuario que será comprobado antes
+     * de ser aceptado. </p>
+     *
+     * @param evt Evento recogido.
+     *
+     * @author Eduardo Ruiz Sabajanes
+     *
+     */
     private void editarNombreMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editarNombreMouseClicked
         if (fieldNombre.isEnabled()) {
             fieldNombre.setEnabled(false);
@@ -551,6 +578,20 @@ public class MenuEditarProducto extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_editarNombreMouseClicked
 
+    /**
+     * <p>
+     * Esta funcion nos permite activar o desactivar la posibilidad de editar
+     * la descripción del producto, dependiendo de la posición anterior de esta. </p>
+     *
+     * <p>
+     * Permite la entrada de una nueva descripción por parte del usuario que será comprobado antes
+     * de ser aceptado. </p>
+     *
+     * @param evt Evento recogido.
+     *
+     * @author Eduardo Ruiz Sabajanes
+     *
+     */
     private void editarDescripcionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editarDescripcionMouseClicked
         if (fieldDescripcion.isEnabled()) {
             fieldDescripcion.setEnabled(false);
@@ -564,6 +605,20 @@ public class MenuEditarProducto extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_editarDescripcionMouseClicked
 
+    /**
+     * <p>
+     * Esta funcion nos permite activar o desactivar la posibilidad de editar
+     * el precio del producto, dependiendo de la posición anterior de esta. </p>
+     *
+     * <p>
+     * Permite la entrada de un nuevo precio por parte del usuario que será comprobado antes
+     * de ser aceptado. </p>
+     *
+     * @param evt Evento recogido.
+     *
+     * @author Eduardo Ruiz Sabajanes
+     *
+     */
     private void editarPrecioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editarPrecioMouseClicked
         if (fieldPrecio.isEnabled()) {
             fieldPrecio.setEnabled(false);
@@ -582,6 +637,20 @@ public class MenuEditarProducto extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_editarPrecioMouseClicked
 
+    /**
+     * <p>
+     * Esta funcion nos permite activar o desactivar la posibilidad de editar
+     * la categoría del producto, dependiendo de la posición anterior de esta. </p>
+     *
+     * <p>
+     * Permite la entrada de una nueva categoría por parte del usuario que será comprobado antes
+     * de ser aceptado. </p>
+     *
+     * @param evt Evento recogido.
+     *
+     * @author Eduardo Ruiz Sabajanes
+     *
+     */
     private void editarCategoriaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editarCategoriaMouseClicked
         if (categoriaBox.isEnabled()) {
             categoriaBox.setEnabled(false);
@@ -595,6 +664,20 @@ public class MenuEditarProducto extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_editarCategoriaMouseClicked
 
+    /**
+     * <p>
+     * Esta funcion nos permite activar o desactivar la posibilidad de editar
+     * el estado del producto, dependiendo de la posición anterior de esta. </p>
+     *
+     * <p>
+     * Permite la entrada de un nuevo estado por parte del usuario que será comprobado antes
+     * de ser aceptado. </p>
+     *
+     * @param evt Evento recogido.
+     *
+     * @author Eduardo Ruiz Sabajanes
+     *
+     */
     private void editarEstadoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editarEstadoMouseClicked
         if (estadoBox.isEnabled()) {
             estadoBox.setEnabled(false);
@@ -608,6 +691,20 @@ public class MenuEditarProducto extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_editarEstadoMouseClicked
 
+    /**
+     * <p>
+     * Esta funcion nos permite activar o desactivar la posibilidad de editar
+     * la foto del producto, dependiendo de la posición anterior de esta. </p>
+     *
+     * <p>
+     * Permite la entrada de una nueva foto por parte del usuario que será comprobado antes
+     * de ser aceptado. </p>
+     *
+     * @param evt Evento recogido.
+     *
+     * @author Eduardo Ruiz Sabajanes
+     *
+     */
     private void editarFotoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editarFotoMouseClicked
         if (imagenEditable) {
             imagenEditable = false;

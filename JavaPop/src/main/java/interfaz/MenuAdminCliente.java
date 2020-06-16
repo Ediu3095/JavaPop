@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package interfaz;
 
 import clases.*;
@@ -10,8 +5,8 @@ import static clases.utils.Colecciones.*;
 import javax.swing.ImageIcon;
 
 /**
- *
- * @author TheElctrMsc_Gaming
+ * @author Eduardo Ruiz Sabajaness
+ * @author Luis Miguel Sobrino Zamora
  */
 public class MenuAdminCliente extends javax.swing.JFrame {
 
@@ -20,7 +15,19 @@ public class MenuAdminCliente extends javax.swing.JFrame {
     private boolean borrar;
 
     /**
-     * Creates new form MenuAdminCliente
+     * <p>
+     * Esta función genera otra ventana donde el administrador podrá comprobar
+     * más datos del cliente, asi como eliminarlo si lo cree necesario. </p>
+     *
+     * <p>
+     * Se creará una ventana emergente y se bloqueará el acceso a la anterior
+     * hasta que esta se cierre. </p>
+     *
+     * @param menu Menu del administrador del que venimos.
+     * @param container cliente que hemos seleccionado.
+     *
+     * @author Eduardo Ruiz Sabajanes
+     *
      */
     public MenuAdminCliente(MenuAdmin menu, Cliente user) {
         initComponents();
@@ -29,6 +36,7 @@ public class MenuAdminCliente extends javax.swing.JFrame {
         this.user = user;
         this.menu = menu;
 
+        //Iniciamos los componentes.
         correoField.setText(user.correo);
         claveField.setText(user.clave);
         nombreField.setText(user.getNombre());
@@ -36,6 +44,7 @@ public class MenuAdminCliente extends javax.swing.JFrame {
         ccField.setText(user.getTTCC());
         dniField.setText(user.getDni());
 
+        //Si el cliente es profesional...
         if (user instanceof Profesional) {
             togglePro.setSelected(true);
             variablesPro.setEnabled(true);
@@ -43,6 +52,7 @@ public class MenuAdminCliente extends javax.swing.JFrame {
             horarioField.setText(((Profesional) user).getHorario());
             telefonoField.setText(((Profesional) user).getTelefono());
             webField.setText(((Profesional) user).getWeb());
+            //Si no lo es...
         } else {
             togglePro.setSelected(false);
             variablesPro.setEnabled(false);
@@ -52,6 +62,7 @@ public class MenuAdminCliente extends javax.swing.JFrame {
             webField.setText("");
         }
 
+        //Bloqueamos el uso de la venta general del administrador.
         this.menu.setEnabled(false);
         super.setVisible(true);
     }
@@ -376,14 +387,30 @@ public class MenuAdminCliente extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
+    /**
+     * <p>
+     * Esta función comprueba si se ha borrado o no el cliente de la ventana
+     * emergente, en caso de que el administrador haya decidido darlo de baja,
+     * elimina sus productos y ventas y posteriormente elimina el usuario. </p>
+     *
+     * <p>
+     * Al finalizar su primera tarea, la función vuelve a desplegar la lista de
+     * clientes anterior. </p>
+     *
+     * @param evt Evento recogido.
+     *
+     * @author Eduardo Ruiz Sabajanes
+     *
+     */
     private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
+        //Desbloqueamos el uso del menú general del administrador.
         this.menu.setEnabled(true);
-
+        //Si borramos el objeto...
         if (borrar) {
             for (Producto prod : user.getProductos()) {
                 productos.remove(prod);
             }
-
+            //Borramos las ventas...
             for (Cliente c : usuarios) {
                 for (int i = 0; i < c.getVentasNuevas().size(); i++) {
                     if (c.getVentasNuevas().get(i).getComprador().equals(this.user)) {
@@ -392,24 +419,26 @@ public class MenuAdminCliente extends javax.swing.JFrame {
                     }
                 }
             }
-
+            //Eliminamos el objeto de usuario
             usuarios.remove(this.user);
             menu.usuariosFiltrado.remove(this.user);
         }
 
         menu.posicionMin = 0;
+        //Elegimos que usuarios mostrar.
         menu.displayUsuarios();
+        //Bloqueamos o desbloqueamos los botones pertinentes.
         menu.lockUnlockBotonesUsuarios();
-
+        //Colocamos la ventana en el centro.
         menu.toFront();
 
     }//GEN-LAST:event_formWindowClosed
-
+    //Botón para volver atrás
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         this.borrar = false;
         this.dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
-
+    //Botón para dar de baja al usuario
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         this.borrar = true;
         this.dispose();

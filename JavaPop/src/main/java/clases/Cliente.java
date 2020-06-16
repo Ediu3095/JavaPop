@@ -30,7 +30,7 @@ public class Cliente extends Usuario implements Serializable {
         this.ttcc = p.ttcc;
         this.productos = p.productos;
         this.ventasNuevas = p.ventasNuevas;
-        for (Producto producto: this.productos) {
+        for (Producto producto : this.productos) {
             producto.setVendedor(this);
         }
     }
@@ -111,10 +111,10 @@ public class Cliente extends Usuario implements Serializable {
         return ventasNuevas;
     }
 
-    /**Esta función pide a traves de la consola todos los datos
-     * necesarios para dar de alta un producto, como son el nombre, descripcion,
-     * categoria, estado, precio y si la venta del producto es urgente o
-     * no.
+    /**
+     * Esta función pide a traves de la consola todos los datos necesarios para
+     * dar de alta un producto, como son el nombre, descripcion, categoria,
+     * estado, precio y si la venta del producto es urgente o no.
      *
      * @param user El usuario en al que le vamos a añadir el producto.
      * @param read Es un objeto que se utiliza para pedir los inputs y comprobar
@@ -149,12 +149,44 @@ public class Cliente extends Usuario implements Serializable {
         }
     }
 
+    /**
+     * <p>
+     * Esta función comprueba que el producto no se encuentra en la lista de
+     * productos, sino lo esta lo introduce. </p>
+     *
+     * <p>
+     * Cuando un cliente da de alta un producto, este se introduce en la lista
+     * de productos en venta. </p>
+     *
+     * @param p Es una instancia de la clase Productos que se pretende
+     * introducir a una lista de estos.
+     *
+     *
+     * @author Eduardo Ruiz Sabajanes
+     *
+     */
     public void introducirProducto(Producto p) {
         if (!this.productos.contains(p)) {
             this.productos.add(p);
         }
     }
 
+    /**
+     * <p>
+     * Esta función elimina el producto de la lista de productos, recogiendo los
+     * posibles errores que puedan surgir. </p>
+     *
+     * <p>
+     * Cuando un cliente o el administrador da de baja un producto, este se
+     * retira en la lista de productos en venta. </p>
+     *
+     * @param p Es una instancia de la clase Productos que se pretende eliminar
+     * a una lista de estos.
+     *
+     *
+     * @author Eduardo Ruiz Sabajanes
+     *
+     */
     public void sacarProducto(Producto p) {
         try {
             this.productos.remove(p);
@@ -165,8 +197,8 @@ public class Cliente extends Usuario implements Serializable {
     public void cobrar(double precio) {
         // Aquí se efectuaria un cobro
     }
-    
-    public void ingresar(double precio){
+
+    public void ingresar(double precio) {
         // Aquí se efetuaría un ingreso
     }
 
@@ -194,10 +226,10 @@ public class Cliente extends Usuario implements Serializable {
      *
      * @param c el cliente que quyiere editar sus productos
      * @param productosGlobal la lista global de productos
-     * @param read Es un objeto que se utiliza para pedir los inputs 
+     * @param read Es un objeto que se utiliza para pedir los inputs
      *
      * @author Luis Miguel Sobrino Zamora
-     * 
+     *
      */
     public static void editarProducto(Cliente c, ArrayList<Producto> productosGlobal, CheckFunctions read) {
         ArrayList<Producto> productos = c.getProductos();
@@ -215,7 +247,7 @@ public class Cliente extends Usuario implements Serializable {
                 arr.add(productos.get(i));
             }
         }
-            
+
         while (run_) {
             System.out.println("Seleccione el producto que desea editar:\n"
                     + "1.- Pagina siguiente\n"
@@ -359,5 +391,4 @@ public class Cliente extends Usuario implements Serializable {
         return true;
     }
 
-    
 }
