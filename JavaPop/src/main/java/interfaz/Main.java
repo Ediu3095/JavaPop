@@ -41,9 +41,11 @@ public class Main {
         
         Thread.sleep(2000);
         
+        /*
         System.out.println("\n\n\n\nUsusarios 1:\n" + usuarios);
         System.out.println("\n\n\n\nProductos 1:\n" + productos);
         System.out.println("\n\n\n\nVentas 1:\n" + ventas);
+        */
         
         new LoginScreen();
         ls.dispose();
